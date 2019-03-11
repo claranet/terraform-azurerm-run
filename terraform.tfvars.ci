@@ -1,0 +1,12 @@
+location="fr-central"
+location_short="frc"
+client_name="test"
+environment="test"
+stack="ci"
+resource_group_name="rg-test"
+name_suffix="-ci"
+storage_account_sas_start="2019-01-01"
+storage_account_sas_expiry="2090-01-01"
+extra_tags = {
+  foo = "bar"
+}
