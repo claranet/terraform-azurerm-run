@@ -27,7 +27,7 @@ resource "azurerm_storage_account" "storage-logs" {
 
 # Based on https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-linux
 
-/* data "azurerm_storage_account_sas" "storage-logs-sas-access" {
+data "azurerm_storage_account_sas" "storage-logs-sas-access" {
   connection_string = "${local.storage_account_connection_string}"
   https_only        = true
 
@@ -58,9 +58,12 @@ resource "azurerm_storage_account" "storage-logs" {
     process = false
   }
 
-}
-*/
+  count = "${var.create_storage_account_resource == "true" ? 1 : 0}"
 
+  depends_on = ["azurerm_storage_account.storage-logs"]
+}
+
+/*
 resource "null_resource" "storage-logs-sas-access" {
   triggers {
     uuid = "${var.location_short}${local.storage_default_name}${var.stack}sas"
@@ -78,3 +81,5 @@ az storage account generate-sas \
 CMD
   }
 }
+*/
+

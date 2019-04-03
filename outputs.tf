@@ -59,10 +59,8 @@ output "storage_account_secondary_access_key" {
   sensitive   = true
 }
 
-/*output "storage_account_sas_token" {
+output "storage_account_sas_token" {
   description = "SAS Token generated for logs access"
-  value       = "${data.azurerm_storage_account_sas.storage-logs-sas-access.sas}"
+  value       = "${join("", data.azurerm_storage_account_sas.storage-logs-sas-access.*.sas)}"
   sensitive   = true
 }
-*/
-
