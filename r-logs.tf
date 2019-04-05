@@ -28,7 +28,7 @@ resource "azurerm_storage_account" "storage-logs" {
 # Based on https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-linux
 
 data "azurerm_storage_account_sas" "storage-logs-sas-access" {
-  connection_string = "${local.storage_account_connection_string}"
+  connection_string = "${azurerm_storage_account.storage-logs.primary_connection_string}"
   https_only        = true
 
   resource_types {
