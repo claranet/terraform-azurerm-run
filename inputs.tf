@@ -45,13 +45,8 @@ variable "storage_account_extra_tags" {
   default     = {}
 }
 
-variable "storage_account_sas_start" {
-  description = "Storage Account SAS Token - start date"
-  type        = "string"
-}
-
 variable "storage_account_sas_expiry" {
-  description = "Storage Account SAS Token - end date (expiry)"
+  description = "Storage Account SAS Token - end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid."
   type        = "string"
 }
 

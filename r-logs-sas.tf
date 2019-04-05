@@ -38,11 +38,12 @@ data "azurerm_storage_account_sas" "storage-logs-sas-access" {
 */
 
 data "external" "generate-storage-sas-token" {
-  program = ["bash", "${path.module}/script_sas_stoken.sh"]
+  program = ["bash", "${path.module}/script_sas_token.sh"]
 
   query = {
-    storage_account_name = "${join("", azurerm_storage_account.storage-logs.*.name)}"
-    token_expiry         = "${var.storage_account_sas_expiry}"
+    storage_account_name      = "${join("", azurerm_storage_account.storage-logs.*.name)}"
+    storage_connection_string = "${join("", azurerm_storage_account.storage-logs.*.primary_connection_string)}"
+    token_expiry              = "${var.storage_account_sas_expiry}"
   }
 
   count = "${var.create_storage_account_resource == "true" ? 1 : 0}"
