@@ -7,6 +7,7 @@ set -xe
 # and escaped for consumption by the shell.
 eval "$(jq -r '@sh "AZSTACCOUNT=\(.storage_account_name) TOKENEXP=\(.token_expiry) AZSTCON=\(.storage_connection_string)"')"
 
+# Official doc https://docs.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas
 SASTOKEN=$(az storage account generate-sas \
     --account-name "${AZSTACCOUNT}" \
     --connection-string "${AZSTCON}" \
