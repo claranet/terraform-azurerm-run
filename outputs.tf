@@ -61,6 +61,8 @@ output "storage_account_secondary_access_key" {
 
 output "storage_account_sas_token" {
   description = "SAS Token generated for logs access"
-  value       = "${join("", data.azurerm_storage_account_sas.storage-logs-sas-access.*.sas)}"
-  sensitive   = true
+
+  #  value       = "${join("", data.azurerm_storage_account_sas.storage-logs-sas-access.*.sas)}"
+  value     = "${join("", flatten(data.external.generate-storage-sas-token.*.result))}"
+  sensitive = true
 }
