@@ -7,6 +7,7 @@ It includes:
 * Log Management with following resources
     * Log Analytics Workspace
     * Storage Account with SAS Token to upload logs to
+* Key Vault
 
 ## Usage
 
@@ -37,6 +38,8 @@ module "global_run" {
 
   resource_group_name = "${module.rg.resource_group_name}"
 
+  tenant_id = "${var.azure_tenant_id}"
+
   extra_tags = {
     foo    = "bar"
   }
@@ -44,7 +47,7 @@ module "global_run" {
 ```
 
 ## Using sub-modules
-Each integrated service can be used separately with the same inputs and outputs.
+The integrated services can be used separately with the same inputs and outputs when it's a sub module.
 
 ### Log management
 ```hcl
@@ -65,6 +68,10 @@ module "logs" {
 }
 ```
 
+### Key Vault
+
+See Key Vault module: [https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/keyvault]
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -72,6 +79,15 @@ module "logs" {
 | client\_name | Client name | string | n/a | yes |
 | environment | Environment name | string | n/a | yes |
 | extra\_tags | Extra tags to add | map | `<map>` | no |
+| keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | list | `<list>` | no |
+| keyvault\_custom\_name | Name of the Key Vault, generated if not set. | string | `""` | no |
+| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | string | `"false"` | no |
+| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | string | `"false"` | no |
+| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | string | `"false"` | no |
+| keyvault\_extra\_tags | Extra tags to add | map | `<map>` | no |
+| keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | list | `<list>` | no |
+| keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | string | `""` | no |
+| keyvault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | string | `"standard"` | no |
 | location | Azure location. | string | n/a | yes |
 | location\_short | Short string for Azure location. | string | n/a | yes |
 | log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | string | `""` | no |
@@ -88,11 +104,15 @@ module "logs" {
 | name\_prefix | Name prefix for all resources generated name | string | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | string | n/a | yes |
 | stack | Stack name | string | n/a | yes |
+| tenant\_id | Tenant ID | string | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| keyvault\_id | Id of the Key Vault |
+| keyvault\_name | Name of the Key Vault |
+| keyvault\_uri | URI of the Key Vault |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
 | log\_analytics\_workspace\_portal\_url | The Portal URL for the Log Analytics Workspace. |
@@ -113,3 +133,5 @@ module "logs" {
 Terraform Azure Log Analytics Workspace: [https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html]
 
 Microsoft Azure Monitor logs documentation: [https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview]
+
+Microsoft Azure Key Vault documentation: [https://docs.microsoft.com/en-us/azure/key-vault/]
