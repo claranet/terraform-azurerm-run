@@ -46,12 +46,6 @@ variable "extra_tags" {
 ###############################
 # Log Management variables
 ###############################
-variable "logs_resource_group_name" {
-  description = "Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set."
-  type        = "string"
-  default     = ""
-}
-
 variable "log_analytics_workspace_name_prefix" {
   description = "Log Analytics name prefix"
   type        = "string"
