@@ -84,6 +84,7 @@ module "logs" {
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | map | `<map>` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | string | `""` | no |
 | logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | string | `"2042-01-01T00:00:00Z"` | no |
+| logs\_storage\_acount\_appservices\_container\_name | Name of the container in which App Services logs are stored | string | `"app-services"` | no |
 | name\_prefix | Name prefix for all resources generated name | string | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | string | n/a | yes |
 | stack | Stack name | string | n/a | yes |
@@ -97,6 +98,7 @@ module "logs" {
 | log\_analytics\_workspace\_portal\_url | The Portal URL for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
+| logs\_resource\_group\_name | Resource Group the logs resources belongs to |
 | logs\_storage\_account\_id | Id of the associated Storage Account |
 | logs\_storage\_account\_name | Name of the logs Storage Account |
 | logs\_storage\_account\_primary\_access\_key | Primary connection string of the logs Storage Account, empty if connection string provided |
@@ -104,6 +106,7 @@ module "logs" {
 | logs\_storage\_account\_sas\_token | SAS Token generated for logs access on Storage Account with full permissions on containers and objects for blob and table services. |
 | logs\_storage\_account\_secondary\_access\_key | Secondary connection string of the logs Storage Account, empty if connection string provided |
 | logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account, empty if connection string provided |
+| logs\_storage\_acount\_appservices\_container\_name | Name of the container in which App Services logs are stored |
 
 ## Related documentation
 

@@ -22,3 +22,10 @@ resource "azurerm_storage_account" "storage_logs" {
 
   tags = "${merge(local.default_tags, var.extra_tags, var.logs_storage_account_extra_tags)}"
 }
+
+# Container for App Services logs which is not automatically created
+resource "azurerm_storage_container" "container_webapps" {
+  name                 = "${var.logs_storage_acount_appservices_container_name}"
+  resource_group_name  = "${var.resource_group_name}"
+  storage_account_name = "${azurerm_storage_account.storage_logs.name}"
+}

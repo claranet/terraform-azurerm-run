@@ -1,6 +1,11 @@
 ###############################
 # Log Management outputs
 ###############################
+output "logs_resource_group_name" {
+  description = "Resource Group the logs resources belongs to"
+  value       = "${var.resource_group_name}"
+}
+
 output "log_analytics_workspace_id" {
   description = "The Log Analytics Workspace ID."
   value       = "${azurerm_log_analytics_workspace.log_workspace.id}"
@@ -64,4 +69,9 @@ output "logs_storage_account_sas_token" {
   description = "SAS Token generated for logs access on Storage Account with full permissions on containers and objects for blob and table services."
   value       = "${data.external.generate_storage_sas_token.result}"
   sensitive   = true
+}
+
+output "logs_storage_acount_appservices_container_name" {
+  description = "Name of the container in which App Services logs are stored"
+  value       = "${azurerm_storage_container.container_webapps.name}"
 }
