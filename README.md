@@ -112,6 +112,7 @@ See Key Vault module: [https://git.fr.clara.net/claranet/cloudnative/projects/cl
 |------|-------------|
 | keyvault\_id | Id of the Key Vault |
 | keyvault\_name | Name of the Key Vault |
+| keyvault\_resource\_group\_name | Resource Group the Key Vault belongs to |
 | keyvault\_uri | URI of the Key Vault |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
