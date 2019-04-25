@@ -25,7 +25,7 @@ module "logs" {
 }
 
 module "keyvault" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/keyvault.git?ref=AZ-71-key-vault-first-version"
+  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/keyvault.git?ref=AZ-71-key-vault-first-version"
 
   client_name         = "${var.client_name}"
   environment         = "${var.environment}"
