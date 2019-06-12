@@ -23,6 +23,4 @@ resource "azurerm_recovery_services_protection_policy_vm" "vm_backup_policy" {
   retention_daily = {
     count = "${var.vm_backup_policy_retention}"
   }
-
-  tags = "${merge(local.default_tags, var.extra_tags)}"
 }
