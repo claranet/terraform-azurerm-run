@@ -76,7 +76,7 @@ variable "log_analytics_workspace_custom_name" {
 }
 
 variable "log_analytics_workspace_sku" {
-  description = "Specifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03)."
+  description = "Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03)."
   type        = "string"
   default     = "PerGB2018"
 }
@@ -110,7 +110,7 @@ variable "logs_storage_account_sas_expiry" {
   default     = "2042-01-01T00:00:00Z"
 }
 
-variable "logs_storage_acount_appservices_container_name" {
+variable "logs_storage_account_appservices_container_name" {
   description = "Name of the container in which App Services logs are stored"
   type        = "string"
   default     = "app-services"
