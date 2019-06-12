@@ -13,10 +13,10 @@ output "recovery_vault_id" {
 
 output "vm_backup_policy_name" {
   description = "VM Backup policy name"
-  value       = "${azurerm_recovery_services_protection_policy_vm.vm-policy.name}"
+  value       = "${azurerm_recovery_services_protection_policy_vm.vm_backup_policy.name}"
 }
 
 output "vm_backup_policy_id" {
   description = "VM Backup policy ID"
-  value       = "${azurerm_recovery_services_protection_policy_vm.vm-policy.id}"
+  value       = "${azurerm_recovery_services_protection_policy_vm.vm_backup_policy.id}"
 }

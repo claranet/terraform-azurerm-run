@@ -20,13 +20,13 @@ module "azure-region" {
 module "rg" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
 
+  client_name = "${var.client_name}"
   location    = "${module.azure-region.location}"
-  client_name = "inativ"
   environment = "${var.environment}"
   stack       = "${var.stack}"
 }
 
-module "global_run_iaas" {
+module "run_iaas" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git?ref=vX.X.X"
   
   client_name    = "${var.client_name}"
