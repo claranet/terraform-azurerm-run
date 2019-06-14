@@ -32,7 +32,7 @@ module "global_run" {
   
   client_name    = "${var.client_name}"
   location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location-short}"
+  location_short = "${module.azure-region.location_short}"
   environment    = "${var.environment}"
   stack          = "${var.stack}"
 
