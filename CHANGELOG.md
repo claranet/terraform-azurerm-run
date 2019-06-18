@@ -1,3 +1,8 @@
+# v1.1.0 - 2019-06-18
+
+Fixed
+  * AZ-48: Fix `logs_storage_account_appservices_container_name` variable and README
+
 # v1.0.1 - 2019-05-02
 
 Fixed
