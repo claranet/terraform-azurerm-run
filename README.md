@@ -21,8 +21,8 @@ module "azure-region" {
 module "rg" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
 
+  client_name = "${var.client_name}"
   location    = "${module.azure-region.location}"
-  client_name = "inativ"
   environment = "${var.environment}"
   stack       = "${var.stack}"
 }
@@ -32,7 +32,7 @@ module "global_run" {
   
   client_name    = "${var.client_name}"
   location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location-short}"
+  location_short = "${module.azure-region.location_short}"
   environment    = "${var.environment}"
   stack          = "${var.stack}"
 
@@ -94,13 +94,13 @@ See Key Vault module: [https://git.fr.clara.net/claranet/cloudnative/projects/cl
 | log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | map | `<map>` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | string | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | string | `"30"` | no |
-| log\_analytics\_workspace\_sku | Specifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | string | `"PerGB2018"` | no |
+| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | string | `"PerGB2018"` | no |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | string | `""` | no |
+| logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | string | `"app-services"` | no |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | string | `""` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | map | `<map>` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | string | `""` | no |
 | logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | string | `"2042-01-01T00:00:00Z"` | no |
-| logs\_storage\_acount\_appservices\_container\_name | Name of the container in which App Services logs are stored | string | `"app-services"` | no |
 | name\_prefix | Name prefix for all resources generated name | string | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | string | n/a | yes |
 | stack | Stack name | string | n/a | yes |
