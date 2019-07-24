@@ -11,31 +11,31 @@ It includes:
 ## Usage
 
 ```hcl
-module "azure-region" {
+module "az-region" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/regions.git?ref=vX.X.X"
 
-  azure_region = "${var.azure_region}"
+  azure_region = var.azure_region
 }
 
 module "rg" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
 
-  client_name = "${var.client_name}"
-  location    = "${module.azure-region.location}"
-  environment = "${var.environment}"
-  stack       = "${var.stack}"
+  location    = module.az-region.location
+  client_name = var.client_name
+  environment = var.environment
+  stack       = var.stack
 }
 
 module "run_iaas" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git?ref=vX.X.X"
   
-  client_name    = "${var.client_name}"
-  location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location_short}"
-  environment    = "${var.environment}"
-  stack          = "${var.stack}"
+  client_name    = var.client_name
+  location       = module.az-region.location
+  location_short = module.az-region.location_short
+  environment    = var.environment
+  stack          = var.stack
 
-  resource_group_name = "${module.rg.resource_group_name}"
+  resource_group_name = module.rg.resource_group_name
 
   extra_tags = {
     foo    = "bar"
@@ -51,13 +51,13 @@ The integrated services can be used separately with the same inputs and outputs 
 module "az-vm-backup" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git//backup?ref=vX.X.X"
 
-  client_name    = "${var.client_name}"
-  location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location_short}"
-  environment    = "${var.environment}"
-  stack          = "${var.stack}"
+  location            = module.az-region.location
+  location_short      = module.az-region.location_short
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
 
-  resource_group_name = "${module.rg.resource_group_name}"
+  resource_group_name = module.rg.resource_group_name
 
   extra_tags = {
     foo    = "bar"
