@@ -8,6 +8,10 @@ It includes:
     * A Recovery Services Vault to store VM backups ([documentaion](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/vm-backup/) module).
 
+# Requirements
+* Azure provider >= 1.31
+* Terraform >=0.12
+
 ## Usage
 
 ```hcl
