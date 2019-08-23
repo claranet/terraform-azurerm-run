@@ -1,4 +1,5 @@
 # Azure RUN Common feature
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](http://img.shields.io/badge/license-Apache%20V2-blue.svg)](LICENSE)
 
 ## Purpose
 
@@ -10,9 +11,9 @@ It includes:
     * Storage Account with SAS Token to upload logs to
 * Key Vault
 
-# Requirements
+## Requirements
 
-* Terraform >=0.12
+* [Terraform](https://www.terraform.io/downloads.html) >=0.12
 * AzureRM Terraform provider >= 1.31
 
 ## Usage
@@ -53,9 +54,11 @@ module "global_run" {
 ```
 
 ## Using sub-modules
+
 The integrated services can be used separately with the same inputs and outputs when it's a sub module.
 
 ### Log management
+
 ```hcl
 module "logs" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//logs?ref=vX.X.X"
