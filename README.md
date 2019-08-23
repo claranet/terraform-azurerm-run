@@ -1,6 +1,7 @@
 # Azure RUN IaaS/VM
 
 ## Purpose
+
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
 It includes:
@@ -8,9 +9,10 @@ It includes:
     * A Recovery Services Vault to store VM backups ([documentaion](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/vm-backup/) module).
 
-# Requirements
-* Azure provider >= 1.31
+## Requirements
+
 * Terraform >=0.12
+* AzureRM Terraform provider >= 1.31
 
 ## Usage
 
