@@ -1,6 +1,7 @@
-# Azure run common module
+# Azure RUN Common feature
 
 ## Purpose
+
 A terraform feature which includes services needed for Claranet RUN/MSP.
 
 It includes:
@@ -10,8 +11,9 @@ It includes:
 * Key Vault
 
 # Requirements
-* Azure provider >= 1.31
+
 * Terraform >=0.12
+* AzureRM Terraform provider >= 1.31
 
 ## Usage
 
