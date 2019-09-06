@@ -1,6 +1,5 @@
 # Azure RUN IaaS/VM
-
-## Purpose
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](http://img.shields.io/badge/license-Apache%20V2-blue.svg)](LICENSE)
 
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
@@ -11,8 +10,8 @@ It includes:
 
 ## Requirements
 
-* Terraform >=0.12
-* AzureRM Terraform provider >= 1.31
+* [Terraform](https://www.terraform.io/downloads.html) >= 0.12
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.31
 
 ## Usage
 
