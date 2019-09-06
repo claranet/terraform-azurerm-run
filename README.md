@@ -10,8 +10,8 @@ It includes:
 
 ## Requirements
 
-* [Terraform](https://www.terraform.io/downloads.html) >=0.12
-* AzureRM Terraform provider >= 1.31
+* [Terraform](https://www.terraform.io/downloads.html) >= 0.12
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.31
 
 ## Usage
 
