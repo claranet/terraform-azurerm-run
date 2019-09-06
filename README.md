@@ -1,6 +1,7 @@
 # Azure RUN IaaS/VM
 
 ## Purpose
+
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
 It includes:
@@ -8,34 +9,39 @@ It includes:
     * A Recovery Services Vault to store VM backups ([documentaion](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/vm-backup/) module).
 
+## Requirements
+
+* Terraform >=0.12
+* AzureRM Terraform provider >= 1.31
+
 ## Usage
 
 ```hcl
-module "azure-region" {
+module "az-region" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/regions.git?ref=vX.X.X"
 
-  azure_region = "${var.azure_region}"
+  azure_region = var.azure_region
 }
 
 module "rg" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
 
-  client_name = "${var.client_name}"
-  location    = "${module.azure-region.location}"
-  environment = "${var.environment}"
-  stack       = "${var.stack}"
+  location    = module.az-region.location
+  client_name = var.client_name
+  environment = var.environment
+  stack       = var.stack
 }
 
 module "run_iaas" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git?ref=vX.X.X"
   
-  client_name    = "${var.client_name}"
-  location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location_short}"
-  environment    = "${var.environment}"
-  stack          = "${var.stack}"
+  client_name    = var.client_name
+  location       = module.az-region.location
+  location_short = module.az-region.location_short
+  environment    = var.environment
+  stack          = var.stack
 
-  resource_group_name = "${module.rg.resource_group_name}"
+  resource_group_name = module.rg.resource_group_name
 
   extra_tags = {
     foo    = "bar"
@@ -51,13 +57,13 @@ The integrated services can be used separately with the same inputs and outputs 
 module "az-vm-backup" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git//backup?ref=vX.X.X"
 
-  client_name    = "${var.client_name}"
-  location       = "${module.azure-region.location}"
-  location_short = "${module.azure-region.location_short}"
-  environment    = "${var.environment}"
-  stack          = "${var.stack}"
+  location            = module.az-region.location
+  location_short      = module.az-region.location_short
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
 
-  resource_group_name = "${module.rg.resource_group_name}"
+  resource_group_name = module.rg.resource_group_name
 
   extra_tags = {
     foo    = "bar"
