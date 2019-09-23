@@ -1,5 +1,5 @@
 # Azure RUN IaaS/VM
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](http://img.shields.io/badge/license-Apache%20V2-blue.svg)](LICENSE)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-iaas/azurerm/)
 
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
@@ -16,27 +16,30 @@ It includes:
 ## Usage
 
 ```hcl
-module "az-region" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/regions.git?ref=vX.X.X"
+module "azure-region" {
+  source  = "claranet/regions/azurerm"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
+  source  = "claranet/rg/azurerm"
+  version = "x.x.x"
 
-  location    = module.az-region.location
+  location    = module.azure-region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
 module "run_iaas" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git?ref=vX.X.X"
+  source  = "claranet/run-iaas/azurerm"
+  version = "x.x.x"
   
   client_name    = var.client_name
-  location       = module.az-region.location
-  location_short = module.az-region.location_short
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
   environment    = var.environment
   stack          = var.stack
 
@@ -54,7 +57,7 @@ The integrated services can be used separately with the same inputs and outputs 
 ### Azure Backup
 ```hcl
 module "az-vm-backup" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/run-iaas.git//backup?ref=vX.X.X"
+  source = "git::ssh://git@github.com/claranet/terraform-azurerm-run-iaas.git//backup?ref=vX.X.X"
 
   location            = module.az-region.location
   location_short      = module.az-region.location_short
