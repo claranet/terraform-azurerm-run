@@ -1,3 +1,11 @@
+# v2.0.1 - Unreleased
+
+Changed
+  * AZ-119: Revamp README for public release
+
+Added
+  * AZ-119: Add CONTRIBUTING.md doc and `terraform-wrapper` usage with the module
+
 # v2.0.0 - 2019-09-06
 
 Breaking
@@ -5,9 +13,6 @@ Breaking
 
 Added
   * AZ-118: Add LICENSE, NOTICE & Github badges
-
-Changed
-  * AZ-119: Revamp README and publish this module to Terraform registry
 
 # v1.1.0 - 2019-06-18
 
