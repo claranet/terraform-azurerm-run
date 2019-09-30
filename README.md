@@ -10,8 +10,14 @@ It includes:
 
 ## Requirements
 
-* [Terraform](https://www.terraform.io/downloads.html) >= 0.12
-* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.31
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.32
+
+## Terraform version compatibility
+
+| Module version | Terraform version |
+|----------------|-------------------|
+| >= 2.x.x       | 0.12.x            |
+| <  2.x.x       | 0.11.x            |
 
 ## Usage
 
