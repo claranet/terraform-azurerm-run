@@ -38,18 +38,19 @@ module "rg" {
   source  = "claranet/rg/azurerm"
   version = "x.x.x"
 
-  location    = module.az-region.location
+  location    = module.azure-region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
 module "global_run" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-run.git?ref=vX.X.X"
+  source  = "claranet/run-common/azurerm"
+  version = "x.x.x"
   
   client_name    = var.client_name
-  location       = module.az-region.location
-  location_short = module.az-region.location_short
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
   environment    = var.environment
   stack          = var.stack
 
@@ -71,11 +72,11 @@ The integrated services can be used separately with the same inputs and outputs 
 
 ```hcl
 module "logs" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//logs?ref=vX.X.X"
+  source = "git::ssh://git@github.com/claranet/terraform-azurerm-run-common.git//logs?ref=vX.X.X"
 
   client_name    = var.client_name
-  location       = module.az-region.location
-  location_short = module.az-region.location_short
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
   environment    = var.environment
   stack          = var.stack
 
@@ -89,7 +90,7 @@ module "logs" {
 
 ### Key Vault
 
-See Key Vault module: [terraform-azurerm-keyvault](https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/keyvault).
+See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
 
 ## Inputs
 
