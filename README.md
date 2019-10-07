@@ -1,7 +1,7 @@
 # Azure RUN Common feature
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](http://img.shields.io/badge/license-Apache%20V2-blue.svg)](LICENSE)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-common/azurerm/)
 
-A terraform feature which includes services needed for Claranet RUN/MSP.
+A terraform modules composition (feature) which includes services needed for Claranet RUN/MSP.
 
 It includes:
 * Log Management with following resources
@@ -11,33 +11,46 @@ It includes:
 
 ## Requirements
 
-* [Terraform](https://www.terraform.io/downloads.html) >= 0.12
-* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.31
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.32
+
+## Terraform version compatibility
+
+| Module version | Terraform version |
+|----------------|-------------------|
+| >= 2.x.x       | 0.12.x            |
+| <  2.x.x       | 0.11.x            |
 
 ## Usage
 
+This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
+which set some terraform variables in the environment needed by this module.
+More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
+
 ```hcl
-module "az-region" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/regions.git?ref=vX.X.X"
+module "azure-region" {
+  source  = "claranet/regions/azurerm"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/rg.git?ref=vX.X.X"
+  source  = "claranet/rg/azurerm"
+  version = "x.x.x"
 
-  location    = module.az-region.location
+  location    = module.azure-region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
 module "global_run" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-run.git?ref=vX.X.X"
+  source  = "claranet/run-common/azurerm"
+  version = "x.x.x"
   
   client_name    = var.client_name
-  location       = module.az-region.location
-  location_short = module.az-region.location_short
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
   environment    = var.environment
   stack          = var.stack
 
@@ -59,11 +72,11 @@ The integrated services can be used separately with the same inputs and outputs 
 
 ```hcl
 module "logs" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//logs?ref=vX.X.X"
+  source = "git::ssh://git@github.com/claranet/terraform-azurerm-run-common.git//logs?ref=vX.X.X"
 
   client_name    = var.client_name
-  location       = module.az-region.location
-  location_short = module.az-region.location_short
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
   environment    = var.environment
   stack          = var.stack
 
@@ -77,7 +90,7 @@ module "logs" {
 
 ### Key Vault
 
-See Key Vault module: [https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/keyvault]
+See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
 
 ## Inputs
 
@@ -138,8 +151,8 @@ See Key Vault module: [https://git.fr.clara.net/claranet/cloudnative/projects/cl
 
 ## Related documentation
 
-Terraform Azure Log Analytics Workspace: [https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html]
+Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
 
-Microsoft Azure Monitor logs documentation: [https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview]
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
 
-Microsoft Azure Key Vault documentation: [https://docs.microsoft.com/en-us/azure/key-vault/]
+Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
