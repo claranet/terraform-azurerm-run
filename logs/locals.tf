@@ -11,7 +11,7 @@ locals {
   storage_default_name_long = replace(
     format(
       "%s%s%s%s",
-      coalesce(var.logs_storage_account_name_prefix, var.name_prefix),
+      coalesce(var.logs_storage_account_custom_name, var.logs_storage_account_name_prefix, var.name_prefix),
       var.stack,
       var.environment,
       var.client_name,
