@@ -1,3 +1,8 @@
+# v2.0.2 - 2019-11-14
+
+Fixed
+  * AZ-134: Resolve issue with storage account name
+
 # v2.0.1 - 2019-10-07
 
 Changed
