@@ -6,7 +6,7 @@ A terraform feature which includes services needed for Claranet RUN/MSP on Azure
 It includes:
 * Azure Backup
     * A Recovery Services Vault to store VM backups ([documentaion](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
-    * A VM backup policy to assign on VM instances (via the [vm-backup](https://git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/modules/vm-backup/) module).
+    * A VM backup policy to assign on VM instances (via the [vm-backup](https://github.com/claranet/terraform-azurerm-vm-backup/) module).
 
 ## Requirements
 
@@ -89,7 +89,7 @@ module "az-vm-backup" {
 |------|-------------|:----:|:-----:|:-----:|
 | client\_name | Client name | string | n/a | yes |
 | environment | Environment name | string | n/a | yes |
-| extra\_tags | Extra tags to add | map | `<map>` | no |
+| extra\_tags | Extra tags to add | map(string) | `{}` | no |
 | location | Azure location. | string | n/a | yes |
 | location\_short | Short string for Azure location. | string | n/a | yes |
 | name\_prefix | Name prefix for all resources generated name | string | `""` | no |
@@ -113,5 +113,5 @@ module "az-vm-backup" {
 
 ## Related documentation
 
-- Terraform Azure Recovery Services Vault: [https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html]
-- Terraform Azure VM Backup policy: [https://www.terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html]
+- Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)
+- Terraform Azure VM Backup policy: [terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html)
