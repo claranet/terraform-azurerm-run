@@ -37,7 +37,6 @@ resource "azurerm_storage_account" "storage_logs" {
 # Container for App Services logs which is not automatically created
 resource "azurerm_storage_container" "container_webapps" {
   name                 = var.logs_storage_account_appservices_container_name
-  resource_group_name  = var.resource_group_name
   storage_account_name = azurerm_storage_account.storage_logs.name
 }
 
