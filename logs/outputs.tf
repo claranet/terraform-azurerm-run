@@ -11,6 +11,11 @@ output "log_analytics_workspace_id" {
   value       = azurerm_log_analytics_workspace.log_workspace.id
 }
 
+output "log_analytics_workspace_name" {
+  description = "The Log Analytics Workspace name."
+  value       = azurerm_log_analytics_workspace.log_workspace.name
+}
+
 output "log_analytics_workspace_guid" {
   description = "The Log Analytics Workspace GUID."
   value       = azurerm_log_analytics_workspace.log_workspace.workspace_id
