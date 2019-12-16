@@ -2,6 +2,7 @@
 
 Added
   * AZ-128: Output The Log Analytics Workspace name
+  * AZ-159: Add storage `enable_advanced_threat_protection` attribute option
 
 Fixed
   * AZ-145: Remove deprecated `resource_group_name` attribute on storage
