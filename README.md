@@ -136,6 +136,7 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | keyvault\_uri | URI of the Key Vault |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
+| log\_analytics\_workspace\_name | The Log Analytics Workspace name. |
 | log\_analytics\_workspace\_portal\_url | The Portal URL for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
