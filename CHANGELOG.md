@@ -3,6 +3,9 @@
 Added
   * AZ-128: Output The Log Analytics Workspace name
 
+Fixed
+  * AZ-145: Remove deprecated `resource_group_name` attribute on storage
+
 # v2.0.2 - 2019-11-14
 
 Fixed
