@@ -116,6 +116,12 @@ variable "logs_storage_account_appservices_container_name" {
   default     = "app-services"
 }
 
+variable "logs_storage_account_enable_advanced_threat_protection" {
+  description = "Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
+  type        = bool
+  default     = false
+}
+
 ###############################
 # Key Vault variables
 ###############################

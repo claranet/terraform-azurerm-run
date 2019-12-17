@@ -27,6 +27,8 @@ resource "azurerm_storage_account" "storage_logs" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
 
+  enable_advanced_threat_protection = var.logs_storage_account_enable_advanced_threat_protection
+
   tags = merge(
     local.default_tags,
     var.extra_tags,
