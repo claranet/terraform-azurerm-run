@@ -1,4 +1,4 @@
-# v2.0.3 - Unreleased
+# v2.0.3 - 2019-12-17
 
 Added
   * AZ-128: Output The Log Analytics Workspace name
