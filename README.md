@@ -67,7 +67,8 @@ The integrated services can be used separately with the same inputs and outputs 
 ### Azure Backup
 ```hcl
 module "az-vm-backup" {
-  source = "git::ssh://git@github.com/claranet/terraform-azurerm-run-iaas.git//backup?ref=vX.X.X"
+  source  = "claranet/run-iaas/azurerm//modules/backup"
+  version = "x.x.x"
 
   location            = module.az-region.location
   location_short      = module.az-region.location_short
