@@ -1,3 +1,3 @@
 .terraform
 terraform.tfvars
-main.tf
+/main.tf
