@@ -5,7 +5,7 @@ A terraform feature which includes services needed for Claranet RUN/MSP on Azure
 
 It includes:
 * Azure Backup
-    * A Recovery Services Vault to store VM backups ([documentaion](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
+    * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
 
 ## Requirements
@@ -70,11 +70,11 @@ module "az-vm-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
   version = "x.x.x"
 
-  location            = module.az-region.location
-  location_short      = module.az-region.location_short
-  client_name         = var.client_name
-  environment         = var.environment
-  stack               = var.stack
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
+  client_name    = var.client_name
+  environment    = var.environment
+  stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
 
