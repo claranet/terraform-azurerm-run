@@ -68,6 +68,7 @@ module "logs" {
 | location | Azure location. | string | n/a | yes |
 | location\_short | Short string for Azure location. | string | n/a | yes |
 | log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | string | `""` | no |
+| log\_analytics\_workspace\_enable\_iis\_logs | Specifies if IIS should be collected for linked Virtual Machines | bool | `"false"` | no |
 | log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | map(string) | `{}` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | string | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | string | `"30"` | no |

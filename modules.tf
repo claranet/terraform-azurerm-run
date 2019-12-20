@@ -25,6 +25,7 @@ module "logs" {
   log_analytics_workspace_extra_tags        = var.log_analytics_workspace_extra_tags
   log_analytics_workspace_retention_in_days = var.log_analytics_workspace_retention_in_days
   log_analytics_workspace_sku               = var.log_analytics_workspace_sku
+  log_analytics_workspace_enable_iis_logs   = var.log_analytics_workspace_enable_iis_logs
 }
 
 module "keyvault" {

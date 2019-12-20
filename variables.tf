@@ -81,6 +81,12 @@ variable "log_analytics_workspace_sku" {
   default     = "PerGB2018"
 }
 
+variable "log_analytics_workspace_enable_iis_logs" {
+  description = "Specifies if IIS should be collected for linked Virtual Machines"
+  type        = bool
+  default     = false
+}
+
 variable "log_analytics_workspace_retention_in_days" {
   description = "The workspace data retention in days. Possible values range between 30 and 730."
   default     = 30
