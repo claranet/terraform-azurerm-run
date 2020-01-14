@@ -2,7 +2,7 @@
 
 ## Quick start
 
-To deploy an Azure Log Analytics and its associated Azure Storage Account:
+To deploy an Azure Log Analytics and its dedicated Azure Storage Account:
 
 1. Modify `main.tf` to add your Azure provider credentials, etc.
 2. Modify `variables.tf` to customize resources.

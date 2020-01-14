@@ -93,7 +93,7 @@ module "logs" {
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
 | logs\_resource\_group\_name | Resource Group the logs resources belongs to |
-| logs\_storage\_account\_id | Id of the associated Storage Account |
+| logs\_storage\_account\_id | Id of the dedicated Storage Account |
 | logs\_storage\_account\_name | Name of the logs Storage Account |
 | logs\_storage\_account\_primary\_access\_key | Primary connection string of the logs Storage Account, empty if connection string provided |
 | logs\_storage\_account\_primary\_connection\_string | Primary connection string of the logs Storage Account, empty if connection string provided |
