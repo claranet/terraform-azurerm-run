@@ -1,5 +1,5 @@
 module "azure-backup" {
-  source = "./backup"
+  source = "./modules/backup"
 
   client_name    = var.client_name
   location       = var.location
@@ -19,4 +19,3 @@ module "azure-backup" {
   vm_backup_policy_time        = var.vm_backup_policy_time
   vm_backup_policy_retention   = var.vm_backup_policy_retention
 }
-

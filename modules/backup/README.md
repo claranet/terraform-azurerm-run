@@ -1,7 +1,4 @@
-# Azure RUN IaaS/VM
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-iaas/azurerm/)
-
-A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
+# Azure Backup - Recovery service vault
 
 It includes:
 * Azure Backup
@@ -43,29 +40,6 @@ module "rg" {
   stack       = var.stack
 }
 
-module "run_iaas" {
-  source  = "claranet/run-iaas/azurerm"
-  version = "x.x.x"
-  
-  client_name    = var.client_name
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-
-  extra_tags = {
-    foo    = "bar"
-  }
-}
-```
-
-## Using sub-modules
-The integrated services can be used separately with the same inputs and outputs when it's a sub module.
-
-### Azure Backup
-```hcl
 module "az-vm-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
   version = "x.x.x"
@@ -79,7 +53,7 @@ module "az-vm-backup" {
   resource_group_name = module.rg.resource_group_name
 
   extra_tags = {
-    foo    = "bar"
+    foo = "bar"
   }
 }
 ```
