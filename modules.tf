@@ -1,5 +1,5 @@
 module "logs" {
-  source = "./logs"
+  source = "./modules/logs"
 
   client_name         = var.client_name
   location            = var.location
@@ -26,7 +26,8 @@ module "logs" {
 }
 
 module "keyvault" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/keyvault.git?ref=v2.0.0"
+  source  = "claranet/keyvault/azurerm"
+  version = "2.0.1"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -54,4 +55,3 @@ module "keyvault" {
   logs_storage_account_id = module.logs.logs_storage_account_id
   logs_storage_retention  = var.log_analytics_workspace_retention_in_days
 }
-
