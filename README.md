@@ -79,37 +79,39 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| client\_name | Client name | string | n/a | yes |
-| environment | Environment name | string | n/a | yes |
-| extra\_tags | Extra tags to add | map(string) | `{}` | no |
-| keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | list(string) | `[]` | no |
-| keyvault\_custom\_name | Name of the Key Vault, generated if not set. | string | `""` | no |
-| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | string | `"false"` | no |
-| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | string | `"false"` | no |
-| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | string | `"false"` | no |
-| keyvault\_extra\_tags | Extra tags to add | map(string) | `{}` | no |
-| keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | list(string) | `[]` | no |
-| keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | string | `""` | no |
-| keyvault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | string | `"standard"` | no |
-| location | Azure location. | string | n/a | yes |
-| location\_short | Short string for Azure location. | string | n/a | yes |
-| log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | string | `""` | no |
-| log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | map(string) | `{}` | no |
-| log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | string | `""` | no |
-| log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | string | `"30"` | no |
-| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | string | `"PerGB2018"` | no |
-| logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | string | `""` | no |
-| logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | string | `"app-services"` | no |
-| logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | string | `""` | no |
-| logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | bool | `"false"` | no |
-| logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | map(string) | `{}` | no |
-| logs\_storage\_account\_name\_prefix | Storage Account name prefix | string | `""` | no |
-| logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | string | `"2042-01-01T00:00:00Z"` | no |
-| name\_prefix | Name prefix for all resources generated name | string | `""` | no |
-| resource\_group\_name | Resource Group the resources will belong to | string | n/a | yes |
-| stack | Stack name | string | n/a | yes |
-| tenant\_id | Tenant ID | string | n/a | yes |
+|------|-------------|------|---------|:-----:|
+| client\_name | Client name | `string` | n/a | yes |
+| environment | Environment name | `string` | n/a | yes |
+| extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
+| keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
+| keyvault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
+| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `string` | `"false"` | no |
+| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `string` | `"false"` | no |
+| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `string` | `"false"` | no |
+| keyvault\_extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
+| keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
+| keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
+| keyvault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
+| location | Azure location. | `string` | n/a | yes |
+| location\_short | Short string for Azure location. | `string` | n/a | yes |
+| log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
+| log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
+| log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
+| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
+| logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
+| logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | `string` | `"app-services"` | no |
+| logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `true` | no |
+| logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
+| logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
+| logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
+| logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | `string` | `"2042-01-01T00:00:00Z"` | no |
+| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
+| stack | Stack name | `string` | n/a | yes |
+| tenant\_id | Tenant ID | `string` | n/a | yes |
 
 ## Outputs
 
