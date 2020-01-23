@@ -93,6 +93,12 @@ variable "logs_storage_account_extra_tags" {
   default     = {}
 }
 
+variable "logs_storage_account_kind" {
+  description = "Storage Account Kind"
+  type        = string
+  default     = "StorageV2"
+}
+
 variable "logs_storage_account_sas_expiry" {
   description = "Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid."
   type        = string
@@ -107,6 +113,12 @@ variable "logs_storage_account_appservices_container_name" {
 
 variable "logs_storage_account_enable_advanced_threat_protection" {
   description = "Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
+  type        = bool
+  default     = false
+}
+
+variable "logs_storage_account_enable_https_traffic_only" {
+  description = "Boolean flag which controls if https traffic only is enabled."
   type        = bool
   default     = false
 }

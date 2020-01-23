@@ -4,6 +4,9 @@ Changed
   * AZ-117: Revamp sub-module directory to match HashiCorp registry best practices
   * AZ-117: Use KeyVault module from registry at version `v2.0.1`
 
+Added
+  * AZ-169: Storage Account - allow to configure account\_kind (default to StorageV2) and enable\_https\_traffic\_only (default to false)
+
 # v2.0.3 - 2019-12-17
 
 Added
