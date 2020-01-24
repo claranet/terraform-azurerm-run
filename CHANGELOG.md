@@ -1,4 +1,4 @@
-# v2.1.0 - Unreleased
+# v2.1.0 - 2020-01-24
 
 Changed
   * AZ-117: Revamp sub-module directory to match HashiCorp registry best practices
