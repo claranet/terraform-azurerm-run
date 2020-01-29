@@ -7,10 +7,11 @@ It includes:
 * Azure Backup
     * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
+    * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 
 ## Requirements
 
-* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.32
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.40
 
 ## Terraform version compatibility
 
@@ -66,7 +67,7 @@ The integrated services can be used separately with the same inputs and outputs 
 
 ### Azure Backup
 ```hcl
-module "az-vm-backup" {
+module "az-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
   version = "x.x.x"
 
@@ -87,26 +88,32 @@ module "az-vm-backup" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| client\_name | Client name | string | n/a | yes |
-| environment | Environment name | string | n/a | yes |
-| extra\_tags | Extra tags to add | map(string) | `{}` | no |
-| location | Azure location. | string | n/a | yes |
-| location\_short | Short string for Azure location. | string | n/a | yes |
-| name\_prefix | Name prefix for all resources generated name | string | `""` | no |
-| recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | string | `""` | no |
-| recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | string | `"Standard"` | no |
-| resource\_group\_name | Resource Group the resources will belong to | string | n/a | yes |
-| stack | Stack name | string | n/a | yes |
-| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | string | `""` | no |
-| vm\_backup\_policy\_retention | The number of daily backups to keep. Must be between 1 and 9999. | string | `"30"` | no |
-| vm\_backup\_policy\_time | The time of day to preform the backup in 24hour format. | string | `"04:00"` | no |
-| vm\_backup\_policy\_timezone | Specifies the timezone for schedules. Defaults to `UTC`. | string | `"UTC"` | no |
+|------|-------------|------|---------|:-----:|
+| client\_name | Client name | `string` | n/a | yes |
+| environment | Environment name | `string` | n/a | yes |
+| extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
+| file\_share\_backup\_policy\_custom\_name | Azure Backup - File share backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| file\_share\_backup\_policy\_retention | The number of daily file share backups to keep. Must be between 1 and 9999. | `string` | `"30"` | no |
+| file\_share\_backup\_policy\_time | The time of day to perform the file share backup in 24hour format. | `string` | `"04:00"` | no |
+| file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
+| location | Azure location. | `string` | n/a | yes |
+| location\_short | Short string for Azure location. | `string` | n/a | yes |
+| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
+| resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
+| stack | Stack name | `string` | n/a | yes |
+| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| vm\_backup\_policy\_retention | The number of daily backups to keep. Must be between 1 and 9999. | `string` | `"30"` | no |
+| vm\_backup\_policy\_time | The time of day to preform the backup in 24hour format. | `string` | `"04:00"` | no |
+| vm\_backup\_policy\_timezone | Specifies the timezone for schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| file\_share\_backup\_policy\_id | File share Backup policy ID |
+| file\_share\_backup\_policy\_name | File share Backup policy name |
 | recovery\_vault\_id | Azure Recovery Services Vault ID |
 | recovery\_vault\_name | Azure Recovery Services Vault name |
 | vm\_backup\_policy\_id | VM Backup policy ID |
@@ -116,3 +123,4 @@ module "az-vm-backup" {
 
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)
 - Terraform Azure VM Backup policy: [terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html)
+- Terraform Azure File Share Backup policy: [terraform.io/docs/providers/azurerm/r/backup_policy_file_share.html](https://www.terraform.io/docs/providers/azurerm/r/backup_policy_file_share.html)
