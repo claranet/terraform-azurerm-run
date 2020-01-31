@@ -1,4 +1,4 @@
-# Unreleased
+# v2.1.0 - 2020-01-31
 
 Added
   * AZ-137: File share backup policy
