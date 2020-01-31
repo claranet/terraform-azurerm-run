@@ -66,20 +66,43 @@ variable "vm_backup_policy_custom_name" {
 }
 
 variable "vm_backup_policy_timezone" {
-  description = "Specifies the timezone for schedules. Defaults to `UTC`."
+  description = "Specifies the timezone for VM backup schedules. Defaults to `UTC`."
   type        = string
   default     = "UTC"
 }
 
 variable "vm_backup_policy_time" {
-  description = "The time of day to preform the backup in 24hour format."
+  description = "The time of day to perform the VM backup in 24hour format."
   type        = string
   default     = "04:00"
 }
 
 variable "vm_backup_policy_retention" {
-  description = "The number of daily backups to keep. Must be between 1 and 9999."
+  description = "The number of daily VM backups to keep. Must be between 1 and 9999."
   type        = string
   default     = "30"
 }
 
+variable "file_share_backup_policy_custom_name" {
+  description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
+variable "file_share_backup_policy_timezone" {
+  description = "Specifies the timezone for file share backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
+}
+
+variable "file_share_backup_policy_time" {
+  description = "The time of day to perform the file share backup in 24hour format."
+  type        = string
+  default     = "04:00"
+}
+
+variable "file_share_backup_policy_retention" {
+  description = "The number of daily file share backups to keep. Must be between 1 and 9999."
+  type        = string
+  default     = "30"
+}

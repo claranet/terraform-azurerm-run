@@ -18,4 +18,9 @@ module "azure-backup" {
   vm_backup_policy_timezone    = var.vm_backup_policy_timezone
   vm_backup_policy_time        = var.vm_backup_policy_time
   vm_backup_policy_retention   = var.vm_backup_policy_retention
+
+  file_share_backup_policy_custom_name = var.file_share_backup_policy_custom_name
+  file_share_backup_policy_timezone    = var.file_share_backup_policy_timezone
+  file_share_backup_policy_time        = var.file_share_backup_policy_time
+  file_share_backup_policy_retention   = var.file_share_backup_policy_retention
 }
