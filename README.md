@@ -12,6 +12,8 @@ It includes:
 ## Requirements
 
 * [PowerShell with Az module](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-3.6.1) >= 3.6 is mandatory and is used to configure IIS logs collect in Azure Monitor
+* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.32
+  * Compatible provider >= 2.0
 
 ## Version compatibility
 
