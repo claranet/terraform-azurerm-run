@@ -193,20 +193,20 @@ variable "keyvault_custom_name" {
 
 variable "keyvault_enabled_for_deployment" {
   description = "Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "keyvault_enabled_for_disk_encryption" {
   description = "Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "keyvault_enabled_for_template_deployment" {
   description = "Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "keyvault_admin_objects_ids" {

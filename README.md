@@ -9,13 +9,9 @@ It includes:
     * Storage Account with SAS Token to upload logs to
 * Key Vault
 
-## Requirements
+## Version compatibility
 
 * [PowerShell with Az module](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-3.6.1) >= 3.6 is mandatory and is used to configure IIS logs collect in Azure Monitor
-* [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.32
-  * Compatible provider >= 2.0
-
-## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
 |-------------------|-------------------|-----------------|
@@ -88,9 +84,9 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
-| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `string` | `"false"` | no |
-| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `string` | `"false"` | no |
-| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `string` | `"false"` | no |
+| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
+| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | `false` | no |
+| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | `false` | no |
 | keyvault\_extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
