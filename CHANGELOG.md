@@ -7,6 +7,9 @@ Changed
 Added
   * AZ-199: Add possibility to create a fileshare to archive logs
 
+Fixed
+  * AZ-206: Pin version of provider AzureRM to be usable under v2.x
+
 # v2.1.0 - 2020-01-24
 
 Added
