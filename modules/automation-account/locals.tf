@@ -6,6 +6,6 @@ locals {
 
   automation_account_name = coalesce(
     var.custom_automation_account_name,
-    "${var.stack}-${var.client_name}-automationaccount",
+    "${var.stack}-${var.client_name}-aa",
   )
 }

@@ -88,22 +88,26 @@ module "az-backup" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
+| automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
+| custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | file\_share\_backup\_policy\_custom\_name | Azure Backup - File share backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | file\_share\_backup\_policy\_retention | The number of daily file share backups to keep. Must be between 1 and 9999. | `string` | `"30"` | no |
 | file\_share\_backup\_policy\_time | The time of day to perform the file share backup in 24hour format. | `string` | `"04:00"` | no |
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
+| law\_resource\_group\_name | Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account) | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
+| log\_analytics\_workspace\_name | Log Analytics Workspace that will be connected with the automation account | `string` | `""` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
+| recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |    
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |     
 | vm\_backup\_policy\_retention | The number of daily backups to keep. Must be between 1 and 9999. | `string` | `"30"` | no |
 | vm\_backup\_policy\_time | The time of day to preform the backup in 24hour format. | `string` | `"04:00"` | no |
 | vm\_backup\_policy\_timezone | Specifies the timezone for schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
@@ -112,6 +116,8 @@ module "az-backup" {
 
 | Name | Description |
 |------|-------------|
+| automation\_account\_id | Azure Automation Account name |
+| automation\_account\_name | Azure Automation Account name |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
 | file\_share\_backup\_policy\_name | File share Backup policy name |
 | recovery\_vault\_id | Azure Recovery Services Vault ID |
@@ -124,3 +130,4 @@ module "az-backup" {
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)
 - Terraform Azure VM Backup policy: [terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_protection_policy_vm.html)
 - Terraform Azure File Share Backup policy: [terraform.io/docs/providers/azurerm/r/backup_policy_file_share.html](https://www.terraform.io/docs/providers/azurerm/r/backup_policy_file_share.html)
+- Terraform Azure Automation Account: [terraform.io/docs/providers/azurerm/r/automation_account.html](https://www.terraform.io/docs/providers/azurerm/r/automation_account.html)

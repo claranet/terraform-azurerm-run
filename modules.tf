@@ -24,3 +24,22 @@ module "azure-backup" {
   file_share_backup_policy_time        = var.file_share_backup_policy_time
   file_share_backup_policy_retention   = var.file_share_backup_policy_retention
 }
+
+module "automation-account" {
+  source = "./modules/automation-account"
+
+  client_name = var.client_name
+  location    = var.location
+  environment = var.environment
+  stack       = var.stack
+
+  resource_group_name = var.resource_group_name
+  extra_tags          = var.extra_tags
+
+  automation_account_sku         = var.automation_account_sku
+  custom_automation_account_name = var.custom_automation_account_name
+  law_resource_group_name        = var.law_resource_group_name
+  log_analytics_workspace_name   = var.log_analytics_workspace_name
+}
+
+

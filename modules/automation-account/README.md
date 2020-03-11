@@ -1,7 +1,7 @@
 # Azure Automation Account
 
 This module creates an automation acccount.
-It can be linked to a Log Analytics Workspace (mandatory is you aim to use the Patch Management solution too)
+It can be linked to a Log Analytics Workspace (mandatory is you aim to use the Patch Management solution too).
 Please note that the associated RunAs Account is not created.
 
 ## Requirements
