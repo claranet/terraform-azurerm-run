@@ -1,4 +1,4 @@
-# v2.1.0 - Unreleased
+# v2.2.0 - Unreleased
 
 Added
   * AZ-204: Add automation account module

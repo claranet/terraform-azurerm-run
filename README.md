@@ -8,6 +8,7 @@ It includes:
     * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
     * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
     * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
+    * An Automation account to execute runbooks ([documantation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version > 2.2.0
 
 ## Requirements
 
@@ -73,6 +74,25 @@ module "az-backup" {
 
   location       = module.azure-region.location
   location_short = module.azure-region.location_short
+  client_name    = var.client_name
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = module.rg.resource_group_name
+
+  extra_tags = {
+    foo    = "bar"
+  }
+}
+```
+
+### Azure Automation Account
+```hcl
+module "automation-account" {
+  source  = "claranet/run-iaas/azurerm//modules/automation-account"
+  version = "x.x.x"
+
+  location       = module.azure-region.location
   client_name    = var.client_name
   environment    = var.environment
   stack          = var.stack
