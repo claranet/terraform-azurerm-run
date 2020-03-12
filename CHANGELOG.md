@@ -1,7 +1,7 @@
 # v2.2.0 - Unreleased
 
 Added
-  * AZ-204: Add automation account module
+  * AZ-208: Add automation account module
 
 # v2.1.0 - 2020-01-31
 
