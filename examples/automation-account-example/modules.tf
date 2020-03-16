@@ -17,7 +17,7 @@ module "rg" {
 
 module "automation-account" {
   source  = "claranet/run-iaas/azurerm//modules/automation-account"
-  version = "2.0.0"
+  version = "2.2.0"
 
   location            = module.azure-region.location
   resource_group_name = module.rg.resource_group_name
