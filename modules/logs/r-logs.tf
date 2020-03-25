@@ -70,7 +70,15 @@ resource "azurerm_storage_account" "storage_logs" {
 
 # Container for App Services logs which is not automatically created
 resource "azurerm_storage_container" "container_webapps" {
+  count                = var.logs_storage_account_enable_appservices_container ? 1 : 0
   name                 = var.logs_storage_account_appservices_container_name
   storage_account_name = azurerm_storage_account.storage_logs.name
 }
 
+# Archived Logs File Shares
+resource "azurerm_storage_share" "archivedlogs_fileshare" {
+  count                = var.logs_storage_account_enable_archived_logs_fileshare ? 1 : 0
+  name                 = var.logs_storage_account_archived_logs_fileshare_name
+  storage_account_name = azurerm_storage_account.storage_logs.name
+  quota                = var.logs_storage_account_archived_logs_fileshare_quota
+}

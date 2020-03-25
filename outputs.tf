@@ -76,9 +76,14 @@ output "logs_storage_account_sas_token" {
   sensitive   = true
 }
 
-output "logs_storage_acount_appservices_container_name" {
+output "logs_storage_account_appservices_container_name" {
   description = "Name of the container in which App Services logs are stored"
-  value       = module.logs.logs_storage_acount_appservices_container_name
+  value       = module.logs.logs_storage_account_appservices_container_name
+}
+
+output "logs_storage_account_archived_logs_fileshare_name" {
+  description = "Name of the file share in which externalized logs are stored"
+  value       = module.logs.logs_storage_account_archived_logs_fileshare_name
 }
 
 ###############################

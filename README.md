@@ -103,8 +103,12 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | `string` | `"app-services"` | no |
+| logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
+| logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | n/a | yes |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_appservices\_container | Boolean flag which controls if App Services logs container should be created. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Boolean flag which controls if archived-logs file share should be created. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
@@ -130,6 +134,8 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
 | logs\_resource\_group\_name | Resource Group the logs resources belongs to |
+| logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored |
+| logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored |
 | logs\_storage\_account\_id | Id of the dedicated Storage Account |
 | logs\_storage\_account\_name | Name of the logs Storage Account |
 | logs\_storage\_account\_primary\_access\_key | Primary connection string of the logs Storage Account, empty if connection string provided |
@@ -137,7 +143,6 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | logs\_storage\_account\_sas\_token | SAS Token generated for logs access on Storage Account with full permissions on containers and objects for blob and table services. |
 | logs\_storage\_account\_secondary\_access\_key | Secondary connection string of the logs Storage Account, empty if connection string provided |
 | logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account, empty if connection string provided |
-| logs\_storage\_acount\_appservices\_container\_name | Name of the container in which App Services logs are stored |
 
 ## Related documentation
 
