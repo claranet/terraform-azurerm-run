@@ -1,19 +1,17 @@
-# Unreleased
+# v2.2.0 - 2020-03-25
 
 Changed
   * AZ-199: Fix account should be account in outputs
   * AZ-199: Add possibility to not create the App Service logs container
 
 Added
+  * AZ-162: IIS logs gathering option
   * AZ-199: Add possibility to create a fileshare to archive logs
 
 Fixed
   * AZ-206: Pin version of provider AzureRM to be usable under v2.x
 
 # v2.1.0 - 2020-01-24
-
-Added
-  * AZ-162: IIS logs gathering option
 
 Changed
   * AZ-117: Revamp sub-module directory to match HashiCorp registry best practices
