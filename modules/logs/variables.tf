@@ -76,7 +76,7 @@ variable "log_analytics_workspace_retention_in_days" {
 }
 
 variable "log_analytics_workspace_enable_iis_logs" {
-  description = "Specifies if IIS should be collected for linked Virtual Machines"
+  description = "Specifies if IIS logs should be collected for linked Virtual Machines"
   type        = bool
   default     = false
 }
