@@ -16,9 +16,13 @@ module "logs" {
   logs_storage_account_extra_tags                        = var.logs_storage_account_extra_tags
   logs_storage_account_kind                              = var.logs_storage_account_kind
   logs_storage_account_sas_expiry                        = var.logs_storage_account_sas_expiry
+  logs_storage_account_enable_appservices_container      = var.logs_storage_account_enable_appservices_container
   logs_storage_account_appservices_container_name        = var.logs_storage_account_appservices_container_name
   logs_storage_account_enable_advanced_threat_protection = var.logs_storage_account_enable_advanced_threat_protection
   logs_storage_account_enable_https_traffic_only         = var.logs_storage_account_enable_https_traffic_only
+  logs_storage_account_enable_archived_logs_fileshare    = var.logs_storage_account_enable_archived_logs_fileshare
+  logs_storage_account_archived_logs_fileshare_name      = var.logs_storage_account_archived_logs_fileshare_name
+  logs_storage_account_archived_logs_fileshare_quota     = var.logs_storage_account_archived_logs_fileshare_quota
 
   log_analytics_workspace_name_prefix       = var.log_analytics_workspace_name_prefix
   log_analytics_workspace_custom_name       = var.log_analytics_workspace_custom_name

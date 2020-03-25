@@ -1,3 +1,12 @@
+# Unreleased
+
+Changed
+  * AZ-199: Fix account should be account in outputs
+  * AZ-199: Add possibility to not create the App Service logs container
+
+Added
+  * AZ-199: Add possibility to create a fileshare to archive logs
+
 # v2.1.0 - 2020-01-24
 
 Added

@@ -111,6 +111,12 @@ variable "logs_storage_account_sas_expiry" {
   default     = "2042-01-01T00:00:00Z"
 }
 
+variable "logs_storage_account_enable_appservices_container" {
+  description = "Boolean flag which controls if App Services logs container should be created."
+  type        = bool
+  default     = false
+}
+
 variable "logs_storage_account_appservices_container_name" {
   description = "Name of the container in which App Services logs are stored"
   type        = string
@@ -127,4 +133,22 @@ variable "logs_storage_account_enable_https_traffic_only" {
   description = "Boolean flag which controls if https traffic only is enabled."
   type        = bool
   default     = false
+}
+
+variable "logs_storage_account_enable_archived_logs_fileshare" {
+  description = "Boolean flag which controls if archived-logs file share should be created."
+  type        = bool
+  default     = false
+}
+
+variable "logs_storage_account_archived_logs_fileshare_name" {
+  description = "Name of the file share in which externalized logs are stored"
+  type        = string
+  default     = "archived-logs"
+}
+
+variable "logs_storage_account_archived_logs_fileshare_quota" {
+  description = "The maximum size in GB of the archived-logs file share, default is 5120"
+  type        = number
+  default     = null
 }
