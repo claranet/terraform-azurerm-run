@@ -78,8 +78,6 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 
 ## Inputs
 
-## Inputs
-
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | client\_name | Client name | `string` | n/a | yes |
