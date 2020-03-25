@@ -75,6 +75,12 @@ variable "log_analytics_workspace_retention_in_days" {
   default     = 30
 }
 
+variable "log_analytics_workspace_enable_iis_logs" {
+  description = "Specifies if IIS logs should be collected for linked Virtual Machines"
+  type        = bool
+  default     = false
+}
+
 variable "logs_storage_account_name_prefix" {
   description = "Storage Account name prefix"
   type        = string

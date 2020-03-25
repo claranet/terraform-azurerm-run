@@ -1,5 +1,8 @@
 # v2.1.0 - 2020-01-24
 
+Added
+  * AZ-162: IIS logs gathering option
+
 Changed
   * AZ-117: Revamp sub-module directory to match HashiCorp registry best practices
   * AZ-117: Use KeyVault module from registry at version `v2.0.1`
