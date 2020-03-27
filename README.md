@@ -127,7 +127,7 @@ module "automation-account" {
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |     
+| vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | vm\_backup\_policy\_retention | The number of daily backups to keep. Must be between 1 and 9999. | `string` | `"30"` | no |
 | vm\_backup\_policy\_time | The time of day to preform the backup in 24hour format. | `string` | `"04:00"` | no |
 | vm\_backup\_policy\_timezone | Specifies the timezone for schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
@@ -136,7 +136,7 @@ module "automation-account" {
 
 | Name | Description |
 |------|-------------|
-| automation\_account\_id | Azure Automation Account name |
+| automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
 | file\_share\_backup\_policy\_name | File share Backup policy name |

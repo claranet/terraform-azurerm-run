@@ -25,7 +25,7 @@ module "automation-account" {
   stack               = var.stack
   environment         = var.environment
 
-    extra_tags = {
+  extra_tags = {
     foo = "bar"
   }
 }

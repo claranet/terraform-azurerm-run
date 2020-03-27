@@ -40,6 +40,6 @@ output "automation_account_name" {
 }
 
 output "automation_account_id" {
-  description = "Azure Automation Account name"
+  description = "Azure Automation Account ID"
   value       = module.automation-account.automation_account_id
 }

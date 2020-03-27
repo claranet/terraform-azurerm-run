@@ -7,6 +7,6 @@ output "automation_account_name" {
 }
 
 output "automation_account_id" {
-  description = "Azure Automation Account name"
+  description = "Azure Automation Account ID"
   value       = azurerm_automation_account.automation-account.id
 }
