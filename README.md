@@ -9,6 +9,10 @@ It includes:
     * Storage Account with SAS Token to upload logs to
 * Key Vault
 
+## Requirements
+
+* [PowerShell with Az module](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-3.6.1) >= 3.6 is mandatory and is used to configure IIS logs collect in Azure Monitor
+
 ## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
@@ -96,7 +100,7 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
-| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no 
+| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no
 |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | `string` | `"app-services"` | no |
