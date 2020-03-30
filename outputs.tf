@@ -30,3 +30,16 @@ output "file_share_backup_policy_id" {
   description = "File share Backup policy ID"
   value       = module.azure-backup.file_share_backup_policy_id
 }
+
+###############################
+# Azure Automation Account outputs
+###############################
+output "automation_account_name" {
+  description = "Azure Automation Account name"
+  value       = module.automation-account.automation_account_name
+}
+
+output "automation_account_id" {
+  description = "Azure Automation Account ID"
+  value       = module.automation-account.automation_account_id
+}
