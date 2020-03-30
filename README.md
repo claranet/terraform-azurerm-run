@@ -4,22 +4,23 @@
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
 It includes:
-* Azure Backup
-    * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
-    * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
-    * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
-    * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
+  * Azure Backup
+      * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
+      * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
+      * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
+  * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
 
 ## Requirements
 
 * [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.40
 
-## Terraform version compatibility
+## Version compatibility
 
-| Module version | Terraform version |
-|----------------|-------------------|
-| >= 2.x.x       | 0.12.x            |
-| <  2.x.x       | 0.11.x            |
+| Module version    | Terraform version | AzureRM version |
+|-------------------|-------------------|-----------------|
+| >= 3.x.x          | 0.12.x            | >= 2.0          |
+| >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
+| <  2.x.x          | 0.11.x            | <  2.0          |
 
 ## Usage
 
