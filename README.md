@@ -9,9 +9,11 @@ It includes:
     * Storage Account with SAS Token to upload logs to
 * Key Vault
 
-## Version compatibility
+## Requirements
 
 * [PowerShell with Az module](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-3.6.1) >= 3.6 is mandatory and is used to configure IIS logs collect in Azure Monitor
+
+## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
 |-------------------|-------------------|-----------------|
