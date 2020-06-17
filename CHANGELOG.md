@@ -1,3 +1,8 @@
+# v2.4.0 / v3.0.0
+
+Breaking
+  * AZ-198: Upgrade AzureRM 2.0
+
 # v2.3.0 - 2020-07-30
 
 Added

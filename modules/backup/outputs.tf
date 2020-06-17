@@ -13,12 +13,12 @@ output "recovery_vault_id" {
 
 output "vm_backup_policy_name" {
   description = "VM Backup policy name"
-  value       = azurerm_recovery_services_protection_policy_vm.vm_backup_policy.name
+  value       = azurerm_backup_policy_vm.vm_backup_policy.name
 }
 
 output "vm_backup_policy_id" {
   description = "VM Backup policy ID"
-  value       = azurerm_recovery_services_protection_policy_vm.vm_backup_policy.id
+  value       = azurerm_backup_policy_vm.vm_backup_policy.id
 }
 
 output "file_share_backup_policy_name" {
