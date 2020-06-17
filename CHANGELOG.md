@@ -3,6 +3,9 @@
 Breaking
   * AZ-198: Upgrade AzureRM 2.0
 
+Changed
+  * AZ-209: Update CI with Gitlab template
+
 # v2.3.0 - 2020-07-30
 
 Added
