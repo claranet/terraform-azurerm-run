@@ -88,20 +88,20 @@ resource "azurerm_advanced_threat_protection" "storage_threat_protection" {
 }
 
 resource "azurerm_storage_management_policy" "archive-storage" {
-  count = lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
+  count              = lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
   storage_account_id = azurerm_storage_account.storage_logs.id
 
   rule {
-    name = "Archive"
+    name    = "Archive"
     enabled = true
     filters {
       blob_types = ["blockBlob"]
     }
     actions {
       base_blob {
-        tier_to_cool_after_days_since_modification_greater_than = var.tier_to_cool_after_days_since_modification_greater_than
+        tier_to_cool_after_days_since_modification_greater_than    = var.tier_to_cool_after_days_since_modification_greater_than
         tier_to_archive_after_days_since_modification_greater_than = var.tier_to_archive_after_days_since_modification_greater_than
-        delete_after_days_since_modification_greater_than = var.delete_after_days_since_modification_greater_than
+        delete_after_days_since_modification_greater_than          = var.delete_after_days_since_modification_greater_than
       }
     }
   }
