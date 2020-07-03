@@ -1,4 +1,4 @@
-# v2.2.1 - Unreleased
+# v2.2.1 - 2020-07-03
 
 Fixed
   * AZ-162: Cleanup README
