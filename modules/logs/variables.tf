@@ -152,3 +152,27 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
   type        = number
   default     = null
 }
+
+variable "tier_to_cool_after_days_since_modification_greater_than" {
+  description = "Change blob tier to cool after x days without modification"
+  type = number
+  default = 30
+}
+
+variable "tier_to_archive_after_days_since_modification_greater_than" {
+  description = "Change blob tier to Archive after x days without modification"
+  type = number
+  default = 90
+}
+
+variable "delete_after_days_since_modification_greater_than" {
+  description = "Delete blob after x days without modification"
+  type = number
+  default = 365
+}
+
+variable "logs_storage_account_enable_archiving" {
+  description = "Enable blob archiving lifecycle"
+  type = bool
+  default = true
+}

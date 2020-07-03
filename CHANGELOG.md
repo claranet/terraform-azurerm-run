@@ -1,5 +1,8 @@
 # v3.0.0 - 2020-07-22
 
+Added
+  * AZ-233: Add lifecycle management on storage account
+  
 Breaking
   * AZ-198: Upgrade module to be compliant with AzureRM 2.0
 
