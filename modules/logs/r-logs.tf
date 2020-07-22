@@ -58,8 +58,7 @@ resource "azurerm_storage_account" "storage_logs" {
   account_tier             = "Standard"
   account_kind             = var.logs_storage_account_kind
 
-  enable_advanced_threat_protection = var.logs_storage_account_enable_advanced_threat_protection
-  enable_https_traffic_only         = var.logs_storage_account_enable_https_traffic_only
+  enable_https_traffic_only = var.logs_storage_account_enable_https_traffic_only
 
   tags = merge(
     local.default_tags,
@@ -81,4 +80,9 @@ resource "azurerm_storage_share" "archivedlogs_fileshare" {
   name                 = var.logs_storage_account_archived_logs_fileshare_name
   storage_account_name = azurerm_storage_account.storage_logs.name
   quota                = var.logs_storage_account_archived_logs_fileshare_quota
+}
+
+resource "azurerm_advanced_threat_protection" "storage_threat_protection" {
+  target_resource_id = azurerm_storage_account.storage_logs.id
+  enabled            = var.logs_storage_account_enable_advanced_threat_protection
 }
