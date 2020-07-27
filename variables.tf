@@ -116,7 +116,6 @@ variable "log_retention_in_days" {
 variable "log_analytics_workspace_name" {
   description = "Log Analytics Workspace Name where the logs are sent and linked to Automation account"
   type        = string
-  default     = null
 }
 
 variable "log_analytics_resource_group_name" {

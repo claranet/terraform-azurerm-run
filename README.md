@@ -90,7 +90,7 @@ module "az-backup" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name        = module.rg.resource_group_name
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
   extra_tags = {
@@ -139,7 +139,7 @@ module "automation-account" {
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.) | `string` | `null` | no |
-| log\_analytics\_workspace\_name | Log Analytics Workspace Name where the logs are sent and linked to Automation account | `string` | `null` | no |
+| log\_analytics\_workspace\_name | Log Analytics Workspace Name where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list` | `null` | no |
 | log\_enabled | Enable or disable logs configuration in diagnostics settings | `bool` | `true` | no |
 | log\_eventhub\_authorization\_rule\_id | Event hub authorization rule ID where the logs are sent | `string` | `null` | no |
