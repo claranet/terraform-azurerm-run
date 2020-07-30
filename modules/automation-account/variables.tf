@@ -18,6 +18,11 @@ variable "location" {
   type        = string
 }
 
+variable "location_short" {
+  description = "Short string for Azure location."
+  type        = string
+}
+
 variable "resource_group_name" {
   description = "Resource group name"
   type        = string

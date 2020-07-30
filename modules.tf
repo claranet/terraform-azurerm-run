@@ -23,15 +23,26 @@ module "azure-backup" {
   file_share_backup_policy_timezone    = var.file_share_backup_policy_timezone
   file_share_backup_policy_time        = var.file_share_backup_policy_time
   file_share_backup_policy_retention   = var.file_share_backup_policy_retention
+
+  diagnostics_settings_enabled = var.diagnostics_settings_enabled
+
+  log_enabled    = var.log_enabled
+  log_categories = var.log_categories
+
+  log_retention_in_days              = var.log_retention_in_days
+  log_analytics_workspace_id         = data.azurerm_log_analytics_workspace.log-workspace.id
+  log_storage_account_id             = var.log_storage_account_id
+  log_eventhub_authorization_rule_id = var.log_eventhub_authorization_rule_id
 }
 
 module "automation-account" {
   source = "./modules/automation-account"
 
-  client_name = var.client_name
-  location    = var.location
-  environment = var.environment
-  stack       = var.stack
+  client_name    = var.client_name
+  location       = var.location
+  location_short = var.location_short
+  environment    = var.environment
+  stack          = var.stack
 
   resource_group_name = var.resource_group_name
   extra_tags          = var.extra_tags
@@ -41,5 +52,3 @@ module "automation-account" {
   law_resource_group_name        = var.law_resource_group_name
   log_analytics_workspace_name   = var.log_analytics_workspace_name
 }
-
-

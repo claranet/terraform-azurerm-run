@@ -40,11 +40,13 @@ module "automation-account" {
   source  = "claranet/run-iaas/azurerm//modules/automation-account"
   version = "x.x.x"
 
-  location                     = module.azure-region.location
+  client_name    = var.client_name
+  location       = var.location
+  location_short = var.location_short
+  environment    = var.environment
+  stack          = var.stack
+
   resource_group_name          = module.rg.resource_group_name
-  client_name                  = var.client_name
-  stack                        = var.stack
-  environment                  = var.environment
 }
 ```
 
@@ -59,6 +61,7 @@ module "automation-account" {
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | law\_resource\_group\_name | Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account) | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
+| location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_name | Log Analytics Workspace that will be connected with the automation account | `string` | `""` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
 | stack | Project stack name | `string` | n/a | yes |
@@ -67,5 +70,5 @@ module "automation-account" {
 
 | Name | Description |
 |------|-------------|
-| automation\_account\_id | Azure Automation Account name |
+| automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |

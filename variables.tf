@@ -79,8 +79,8 @@ variable "vm_backup_policy_time" {
 
 variable "vm_backup_policy_retention" {
   description = "The number of daily backups to keep. Must be between 1 and 9999."
-  type        = string
-  default     = "30"
+  type        = number
+  default     = 30
 }
 
 variable "file_share_backup_policy_custom_name" {
@@ -103,8 +103,59 @@ variable "file_share_backup_policy_time" {
 
 variable "file_share_backup_policy_retention" {
   description = "The number of daily file share backups to keep. Must be between 1 and 9999."
+  type        = number
+  default     = 30
+}
+
+variable "log_retention_in_days" {
+  description = "Retention time in days for the logs"
+  type        = number
+  default     = 365
+}
+
+variable "log_analytics_workspace_name" {
+  description = "Log Analytics Workspace Name where the logs are sent and linked to Automation account"
   type        = string
-  default     = "30"
+  default     = null
+}
+
+variable "log_analytics_resource_group_name" {
+  description = "Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.)"
+  type        = string
+  default     = null
+}
+
+variable "log_storage_account_id" {
+  description = "Storage account ID where the logs are sent"
+  type        = string
+  default     = null
+}
+
+variable "log_eventhub_authorization_rule_id" {
+  description = "Event hub authorization rule ID where the logs are sent"
+  type        = string
+  default     = null
+}
+
+variable "log_categories" {
+  type        = list
+  default     = null
+  description = <<EOD
+List of log categories. By default this module use a data source to retrieve them:
+`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]`
+EOD
+}
+
+variable "log_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable or disable logs configuration in diagnostics settings"
+}
+
+variable "diagnostics_settings_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable or disable diagnostics settings on the recovery vault"
 }
 
 ###############################
@@ -124,12 +175,6 @@ variable "custom_automation_account_name" {
 
 variable "law_resource_group_name" {
   description = "Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account)"
-  type        = string
-  default     = ""
-}
-
-variable "log_analytics_workspace_name" {
-  description = "Log Analytics Workspace that will be connected with the automation account"
   type        = string
   default     = ""
 }
