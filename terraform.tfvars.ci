@@ -5,6 +5,8 @@ environment="test"
 stack="ci"
 resource_group_name="rg-test"
 name_prefix="ci"
+logs_analytics_workspace_id = "law-test"
+logs_storage_account_id = "sto-test"
 extra_tags = {
   foo = "bar"
 }

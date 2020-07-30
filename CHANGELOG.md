@@ -1,3 +1,12 @@
+# v2.3.0 - Unreleased
+
+Added
+  * AZ-216: Enable diagnostics settings
+
+Breaking
+  * AZ-216: Change and unify module input variables
+  * AZ-216: Automation default name now contains region and environment
+
 # v2.2.0 - 2020-03-30
 
 Added
