@@ -60,6 +60,7 @@ module "logs" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
+| delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
@@ -77,6 +78,7 @@ module "logs" {
 | logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_appservices\_container | Boolean flag which controls if App Services logs container should be created. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_archived\_logs\_fileshare | Boolean flag which controls if archived-logs file share should be created. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archiving | Enable blob archiving lifecycle | `bool` | `true` | no |
 | logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `false` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
@@ -85,6 +87,8 @@ module "logs" {
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+| tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
+| tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 
 ## Outputs
 
@@ -112,3 +116,7 @@ module "logs" {
 Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
 
 Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)

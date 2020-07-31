@@ -82,6 +82,7 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
+| delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
@@ -109,6 +110,7 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_appservices\_container | Boolean flag which controls if App Services logs container should be created. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_archived\_logs\_fileshare | Boolean flag which controls if archived-logs file share should be created. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archiving | Enable blob archiving lifecycle | `bool` | `true` | no |
 | logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
@@ -118,6 +120,8 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | tenant\_id | Tenant ID | `string` | n/a | yes |
+| tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
+| tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 
 ## Outputs
 
