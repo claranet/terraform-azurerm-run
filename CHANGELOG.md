@@ -1,3 +1,8 @@
+# v3.1.1 - Unreleased
+
+Fixed
+  * AZ-249: Remove main.tf file from logs submodule
+
 # v3.1.0 - 2020-07-31
 
 Added
