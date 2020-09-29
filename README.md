@@ -11,6 +11,7 @@ It includes:
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0 ([example](examples/automation-account/modules.tf))
   * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
+  * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -111,6 +112,29 @@ module "run_iaas" {
 
 ```
 
+### Azure Monitor Data Collection Rule
+```hcl
+module "vm-monitoring" {
+  source  = "claranet/run-iaas/azurerm//modules/vm-monitoring"
+  version = "x.x.x"
+
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
+  client_name    = var.client_name
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = module.rg.resource_group_name
+
+  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+
+  extra_tags = {
+    foo    = "bar"
+  }
+}
+```
+
+<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 No providers.
@@ -122,6 +146,7 @@ No providers.
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | update\_management | ./modules/update-management | n/a |
+| vm-monitoring | ./modules/vm-monitoring | n/a |
 
 ## Resources
 
@@ -200,6 +225,9 @@ No resources.
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
+| data\_collection\_rule\_data | JSON data of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
 | file\_share\_backup\_policy\_name | File share Backup policy name |
 | recovery\_vault\_id | Azure Recovery Services Vault ID |
@@ -207,6 +235,7 @@ No resources.
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
 <!-- END_TF_DOCS -->
+
 ## Related documentation
 
 - Microsoft Update management documentation: [docs.microsoft.com/en-us/azure/automation/update-management/overview](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)
