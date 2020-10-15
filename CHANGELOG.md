@@ -2,7 +2,7 @@
 
 Changed
   * AZ-316: Add input for resource specific tags
-
+  * AZ-315: Replace log analytics data source with variable
 
 # v3.0.0 - 2020-07-30
 
