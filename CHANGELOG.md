@@ -1,3 +1,9 @@
+# v3.0.1 - 2020-10-15
+
+Changed
+  * AZ-316: Add input for resource specific tags
+
+
 # v3.0.0 - 2020-07-30
 
 Breaking
