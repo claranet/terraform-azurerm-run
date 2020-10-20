@@ -245,6 +245,24 @@ variable "keyvault_reader_objects_ids" {
   default     = []
 }
 
+variable "keyvault_purge_protection_enabled" {
+  description = "Whether to activate purge protection on Keyvault"
+  default     = false
+  type        = bool
+}
+
+variable "keyvault_network_acls" {
+  description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations."
+  default     = null
+
+  type = object({
+    bypass                     = string,
+    default_action             = string,
+    ip_rules                   = list(string),
+    virtual_network_subnet_ids = list(string)
+  })
+}
+
 variable "tier_to_cool_after_days_since_modification_greater_than" {
   description = "Change blob tier to cool after x days without modification"
   type        = number

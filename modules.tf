@@ -60,7 +60,7 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
-  enable_logs_to_log_analytics    = "true"
+  enable_logs_to_log_analytics    = true
   logs_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
   enable_logs_to_storage  = true
@@ -68,4 +68,7 @@ module "keyvault" {
   logs_storage_retention  = var.log_analytics_workspace_retention_in_days
 
   purge_protection_enabled = var.keyvault_purge_protection_enabled
+
+  network_acl = var.keyault_network_acls
+
 }
