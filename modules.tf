@@ -9,7 +9,7 @@ module "azure-backup" {
 
   resource_group_name = var.resource_group_name
   name_prefix         = var.name_prefix
-  extra_tags          = var.recovery_vault_extra_tags
+  extra_tags          = var.extra_tags
 
   recovery_vault_custom_name = var.recovery_vault_custom_name
   recovery_vault_sku         = var.recovery_vault_sku
