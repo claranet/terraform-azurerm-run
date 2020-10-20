@@ -69,6 +69,6 @@ module "keyvault" {
 
   purge_protection_enabled = var.keyvault_purge_protection_enabled
 
-  network_acl = var.keyault_network_acls
+  network_acls = var.keyvault_network_acls
 
 }
