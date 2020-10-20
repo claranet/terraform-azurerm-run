@@ -52,6 +52,7 @@ module "automation-account" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| automation\_account\_extra\_tags | Extra tags to add to Automation Account |`map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |

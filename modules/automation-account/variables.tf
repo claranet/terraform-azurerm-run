@@ -28,6 +28,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "automation_account_extra_tags" {
+  description = "Extra tags to add to automation account"
+  type        = map(string)
+  default     = {}
+}
+
 variable "automation_account_sku" {
   description = "Automation account Sku"
   type        = string
