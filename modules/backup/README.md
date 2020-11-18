@@ -93,6 +93,7 @@ module "az-backup" {
 | log\_storage\_account\_id | Storage account ID where the logs are sent | `string` | `null` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault |`map(string)` | `{}` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |

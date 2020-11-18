@@ -13,6 +13,7 @@ module "azure-backup" {
 
   recovery_vault_custom_name = var.recovery_vault_custom_name
   recovery_vault_sku         = var.recovery_vault_sku
+  recovery_vault_extra_tags  = var.recovery_vault_extra_tags
 
   vm_backup_policy_custom_name = var.vm_backup_policy_custom_name
   vm_backup_policy_timezone    = var.vm_backup_policy_timezone
@@ -33,6 +34,7 @@ module "azure-backup" {
   log_analytics_workspace_id         = data.azurerm_log_analytics_workspace.log-workspace.id
   log_storage_account_id             = var.log_storage_account_id
   log_eventhub_authorization_rule_id = var.log_eventhub_authorization_rule_id
+
 }
 
 module "automation-account" {
@@ -47,8 +49,11 @@ module "automation-account" {
   resource_group_name = var.resource_group_name
   extra_tags          = var.extra_tags
 
-  automation_account_sku         = var.automation_account_sku
+  automation_account_sku        = var.automation_account_sku
+  automation_account_extra_tags = var.automation_account_extra_tags
+
   custom_automation_account_name = var.custom_automation_account_name
   law_resource_group_name        = var.law_resource_group_name
   log_analytics_workspace_name   = var.log_analytics_workspace_name
+
 }

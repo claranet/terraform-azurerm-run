@@ -59,6 +59,12 @@ variable "recovery_vault_sku" {
   default     = "Standard"
 }
 
+variable "recovery_vault_extra_tags" {
+  description = "Extra tags to add to recovery vault"
+  type        = map(string)
+  default     = {}
+}
+
 variable "vm_backup_policy_custom_name" {
   description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
   type        = string
@@ -176,4 +182,10 @@ variable "law_resource_group_name" {
   description = "Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account)"
   type        = string
   default     = ""
+}
+
+variable "automation_account_extra_tags" {
+  description = "Extra tags to add to automation account"
+  type        = map(string)
+  default     = {}
 }

@@ -5,5 +5,5 @@ resource "azurerm_recovery_services_vault" "vault" {
 
   sku = var.recovery_vault_sku
 
-  tags = merge(local.default_tags, var.extra_tags)
+  tags = merge(local.default_tags, var.extra_tags, var.recovery_vault_extra_tags)
 }

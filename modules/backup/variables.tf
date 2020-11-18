@@ -53,6 +53,12 @@ variable "recovery_vault_custom_name" {
   default     = ""
 }
 
+variable "recovery_vault_extra_tags" {
+  description = "Extra tags to add to recovery vault"
+  type        = map(string)
+  default     = {}
+}
+
 variable "recovery_vault_sku" {
   description = "Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`."
   type        = string
