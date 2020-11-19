@@ -156,7 +156,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
+| automation\_account\_extra\_tags | Extra tags for Automation Account. Empty by default. | `map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
@@ -188,7 +188,7 @@ No resources.
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
+| recovery\_vault\_extra\_tags | Extra tags for Azure Recovery Vault. Empty by default. | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
