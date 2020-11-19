@@ -161,6 +161,9 @@ module "automation-account" {
 
 | Name | Description |
 |------|-------------|
+| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC Primary Acess Key |
+| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
+| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
