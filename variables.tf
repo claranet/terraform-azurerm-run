@@ -164,6 +164,30 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
   default     = null
 }
 
+variable "logs_storage_account_enable_archiving" {
+  description = "Enable blob archiving lifecycle"
+  type        = bool
+  default     = true
+}
+
+variable "logs_tier_to_cool_after_days_since_modification_greater_than" {
+  description = "Change blob tier to cool after x days without modification"
+  type        = number
+  default     = 30
+}
+
+variable "logs_tier_to_archive_after_days_since_modification_greater_than" {
+  description = "Change blob tier to Archive after x days without modification"
+  type        = number
+  default     = 90
+}
+
+variable "logs_delete_after_days_since_modification_greater_than" {
+  description = "Delete blob after x days without modification"
+  type        = number
+  default     = 365
+}
+
 ###############################
 # Key Vault variables
 ###############################
@@ -221,26 +245,8 @@ variable "keyvault_reader_objects_ids" {
   default     = []
 }
 
-variable "tier_to_cool_after_days_since_modification_greater_than" {
-  description = "Change blob tier to cool after x days without modification"
-  type        = number
-  default     = 30
-}
-
-variable "tier_to_archive_after_days_since_modification_greater_than" {
-  description = "Change blob tier to Archive after x days without modification"
-  type        = number
-  default     = 90
-}
-
-variable "delete_after_days_since_modification_greater_than" {
-  description = "Delete blob after x days without modification"
-  type        = number
-  default     = 365
-}
-
-variable "logs_storage_account_enable_archiving" {
-  description = "Enable blob archiving lifecycle"
+variable "keyvault_purge_protection_enabled" {
+  description = "Whether to activate purge protection"
   type        = bool
   default     = true
 }
