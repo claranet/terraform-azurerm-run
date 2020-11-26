@@ -34,7 +34,7 @@ module "logs" {
 
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "2.0.1"
+  version = "4.0.0"
 
   client_name         = var.client_name
   environment         = var.environment
