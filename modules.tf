@@ -30,11 +30,16 @@ module "logs" {
   log_analytics_workspace_retention_in_days = var.log_analytics_workspace_retention_in_days
   log_analytics_workspace_sku               = var.log_analytics_workspace_sku
   log_analytics_workspace_enable_iis_logs   = var.log_analytics_workspace_enable_iis_logs
+
+  logs_storage_account_enable_archiving                      = var.logs_storage_account_enable_archiving
+  tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than
+  tier_to_archive_after_days_since_modification_greater_than = var.logs_tier_to_archive_after_days_since_modification_greater_than
+  delete_after_days_since_modification_greater_than          = var.logs_delete_after_days_since_modification_greater_than
 }
 
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "2.0.1"
+  version = "4.0.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -55,10 +60,12 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
-  enable_logs_to_log_analytics    = "true"
+  purge_protection_enabled = var.keyvault_purge_protection_enabled
+
+  enable_logs_to_log_analytics    = true
   logs_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  enable_logs_to_storage  = "true"
+  enable_logs_to_storage  = true
   logs_storage_account_id = module.logs.logs_storage_account_id
   logs_storage_retention  = var.log_analytics_workspace_retention_in_days
 }
