@@ -1,10 +1,13 @@
+# Unreleased
+
+Changed
+  * AZ-325: Upgrade keyvault module to latest version + Update CI
+  * AZ-326: Add missing keyvault's inputs
+
 # v3.1.2/v4.0.0 - 2020-12-11
 
 Updated
   * AZ-273: Module now compatible terraform `v0.13+`
-Changed
-  * AZ-325: Upgrade keyvault module to latest version + Update CI
-  * AZ-326: Add missing keuvault's inputs
 
 # v3.1.1 - 2020-08-06
 

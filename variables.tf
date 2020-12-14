@@ -274,9 +274,3 @@ variable "delete_after_days_since_modification_greater_than" {
   type        = number
   default     = 365
 }
-
-variable "logs_storage_account_enable_archiving" {
-  description = "Enable blob archiving lifecycle"
-  type        = bool
-  default     = true
-}
