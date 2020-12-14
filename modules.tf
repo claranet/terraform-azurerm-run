@@ -67,7 +67,7 @@ module "keyvault" {
   logs_storage_account_id = module.logs.logs_storage_account_id
   logs_storage_retention  = var.log_analytics_workspace_retention_in_days
 
-  purge_protection_enabled = var.keyvault_purge_protection_enabled
+  purge_protection_enabled = true
 
   network_acls = var.keyvault_network_acls
 

@@ -245,12 +245,6 @@ variable "keyvault_reader_objects_ids" {
   default     = []
 }
 
-variable "keyvault_purge_protection_enabled" {
-  description = "Whether to activate purge protection on Keyvault"
-  default     = false
-  type        = bool
-}
-
 variable "keyvault_network_acls" {
   description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations."
   default     = null
