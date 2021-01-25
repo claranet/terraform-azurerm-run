@@ -57,6 +57,7 @@ resource "azurerm_storage_account" "storage_logs" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
   account_kind             = var.logs_storage_account_kind
+  min_tls_version          = var.logs_storage_min_tls_version
 
   enable_https_traffic_only = var.logs_storage_account_enable_https_traffic_only
 
