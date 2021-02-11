@@ -119,6 +119,11 @@ variable "log_retention_in_days" {
   default     = 365
 }
 
+variable "log_analytics_workspace_id" {
+  description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account"
+  type        = string
+}
+
 variable "log_analytics_workspace_name" {
   description = "Log Analytics Workspace Name where the logs are sent and linked to Automation account"
   type        = string
@@ -143,7 +148,7 @@ variable "log_eventhub_authorization_rule_id" {
 }
 
 variable "log_categories" {
-  type        = list
+  type        = list(any)
   default     = null
   description = <<EOD
 List of log categories. By default this module use a data source to retrieve them:
