@@ -52,8 +52,8 @@ variable "law_resource_group_name" {
   default     = ""
 }
 
-variable "log_analytics_workspace_name" {
-  description = "Log Analytics Workspace that will be connected with the automation account"
+variable "log_analytics_workspace_id" {
+  description = "Log Analytics Workspace ID that will be connected with the automation account"
   type        = string
   default     = ""
 }

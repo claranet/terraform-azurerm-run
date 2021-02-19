@@ -31,7 +31,7 @@ module "azure-backup" {
   log_categories = var.log_categories
 
   log_retention_in_days              = var.log_retention_in_days
-  log_analytics_workspace_id         = data.azurerm_log_analytics_workspace.log-workspace.id
+  log_analytics_workspace_id         = var.log_analytics_workspace_id
   log_storage_account_id             = var.log_storage_account_id
   log_eventhub_authorization_rule_id = var.log_eventhub_authorization_rule_id
 
@@ -54,6 +54,6 @@ module "automation-account" {
 
   custom_automation_account_name = var.custom_automation_account_name
   law_resource_group_name        = var.law_resource_group_name
-  log_analytics_workspace_name   = var.log_analytics_workspace_name
+  log_analytics_workspace_id     = var.log_analytics_workspace_id
 
 }

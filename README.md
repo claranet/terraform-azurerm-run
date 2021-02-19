@@ -60,7 +60,7 @@ module "logs" {
 module "run_iaas" {
   source  = "claranet/run-iaas/azurerm"
   version = "x.x.x"
-  
+
   client_name    = var.client_name
   location       = module.azure-region.location
   location_short = module.azure-region.location_short
@@ -126,8 +126,8 @@ module "automation-account" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
-| automation\_account\_extra\_tags | Extra tags for automation Account. Empty by default | `map(string)` | `{}` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
 | diagnostics\_settings\_enabled | Enable or disable diagnostics settings on the recovery vault | `bool` | `true` | no |
@@ -141,6 +141,7 @@ module "automation-account" {
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.) | `string` | `null` | no |
+| log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | log\_analytics\_workspace\_name | Log Analytics Workspace Name where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list` | `null` | no |
 | log\_enabled | Enable or disable logs configuration in diagnostics settings | `bool` | `true` | no |
@@ -149,8 +150,8 @@ module "automation-account" {
 | log\_storage\_account\_id | Storage account ID where the logs are sent | `string` | `null` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
-| recovery\_vault\_extra\_tags | Extra tags for Azure Recovery Vault. Empty by default | `map(string)` | `{}` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |

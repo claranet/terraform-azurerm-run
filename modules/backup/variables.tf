@@ -138,7 +138,7 @@ variable "log_eventhub_authorization_rule_id" {
 }
 
 variable "log_categories" {
-  type        = list
+  type        = list(any)
   default     = null
   description = <<EOD
 List of log categories. By default this module use a data source to retrieve them:
