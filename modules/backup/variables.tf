@@ -65,6 +65,12 @@ variable "recovery_vault_sku" {
   default     = "Standard"
 }
 
+variable "recovery_vault_identity_type" {
+  description = "Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`."
+  type        = string
+  default     = "SystemAssigned"
+}
+
 variable "vm_backup_policy_custom_name" {
   description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
   type        = string

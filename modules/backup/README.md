@@ -11,6 +11,7 @@ It includes:
 
 | Module version    | Terraform version | AzureRM version |
 |-------------------|-------------------|-----------------|
+| >= 4.x.x          | 0.13.x            | >= 2.43         |
 | >= 3.x.x          | 0.12.x            | >= 2.0          |
 | >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
 | <  2.x.x          | 0.11.x            | <  2.0          |
@@ -55,7 +56,7 @@ module "logs" {
 module "az-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
   version = "x.x.x"
-  
+
   client_name    = var.client_name
   location       = module.azure-region.location
   location_short = module.azure-region.location_short
@@ -86,14 +87,15 @@ module "az-backup" {
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent | `string` | `null` | no |
-| log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list` | `null` | no |
+| log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list(any)` | `null` | no |
 | log\_enabled | Enable or disable logs configuration in diagnostics settings | `bool` | `true` | no |
 | log\_eventhub\_authorization\_rule\_id | Event hub authorization rule ID where the logs are sent | `string` | `null` | no |
 | log\_retention\_in\_days | Retention time in days for the logs | `number` | `365` | no |
 | log\_storage\_account\_id | Storage account ID where the logs are sent | `string` | `null` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault |`map(string)` | `{}` | no |
+| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
+| recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |

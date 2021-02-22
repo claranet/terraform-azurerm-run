@@ -8,6 +8,7 @@ Please note that the associated RunAs Account is not created.
 
 | Module version    | Terraform version | AzureRM version |
 |-------------------|-------------------|-----------------|
+| >= 4.x.x          | 0.13.x            | >= 2.43         |
 | >= 3.x.x          | 0.12.x            | >= 2.0          |
 | >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
 | <  2.x.x          | 0.11.x            | <  2.0          |
@@ -52,7 +53,7 @@ module "automation-account" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_extra\_tags | Extra tags to add to Automation Account |`map(string)` | `{}` | no |
+| automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
@@ -61,7 +62,7 @@ module "automation-account" {
 | law\_resource\_group\_name | Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account) | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_workspace\_name | Log Analytics Workspace that will be connected with the automation account | `string` | `""` | no |
+| log\_analytics\_workspace\_id | Log Analytics Workspace ID that will be connected with the automation account | `string` | `""` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
 | stack | Project stack name | `string` | n/a | yes |
 
@@ -69,5 +70,8 @@ module "automation-account" {
 
 | Name | Description |
 |------|-------------|
+| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC Primary Acess Key |
+| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
+| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
