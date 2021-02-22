@@ -1,4 +1,4 @@
-# Unreleased
+# v4.1.0 - 2021-02-22
 
 Changed
   * AZ-445: Remove datasource to get log_analytics_workspace_id and get it from variable (https://github.com/terraform-providers/terraform-provider-azurerm/pull/10162)
