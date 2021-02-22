@@ -59,6 +59,12 @@ variable "recovery_vault_sku" {
   default     = "Standard"
 }
 
+variable "recovery_vault_identity_type" {
+  description = "Azure Recovery Vault identity type. Possible values include: `null`, ``SystemAssigned`. Default to `SystemAssigned`."
+  type        = string
+  default     = "SystemAssigned"
+}
+
 variable "recovery_vault_extra_tags" {
   description = "Extra tags to add to recovery vault"
   type        = map(string)

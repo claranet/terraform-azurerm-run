@@ -10,3 +10,4 @@ logs_storage_account_id = "sto-test"
 extra_tags = {
   foo = "bar"
 }
+recovery_vault_identity_type = "SystemAssigned"

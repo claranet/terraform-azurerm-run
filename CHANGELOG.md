@@ -4,6 +4,12 @@ Changed
   * AZ-445: Remove datasource to get log_analytics_workspace_id and get it from variable (https://github.com/terraform-providers/terraform-provider-azurerm/pull/10162)
   * AZ-445: Fix deprecation warns on automation-account
 
+Added
+  * AZ-448: Added `identity` variable for backup module
+
+Breaking
+  * AZ-448/AZ-445: Require AzureRM provider `v2.43+`
+
 # v3.1.1/v4.0.0 - 2020-11-19
 
 Updated

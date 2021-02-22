@@ -11,9 +11,10 @@ module "azure-backup" {
   name_prefix         = var.name_prefix
   extra_tags          = var.extra_tags
 
-  recovery_vault_custom_name = var.recovery_vault_custom_name
-  recovery_vault_sku         = var.recovery_vault_sku
-  recovery_vault_extra_tags  = var.recovery_vault_extra_tags
+  recovery_vault_custom_name   = var.recovery_vault_custom_name
+  recovery_vault_sku           = var.recovery_vault_sku
+  recovery_vault_identity_type = var.recovery_vault_identity_type
+  recovery_vault_extra_tags    = var.recovery_vault_extra_tags
 
   vm_backup_policy_custom_name = var.vm_backup_policy_custom_name
   vm_backup_policy_timezone    = var.vm_backup_policy_timezone
