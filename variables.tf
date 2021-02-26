@@ -116,6 +116,12 @@ variable "logs_storage_account_kind" {
   default     = "StorageV2"
 }
 
+variable "logs_storage_min_tls_version" {
+  description = "Storage Account minimal TLS version"
+  type        = string
+  default     = "TLS1_2"
+}
+
 variable "logs_storage_account_sas_expiry" {
   description = "Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid."
   type        = string
