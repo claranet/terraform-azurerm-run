@@ -1,4 +1,4 @@
-# Unreleased
+# v4.1.0 - 2021-02-26
 
 Added
   * AZ-410: Added a variable to enable choosing a TLS version for the logs storage account (Defaulted to TLS1_2)
