@@ -1,3 +1,9 @@
+# Unreleased
+
+Changed
+  * AZ-325: Upgrade keyvault module to latest version + Update CI
+  * AZ-326: Add missing keyvault's inputs
+
 # v3.1.2/v4.0.0 - 2020-12-11
 
 Updated

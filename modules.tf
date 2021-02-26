@@ -60,12 +60,15 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
-  purge_protection_enabled = var.keyvault_purge_protection_enabled
-
   enable_logs_to_log_analytics    = true
   logs_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
   enable_logs_to_storage  = true
   logs_storage_account_id = module.logs.logs_storage_account_id
   logs_storage_retention  = var.log_analytics_workspace_retention_in_days
+
+  purge_protection_enabled = true
+
+  network_acls = var.keyvault_network_acls
+
 }
