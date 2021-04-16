@@ -24,11 +24,13 @@ output "log_analytics_workspace_guid" {
 output "log_analytics_workspace_primary_key" {
   description = "The Primary shared key for the Log Analytics Workspace."
   value       = azurerm_log_analytics_workspace.log_workspace.primary_shared_key
+  sensitive   = true
 }
 
 output "log_analytics_workspace_secondary_key" {
   description = "The Secondary shared key for the Log Analytics Workspace."
   value       = azurerm_log_analytics_workspace.log_workspace.secondary_shared_key
+  sensitive   = true
 }
 
 output "log_analytics_workspace_portal_url" {
