@@ -1,3 +1,9 @@
+# v4.2.0 - unreleased
+
+Updated
+  * AZ-481: With Terraform 0.14 and 0.15, sensitive attributes should also be set as sensitive outputs
+  * AZ-481: Module Azure Keyvault updated to latest `v4.2.0`
+
 # v4.1.0 - 2021-02-26
 
 Added
