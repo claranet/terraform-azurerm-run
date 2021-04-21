@@ -194,6 +194,24 @@ variable "logs_delete_after_days_since_modification_greater_than" {
   default     = 365
 }
 
+variable "tier_to_cool_after_days_since_modification_greater_than" {
+  description = "Change blob tier to cool after x days without modification"
+  type        = number
+  default     = 30
+}
+
+variable "tier_to_archive_after_days_since_modification_greater_than" {
+  description = "Change blob tier to Archive after x days without modification"
+  type        = number
+  default     = 90
+}
+
+variable "delete_after_days_since_modification_greater_than" {
+  description = "Delete blob after x days without modification"
+  type        = number
+  default     = 365
+}
+
 ###############################
 # Key Vault variables
 ###############################
@@ -263,20 +281,16 @@ variable "keyvault_network_acls" {
   })
 }
 
-variable "tier_to_cool_after_days_since_modification_greater_than" {
-  description = "Change blob tier to cool after x days without modification"
-  type        = number
-  default     = 30
+# Keyvault Diagnotics
+
+variable "keyvault_logs_categories" {
+  type        = list(string)
+  description = "Log categories to send to destinations."
+  default     = null
 }
 
-variable "tier_to_archive_after_days_since_modification_greater_than" {
-  description = "Change blob tier to Archive after x days without modification"
-  type        = number
-  default     = 90
-}
-
-variable "delete_after_days_since_modification_greater_than" {
-  description = "Delete blob after x days without modification"
-  type        = number
-  default     = 365
+variable "keyvault_logs_metrics_categories" {
+  type        = list(string)
+  description = "Metrics categories to send to destinations."
+  default     = null
 }
