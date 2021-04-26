@@ -2,7 +2,7 @@
 
 Updated
   * AZ-481: With Terraform 0.14 and 0.15, sensitive attributes should also be set as sensitive outputs
-  * AZ-481: Module Azure Keyvault updated to latest `v4.3.0`
+  * AZ-481: Module Azure Keyvault updated to latest `v4.3.1`
 
 Breaking
   * AZ-160: Unify diagnostics settings, update Azure Keyvault module related parameters
