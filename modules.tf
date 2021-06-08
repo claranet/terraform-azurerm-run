@@ -74,3 +74,36 @@ module "keyvault" {
 
   network_acls = var.keyvault_network_acls
 }
+
+module "monitoring-function" {
+  source = "./modules/monitoring_function"
+
+  client_name         = var.client_name
+  environment         = var.environment
+  location            = var.location
+  location_short      = var.location_short
+  resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
+  stack               = var.stack
+
+  zip_package_path         = var.monitoring_function_zip_package_path
+  metrics_extra_dimensions = var.monitoring_function_metrics_extra_dimensions
+
+  log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
+  splunk_token                 = var.monitoring_function_splunk_token
+
+  logs_destinations_ids = [
+    module.logs.log_analytics_workspace_id,
+    module.logs.logs_storage_account_id,
+  ]
+
+  logs_retention_days     = var.log_analytics_workspace_retention_in_days
+  logs_categories         = var.monitoring_function_logs_categories
+  logs_metrics_categories = var.monitoring_function_logs_metrics_categories
+}
+
+resource "azurerm_role_assignment" "function_workspace" {
+  principal_id = module.monitoring-function.function_app_identity["principal_id"]
+  scope        = module.logs.log_analytics_workspace_id
+
+  role_definition_name = "Log Analytics Reader"
+}
