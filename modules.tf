@@ -16,15 +16,25 @@ module "azure-backup" {
   recovery_vault_identity_type = var.recovery_vault_identity_type
   recovery_vault_extra_tags    = var.recovery_vault_extra_tags
 
-  vm_backup_policy_custom_name = var.vm_backup_policy_custom_name
-  vm_backup_policy_timezone    = var.vm_backup_policy_timezone
-  vm_backup_policy_time        = var.vm_backup_policy_time
-  vm_backup_policy_retention   = var.vm_backup_policy_retention
+  vm_backup_policy_custom_name     = var.vm_backup_policy_custom_name
+  vm_backup_policy_timezone        = var.vm_backup_policy_timezone
+  vm_backup_policy_frequency       = var.vm_backup_policy_frequency
+  vm_backup_policy_time            = var.vm_backup_policy_time
+  vm_backup_daily_policy_retention = var.vm_backup_daily_policy_retention
 
-  file_share_backup_policy_custom_name = var.file_share_backup_policy_custom_name
-  file_share_backup_policy_timezone    = var.file_share_backup_policy_timezone
-  file_share_backup_policy_time        = var.file_share_backup_policy_time
-  file_share_backup_policy_retention   = var.file_share_backup_policy_retention
+  vm_backup_weekly  = var.vm_backup_weekly
+  vm_backup_monthly = var.vm_backup_monthly
+  vm_backup_yearly  = var.vm_backup_yearly
+
+  file_share_backup_policy_custom_name     = var.file_share_backup_policy_custom_name
+  file_share_backup_policy_timezone        = var.file_share_backup_policy_timezone
+  file_share_backup_policy_frequency       = var.file_share_backup_policy_frequency
+  file_share_backup_policy_time            = var.file_share_backup_policy_time
+  file_share_backup_daily_policy_retention = var.file_share_backup_daily_policy_retention
+
+  file_share_backup_weekly  = var.file_share_backup_weekly
+  file_share_backup_monthly = var.file_share_backup_monthly
+  file_share_backup_yearly  = var.file_share_backup_yearly
 
   diagnostics_settings_enabled = var.diagnostics_settings_enabled
 
