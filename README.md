@@ -71,6 +71,24 @@ module "run_iaas" {
   resource_group_name          = module.rg.resource_group_name
   log_analytics_workspace_name = module.logs.log_analytics_workspace_name
 
+  patch_mgmt_scope = [module.rg.resource_groupe_id]
+  patch_mgmt_schedule = {
+    startTime  = "${timeadd(timestamp(), "3h")}"
+    expirytime = "9999-12-31T23:59:00+00:00"
+    isEnabled  = true
+    interval   = 1
+    frequency  = "Month"
+    timeZone   = "Europe/Paris"
+    advancedSchedule = {
+      monthlyOccurrences = [
+        {
+          occurrence = 3
+          day        = "Monday"
+        }
+      ]
+    }
+  }
+
   extra_tags = {
     foo    = "bar"
   }
@@ -147,6 +165,7 @@ No resources.
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
+| enable\_patch\_management | Boolean to enable patch management. Actually, only Linux VMs are supported. | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
@@ -166,6 +185,14 @@ No resources.
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| patch\_mgmt\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
+| patch\_mgmt\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
+| patch\_mgmt\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | n/a | yes |
+| patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(any)` | n/a | yes |
+| patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
+| patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
+| patch\_mgmt\_timezone | Timezone to use for patch management. Default to `Europe/Paris`. | `string` | `"Europe/Paris"` | no |
+| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical, Security`, `Other`, `Critical, Security, Other` | `string` | `"Critical, Security"` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |

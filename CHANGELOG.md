@@ -8,6 +8,9 @@ Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
   * AZ-532: Revamp README with latest `terraform-docs` tool
 
+Added
+  * AZ-55: Add ability to manage patch management for Linux VMs with Automation account
+
 # v4.1.0 - 2021-02-22
 
 Changed
