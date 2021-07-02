@@ -74,8 +74,8 @@ module "patch-management" {
   resource_group_name        = module.rg.resource_group_name
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  patch_mgmt_scope = [module.rg.resource_groupe_id]
-  patch_mgmt_schedule = [{
+  patch_mgmt_linux_scope = [module.rg.resource_groupe_id]
+  patch_mgmt_linux_schedule = [{
     startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
@@ -105,16 +105,30 @@ module "patch-management" {
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
-| patch\_mgmt\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
-| patch\_mgmt\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
-| patch\_mgmt\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | n/a | yes |
-| patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | n/a | yes |
-| patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
-| patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
-| patch\_mgmt\_timezone | Timezone to use for patch management. Default to `UTC`. All possibles values can be found [here](https://s2.automation.ext.azure.com/api/Orchestrator/TimeZones?_=1594792230258). | `string` | `"UTC"` | no |
-| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
+| patch\_mgmt\_linux\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
+| patch\_mgmt\_linux\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
+| patch\_mgmt\_linux\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | `[]` | no |
+| patch\_mgmt\_linux\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `[]` | no |
+| patch\_mgmt\_linux\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
+| patch\_mgmt\_linux\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
+| patch\_mgmt\_linux\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
+| patch\_mgmt\_os | List of OS to cover. Possible values can be `Windows` or `Linux`. | `list(string)` | `[]` | no |
+| patch\_mgmt\_windows\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
+| patch\_mgmt\_windows\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
+| patch\_mgmt\_windows\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | `[]` | no |
+| patch\_mgmt\_windows\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `[]` | no |
+| patch\_mgmt\_windows\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
+| patch\_mgmt\_windows\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
+| patch\_mgmt\_windows\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| patch\_mgmt\_linux\_template\_deployment\_id | ID of the template deployment for Linux Patch Management |
+| patch\_mgmt\_windows\_template\_deployment\_id | ID of the template deployment for Windows Patch Management |
 
 ## Related documentation
 

@@ -67,7 +67,9 @@ module "automation_account" {
   logs_retention_days     = var.logs_retention_days
 }
 
-module "patch-management" {
+module "patch-management-linux" {
+  count = contains([for v in var.patch_mgmt_os : lower(v)], "linux") ? 1 : 0
+
   source = "./modules/patch-management"
 
   client_name    = var.client_name
@@ -81,12 +83,38 @@ module "patch-management" {
   automation_account_name    = module.automation-account.automation_account_name
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  patch_mgmt_update_classifications  = var.patch_mgmt_update_classifications
-  patch_mgmt_reboot_setting          = var.patch_mgmt_reboot_setting
-  patch_mgmt_duration                = var.patch_mgmt_duration
-  patch_mgmt_scope                   = var.patch_mgmt_scope
-  patch_mgmt_tags_filtering          = var.patch_mgmt_tags_filtering
-  patch_mgmt_tags_filtering_operator = var.patch_mgmt_tags_filtering_operator
-  patch_mgmt_schedule                = var.patch_mgmt_schedule
-  patch_mgmt_timezone                = var.patch_mgmt_timezone
+  patch_mgmt_linux_update_classifications  = var.patch_mgmt_linux_update_classifications
+  patch_mgmt_linux_reboot_setting          = var.patch_mgmt_linux_reboot_setting
+  patch_mgmt_linux_duration                = var.patch_mgmt_linux_duration
+  patch_mgmt_linux_scope                   = var.patch_mgmt_linux_scope
+  patch_mgmt_linux_tags_filtering          = var.patch_mgmt_linux_tags_filtering
+  patch_mgmt_linux_tags_filtering_operator = var.patch_mgmt_linux_tags_filtering_operator
+  patch_mgmt_linux_schedule                = var.patch_mgmt_linux_schedule
+  patch_mgmt_os                            = var.patch_mgmt_os
+}
+
+module "patch-management-windows" {
+  count = contains([for v in var.patch_mgmt_os : lower(v)], "windows") ? 1 : 0
+
+  source = "./modules/patch-management"
+
+  client_name    = var.client_name
+  location       = var.location
+  location_short = var.location_short
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = var.resource_group_name
+
+  automation_account_name    = module.automation-account.automation_account_name
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  patch_mgmt_windows_update_classifications  = var.patch_mgmt_windows_update_classifications
+  patch_mgmt_windows_reboot_setting          = var.patch_mgmt_windows_reboot_setting
+  patch_mgmt_windows_duration                = var.patch_mgmt_windows_duration
+  patch_mgmt_windows_scope                   = var.patch_mgmt_windows_scope
+  patch_mgmt_windows_tags_filtering          = var.patch_mgmt_windows_tags_filtering
+  patch_mgmt_windows_tags_filtering_operator = var.patch_mgmt_windows_tags_filtering_operator
+  patch_mgmt_windows_schedule                = var.patch_mgmt_windows_schedule
+  patch_mgmt_os                              = var.patch_mgmt_os
 }
