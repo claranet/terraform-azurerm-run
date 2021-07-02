@@ -72,7 +72,7 @@ module "run_iaas" {
   log_analytics_workspace_name = module.logs.log_analytics_workspace_name
 
   patch_mgmt_scope = [module.rg.resource_groupe_id]
-  patch_mgmt_schedule = {
+  patch_mgmt_schedule = [{
     startTime  = "${timeadd(timestamp(), "3h")}"
     expirytime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
@@ -87,7 +87,7 @@ module "run_iaas" {
         }
       ]
     }
-  }
+  }]
 
   extra_tags = {
     foo    = "bar"
