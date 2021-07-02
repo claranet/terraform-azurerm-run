@@ -30,7 +30,7 @@ resource "azurerm_template_deployment" "update_config_standard_patch_linux" {
           updateConfiguration = {
             operatingSystem = "Linux"
             linux = {
-              includedPackageClassifications : "${var.patch_mgmt_update_classifications}"
+              includedPackageClassifications : "${join(", ", var.patch_mgmt_update_classifications)}"
               rebootSetting = "${var.patch_mgmt_reboot_setting}"
             }
             duration = "${var.patch_mgmt_duration}"

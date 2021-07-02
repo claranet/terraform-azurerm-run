@@ -112,7 +112,7 @@ module "patch-management" {
 | patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
 | patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
 | patch\_mgmt\_timezone | Timezone to use for patch management. Default to `UTC`. All possibles values can be found [here](https://s2.automation.ext.azure.com/api/Orchestrator/TimeZones?_=1594792230258). | `string` | `"UTC"` | no |
-| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical, Security`, `Other`, `Critical, Security, Other` | `string` | `"Critical, Security"` | no |
+| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical, Security"<br>]</pre> | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 

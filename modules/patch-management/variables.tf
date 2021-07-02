@@ -53,9 +53,9 @@ variable "automation_account_name" {
 }
 
 variable "patch_mgmt_update_classifications" {
-  description = "Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical, Security`, `Other`, `Critical, Security, Other`"
-  type        = string
-  default     = "Critical, Security"
+  description = "Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other`"
+  type        = list(string)
+  default     = ["Critical, Security"]
 }
 
 variable "patch_mgmt_reboot_setting" {

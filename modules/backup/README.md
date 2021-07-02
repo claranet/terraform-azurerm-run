@@ -10,13 +10,8 @@ It includes:
 ## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
-<<<<<<< HEAD
 | ----------------- | ----------------- | --------------- |
 | >= 5.x.x          | 0.15.x & 1.0.x    | >= 2.57         |
-=======
-|-------------------|-------------------|-----------------|
-| >= 5.x.x          | 0.15.x, 1.0.x     | >= 2.0          |
->>>>>>> 93a7673 (AZ-55: Move patch-management to a submodule)
 | >= 4.x.x          | 0.13.x            | >= 2.57         |
 | >= 3.x.x          | 0.12.x            | >= 2.0          |
 | >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
