@@ -225,13 +225,6 @@ variable "automation_account_extra_tags" {
 ###############################
 # Patch management variables
 ###############################
-
-variable "enable_patch_management" {
-  description = "Boolean to enable patch management. Actually, only Linux VMs are supported."
-  type        = bool
-  default     = true
-}
-
 variable "patch_mgmt_update_classifications" {
   description = "Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical, Security`, `Other`, `Critical, Security, Other`"
   type        = string

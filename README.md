@@ -10,12 +10,19 @@ It includes:
       * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
+  * Azure Patch Management using Automation Account for Linux only actually ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview))
+  Available only in module version >= 4.2.0
 
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
+<<<<<<< HEAD
 | -------------- | ----------------- | --------------- |
 | >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.57         |
+=======
+|----------------|-------------------| --------------- |
+| >= 5.x.x       | 0.15.x, 1.0.x     | >= 2.0          |
+>>>>>>> 93a7673 (AZ-55: Move patch-management to a submodule)
 | >= 4.x.x       | 0.13.x            | >= 2.57         |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -58,6 +65,15 @@ module "logs" {
   resource_group_name = module.rg.resource_group_name
 }
 
+resource "time_offset" "update_template" {
+  offset_hours = 4
+}
+
+locals {
+  update_template_time = format("%02d:%02d", time_offset.update_template.hour, time_offset.update_template.minute)
+  update_template_date = substr(time_offset.update_template.rfc3339, 0, 10)
+}
+
 module "run_iaas" {
   source  = "claranet/run-iaas/azurerm"
   version = "x.x.x"
@@ -73,12 +89,12 @@ module "run_iaas" {
 
   patch_mgmt_scope = [module.rg.resource_groupe_id]
   patch_mgmt_schedule = [{
-    startTime  = "${timeadd(timestamp(), "3h")}"
+    startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
     interval   = 1
     frequency  = "Month"
-    timeZone   = "Europe/Paris"
+    timeZone   = "UTC"
     advancedSchedule = {
       monthlyOccurrences = [
         {
@@ -138,6 +154,52 @@ module "automation-account" {
   extra_tags = {
     foo    = "bar"
   }
+}
+```
+
+### Azure Patch Management
+```hcl
+resource "time_offset" "update_template" {
+  offset_hours = 4
+}
+
+locals {
+  update_template_time = format("%02d:%02d", time_offset.update_template.hour, time_offset.update_template.minute)
+  update_template_date = substr(time_offset.update_template.rfc3339, 0, 10)
+}
+
+module "patch-management" {
+  source  = "claranet/run-iaas/azurerm//modules/patch-management"
+  version = "x.x.x"
+
+  client_name    = var.client_name
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name          = module.rg.resource_group_name
+
+  automation_account_name    = module.automation-account.automation_account_name
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+  
+  patch_mgmt_scope = [module.rg.resource_groupe_id]
+  patch_mgmt_schedule = [{
+    startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
+    expirytime = "9999-12-31T23:59:00+00:00"
+    isEnabled  = true
+    interval   = 1
+    frequency  = "Month"
+    timeZone   = "UTC"
+    advancedSchedule = {
+      monthlyOccurrences = [
+        {
+          occurrence = 3
+          day        = "Monday"
+        }
+      ]
+    }
+  }]
 }
 ```
 
