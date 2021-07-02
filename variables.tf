@@ -228,7 +228,7 @@ variable "automation_account_extra_tags" {
 variable "patch_mgmt_update_classifications" {
   description = "Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other`"
   type        = list(string)
-  default     = ["Critical, Security"]
+  default     = ["Critical", "Security"]
 }
 
 variable "patch_mgmt_reboot_setting" {
@@ -266,7 +266,7 @@ variable "patch_mgmt_schedule" {
 }
 
 variable "patch_mgmt_timezone" {
-  description = "Timezone to use for patch management. Default to `Europe/Paris`."
+  description = "Timezone to use for patch management. Default to `UTC`. All possibles values can be found [here](https://s2.automation.ext.azure.com/api/Orchestrator/TimeZones?_=1594792230258)."
   type        = string
-  default     = "Europe/Paris"
+  default     = "UTC"
 }

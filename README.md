@@ -253,8 +253,8 @@ No resources.
 | patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | n/a | yes |
 | patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
 | patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
-| patch\_mgmt\_timezone | Timezone to use for patch management. Default to `Europe/Paris`. | `string` | `"Europe/Paris"` | no |
-| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical, Security"<br>]</pre> | no |
+| patch\_mgmt\_timezone | Timezone to use for patch management. Default to `UTC`. All possibles values can be found [here](https://s2.automation.ext.azure.com/api/Orchestrator/TimeZones?_=1594792230258). | `string` | `"UTC"` | no |
+| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
