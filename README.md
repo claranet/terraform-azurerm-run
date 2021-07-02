@@ -250,7 +250,7 @@ No resources.
 | patch\_mgmt\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
 | patch\_mgmt\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
 | patch\_mgmt\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | n/a | yes |
-| patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(any)` | n/a | yes |
+| patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | n/a | yes |
 | patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
 | patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
 | patch\_mgmt\_timezone | Timezone to use for patch management. Default to `Europe/Paris`. | `string` | `"Europe/Paris"` | no |

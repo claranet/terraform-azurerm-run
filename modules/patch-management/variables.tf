@@ -72,7 +72,7 @@ variable "patch_mgmt_duration" {
 
 variable "patch_mgmt_scope" {
   description = "Scope of the patch management, it can be a subscription ID, a resource group ID etc.."
-  type        = list(any)
+  type        = list(string)
 }
 
 variable "patch_mgmt_tags_filtering" {
