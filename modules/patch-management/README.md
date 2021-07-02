@@ -123,13 +123,6 @@ module "patch-management" {
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| patch\_mgmt\_linux\_template\_deployment\_id | ID of the template deployment for Linux Patch Management |
-| patch\_mgmt\_windows\_template\_deployment\_id | ID of the template deployment for Windows Patch Management |
-
 ## Related documentation
 
 - Terraform Azure Log Analytics Solution: [registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution)
