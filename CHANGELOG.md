@@ -9,7 +9,7 @@ Changed
   * AZ-532: Revamp README with latest `terraform-docs` tool
 
 Added
-  * AZ-55: Add ability to manage patch management for Linux VMs with Automation account
+  * AZ-55: Add ability to manage patch management for Linux and Windows VMs with Automation account
 
 # v4.1.0 - 2021-02-22
 
