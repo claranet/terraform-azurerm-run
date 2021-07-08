@@ -17,7 +17,7 @@ locals {
       EOQ
     },
     file_shares_backup: {
-      MetricName: "fame.azure.backup.vm"
+      MetricName: "fame.azure.backup.file_share"
       MetricType: "gauge"
       Query: <<EOQ
         AddonAzureBackupJobs
