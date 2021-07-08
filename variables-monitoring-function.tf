@@ -33,7 +33,7 @@ variable "monitoring_function_extra_tags" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/BzSpi/azure-monitoring-test/releases/download/v0.0.1-test4/my_function.zip"
+  default     = "https://github.com/BzSpi/azure-monitoring-test/releases/download/v0.0.1-test7/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
