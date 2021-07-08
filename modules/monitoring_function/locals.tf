@@ -16,6 +16,26 @@ locals {
         | summarize metric_value=dcount(instanceId_s) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
+    file_shares_backup: {
+      MetricName: "fame.azure.backup.vm"
+      MetricType: "gauge"
+      Query: <<EOQ
+        AddonAzureBackupJobs
+        | extend id_parts  = split(ResourceId, '/')
+        | extend subscription_id = id_parts[2]
+        | extend recovery_vault_name = id_parts[8]
+        | extend storage_parts = split(BackupItemUniqueId, ';')
+        | extend azure_resource_group_name = storage_parts[3]
+        | extend azure_resource_name = storage_parts[4]
+        | extend share_backup_id = storage_parts[5]
+        | extend metric_value = iff(JobFailureCode == "Success", 1, 0)
+        | where TimeGenerated > ago(1d)
+        | where JobOperation == "Backup"
+        | where BackupManagementType == "AzureStorage"
+        | summarize arg_max(TimeGenerated,*) by JobUniqueId
+        | project timestamp=TimeGenerated, subscription_id, recovery_vault_name, azure_resource_group_name, azure_resource_name, share_backup_id, metric_value
+      EOQ
+    },
     virtual_machines_backup: {
       MetricName: "fame.azure.backup.vm"
       MetricType: "gauge"
