@@ -1,13 +1,13 @@
 module "azure-region" {
   source  = "claranet/regions/azurerm"
-  version = "2.0.1"
+  version = "4.1.0"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
   source  = "claranet/rg/azurerm"
-  version = "2.1.0"
+  version = "4.1.0"
 
   location    = module.azure-region.location
   client_name = var.client_name
@@ -17,7 +17,7 @@ module "rg" {
 
 module "az-vm-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
-  version = "2.0.0"
+  version = "4.1.0"
 
   location       = module.azure-region.location
   location_short = module.azure-region.location_short
@@ -26,6 +26,14 @@ module "az-vm-backup" {
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
+
+  vm_backup_policy_time = "23:00"
+
+  vm_backup_monthly = {
+    "retention" = 3
+    "weekdays"  = ["Sunday"]
+    "weeks"     = ["First"]
+  }
 
   extra_tags = {
     foo = "bar"

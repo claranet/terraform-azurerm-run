@@ -89,10 +89,34 @@ variable "vm_backup_policy_time" {
   default     = "04:00"
 }
 
-variable "vm_backup_policy_retention" {
-  description = "The number of daily VM backups to keep. Must be between 1 and 9999."
+variable "vm_backup_policy_frequency" {
+  description = "Specifies the frequency for VM backup schedules. Must be either `Daily` or `Weekly`."
+  type        = string
+  default     = "Daily"
+}
+
+variable "vm_backup_daily_policy_retention" {
+  description = "The number of daily VM backups to keep. Must be between 7 and 9999."
   type        = number
   default     = 30
+}
+
+variable "vm_backup_weekly" {
+  description = "Map to configure the weekly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly"
+  type        = any
+  default     = {}
+}
+
+variable "vm_backup_monthly" {
+  description = "Map to configure the monthly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly"
+  type        = any
+  default     = {}
+}
+
+variable "vm_backup_yearly" {
+  description = "Map to configure the yearly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
+  type        = any
+  default     = {}
 }
 
 variable "file_share_backup_policy_custom_name" {
@@ -113,10 +137,34 @@ variable "file_share_backup_policy_time" {
   default     = "04:00"
 }
 
-variable "file_share_backup_policy_retention" {
-  description = "The number of daily file share backups to keep. Must be between 1 and 9999."
+variable "file_share_backup_daily_policy_retention" {
+  description = "The number of daily file share backups to keep. Must be between 7 and 9999."
   type        = number
   default     = 30
+}
+
+variable "file_share_backup_policy_frequency" {
+  description = "Specifies the frequency for file_share backup schedules. Must be either `Daily` or `Weekly`."
+  type        = string
+  default     = "Daily"
+}
+
+variable "file_share_backup_weekly" {
+  description = "Map to configure the weekly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly"
+  type        = any
+  default     = {}
+}
+
+variable "file_share_backup_monthly" {
+  description = "Map to configure the monthly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly"
+  type        = any
+  default     = {}
+}
+
+variable "file_share_backup_yearly" {
+  description = "Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
+  type        = any
+  default     = {}
 }
 
 variable "log_retention_in_days" {

@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
+
 # v4.1.0 - 2021-02-22
 
 Changed
