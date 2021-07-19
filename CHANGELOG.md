@@ -6,6 +6,9 @@ Breaking
 Added
   * AZ-393: Monitoring Function for extra Azure metrics
 
+Changed
+  * AZ-533: Improve variables documentation
+
 # v4.2.0 - 2021-06-03
 
 Updated

@@ -31,15 +31,16 @@ variable "log_analytics_workspace_sku" {
   default     = "PerGB2018"
 }
 
+variable "log_analytics_workspace_retention_in_days" {
+  description = "The workspace data retention in days. Possible values range between 30 and 730."
+  type        = number
+  default     = 30
+}
+
 variable "log_analytics_workspace_enable_iis_logs" {
   description = "Specifies if IIS logs should be collected for linked Virtual Machines"
   type        = bool
   default     = false
-}
-
-variable "log_analytics_workspace_retention_in_days" {
-  description = "The workspace data retention in days. Possible values range between 30 and 730."
-  default     = 30
 }
 
 variable "logs_storage_account_name_prefix" {
@@ -91,19 +92,19 @@ variable "logs_storage_account_appservices_container_name" {
 }
 
 variable "logs_storage_account_enable_advanced_threat_protection" {
-  description = "Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
+  description = "Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
   type        = bool
   default     = false
 }
 
 variable "logs_storage_account_enable_https_traffic_only" {
-  description = "Boolean flag which controls if https traffic only is enabled."
+  description = "Enable/disable HTTPS traffic only"
   type        = bool
   default     = true
 }
 
 variable "logs_storage_account_enable_archived_logs_fileshare" {
-  description = "Boolean flag which controls if archived-logs file share should be created."
+  description = "Enable/disable archived-logs file share creation"
   type        = bool
   default     = false
 }
@@ -121,7 +122,7 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
 }
 
 variable "logs_storage_account_enable_archiving" {
-  description = "Enable blob archiving lifecycle"
+  description = "Enable/disable blob archiving lifecycle"
   type        = bool
   default     = true
 }
@@ -139,24 +140,6 @@ variable "logs_tier_to_archive_after_days_since_modification_greater_than" {
 }
 
 variable "logs_delete_after_days_since_modification_greater_than" {
-  description = "Delete blob after x days without modification"
-  type        = number
-  default     = 365
-}
-
-variable "tier_to_cool_after_days_since_modification_greater_than" {
-  description = "Change blob tier to cool after x days without modification"
-  type        = number
-  default     = 30
-}
-
-variable "tier_to_archive_after_days_since_modification_greater_than" {
-  description = "Change blob tier to Archive after x days without modification"
-  type        = number
-  default     = 90
-}
-
-variable "delete_after_days_since_modification_greater_than" {
   description = "Delete blob after x days without modification"
   type        = number
   default     = 365
