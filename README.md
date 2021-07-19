@@ -1,14 +1,18 @@
 # Azure RUN Common feature
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-common/azurerm/)
 
-A terraform modules composition (feature) which includes services needed for Claranet RUN/MSP.
+A Terraform modules composition (feature) which includes services needed for Claranet RUN/MSP.
 
 It includes:
 * Log Management with following resources
-    * Log Analytics Workspace
-    * Storage Account with SAS Token to upload logs to
+  * Log Analytics Workspace
+  * Storage Account with SAS Token to upload logs to
 * Key Vault
-* [FAME](TODO) monitoring function for additional metrics
+* [FAME](https://github.com/claranet/fame) monitoring function for additional metrics. Built-in metrics sent:
+  * `fame.azure.application_gateway.instances`: number of Application Gateway instances
+  * `fame.azure.backup.file_share`: number of successful file share backups
+  * `fame.azure.backup.vm`: number of successful virtual machines backups
+  * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
 
 ## Requirements
 
@@ -85,6 +89,20 @@ See `monitoring_function` [README](./modules/monitoring_function/README.md)
 
 See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
 
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| keyvault | claranet/keyvault/azurerm | 4.4.0 |
+| logs | ./modules/logs |  |
+| monitoring-function | ./modules/monitoring_function |  |
+
+## Resources
+
+| Name |
+|------|
+| [azurerm_role_assignment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -137,7 +155,7 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. | `list(string)` | `null` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to SPlunk Observability | `string` | n/a | yes |
-| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/BzSpi/azure-monitoring-test/releases/download/v0.0.1-test4/my_function.zip"` | no |
+| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |

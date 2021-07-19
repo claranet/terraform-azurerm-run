@@ -51,16 +51,17 @@ variable "splunk_token" {
 variable "zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/BzSpi/azure-monitoring-test/releases/download/v0.0.1-test7/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"
 }
 
 variable "log_analytics_workspace_guid" {
-  description = "GUID of the Log Analytics Workspace on which evalulate the queries"
+  description = "GUID of the Log Analytics Workspace on which evaluate the queries"
+  type = string
 }
 
 variable "logs_destinations_ids" {
-  type        = list(string)
   description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
+  type        = list(string)
 }
 
 variable "logs_categories" {

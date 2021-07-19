@@ -1,6 +1,6 @@
 module "function" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=AZ-486-zip-package"
-  #source = "../../../function-app-with-plan"
+  source  = "claranet/function-app/azurerm"
+  version = "4.0.0"
 
   client_name         = var.client_name
   environment         = var.environment

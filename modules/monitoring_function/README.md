@@ -1,6 +1,11 @@
 # Azure Monitoring Function
 
-This module deploys [FAME](TODO) monitoring extension in an Azure Function for addition monitoring capabilities. 
+This module deploys [FAME](https://github.com/claranet/fame) monitoring extension in an Azure Function for addition monitoring capabilities. 
+Built-in metrics sent:
+    * `fame.azure.application_gateway.instances`: number of Application Gateway instances
+    * `fame.azure.backup.file_share`: number of successful file share backups
+    * `fame.azure.backup.vm`: number of successful virtual machines backups
+    * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
 
 ## Version compatibility
 
@@ -35,7 +40,15 @@ module "rg" {
   stack       = var.stack
 }
 
-module "logs" {
+resource "azurerm_log_analytics_workspace" "example" {
+  name                = "acctest-01"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = module.rg.resource_group_name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
+module "monitoring_function" {
   source  = "claranet/run-common/azurerm//modules/monitoring_function"
   version = "x.x.x"
 
@@ -49,11 +62,26 @@ module "logs" {
 
   splunk_token = "xxxxxx"
 
+  log_analytics_workspace_guid = azurerm_log_analytics_workspace.example.workspace_id
+
   extra_tags = {
     foo    = "bar"
   }
 }
 ```
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| function | claranet/function-app/azurerm//modules/functionapp | 4.0.0 |
+
+## Resources
+
+| Name |
+|------|
+| [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) |
+| [azurerm_storage_table_entity](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) |
 
 ## Inputs
 
@@ -64,17 +92,17 @@ module "logs" {
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evalulate the queries | `any` | n/a | yes |
+| log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| name\_prefix | Name prefix for all resources generated name | `string` | `"fame"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | splunk\_token | Access Token to send metrics to SPlunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/BzSpi/azure-monitoring-test/releases/download/v0.0.1-test4/my_function.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 
 ## Outputs
 
