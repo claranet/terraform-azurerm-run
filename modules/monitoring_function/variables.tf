@@ -87,3 +87,9 @@ variable "metrics_extra_dimensions" {
   type        = map(string)
   default     = {}
 }
+
+variable "extra_application_settings" {
+  description = "Extra application settings to set on monitoring function"
+  type = map(string)
+  default = {}
+}

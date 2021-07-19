@@ -74,7 +74,7 @@ module "monitoring_function" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm//modules/functionapp | 4.0.0 |
+| function | claranet/function-app/azurerm | 4.0.0 |
 
 ## Resources
 
@@ -89,6 +89,7 @@ module "monitoring_function" {
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
 | environment | Environment name | `string` | n/a | yes |
+| extra\_application\_settings | Extra application settings to set on monitoring function | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |

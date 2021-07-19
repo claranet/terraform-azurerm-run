@@ -41,3 +41,15 @@ variable "monitoring_function_metrics_extra_dimensions" {
   type        = map(string)
   default     = {}
 }
+
+variable "monitoring_function_assign_role_on_workspace" {
+  description = "True to assign role for the monitoring Function on the Log Analytics Workspace"
+  type        = bool
+  default     = true
+}
+
+variable "monitoring_function_extra_application_settings" {
+  description = "Extra application settings to set on monitoring Function"
+  type = map(string)
+  default = {}
+}

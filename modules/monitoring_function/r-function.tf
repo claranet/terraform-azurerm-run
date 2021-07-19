@@ -11,11 +11,11 @@ module "function" {
 
   name_prefix = var.name_prefix
 
-  function_app_application_settings = {
+  function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
     LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
     SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
-  }
+  }, var.extra_application_settings)
 
   app_service_plan_os         = "Linux"
   function_language_for_linux = "python"

@@ -85,8 +85,9 @@ module "monitoring-function" {
   resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
   stack               = var.stack
 
-  zip_package_path         = var.monitoring_function_zip_package_path
-  metrics_extra_dimensions = var.monitoring_function_metrics_extra_dimensions
+  zip_package_path           = var.monitoring_function_zip_package_path
+  metrics_extra_dimensions   = var.monitoring_function_metrics_extra_dimensions
+  extra_application_settings = var.monitoring_function_extra_application_settings
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
   splunk_token                 = var.monitoring_function_splunk_token
@@ -102,6 +103,8 @@ module "monitoring-function" {
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
+  count = var.monitoring_function_assign_role_on_workspace ? 1 : 0
+
   principal_id = module.monitoring-function.function_app_identity["principal_id"]
   scope        = module.logs.log_analytics_workspace_id
 
