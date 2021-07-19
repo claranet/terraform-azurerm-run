@@ -56,7 +56,7 @@ variable "zip_package_path" {
 
 variable "log_analytics_workspace_guid" {
   description = "GUID of the Log Analytics Workspace on which evaluate the queries"
-  type = string
+  type        = string
 }
 
 variable "logs_destinations_ids" {
@@ -66,13 +66,13 @@ variable "logs_destinations_ids" {
 
 variable "logs_categories" {
   type        = list(string)
-  description = "Log categories to send to destinations"
+  description = "Log categories to send to destinations. All by default."
   default     = null
 }
 
 variable "logs_metrics_categories" {
   type        = list(string)
-  description = "Metrics categories to send to destinations"
+  description = "Metrics categories to send to destinations. All by default."
   default     = null
 }
 
@@ -90,6 +90,6 @@ variable "metrics_extra_dimensions" {
 
 variable "extra_application_settings" {
   description = "Extra application settings to set on monitoring function"
-  type = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
 }

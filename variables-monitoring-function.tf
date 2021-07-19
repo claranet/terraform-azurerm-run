@@ -13,13 +13,13 @@ variable "monitoring_function_splunk_token" {
 }
 
 variable "monitoring_function_logs_categories" {
-  description = "Monitoring function log categories to send to destinations"
+  description = "Monitoring function log categories to send to destinations. All by default."
   type        = list(string)
   default     = null
 }
 
 variable "monitoring_function_logs_metrics_categories" {
-  description = "Monitoring function metrics categories to send to destinations"
+  description = "Monitoring function metrics categories to send to destinations. All by default."
   type        = list(string)
   default     = null
 }
@@ -42,14 +42,14 @@ variable "monitoring_function_metrics_extra_dimensions" {
   default     = {}
 }
 
-variable "monitoring_function_assign_role_on_workspace" {
-  description = "True to assign role for the monitoring Function on the Log Analytics Workspace"
-  type        = bool
-  default     = true
-}
-
 variable "monitoring_function_extra_application_settings" {
   description = "Extra application settings to set on monitoring Function"
   type        = map(string)
   default     = {}
+}
+
+variable "monitoring_function_assign_role_on_workspace" {
+  description = "True to assign role for the monitoring Function on the Log Analytics Workspace"
+  type        = bool
+  default     = true
 }

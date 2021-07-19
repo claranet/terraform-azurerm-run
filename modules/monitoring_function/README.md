@@ -94,9 +94,9 @@ module "monitoring_function" {
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries | `string` | n/a | yes |
-| logs\_categories | Log categories to send to destinations | `list(string)` | `null` | no |
+| logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
-| logs\_metrics\_categories | Metrics categories to send to destinations | `list(string)` | `null` | no |
+| logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `"fame"` | no |

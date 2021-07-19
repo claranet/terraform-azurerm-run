@@ -117,8 +117,8 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | `false` | no |
 | keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | `false` | no |
 | keyvault\_extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
-| keyvault\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| keyvault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | keyvault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br>    bypass                     = string,<br>    default_action             = string,<br>    ip_rules                   = list(string),<br>    virtual_network_subnet_ids = list(string)<br>  })</pre> | `null` | no |
 | keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
