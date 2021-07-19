@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-393: Monitoring Function for extra Azure metrics
+
 # v4.2.0 - 2021-06-03
 
 Updated

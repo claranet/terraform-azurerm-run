@@ -4,22 +4,22 @@ locals {
     stack = var.stack
   }
 
-  extra_dimensions = join(",", [for k,v in var.metrics_extra_dimensions: format("%s=%s", k, v)])
+  extra_dimensions = join(",", [for k, v in var.metrics_extra_dimensions : format("%s=%s", k, v)])
 
   log_queries = {
-    application_gateway_instances: {
-      MetricName: "fame.azure.application_gateway.instances"
-      MetricType: "gauge"
-      Query: <<EOQ
+    application_gateway_instances : {
+      MetricName : "fame.azure.application_gateway.instances"
+      MetricType : "gauge"
+      Query : <<EOQ
         AzureDiagnostics
         | where ResourceType == "APPLICATIONGATEWAYS" and OperationName == "ApplicationGatewayAccess"
         | summarize metric_value=dcount(instanceId_s) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
-    file_shares_backup: {
-      MetricName: "fame.azure.backup.file_share"
-      MetricType: "gauge"
-      Query: <<EOQ
+    file_shares_backup : {
+      MetricName : "fame.azure.backup.file_share"
+      MetricType : "gauge"
+      Query : <<EOQ
         AddonAzureBackupJobs
         | extend id_parts  = split(ResourceId, '/')
         | extend subscription_id = id_parts[2]
@@ -36,10 +36,10 @@ locals {
         | project timestamp=TimeGenerated, subscription_id, recovery_vault_name, azure_resource_group_name, azure_resource_name, share_backup_id, metric_value
       EOQ
     },
-    virtual_machines_backup: {
-      MetricName: "fame.azure.backup.vm"
-      MetricType: "gauge"
-      Query: <<EOQ
+    virtual_machines_backup : {
+      MetricName : "fame.azure.backup.vm"
+      MetricType : "gauge"
+      Query : <<EOQ
         AddonAzureBackupJobs
         | extend id_parts  = split(ResourceId, '/')
         | extend subscription_id = id_parts[2]
@@ -55,10 +55,10 @@ locals {
         | project timestamp=TimeGenerated, subscription_id, recovery_vault_name, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     },
-    vpn_successful_ike_diags: {
-      MetricName: "fame.azure.virtual_network_gateway.ike_event_success"
-      MetricType: "gauge"
-      Query: <<EOQ
+    vpn_successful_ike_diags : {
+      MetricName : "fame.azure.virtual_network_gateway.ike_event_success"
+      MetricType : "gauge"
+      Query : <<EOQ
         AzureDiagnostics
         | where Category == "IKEDiagnosticLog"
         | where OperationName == "IKELogEvent"

@@ -95,6 +95,6 @@ output "function_app_identity" {
 }
 
 output "storage_queries_table_name" {
-  value = azurerm_storage_table.queries.name
+  value       = azurerm_storage_table.queries.name
   description = "Name of the table in the Storage Account "
 }
