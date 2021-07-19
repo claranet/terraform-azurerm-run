@@ -2,24 +2,24 @@
 # Monitoring function
 ###############################
 variable "monitoring_function_enabled" {
-  description = "True to enable monitoring function"
+  description = "Enable/disable monitoring function"
   type        = bool
   default     = true
 }
 
 variable "monitoring_function_splunk_token" {
-  description = "Access Token to send metrics to SPlunk Observability"
+  description = "Access Token to send metrics to Splunk Observability"
   type        = string
 }
 
 variable "monitoring_function_logs_categories" {
-  description = "Monitoring function log categories to send to destinations."
+  description = "Monitoring function log categories to send to destinations"
   type        = list(string)
   default     = null
 }
 
 variable "monitoring_function_logs_metrics_categories" {
-  description = "Monitoring function metrics categories to send to destinations."
+  description = "Monitoring function metrics categories to send to destinations"
   type        = list(string)
   default     = null
 }
@@ -50,6 +50,6 @@ variable "monitoring_function_assign_role_on_workspace" {
 
 variable "monitoring_function_extra_application_settings" {
   description = "Extra application settings to set on monitoring Function"
-  type = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
 }

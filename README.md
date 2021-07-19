@@ -150,13 +150,13 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | logs\_tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
 | logs\_tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 | monitoring\_function\_assign\_role\_on\_workspace | True to assign role for the monitoring Function on the Log Analytics Workspace | `bool` | `true` | no |
-| monitoring\_function\_enabled | True to enable monitoring function | `bool` | `true` | no |
+| monitoring\_function\_enabled | Enable/disable monitoring function | `bool` | `true` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
-| monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. | `list(string)` | `null` | no |
-| monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. | `list(string)` | `null` | no |
+| monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations | `list(string)` | `null` | no |
+| monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations | `list(string)` | `null` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| monitoring\_function\_splunk\_token | Access Token to send metrics to SPlunk Observability | `string` | n/a | yes |
+| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
