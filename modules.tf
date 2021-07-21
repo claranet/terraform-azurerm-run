@@ -78,6 +78,8 @@ module "keyvault" {
 module "monitoring-function" {
   source = "./modules/monitoring_function"
 
+  count = var.monitoring_function_enabled ? 1 : 0
+
   client_name         = var.client_name
   environment         = var.environment
   location            = var.location
@@ -103,9 +105,9 @@ module "monitoring-function" {
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
-  count = var.monitoring_function_assign_role_on_workspace ? 1 : 0
+  count = var.monitoring_function_enabled && var.monitoring_function_assign_role_on_workspace ? 1 : 0
 
-  principal_id = module.monitoring-function.function_app_identity["principal_id"]
+  principal_id = module.monitoring-function[0].function_app_identity["principal_id"]
   scope        = module.logs.log_analytics_workspace_id
 
   role_definition_name = "Log Analytics Reader"
