@@ -42,7 +42,7 @@ module "rg" {
 
 resource "azurerm_log_analytics_workspace" "example" {
   name                = "acctest-01"
-  location            = azurerm_resource_group.example.location
+  location            = module.azure-region.location
   resource_group_name = module.rg.resource_group_name
   sku                 = "PerGB2018"
   retention_in_days   = 30
@@ -65,7 +65,7 @@ module "monitoring_function" {
   log_analytics_workspace_guid = azurerm_log_analytics_workspace.example.workspace_id
 
   extra_tags = {
-    foo    = "bar"
+    foo = "bar"
   }
 }
 ```
