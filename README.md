@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # Azure RUN Common feature
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-common/azurerm/)
 
@@ -66,7 +67,6 @@ module "global_run" {
   tenant_id = var.azure_tenant_id
 
   monitoring_function_splunk_token = "xxxxxx"
-  
   extra_tags = {
     foo    = "bar"
   }
@@ -83,25 +83,39 @@ See `logs` sub-module [README](./modules/logs/README.md).
 
 ### Monitoring function
 
-See `monitoring_function` [README](./modules/monitoring_function/README.md)
+See `monitoring_function` [README](./modules/monitoring\_function/README.md)
 
 ### Key Vault
 
 See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
+
+## Related documentation
+
+Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
+
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.48 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | keyvault | claranet/keyvault/azurerm | 4.4.0 |
-| logs | ./modules/logs |  |
-| monitoring-function | ./modules/monitoring_function |  |
+| logs | ./modules/logs | n/a |
+| monitoring-function | ./modules/monitoring_function | n/a |
 
 ## Resources
 
-| Name |
-|------|
-| [azurerm_role_assignment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) |
+| Name | Type |
+|------|------|
+| [azurerm_role_assignment.function_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 
 ## Inputs
 
@@ -204,11 +218,4 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
-
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
+<!-- END_TF_DOCS -->
