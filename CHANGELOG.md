@@ -1,4 +1,4 @@
-# Unreleased
+# v4.3.0 - 2021-06-29
 
 Breaking
   * AZ-393: Remove support of Terraform 0.12
