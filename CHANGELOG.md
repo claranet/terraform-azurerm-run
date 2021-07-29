@@ -1,3 +1,11 @@
+# Unreleased
+
+Breaking
+  * AZ-393: Remove support of Terraform 0.12
+
+Added
+  * AZ-393: Monitoring Function for extra Azure metrics
+
 # v4.2.0 - 2021-06-03
 
 Updated

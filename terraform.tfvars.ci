@@ -9,3 +9,4 @@ tenant_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 extra_tags = {
   foo = "bar"
 }
+monitoring_function_splunk_token="abcdefghijkl"
