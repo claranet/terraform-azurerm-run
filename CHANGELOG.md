@@ -8,6 +8,7 @@ Added
 
 Changed
   * AZ-533: Improve variables documentation
+  * AZ-546: Follow Terraform module development recommendations
 
 # v4.2.0 - 2021-06-03
 

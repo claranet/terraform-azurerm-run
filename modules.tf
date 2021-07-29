@@ -75,7 +75,7 @@ module "keyvault" {
   network_acls = var.keyvault_network_acls
 }
 
-module "monitoring-function" {
+module "monitoring_function" {
   source = "./modules/monitoring_function"
 
   count = var.monitoring_function_enabled ? 1 : 0
@@ -102,12 +102,14 @@ module "monitoring-function" {
   logs_retention_days     = var.log_analytics_workspace_retention_in_days
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
+
+  extra_tags = var.monitoring_function_extra_tags
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
   count = var.monitoring_function_enabled && var.monitoring_function_assign_role_on_workspace ? 1 : 0
 
-  principal_id = module.monitoring-function[0].function_app_identity["principal_id"]
+  principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
   scope        = module.logs.log_analytics_workspace_id
 
   role_definition_name = "Log Analytics Reader"

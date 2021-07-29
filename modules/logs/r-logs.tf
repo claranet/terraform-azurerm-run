@@ -88,7 +88,7 @@ resource "azurerm_advanced_threat_protection" "storage_threat_protection" {
   enabled            = var.logs_storage_account_enable_advanced_threat_protection
 }
 
-resource "azurerm_storage_management_policy" "archive-storage" {
+resource "azurerm_storage_management_policy" "archive_storage" {
   count              = lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
   storage_account_id = azurerm_storage_account.storage_logs.id
 
