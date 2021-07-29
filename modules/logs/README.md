@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # Azure Log Management
 
 It includes Log Management with following resources:
@@ -55,6 +56,41 @@ module "logs" {
   }
 }
 ```
+## Related documentation
+
+Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
+
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.1 |
+| external | n/a |
+| null | n/a |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_advanced_threat_protection.storage_threat_protection](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/advanced_threat_protection) | resource |
+| [azurerm_log_analytics_workspace.log_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
+| [azurerm_storage_account.storage_logs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
+| [azurerm_storage_container.container_webapps](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) | resource |
+| [azurerm_storage_management_policy.archive-storage](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_management_policy) | resource |
+| [azurerm_storage_share.archivedlogs_fileshare](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
+| [null_resource.log_workspace_config](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
+| [external_external.generate_storage_sas_token](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ## Inputs
 
@@ -71,21 +107,21 @@ module "logs" {
 | log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
-| log\_analytics\_workspace\_sku | Specifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
+| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
 | logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | `string` | `"app-services"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | `null` | no |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_advanced\_threat\_protection | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_appservices\_container | Boolean flag which controls if App Services logs container should be created. | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Boolean flag which controls if archived-logs file share should be created. | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archiving | Enable blob archiving lifecycle | `bool` | `true` | no |
-| logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Enable/disable archived-logs file share creation | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archiving | Enable/disable blob archiving lifecycle | `bool` | `true` | no |
+| logs\_storage\_account\_enable\_https\_traffic\_only | Enable/disable HTTPS traffic only | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
-| logs\_storage\_account\_min\_tls\_version | Storage Account minimal TLS version | `string` | `TLS1_2` | no |
 | logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | `string` | `"2042-01-01T00:00:00Z"` | no |
+| logs\_storage\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
@@ -112,13 +148,4 @@ module "logs" {
 | logs\_storage\_account\_sas\_token | SAS Token generated for logs access on Storage Account with full permissions on containers and objects for blob and table services. |
 | logs\_storage\_account\_secondary\_access\_key | Secondary connection string of the logs Storage Account, empty if connection string provided |
 | logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account, empty if connection string provided |
-
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+<!-- END_TF_DOCS -->

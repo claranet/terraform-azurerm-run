@@ -1,6 +1,7 @@
+<!-- BEGIN_TF_DOCS -->
 # Azure Monitoring Function
 
-This module deploys [FAME](https://github.com/claranet/fame) monitoring extension in an Azure Function for addition monitoring capabilities. 
+This module deploys [FAME](https://github.com/claranet/fame) monitoring extension in an Azure Function for addition monitoring capabilities.
 Built-in metrics sent:
     * `fame.azure.application_gateway.instances`: number of Application Gateway instances
     * `fame.azure.backup.file_share`: number of successful file share backups
@@ -70,18 +71,34 @@ module "monitoring_function" {
 }
 ```
 
+## Related documentation
+
+Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
+
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.21 |
+
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 4.0.0 |
+| function | claranet/function-app/azurerm | 4.0.1 |
 
 ## Resources
 
-| Name |
-|------|
-| [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) |
-| [azurerm_storage_table_entity](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) |
+| Name | Type |
+|------|------|
+| [azurerm_storage_table.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
+| [azurerm_storage_table_entity.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) | resource |
 
 ## Inputs
 
@@ -128,13 +145,4 @@ module "monitoring_function" {
 | storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | storage\_queries\_table\_name | Name of the table in the Storage Account |
-
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+<!-- END_TF_DOCS -->

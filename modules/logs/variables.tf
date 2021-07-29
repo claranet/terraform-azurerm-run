@@ -65,13 +65,14 @@ variable "log_analytics_workspace_custom_name" {
 }
 
 variable "log_analytics_workspace_sku" {
-  description = "Specifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03)."
+  description = "Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03)."
   type        = string
   default     = "PerGB2018"
 }
 
 variable "log_analytics_workspace_retention_in_days" {
   description = "The workspace data retention in days. Possible values range between 30 and 730."
+  type        = number
   default     = 30
 }
 
@@ -130,19 +131,19 @@ variable "logs_storage_account_appservices_container_name" {
 }
 
 variable "logs_storage_account_enable_advanced_threat_protection" {
-  description = "Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
+  description = "Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
   type        = bool
   default     = false
 }
 
 variable "logs_storage_account_enable_https_traffic_only" {
-  description = "Boolean flag which controls if https traffic only is enabled."
+  description = "Enable/disable HTTPS traffic only"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "logs_storage_account_enable_archived_logs_fileshare" {
-  description = "Boolean flag which controls if archived-logs file share should be created."
+  description = "Enable/disable archived-logs file share creation"
   type        = bool
   default     = false
 }
@@ -157,6 +158,12 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
   description = "The maximum size in GB of the archived-logs file share, default is 5120"
   type        = number
   default     = null
+}
+
+variable "logs_storage_account_enable_archiving" {
+  description = "Enable/disable blob archiving lifecycle"
+  type        = bool
+  default     = true
 }
 
 variable "tier_to_cool_after_days_since_modification_greater_than" {
@@ -175,10 +182,4 @@ variable "delete_after_days_since_modification_greater_than" {
   description = "Delete blob after x days without modification"
   type        = number
   default     = 365
-}
-
-variable "logs_storage_account_enable_archiving" {
-  description = "Enable blob archiving lifecycle"
-  type        = bool
-  default     = true
 }

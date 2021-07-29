@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # Azure RUN Common feature
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-common/azurerm/)
 
@@ -66,7 +67,6 @@ module "global_run" {
   tenant_id = var.azure_tenant_id
 
   monitoring_function_splunk_token = "xxxxxx"
-  
   extra_tags = {
     foo    = "bar"
   }
@@ -83,32 +83,45 @@ See `logs` sub-module [README](./modules/logs/README.md).
 
 ### Monitoring function
 
-See `monitoring_function` [README](./modules/monitoring_function/README.md)
+See `monitoring_function` [README](./modules/monitoring\_function/README.md)
 
 ### Key Vault
 
 See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
+
+## Related documentation
+
+Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
+
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.48 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | keyvault | claranet/keyvault/azurerm | 4.4.0 |
-| logs | ./modules/logs |  |
-| monitoring-function | ./modules/monitoring_function |  |
+| logs | ./modules/logs | n/a |
+| monitoring-function | ./modules/monitoring_function | n/a |
 
 ## Resources
 
-| Name |
-|------|
-| [azurerm_role_assignment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) |
+| Name | Type |
+|------|------|
+| [azurerm_role_assignment.function_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
-| delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
@@ -137,11 +150,11 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | `null` | no |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| logs\_storage\_account\_enable\_advanced\_threat\_protection | Boolean flag which controls if advanced threat protection is enabled, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_advanced\_threat\_protection | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_appservices\_container | Boolean flag which controls if App Services logs container should be created. | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Boolean flag which controls if archived-logs file share should be created. | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archiving | Enable blob archiving lifecycle | `bool` | `true` | no |
-| logs\_storage\_account\_enable\_https\_traffic\_only | Boolean flag which controls if https traffic only is enabled. | `bool` | `true` | no |
+| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Enable/disable archived-logs file share creation | `bool` | `false` | no |
+| logs\_storage\_account\_enable\_archiving | Enable/disable blob archiving lifecycle | `bool` | `true` | no |
+| logs\_storage\_account\_enable\_https\_traffic\_only | Enable/disable HTTPS traffic only | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
@@ -153,8 +166,8 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | monitoring\_function\_enabled | Enable/disable monitoring function | `bool` | `true` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
-| monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations | `list(string)` | `null` | no |
-| monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations | `list(string)` | `null` | no |
+| monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
@@ -162,8 +175,6 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | tenant\_id | Tenant ID | `string` | n/a | yes |
-| tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
-| tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 
 ## Outputs
 
@@ -207,11 +218,4 @@ See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/t
 | monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
-
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
+<!-- END_TF_DOCS -->

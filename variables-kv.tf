@@ -71,12 +71,12 @@ variable "keyvault_network_acls" {
 
 variable "keyvault_logs_categories" {
   type        = list(string)
-  description = "Log categories to send to destinations."
+  description = "Log categories to send to destinations. All by default."
   default     = null
 }
 
 variable "keyvault_logs_metrics_categories" {
   type        = list(string)
-  description = "Metrics categories to send to destinations."
+  description = "Metrics categories to send to destinations. All by default."
   default     = null
 }
