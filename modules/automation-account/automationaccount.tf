@@ -10,8 +10,9 @@ resource "azurerm_automation_account" "automation_account" {
 
 # Link automation account to log analytics workspace
 resource "azurerm_log_analytics_linked_service" "link_workspace_automation" {
-  count               = var.log_analytics_workspace_id == "" ? 0 : 1
-  resource_group_name = coalesce(var.law_resource_group_name, var.resource_group_name)
+  count = var.log_analytics_workspace_id == "" ? 0 : 1
+
+  resource_group_name = coalesce(var.log_analytics_resource_group_name, var.resource_group_name)
   workspace_id        = var.log_analytics_workspace_id
   read_access_id      = azurerm_automation_account.automation_account.id
 }

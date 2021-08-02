@@ -1,5 +1,8 @@
 # Unreleased
 
+Breaking
+  * AZ-546: Clean module, remove unused variables, needs a `terraform state mv` for renamed modules
+
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
   * AZ-532: Revamp README with latest `terraform-docs` tool

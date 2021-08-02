@@ -226,10 +226,10 @@ variable "custom_automation_account_name" {
   default     = ""
 }
 
-variable "law_resource_group_name" {
-  description = "Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account)"
+variable "log_analytics_resource_group_name" {
+  description = "Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.)"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "automation_account_extra_tags" {
