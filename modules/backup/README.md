@@ -142,6 +142,7 @@ module "az-backup" {
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
 <!-- END_TF_DOCS -->
+
 ## Related documentation
 
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)
