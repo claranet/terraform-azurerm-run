@@ -227,9 +227,9 @@ variable "custom_automation_account_name" {
 }
 
 variable "log_analytics_resource_group_name" {
-  description = "Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.)"
+  description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "automation_account_extra_tags" {
