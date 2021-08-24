@@ -67,7 +67,7 @@ module "automation_account" {
   logs_retention_days     = var.logs_retention_days
 }
 
-module "patch-management" {
+module "patch_management" {
   for_each = toset(var.patch_mgmt_os)
 
   source = "./modules/patch-management"
@@ -80,7 +80,7 @@ module "patch-management" {
 
   resource_group_name = var.resource_group_name
 
-  automation_account_name    = module.automation-account.automation_account_name
+  automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
   patch_mgmt_os                      = var.patch_mgmt_os

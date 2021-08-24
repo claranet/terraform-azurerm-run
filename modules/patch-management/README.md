@@ -77,7 +77,7 @@ locals {
   update_template_date = format("%s-%02d-%02d", "${time_offset.update_template.year}", "${time_offset.update_template.month}", "${time_offset.update_template.day + 1}")
 }
 
-module "patch-management" {
+module "patch_management" {
   source  = "claranet/run-iaas/azurerm//modules/patch-management"
   version = "x.x.x"
 
@@ -113,6 +113,24 @@ module "patch-management" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.57.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_log_analytics_solution.patch_management](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
+| [azurerm_template_deployment.update_config_standard_patch](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/template_deployment) | resource |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -134,6 +152,11 @@ module "patch-management" {
 | patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
 
 ## Related documentation
 

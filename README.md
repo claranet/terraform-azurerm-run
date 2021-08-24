@@ -11,7 +11,6 @@ It includes:
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
   * Azure Patch Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview))
-  Available only in module version >= 4.2.0
 
 ## Version compatibility
 
@@ -162,7 +161,7 @@ locals {
   update_template_date = format("%s-%02d-%02d", "${time_offset.update_template.year}", "${time_offset.update_template.month}", "${time_offset.update_template.day + 1}")
 }
 
-module "patch-management" {
+module "patch_management" {
   source  = "claranet/run-iaas/azurerm//modules/patch-management"
   version = "x.x.x"
 
@@ -209,6 +208,7 @@ No providers.
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
+| patch\_management | ./modules/patch-management | n/a |
 
 ## Resources
 
@@ -222,7 +222,6 @@ No resources.
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
-| enable\_patch\_management | Boolean to enable patch management. Actually, only Linux VMs are supported. | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
@@ -235,7 +234,7 @@ No resources.
 | file\_share\_backup\_yearly | Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly | `any` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.) | `string` | `""` | no |
+| log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.) | `string` | `null` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
