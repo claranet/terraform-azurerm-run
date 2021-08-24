@@ -10,7 +10,8 @@ It includes:
 ## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
-|-------------------|-------------------|-----------------|
+| ----------------- | ----------------- | --------------- |
+| >= 5.x.x          | 0.15.x & 1.0.x    | >= 2.57         |
 | >= 4.x.x          | 0.13.x            | >= 2.57         |
 | >= 3.x.x          | 0.12.x            | >= 2.0          |
 | >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
@@ -72,6 +73,27 @@ module "az-backup" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.57.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_backup_policy_file_share.file_share_backup_policy](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share) | resource |
+| [azurerm_backup_policy_vm.vm_backup_policy](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm) | resource |
+| [azurerm_monitor_diagnostic_setting.recovery_vault_diagnostics_settings](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_recovery_services_vault.vault](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/recovery_services_vault) | resource |
+| [azurerm_monitor_diagnostic_categories.recovery_vault_diagnostics_settings](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories) | data source |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -122,7 +144,7 @@ module "az-backup" {
 | recovery\_vault\_name | Azure Recovery Services Vault name |
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
-
+<!-- END_TF_DOCS -->
 ## Related documentation
 
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)

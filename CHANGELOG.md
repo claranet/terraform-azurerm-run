@@ -2,6 +2,7 @@
 
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
+  * AZ-532: Revamp README with latest `terraform-docs` tool
 
 # v4.1.0 - 2021-02-22
 

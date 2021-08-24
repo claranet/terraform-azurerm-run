@@ -14,7 +14,8 @@ It includes:
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.57         |
 | >= 4.x.x       | 0.13.x            | >= 2.57         |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -122,6 +123,22 @@ module "automation-account" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| automation-account | ./modules/automation-account | n/a |
+| azure-backup | ./modules/backup | n/a |
+
+## Resources
+
+No resources.
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -182,7 +199,7 @@ module "automation-account" {
 | recovery\_vault\_name | Azure Recovery Services Vault name |
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
-
+<!-- END_TF_DOCS -->
 ## Related documentation
 
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)
