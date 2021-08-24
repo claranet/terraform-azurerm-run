@@ -1,4 +1,4 @@
-module "azure-backup" {
+module "backup" {
   source = "./modules/backup"
 
   client_name    = var.client_name
@@ -48,7 +48,7 @@ module "azure-backup" {
 
 }
 
-module "automation-account" {
+module "automation_account" {
   source = "./modules/automation-account"
 
   client_name    = var.client_name
@@ -66,5 +66,4 @@ module "automation-account" {
   custom_automation_account_name = var.custom_automation_account_name
   law_resource_group_name        = var.law_resource_group_name
   log_analytics_workspace_id     = var.log_analytics_workspace_id
-
 }

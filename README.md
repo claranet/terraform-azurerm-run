@@ -132,8 +132,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| automation-account | ./modules/automation-account | n/a |
-| azure-backup | ./modules/backup | n/a |
+| automation\_account | ./modules/automation-account | n/a |
+| backup | ./modules/backup | n/a |
 
 ## Resources
 
@@ -161,7 +161,6 @@ No resources.
 | law\_resource\_group\_name | Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account) | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_resource\_group\_name | Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.) | `string` | `null` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list(any)` | `null` | no |
 | log\_enabled | Enable or disable logs configuration in diagnostics settings | `bool` | `true` | no |

@@ -65,7 +65,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_automation_account.automation-account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_account) | resource |
+| [azurerm_automation_account.automation_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_account) | resource |
 | [azurerm_log_analytics_linked_service.link_workspace_automation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_linked_service) | resource |
 
 ## Inputs
