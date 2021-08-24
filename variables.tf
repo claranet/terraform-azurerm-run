@@ -178,12 +178,6 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
-variable "log_analytics_resource_group_name" {
-  description = "Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.)"
-  type        = string
-  default     = null
-}
-
 variable "log_storage_account_id" {
   description = "Storage account ID where the logs are sent"
   type        = string

@@ -7,7 +7,8 @@ Please note that the associated RunAs Account is not created.
 ## Version compatibility
 
 | Module version    | Terraform version | AzureRM version |
-|-------------------|-------------------|-----------------|
+| ----------------- | ----------------- | --------------- |
+| >= 5.x.x          | 0.15.x & 1.0.x    | >= 2.57         |
 | >= 4.x.x          | 0.13.x            | >= 2.57         |
 | >= 3.x.x          | 0.12.x            | >= 2.0          |
 | >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
@@ -49,6 +50,24 @@ module "automation-account" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.57 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_automation_account.automation_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_account) | resource |
+| [azurerm_log_analytics_linked_service.link_workspace_automation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_linked_service) | resource |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -75,3 +94,4 @@ module "automation-account" {
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
+<!-- END_TF_DOCS -->

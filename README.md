@@ -14,7 +14,8 @@ It includes:
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.57         |
 | >= 4.x.x       | 0.13.x            | >= 2.57         |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -122,6 +123,22 @@ module "automation-account" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| automation\_account | ./modules/automation-account | n/a |
+| backup | ./modules/backup | n/a |
+
+## Resources
+
+No resources.
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -144,7 +161,6 @@ module "automation-account" {
 | law\_resource\_group\_name | Resource group of Log Analytics Workspace that will be connected with the automation account (default is the same RG that the one hosting the automation account) | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_resource\_group\_name | Log Analytics Workspace resource groupe name (if different from `resource_group_name` variable.) | `string` | `null` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | log\_categories | List of log categories. By default this module use a data source to retrieve them:<br>`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]` | `list(any)` | `null` | no |
 | log\_enabled | Enable or disable logs configuration in diagnostics settings | `bool` | `true` | no |
@@ -182,7 +198,7 @@ module "automation-account" {
 | recovery\_vault\_name | Azure Recovery Services Vault name |
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
-
+<!-- END_TF_DOCS -->
 ## Related documentation
 
 - Terraform Azure Recovery Services Vault: [terraform.io/docs/providers/azurerm/r/recovery_services_vault.html](https://www.terraform.io/docs/providers/azurerm/r/recovery_services_vault.html)

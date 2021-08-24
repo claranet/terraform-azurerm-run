@@ -3,32 +3,32 @@
 ###############################
 output "recovery_vault_name" {
   description = "Azure Recovery Services Vault name"
-  value       = module.azure-backup.recovery_vault_name
+  value       = module.backup.recovery_vault_name
 }
 
 output "recovery_vault_id" {
   description = "Azure Recovery Services Vault ID"
-  value       = module.azure-backup.recovery_vault_id
+  value       = module.backup.recovery_vault_id
 }
 
 output "vm_backup_policy_name" {
   description = "VM Backup policy name"
-  value       = module.azure-backup.vm_backup_policy_name
+  value       = module.backup.vm_backup_policy_name
 }
 
 output "vm_backup_policy_id" {
   description = "VM Backup policy ID"
-  value       = module.azure-backup.vm_backup_policy_id
+  value       = module.backup.vm_backup_policy_id
 }
 
 output "file_share_backup_policy_name" {
   description = "File share Backup policy name"
-  value       = module.azure-backup.file_share_backup_policy_name
+  value       = module.backup.file_share_backup_policy_name
 }
 
 output "file_share_backup_policy_id" {
   description = "File share Backup policy ID"
-  value       = module.azure-backup.file_share_backup_policy_id
+  value       = module.backup.file_share_backup_policy_id
 }
 
 ###############################
@@ -36,27 +36,27 @@ output "file_share_backup_policy_id" {
 ###############################
 output "automation_account_name" {
   description = "Azure Automation Account name"
-  value       = module.automation-account.automation_account_name
+  value       = module.automation_account.automation_account_name
 }
 
 output "automation_account_id" {
   description = "Azure Automation Account ID"
-  value       = module.automation-account.automation_account_id
+  value       = module.automation_account.automation_account_id
 }
 
 output "automation_account_dsc_primary_access_key" {
   description = "Azure Automation Account DSC Primary Acess Key"
-  value       = module.automation-account.automation_account_dsc_primary_access_key
+  value       = module.automation_account.automation_account_dsc_primary_access_key
   sensitive   = true
 }
 
 output "automation_account_dsc_secondary_access_key" {
   description = "Azure Automation Account DSC Secondary Acess Key"
-  value       = module.automation-account.automation_account_dsc_secondary_access_key
+  value       = module.automation_account.automation_account_dsc_secondary_access_key
   sensitive   = true
 }
 
 output "automation_account_dsc_server_endpoint" {
   description = "Azure Automation Account DSC Server Endpoint"
-  value       = module.automation-account.automation_account_dsc_server_endpoint
+  value       = module.automation_account.automation_account_dsc_server_endpoint
 }
