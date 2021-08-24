@@ -45,7 +45,6 @@ module "backup" {
   log_analytics_workspace_id         = var.log_analytics_workspace_id
   log_storage_account_id             = var.log_storage_account_id
   log_eventhub_authorization_rule_id = var.log_eventhub_authorization_rule_id
-
 }
 
 module "automation_account" {
@@ -63,7 +62,7 @@ module "automation_account" {
   automation_account_sku        = var.automation_account_sku
   automation_account_extra_tags = var.automation_account_extra_tags
 
-  custom_automation_account_name = var.custom_automation_account_name
-  law_resource_group_name        = var.law_resource_group_name
-  log_analytics_workspace_id     = var.log_analytics_workspace_id
+  custom_automation_account_name    = var.custom_automation_account_name
+  log_analytics_resource_group_name = var.log_analytics_resource_group_name
+  log_analytics_workspace_id        = var.log_analytics_workspace_id
 }
