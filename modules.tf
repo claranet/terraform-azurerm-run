@@ -36,15 +36,10 @@ module "backup" {
   file_share_backup_monthly = var.file_share_backup_monthly
   file_share_backup_yearly  = var.file_share_backup_yearly
 
-  diagnostics_settings_enabled = var.diagnostics_settings_enabled
-
-  log_enabled    = var.log_enabled
-  log_categories = var.log_categories
-
-  log_retention_in_days              = var.log_retention_in_days
-  log_analytics_workspace_id         = var.log_analytics_workspace_id
-  log_storage_account_id             = var.log_storage_account_id
-  log_eventhub_authorization_rule_id = var.log_eventhub_authorization_rule_id
+  logs_destinations_ids   = var.logs_destinations_ids
+  logs_categories         = var.logs_categories
+  logs_metrics_categories = var.logs_metrics_categories
+  logs_retention_days     = var.logs_retention_days
 }
 
 module "automation_account" {
@@ -65,4 +60,9 @@ module "automation_account" {
   custom_automation_account_name    = var.custom_automation_account_name
   log_analytics_resource_group_name = var.log_analytics_resource_group_name
   log_analytics_workspace_id        = var.log_analytics_workspace_id
+
+  logs_destinations_ids   = var.logs_destinations_ids
+  logs_categories         = var.logs_categories
+  logs_metrics_categories = var.logs_metrics_categories
+  logs_retention_days     = var.logs_retention_days
 }

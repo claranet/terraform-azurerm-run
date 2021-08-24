@@ -2,6 +2,7 @@
 
 Breaking
   * AZ-546: Clean module, remove unused variables, needs a `terraform state mv` for renamed modules
+  * AZ-160: Unify diagnostics settings on all Claranet modules
 
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies

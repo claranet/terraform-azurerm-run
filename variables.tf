@@ -167,48 +167,32 @@ variable "file_share_backup_yearly" {
   default     = {}
 }
 
-variable "log_retention_in_days" {
-  description = "Retention time in days for the logs"
-  type        = number
-  default     = 365
-}
-
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account"
   type        = string
 }
 
-variable "log_storage_account_id" {
-  description = "Storage account ID where the logs are sent"
-  type        = string
+variable "logs_destinations_ids" {
+  type        = list(string)
+  description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
+}
+
+variable "logs_categories" {
+  type        = list(string)
+  description = "Log categories to send to destinations."
   default     = null
 }
 
-variable "log_eventhub_authorization_rule_id" {
-  description = "Event hub authorization rule ID where the logs are sent"
-  type        = string
+variable "logs_metrics_categories" {
+  type        = list(string)
+  description = "Metrics categories to send to destinations."
   default     = null
 }
 
-variable "log_categories" {
-  type        = list(any)
-  default     = null
-  description = <<EOD
-List of log categories. By default this module use a data source to retrieve them:
-`["CoreAzureBackup", "AddonAzureBackupJobs", "AddonAzureBackupAlerts", "AddonAzureBackupPolicy", "AddonAzureBackupStorage", "AddonAzureBackupProtectedInstance"]`
-EOD
-}
-
-variable "log_enabled" {
-  type        = bool
-  default     = true
-  description = "Enable or disable logs configuration in diagnostics settings"
-}
-
-variable "diagnostics_settings_enabled" {
-  type        = bool
-  default     = true
-  description = "Enable or disable diagnostics settings on the recovery vault"
+variable "logs_retention_days" {
+  type        = number
+  description = "Number of days to keep logs on storage account"
+  default     = 30
 }
 
 ###############################
