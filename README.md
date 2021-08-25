@@ -10,7 +10,7 @@ It includes:
       * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
-  * Azure Patch Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview))
+  * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview))
 
 ## Version compatibility
 
@@ -81,8 +81,8 @@ module "run_iaas" {
   resource_group_name          = module.rg.resource_group_name
   log_analytics_workspace_name = module.logs.log_analytics_workspace_name
 
-  patch_mgmt_scope = [module.rg.resource_groupe_id]
-  patch_mgmt_schedule = [{
+  update_management_scope = [module.rg.resource_groupe_id]
+  update_management_schedule = [{
     startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
@@ -151,7 +151,7 @@ module "automation-account" {
 }
 ```
 
-### Azure Patch Management
+### Azure Update Management
 ```hcl
 resource "time_offset" "update_template" {
   offset_hours = 4
@@ -161,8 +161,8 @@ locals {
   update_template_date = format("%s-%02d-%02d", "${time_offset.update_template.year}", "${time_offset.update_template.month}", "${time_offset.update_template.day + 1}")
 }
 
-module "patch_management" {
-  source  = "claranet/run-iaas/azurerm//modules/patch-management"
+module "update_management" {
+  source  = "claranet/run-iaas/azurerm//modules/update-management"
   version = "x.x.x"
 
   client_name    = var.client_name
@@ -176,9 +176,9 @@ module "patch_management" {
   automation_account_name    = module.automation-account.automation_account_name
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  patch_mgmt_os       = ["Linux"]
-  patch_mgmt_scope    = [module.rg.resource_groupe_id]
-  patch_mgmt_schedule = [{
+  update_management_os       = ["Linux"]
+  update_management_scope    = [module.rg.resource_groupe_id]
+  update_management_schedule = [{
     startTime  = "${local.update_template_date}T02:00:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
@@ -208,7 +208,7 @@ No providers.
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| patch\_management | ./modules/patch-management | n/a |
+| update\_management | ./modules/update-management | n/a |
 
 ## Resources
 
@@ -241,20 +241,20 @@ No resources.
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
-| patch\_mgmt\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
-| patch\_mgmt\_os | List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable patch management. | `list(string)` | n/a | yes |
-| patch\_mgmt\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
-| patch\_mgmt\_schedule | Map of schedule parameters for patch management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | `[]` | no |
-| patch\_mgmt\_scope | Scope of the patch management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `[]` | no |
-| patch\_mgmt\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
-| patch\_mgmt\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
-| patch\_mgmt\_update\_classifications | Patch Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+| update\_management\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
+| update\_management\_os | List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update  management. | `list(string)` | n/a | yes |
+| update\_management\_reboot\_setting | Used to define the reboot setting you want. Possible values are `IfRequired`, `RebootOnly`, `Never`, `Always`. | `string` | `"Never"` | no |
+| update\_management\_schedule | Map of schedule parameters for update  management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object) | `list(any)` | `[]` | no |
+| update\_management\_scope | Scope of the update  management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `[]` | no |
+| update\_management\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
+| update\_management\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
+| update\_management\_update\_classifications | Update Management update classifications. This variable is used to define what kind of updates do you want to apply. Possible values are `Critical`, `Security` and `Other` | `list(string)` | <pre>[<br>  "Critical",<br>  "Security"<br>]</pre> | no |
 | vm\_backup\_daily\_policy\_retention | The number of daily VM backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
 | vm\_backup\_monthly | Map to configure the monthly backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly | `any` | `{}` | no |
 | vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
@@ -288,5 +288,5 @@ No resources.
 - Terraform Azure Automation Account: [terraform.io/docs/providers/azurerm/r/automation_account.html](https://www.terraform.io/docs/providers/azurerm/r/automation_account.html)
 - Terraform Azure Monitor Diagnostics Settings: [terraform.io/docs/providers/azurerm/r/monitor_diagnostic_setting.html](https://www.terraform.io/docs/providers/azurerm/r/monitor_diagnostic_setting.html)
 - Terraform Azure Log Analytics Solution: [registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution)
-- Microsoft Patch management documentation: [docs.microsoft.com/en-us/azure/automation/update-management/overview](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)
-- Microsoft ARM template for Patch management documentation: [docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json)
+- Microsoft Update management documentation: [docs.microsoft.com/en-us/azure/automation/update-management/overview](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)
+- Microsoft ARM template for Update management documentation: [docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json)

@@ -67,10 +67,10 @@ module "automation_account" {
   logs_retention_days     = var.logs_retention_days
 }
 
-module "patch_management" {
-  for_each = toset(var.patch_mgmt_os)
+module "update_management" {
+  for_each = toset(var.update_management_os)
 
-  source = "./modules/patch-management"
+  source = "./modules/update-management"
 
   client_name    = var.client_name
   location       = var.location
@@ -83,12 +83,12 @@ module "patch_management" {
   automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  patch_mgmt_os                      = var.patch_mgmt_os
-  patch_mgmt_update_classifications  = var.patch_mgmt_update_classifications
-  patch_mgmt_reboot_setting          = var.patch_mgmt_reboot_setting
-  patch_mgmt_duration                = var.patch_mgmt_duration
-  patch_mgmt_scope                   = var.patch_mgmt_scope
-  patch_mgmt_tags_filtering          = var.patch_mgmt_tags_filtering
-  patch_mgmt_tags_filtering_operator = var.patch_mgmt_tags_filtering_operator
-  patch_mgmt_schedule                = var.patch_mgmt_schedule
+  update_management_os                      = var.update_management_os
+  update_management_update_classifications  = var.update_management_update_classifications
+  update_management_reboot_setting          = var.update_management_reboot_setting
+  update_management_duration                = var.update_management_duration
+  update_management_scope                   = var.update_management_scope
+  update_management_tags_filtering          = var.update_management_tags_filtering
+  update_management_tags_filtering_operator = var.update_management_tags_filtering_operator
+  update_management_schedule                = var.update_management_schedule
 }

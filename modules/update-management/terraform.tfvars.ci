@@ -6,4 +6,4 @@ stack="ci"
 resource_group_name="rg-test"
 log_analytics_workspace_id="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 automation_account_name="test"
-patch_mgmt_os=["Linux"]
+update_management_os=["Linux"]

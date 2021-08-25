@@ -1,4 +1,4 @@
-resource "azurerm_log_analytics_solution" "patch_management" {
+resource "azurerm_log_analytics_solution" "update_management" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -13,11 +13,11 @@ resource "azurerm_log_analytics_solution" "patch_management" {
   }
 }
 
-resource "azurerm_template_deployment" "update_config_standard_patch" {
-  for_each = toset(var.patch_mgmt_os)
+resource "azurerm_template_deployment" "update_config_standard" {
+  for_each = toset(var.update_management_os)
 
   deployment_mode     = "Incremental"
-  name                = lower(format("%s-%s", local.arm_patch_mngt_name, each.key))
+  name                = lower(format("%s-%s", local.arm_update_management_name, each.key))
   resource_group_name = var.resource_group_name
 
   template_body = jsonencode({
@@ -32,23 +32,23 @@ resource "azurerm_template_deployment" "update_config_standard_patch" {
           updateConfiguration = {
             operatingSystem = "${each.key}"
             linux = {
-              includedPackageClassifications : "${join(", ", var.patch_mgmt_update_classifications)}"
-              rebootSetting = "${var.patch_mgmt_reboot_setting}"
+              includedPackageClassifications : "${join(", ", var.update_management_update_classifications)}"
+              rebootSetting = "${var.update_management_reboot_setting}"
             }
-            duration = "${var.patch_mgmt_duration}"
+            duration = "${var.update_management_duration}"
             targets = {
               azureQueries = [
                 {
-                  scope = "${var.patch_mgmt_scope}"
+                  scope = "${var.update_management_scope}"
                   tagSettings = {
-                    tags           = "${var.patch_mgmt_tags_filtering}"
-                    filterOperator = "${var.patch_mgmt_tags_filtering_operator}"
+                    tags           = "${var.update_management_tags_filtering}"
+                    filterOperator = "${var.update_management_tags_filtering_operator}"
                   }
                 }
               ]
             }
           }
-          scheduleInfo = "${var.patch_mgmt_schedule[0]}"
+          scheduleInfo = "${var.update_management_schedule[0]}"
         }
       }
     ]
