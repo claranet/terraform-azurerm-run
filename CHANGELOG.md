@@ -1,4 +1,4 @@
-# v4.3.1 - unrelased
+# v4.3.1 - 2021-08-27
 
 Changed
   * AZ-532: Revamp README with latest `terraform-docs` tool
