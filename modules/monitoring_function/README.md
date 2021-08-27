@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 # Azure Monitoring Function
 
 This module deploys [FAME](https://github.com/claranet/fame) monitoring extension in an Azure Function for addition monitoring capabilities.
@@ -11,7 +10,8 @@ Built-in metrics sent:
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -81,6 +81,7 @@ Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/s
 
 Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
 
+<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 | Name | Version |

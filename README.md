@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 # Azure RUN Common feature
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run-common/azurerm/)
 
@@ -22,7 +21,8 @@ It includes:
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -89,14 +89,7 @@ See `monitoring_function` [README](./modules/monitoring\_function/README.md)
 
 See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
 
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
-
+<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 | Name | Version |
@@ -109,7 +102,7 @@ Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vau
 |------|--------|---------|
 | keyvault | claranet/keyvault/azurerm | 4.4.0 |
 | logs | ./modules/logs | n/a |
-| monitoring-function | ./modules/monitoring_function | n/a |
+| monitoring\_function | ./modules/monitoring_function | n/a |
 
 ## Resources
 
@@ -219,3 +212,8 @@ Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vau
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
 <!-- END_TF_DOCS -->
+## Related documentation
+
+Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
+
+Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
