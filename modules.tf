@@ -61,7 +61,11 @@ module "automation_account" {
   log_analytics_resource_group_name = var.log_analytics_resource_group_name
   log_analytics_workspace_id        = var.log_analytics_workspace_id
 
-  logs_destinations_ids   = var.logs_destinations_ids
+  ### If we're using update management, we can't create diag-settings for submodule automation-account
+  ### because update-management submodule have a Log Analytics Solution which is mandatory and already 
+  ### create diagnostic-settings on the automation-account with all categories.
+  ### There's a conflict if we try to create diagnostic-settings twice with same categories
+  logs_destinations_ids   = var.update_management_os != [] ? [] : var.logs_destinations_ids
   logs_categories         = var.logs_categories
   logs_metrics_categories = var.logs_metrics_categories
   logs_retention_days     = var.logs_retention_days
