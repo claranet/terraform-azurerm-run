@@ -11,6 +11,10 @@ module "function" {
 
   name_prefix = var.name_prefix
 
+  storage_account_name             = var.storage_account_name != "" ? var.storage_account_name : null
+  function_app_custom_name         = var.function_app_custom_name != "" ? var.function_app_custom_name : null
+  application_insights_custom_name = var.application_insights_custom_name != "" ? var.application_insights_custom_name : null
+
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
     LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
