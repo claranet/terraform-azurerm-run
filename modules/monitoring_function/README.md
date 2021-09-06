@@ -105,12 +105,12 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `""` | no |
+| application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_application\_settings | Extra application settings to set on monitoring function | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
-| function\_app\_custom\_name | FAME Function App custom name | `string` | `""` | no |
+| function\_app\_custom\_name | FAME Function App custom name | `string` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries | `string` | n/a | yes |
@@ -123,7 +123,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| storage\_account\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| storage\_account\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 
 ## Outputs

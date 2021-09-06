@@ -87,9 +87,9 @@ module "monitoring_function" {
   resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
   stack               = var.stack
 
-  storage_account_name             = var.monitoring_function_storage_account_custom_name != "" ? var.monitoring_function_storage_account_custom_name : null
-  function_app_custom_name         = var.monitoring_function_function_app_custom_name != "" ? var.monitoring_function_function_app_custom_name : null
-  application_insights_custom_name = var.monitoring_function_application_insights_custom_name != "" ? var.monitoring_function_application_insights_custom_name : null
+  storage_account_name             = var.monitoring_function_storage_account_custom_name
+  function_app_custom_name         = var.monitoring_function_function_app_custom_name
+  application_insights_custom_name = var.monitoring_function_application_insights_custom_name
 
   zip_package_path           = var.monitoring_function_zip_package_path
   metrics_extra_dimensions   = var.monitoring_function_metrics_extra_dimensions
