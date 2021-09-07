@@ -92,7 +92,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 4.0.1 |
+| function | claranet/function-app/azurerm | 4.1.0 |
 
 ## Resources
 
