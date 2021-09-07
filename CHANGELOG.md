@@ -1,3 +1,11 @@
+# UNRELEASED
+
+Added
+  * AZ-560: Add FAME custom name inputs
+
+Breaking
+  * AZ-560: Module Function-App updated to latest `4.1.0`
+
 # v4.3.1 - 2021-08-27
 
 Changed

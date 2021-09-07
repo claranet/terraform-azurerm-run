@@ -53,3 +53,21 @@ variable "monitoring_function_assign_role_on_workspace" {
   type        = bool
   default     = true
 }
+
+variable "monitoring_function_storage_account_custom_name" {
+  description = "FAME Storage Account custom name. Empty by default, using naming convention."
+  type        = string
+  default     = null
+}
+
+variable "monitoring_function_function_app_custom_name" {
+  description = "FAME Function App custom name. Empty by default, using naming convention."
+  type        = string
+  default     = null
+}
+
+variable "monitoring_function_application_insights_custom_name" {
+  description = "FAME Application Insights custom name. Empty by default, using naming convention."
+  type        = string
+  default     = null
+}

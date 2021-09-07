@@ -93,3 +93,21 @@ variable "extra_application_settings" {
   type        = map(string)
   default     = {}
 }
+
+variable "storage_account_name" {
+  description = "FAME Storage Account custom name. Empty by default, using naming convention."
+  type        = string
+  default     = null
+}
+
+variable "function_app_custom_name" {
+  description = "FAME Function App custom name"
+  type        = string
+  default     = null
+}
+
+variable "application_insights_custom_name" {
+  description = "FAME Application Insights custom name deployed with function app"
+  type        = string
+  default     = null
+}

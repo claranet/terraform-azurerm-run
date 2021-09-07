@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "4.0.1"
+  version = "4.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -10,6 +10,10 @@ module "function" {
   location_short      = var.location_short
 
   name_prefix = var.name_prefix
+
+  storage_account_name             = var.storage_account_name
+  function_app_custom_name         = var.function_app_custom_name
+  application_insights_custom_name = var.application_insights_custom_name
 
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
