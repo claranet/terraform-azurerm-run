@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "4.0.1"
+  version = "4.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
