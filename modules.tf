@@ -110,7 +110,7 @@ module "update_management" {
   extra_tags = var.extra_tags
 }
 
-module "vm-monitoring" {
+module "vm_monitoring" {
   source = "./modules/vm-monitoring"
 
   client_name    = var.client_name

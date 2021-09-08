@@ -146,7 +146,7 @@ No providers.
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | update\_management | ./modules/update-management | n/a |
-| vm-monitoring | ./modules/vm-monitoring | n/a |
+| vm\_monitoring | ./modules/vm-monitoring | n/a |
 
 ## Resources
 

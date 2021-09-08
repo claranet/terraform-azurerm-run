@@ -66,15 +66,15 @@ output "automation_account_dsc_server_endpoint" {
 ###############################
 output "data_collection_rule_id" {
   description = "Id of the Azure Monitor Data Collection Rule"
-  value       = module.vm-monitoring.data_collection_rule_id
+  value       = module.vm_monitoring.data_collection_rule_id
 }
 
 output "data_collection_rule_name" {
   description = "Name of the Azure Monitor Data Collection Rule"
-  value       = module.vm-monitoring.data_collection_rule_name
+  value       = module.vm_monitoring.data_collection_rule_name
 }
 
 output "data_collection_rule_data" {
   description = "JSON data of the Azure Monitor Data Collection Rule"
-  value       = module.vm-monitoring.data_collection_rule_data
+  value       = module.vm_monitoring.data_collection_rule_data
 }

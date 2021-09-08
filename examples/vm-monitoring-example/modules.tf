@@ -30,6 +30,6 @@ module "vm-monitoring" {
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
   extra_tags = {
-    foo    = "bar"
+    foo = "bar"
   }
 }

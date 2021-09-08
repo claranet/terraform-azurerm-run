@@ -68,6 +68,27 @@ module "vm-monitoring" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 1.40.0 |
+| null | >= 3 |
+| template | >= 2 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [null_resource.data_collection_rule](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
+| [template_file.data_collection_rule](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -91,4 +112,4 @@ module "vm-monitoring" {
 | data\_collection\_rule\_data | JSON data of the Azure Monitor Data Collection Rule |
 | data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule |
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule |
-
+<!-- END_TF_DOCS -->
