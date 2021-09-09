@@ -123,6 +123,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+| storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | storage\_account\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 
