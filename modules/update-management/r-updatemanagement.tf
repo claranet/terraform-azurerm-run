@@ -14,7 +14,7 @@ resource "azurerm_log_analytics_solution" "update_management" {
 }
 
 resource "azurerm_template_deployment" "update_config_standard_linux" {
-  for_each = contains(toset(var.update_management_os), "Linux") ? toset(["linux"]) : []
+  for_each = contains(toset([for s in var.update_management_os : lower(s)]), "linux") ? toset(["linux"]) : []
 
   deployment_mode     = "Incremental"
   name                = lower(format("%s-%s", local.arm_update_management_name, "linux"))
@@ -58,7 +58,7 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
 }
 
 resource "azurerm_template_deployment" "update_config_standard_windows" {
-  for_each = contains(toset(var.update_management_os), "Windows") ? toset(["windows"]) : []
+  for_each = contains(toset([for s in var.update_management_os : lower(s)]), "windows") ? toset(["windows"]) : []
 
   deployment_mode     = "Incremental"
   name                = lower(format("%s-%s", local.arm_update_management_name, "windows"))
