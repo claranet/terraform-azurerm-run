@@ -4,20 +4,21 @@
 A terraform feature which includes services needed for Claranet RUN/MSP on Azure IaaS resources (VMs).
 
 It includes:
-  * Azure Backup
+  * Azure Backup ([example](examples/backup/modules.tf))
       * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
       * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
       * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
-  * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0
-  * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview))
+  * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0 ([example](examples/automation-account/modules.tf))
+  * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
 
-## Version compatibility
+<!-- BEGIN_TF_DOCS -->
+## Global versionning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
-| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.57         |
-| >= 4.x.x       | 0.13.x            | >= 2.57         |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
+| >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
 | <  2.x.x       | 0.11.x            | < 2.0           |
@@ -100,104 +101,12 @@ module "run_iaas" {
   }]
 
   extra_tags = {
-    foo    = "bar"
+    foo = "bar"
   }
 }
+
 ```
 
-## Using sub-modules
-The integrated services can be used separately with the same inputs and outputs when it's a sub module.
-
-### Azure Backup
-```hcl
-module "az-backup" {
-  source  = "claranet/run-iaas/azurerm//modules/backup"
-  version = "x.x.x"
-
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  client_name    = var.client_name
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name        = module.rg.resource_group_name
-  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
-
-  extra_tags = {
-    foo    = "bar"
-  }
-}
-```
-
-### Azure Automation Account
-```hcl
-module "automation-account" {
-  source  = "claranet/run-iaas/azurerm//modules/automation-account"
-  version = "x.x.x"
-
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  client_name    = var.client_name
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-
-  log_analytics_workspace_name = module.logs.log_analytics_workspace_name
-
-  extra_tags = {
-    foo    = "bar"
-  }
-}
-```
-
-### Azure Update Management
-```hcl
-resource "time_offset" "update_template" {
-  offset_hours = 4
-}
-
-locals {
-  update_template_date = format("%s-%02d-%02d", "${time_offset.update_template.year}", "${time_offset.update_template.month}", "${time_offset.update_template.day + 1}")
-}
-
-module "update_management" {
-  source  = "claranet/run-iaas/azurerm//modules/update-management"
-  version = "x.x.x"
-
-  client_name    = var.client_name
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name        = module.rg.resource_group_name
-
-  automation_account_name    = module.automation-account.automation_account_name
-  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
-
-  update_management_os_list  = ["Linux"]
-  update_management_scope    = [module.rg.resource_groupe_id]
-  update_management_schedule = [{
-    startTime  = "${local.update_template_date}T02:00:00+00:00"
-    expirytime = "9999-12-31T23:59:00+00:00"
-    isEnabled  = true
-    interval   = 1
-    frequency  = "Month"
-    timeZone   = "UTC"
-    advancedSchedule = {
-      monthlyOccurrences = [
-        {
-          occurrence = 3
-          day        = "Monday"
-        }
-      ]
-    }
-  }]
-}
-```
-
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 No providers.

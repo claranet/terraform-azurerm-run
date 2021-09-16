@@ -1,13 +1,13 @@
 module "azure-region" {
   source  = "claranet/regions/azurerm"
-  version = "4.1.0"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
   source  = "claranet/rg/azurerm"
-  version = "4.1.0"
+  version = "x.x.x"
 
   location    = module.azure-region.location
   client_name = var.client_name
@@ -17,7 +17,7 @@ module "rg" {
 
 module "az-vm-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
-  version = "4.1.0"
+  version = "x.x.x"
 
   location       = module.azure-region.location
   location_short = module.azure-region.location_short

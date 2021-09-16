@@ -1,13 +1,13 @@
 module "azure-region" {
   source  = "claranet/regions/azurerm"
-  version = "2.0.1"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
   source  = "claranet/rg/azurerm"
-  version = "2.1.0"
+  version = "x.x.x"
 
   location    = module.azure-region.location
   client_name = var.client_name
@@ -17,7 +17,7 @@ module "rg" {
 
 module "automation-account" {
   source  = "claranet/run-iaas/azurerm//modules/automation-account"
-  version = "2.2.0"
+  version = "x.x.x"
 
   location            = module.azure-region.location
   resource_group_name = module.rg.resource_group_name
