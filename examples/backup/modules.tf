@@ -15,6 +15,19 @@ module "rg" {
   stack       = var.stack
 }
 
+module "logs" {
+  source  = "claranet/run-common/azurerm//modules/logs"
+  version = "x.x.x"
+
+  client_name    = var.client_name
+  location       = module.azure-region.location
+  location_short = module.azure-region.location_short
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = module.rg.resource_group_name
+}
+
 module "az-vm-backup" {
   source  = "claranet/run-iaas/azurerm//modules/backup"
   version = "x.x.x"
@@ -34,6 +47,8 @@ module "az-vm-backup" {
     "weekdays"  = ["Sunday"]
     "weeks"     = ["First"]
   }
+
+  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
 
   extra_tags = {
     foo = "bar"
