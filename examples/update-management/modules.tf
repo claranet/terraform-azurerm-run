@@ -33,10 +33,13 @@ module "automation-account" {
   version = "x.x.x"
 
   location            = module.azure-region.location
+  location_short      = module.azure-region.location_short
   resource_group_name = module.rg.resource_group_name
   client_name         = var.client_name
   stack               = var.stack
   environment         = var.environment
+
+  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
 
   extra_tags = {
     foo = "bar"
@@ -67,7 +70,7 @@ module "update_management" {
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
   update_management_os    = ["Linux"]
-  update_management_scope = [module.rg.resource_groupe_id]
+  update_management_scope = [module.rg.resource_group_id]
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T02:00:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
