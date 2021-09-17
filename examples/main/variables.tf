@@ -1,15 +1,19 @@
 variable "client_name" {
-  type = string
+  description = "Client name"
+  type        = string
 }
 
 variable "environment" {
-  type = string
+  description = "Environment name"
+  type        = string
 }
 
 variable "stack" {
-  type = string
+  description = "Stack name"
+  type        = string
 }
 
 variable "azure_region" {
-  type = string
+  description = "Azure region to use"
+  type        = string
 }

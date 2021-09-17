@@ -1,4 +1,4 @@
-module "azure-region" {
+module "azure_region" {
   source  = "claranet/regions/azurerm"
   version = "x.x.x"
 
@@ -9,7 +9,7 @@ module "rg" {
   source  = "claranet/rg/azurerm"
   version = "x.x.x"
 
-  location    = module.azure-region.location
+  location    = module.azure_region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
@@ -20,20 +20,20 @@ module "logs" {
   version = "x.x.x"
 
   client_name    = var.client_name
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
   environment    = var.environment
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
 }
 
-module "automation-account" {
+module "automation_account" {
   source  = "claranet/run-iaas/azurerm//modules/automation-account"
   version = "x.x.x"
 
-  location            = module.azure-region.location
-  location_short      = module.azure-region.location_short
+  location            = module.azure_region.location
+  location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
   client_name         = var.client_name
   stack               = var.stack
