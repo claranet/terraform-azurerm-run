@@ -47,10 +47,11 @@ module "run_iaas" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name          = module.rg.resource_group_name
-  log_analytics_workspace_name = module.logs.log_analytics_workspace_name
+  resource_group_name        = module.rg.resource_group_name
+  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  update_management_scope = [module.rg.resource_groupe_id]
+  update_management_os    = ["Linux"]
+  update_management_scope = [module.rg.resource_group_id]
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
     expirytime = "9999-12-31T23:59:00+00:00"
@@ -67,6 +68,8 @@ module "run_iaas" {
       ]
     }
   }]
+
+  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
 
   extra_tags = {
     foo = "bar"
