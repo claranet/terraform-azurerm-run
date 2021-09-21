@@ -13,7 +13,7 @@ It includes:
   * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
 
 <!-- BEGIN_TF_DOCS -->
-## Global versionning rule for Claranet Azure modules
+## Global versioning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
@@ -86,7 +86,7 @@ module "run_iaas" {
   update_management_scope = [module.rg.resource_group_id]
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
-    expirytime = "9999-12-31T23:59:00+00:00"
+    expiryTime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
     interval   = 1
     frequency  = "Month"

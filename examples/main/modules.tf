@@ -54,7 +54,7 @@ module "run_iaas" {
   update_management_scope = [module.rg.resource_group_id]
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T${local.update_template_time}:00+00:00"
-    expirytime = "9999-12-31T23:59:00+00:00"
+    expiryTime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
     interval   = 1
     frequency  = "Month"
