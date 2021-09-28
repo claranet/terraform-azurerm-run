@@ -1,4 +1,5 @@
 resource "azurerm_log_analytics_solution" "update_management" {
+  count               = var.deploy_update_management_solution ? 1 : 0
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -11,13 +12,15 @@ resource "azurerm_log_analytics_solution" "update_management" {
     publisher = "Microsoft"
     product   = "OMSGallery/Updates"
   }
+
+  tags = local.tags
 }
 
 resource "azurerm_template_deployment" "update_config_standard_linux" {
   for_each = contains(toset([for s in var.update_management_os : lower(s)]), "linux") ? toset(["linux"]) : []
 
   deployment_mode     = "Incremental"
-  name                = lower(format("%s-%s", local.arm_update_management_name, "linux"))
+  name                = substr(lower(format("%s-%s", local.arm_update_management_name, "linux")), 0, 63)
   resource_group_name = var.resource_group_name
 
   template_body = jsonencode({
@@ -27,7 +30,7 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
       {
         type       = "Microsoft.Automation/automationAccounts/softwareUpdateConfigurations"
         apiVersion = "2019-06-01"
-        name       = "${var.automation_account_name}/Standard Linux Update Schedule"
+        name       = format("%s/%s", var.automation_account_name, var.linux_update_management_config_name)
         properties = {
           updateConfiguration = {
             operatingSystem = "Linux"
@@ -61,7 +64,7 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
   for_each = contains(toset([for s in var.update_management_os : lower(s)]), "windows") ? toset(["windows"]) : []
 
   deployment_mode     = "Incremental"
-  name                = lower(format("%s-%s", local.arm_update_management_name, "windows"))
+  name                = substr(lower(format("%s-%s", local.arm_update_management_name, "windows")), 0, 63)
   resource_group_name = var.resource_group_name
 
   template_body = jsonencode({
@@ -71,7 +74,7 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
       {
         type       = "Microsoft.Automation/automationAccounts/softwareUpdateConfigurations"
         apiVersion = "2019-06-01"
-        name       = "${var.automation_account_name}/Standard Windows Update Schedule"
+        name       = format("%s/%s", var.automation_account_name, var.windows_update_management_name)
         properties = {
           updateConfiguration = {
             operatingSystem = "Windows"
