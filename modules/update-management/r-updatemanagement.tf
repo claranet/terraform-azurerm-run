@@ -37,20 +37,20 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
               includedPackageNameMasks       = lookup(var.linux_update_management_configuration, "included_packages", [])
               excludedPackageNameMasks       = lookup(var.linux_update_management_configuration, "excluded_packages", [])
             }
-            duration = "${coalesce(var.linux_update_management_duration, var.update_management_duration)}"
+            duration = coalesce(var.linux_update_management_duration, var.update_management_duration)
             targets = {
               azureQueries = [
                 {
                   scope = coalesce(var.linux_update_management_scope, var.update_management_scope, [data.azurerm_subscription.current.id])
                   tagSettings = {
-                    tags           = "${coalesce(var.linux_update_management_tags_filtering, var.update_management_tags_filtering)}"
-                    filterOperator = "${coalesce(var.linux_update_management_tags_filtering_operator, var.update_management_tags_filtering_operator)}"
+                    tags           = coalesce(var.linux_update_management_tags_filtering, var.update_management_tags_filtering)
+                    filterOperator = coalesce(var.linux_update_management_tags_filtering_operator, var.update_management_tags_filtering_operator)
                   }
                 }
               ]
             }
           }
-          scheduleInfo = "${coalesce(try(var.linux_update_management_schedule[0], null), var.update_management_schedule[0])}"
+          scheduleInfo = coalesce(try(var.linux_update_management_schedule[0], null), var.update_management_schedule[0])
         }
       }
     ]
@@ -81,20 +81,20 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
               includedKbNumbers             = lookup(var.windows_update_management_configuration, "included_kb_numbers", [])
               excludedKbNumbers             = lookup(var.windows_update_management_configuration, "excluded_kb_numbers", [])
             }
-            duration = "${coalesce(var.windows_update_management_duration, var.update_management_duration)}"
+            duration = coalesce(var.windows_update_management_duration, var.update_management_duration)
             targets = {
               azureQueries = [
                 {
                   scope = coalesce(var.windows_update_management_scope, var.update_management_scope, [data.azurerm_subscription.current.id])
                   tagSettings = {
-                    tags           = "${coalesce(var.windows_update_management_tags_filtering, var.update_management_tags_filtering)}"
-                    filterOperator = "${coalesce(var.windows_update_management_tags_filtering_operator, var.update_management_tags_filtering_operator)}"
+                    tags           = coalesce(var.windows_update_management_tags_filtering, var.update_management_tags_filtering)
+                    filterOperator = coalesce(var.windows_update_management_tags_filtering_operator, var.update_management_tags_filtering_operator)
                   }
                 }
               ]
             }
           }
-          scheduleInfo = "${coalesce(try(var.windows_update_management_schedule[0], null), var.update_management_schedule[0])}"
+          scheduleInfo = coalesce(try(var.windows_update_management_schedule[0], null), var.update_management_schedule[0])
         }
       }
     ]
