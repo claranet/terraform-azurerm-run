@@ -261,6 +261,12 @@ variable "update_management_schedule" {
   type        = list(any)
 }
 
+variable "deploy_update_management_solution" {
+  description = "Should we deploy the Log Analytics Update solution or not"
+  type        = bool
+  default     = true
+}
+
 ## Linux specific Update Management variables
 
 variable "linux_update_management_duration" {
@@ -304,6 +310,12 @@ variable "linux_update_management_configuration" {
   }
 }
 
+variable "linux_update_management_config_name" {
+  description = "Custom configuration name for Linux Update management"
+  type        = string
+  default     = "Standard Linux Update Schedule"
+}
+
 ## Windows specific Update Management variables
 
 variable "windows_update_management_duration" {
@@ -345,4 +357,11 @@ variable "windows_update_management_configuration" {
     included_kb_numbers    = []
     excluded_kb_numbers    = []
   }
+}
+
+variable "windows_update_management_name" {
+
+  description = "Custom configuration name for Windows Update management"
+  type        = string
+  default     = "Standard Windows Update Schedule"
 }

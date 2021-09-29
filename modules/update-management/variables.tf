@@ -69,7 +69,7 @@ variable "update_management_scope" {
 }
 
 variable "deploy_update_management_solution" {
-  description = "Should we deploy the log Analytic Update solution or Not"
+  description = "Should we deploy the Log Analytics Update solution or not"
   type        = bool
   default     = true
 }

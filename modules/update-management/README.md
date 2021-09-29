@@ -96,7 +96,7 @@ module "update_management" {
   update_management_scope    = [module.rg.resource_groupe_id]
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T02:00:00+00:00"
-    expirytime = "9999-12-31T23:59:00+00:00"
+    expiryTime = "9999-12-31T23:59:00+00:00"
     isEnabled  = true
     interval   = 1
     frequency  = "Month"
@@ -139,7 +139,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | automation\_account\_name | Automation account name | `string` | n/a | yes |
 | client\_name | Client name | `string` | n/a | yes |
-| deploy\_update\_management\_solution | Should we deploy the log Analytic Update solution or Not | `bool` | `true` | no |
+| deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | linux\_update\_management\_config\_name | Custom configuration name for Linux Update management | `string` | `"Standard Linux Update Schedule"` | no |
