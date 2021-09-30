@@ -10,5 +10,5 @@ output "data_collection_rule_name" {
 
 output "data_collection_rule_data" {
   description = "JSON data of the Azure Monitor Data Collection Rule"
-  value       = data.template_file.data_collection_rule.rendered
+  value       = local.data_collection_config
 }

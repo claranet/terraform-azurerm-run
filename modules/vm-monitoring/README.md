@@ -75,7 +75,6 @@ module "vm-monitoring" {
 |------|---------|
 | azurerm | >= 1.40.0 |
 | null | >= 3 |
-| template | >= 2 |
 
 ## Modules
 
@@ -87,7 +86,6 @@ No modules.
 |------|------|
 | [null_resource.data_collection_rule](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
-| [template_file.data_collection_rule](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 

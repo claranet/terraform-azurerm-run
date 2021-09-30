@@ -112,29 +112,6 @@ module "run_iaas" {
 
 ```
 
-### Azure Monitor Data Collection Rule
-```hcl
-module "vm-monitoring" {
-  source  = "claranet/run-iaas/azurerm//modules/vm-monitoring"
-  version = "x.x.x"
-
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  client_name    = var.client_name
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-
-  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
-
-  extra_tags = {
-    foo    = "bar"
-  }
-}
-```
-
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 No providers.
@@ -160,6 +137,8 @@ No resources.
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
+| data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "UUCP"<br>]</pre> | no |
+| data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
