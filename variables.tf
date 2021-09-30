@@ -230,6 +230,7 @@ variable "update_management_os" {
   description = "List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management."
   type        = list(string)
 }
+
 variable "update_management_scope" {
   description = "Scope of the update management, it can be a subscription ID, a resource group ID etc.."
   type        = list(string)
