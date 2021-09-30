@@ -9,4 +9,6 @@ locals {
   }
 
   tags = merge(local.default_tags, var.extra_tags)
+
+  log_analytics_update_solution = length(regexall("Updates", data.external.log_analytics_update_solution.result.id)) > 0 ? true : false
 }

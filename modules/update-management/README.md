@@ -119,6 +119,7 @@ module "update_management" {
 | Name | Version |
 |------|---------|
 | azurerm | >= 2.57.0 |
+| external | n/a |
 
 ## Modules
 
@@ -132,6 +133,7 @@ No modules.
 | [azurerm_template_deployment.update_config_standard_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/template_deployment) | resource |
 | [azurerm_template_deployment.update_config_standard_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/template_deployment) | resource |
 | [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
+| [external_external.log_analytics_update_solution](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ## Inputs
 
@@ -139,7 +141,6 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | automation\_account\_name | Automation account name | `string` | n/a | yes |
 | client\_name | Client name | `string` | n/a | yes |
-| deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | linux\_update\_management\_config\_name | Custom configuration name for Linux Update management | `string` | `"Standard Linux Update Schedule"` | no |
@@ -150,6 +151,7 @@ No modules.
 | linux\_update\_management\_tags\_filtering | Filter scope for Linux machines using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `null` | no |
 | linux\_update\_management\_tags\_filtering\_operator | Filter Linux VMs by `Any` or `All` specified tags. Possible values are `All` or `Any` | `string` | `null` | no |
 | location | Azure location | `string` | n/a | yes |
+| location\_cli | Azure location in CLI format | `string` | n/a | yes |
 | location\_short | Short string for Azure location | `string` | n/a | yes |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
