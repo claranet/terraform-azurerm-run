@@ -27,11 +27,6 @@ variable "location" {
   type        = string
 }
 
-variable "location_cli" {
-  description = "Azure location in CLI format"
-  type        = string
-}
-
 variable "location_short" {
   description = "Short string for Azure location"
   type        = string
@@ -73,6 +68,11 @@ variable "update_management_scope" {
   default     = null
 }
 
+variable "deploy_update_management_solution" {
+  description = "Should we deploy the Log Analytics Update solution or not"
+  type        = bool
+  default     = true
+}
 ## Default Update Management variables
 
 variable "update_management_duration" {

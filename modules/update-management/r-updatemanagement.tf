@@ -1,5 +1,5 @@
 resource "azurerm_log_analytics_solution" "update_management" {
-  count               = local.log_analytics_update_solution ? 0 : 1
+  count               = var.deploy_update_management_solution ? 1 : 0
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -104,3 +104,5 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
   })
 }
 
+data "azurerm_subscription" "current" {
+}
