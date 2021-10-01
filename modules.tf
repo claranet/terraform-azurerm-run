@@ -65,7 +65,7 @@ module "automation_account" {
   ### because update-management submodule have a Log Analytics Solution which is mandatory and already 
   ### create diagnostic-settings on the automation-account with all categories.
   ### There's a conflict if we try to create diagnostic-settings twice with same categories
-  logs_destinations_ids   = var.update_management_os != [] ? [] : var.logs_destinations_ids
+  logs_destinations_ids   = var.update_management_os_list != [] ? [] : var.logs_destinations_ids
   logs_categories         = var.logs_categories
   logs_metrics_categories = var.logs_metrics_categories
   logs_retention_days     = var.logs_retention_days
@@ -87,7 +87,7 @@ module "update_management" {
 
   deploy_update_management_solution = var.deploy_update_management_solution
 
-  update_management_os                      = var.update_management_os
+  update_management_os                      = var.update_management_os_list
   update_management_scope                   = var.update_management_scope
   update_management_duration                = var.update_management_duration
   update_management_tags_filtering          = var.update_management_tags_filtering
