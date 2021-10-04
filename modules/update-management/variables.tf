@@ -57,7 +57,7 @@ variable "automation_account_name" {
   type        = string
 }
 
-variable "update_management_os" {
+variable "update_management_os_list" {
   description = "List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management"
   type        = list(string)
 }
