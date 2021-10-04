@@ -69,8 +69,9 @@ module "update_management" {
   automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  update_management_os    = ["Linux"]
-  update_management_scope = [module.rg.resource_group_id]
+  update_management_os             = ["Linux"]
+  update_management_scope          = [module.rg.resource_group_id]
+  update_management_tags_filtering = { update_color = ["blue"] }
   update_management_schedule = [{
     startTime  = "${local.update_template_date}T02:00:00+00:00"
     expiryTime = "9999-12-31T23:59:00+00:00"
