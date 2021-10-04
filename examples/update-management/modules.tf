@@ -69,7 +69,7 @@ module "update_management" {
   automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
-  update_management_os             = ["Linux"]
+  update_management_os_list        = ["Linux"]
   update_management_scope          = [module.rg.resource_group_id]
   update_management_tags_filtering = { update_color = ["blue"] }
   update_management_schedule = [{
