@@ -7,6 +7,7 @@ Breaking
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
   * AZ-532: Revamp README with latest `terraform-docs` tool
+  * AZ-572: Revamp examples and improve CI
 
 Added
   * AZ-55: Add ability to manage Update management for Linux and Windows VMs with Automation account
