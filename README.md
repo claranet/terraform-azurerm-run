@@ -11,6 +11,7 @@ It includes:
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0 ([example](examples/automation-account/modules.tf))
   * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
+  * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -122,6 +123,7 @@ No providers.
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | update\_management | ./modules/update-management | n/a |
+| vm\_monitoring | ./modules/vm-monitoring | n/a |
 
 ## Resources
 
@@ -131,10 +133,12 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
+| automation\_account\_extra\_tags | Extra tags for Automation Account. Empty by default. | `map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
+| data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "UUCP"<br>]</pre> | no |
+| data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
@@ -163,7 +167,7 @@ No resources.
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
+| recovery\_vault\_extra\_tags | Extra tags for Azure Recovery Vault. Empty by default. | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
@@ -200,6 +204,9 @@ No resources.
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
+| data\_collection\_rule\_data | JSON data of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
 | file\_share\_backup\_policy\_name | File share Backup policy name |
 | recovery\_vault\_id | Azure Recovery Services Vault ID |
@@ -207,6 +214,7 @@ No resources.
 | vm\_backup\_policy\_id | VM Backup policy ID |
 | vm\_backup\_policy\_name | VM Backup policy name |
 <!-- END_TF_DOCS -->
+
 ## Related documentation
 
 - Microsoft Update management documentation: [docs.microsoft.com/en-us/azure/automation/update-management/overview](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)

@@ -66,10 +66,14 @@ variable "recovery_vault_identity_type" {
 }
 
 variable "recovery_vault_extra_tags" {
-  description = "Extra tags to add to recovery vault"
+  description = "Extra tags for Azure Recovery Vault. Empty by default."
   type        = map(string)
   default     = {}
 }
+
+###############################
+# VM Backup
+###############################
 
 variable "vm_backup_policy_custom_name" {
   description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
@@ -119,6 +123,10 @@ variable "vm_backup_yearly" {
   default     = {}
 }
 
+###############################
+# File Share backup
+###############################
+
 variable "file_share_backup_policy_custom_name" {
   description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
   type        = string
@@ -166,6 +174,10 @@ variable "file_share_backup_yearly" {
   type        = any
   default     = {}
 }
+
+###############################
+# Log & Diagnostics
+###############################
 
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account"
@@ -217,7 +229,7 @@ variable "log_analytics_resource_group_name" {
 }
 
 variable "automation_account_extra_tags" {
-  description = "Extra tags to add to automation account"
+  description = "Extra tags for Automation Account. Empty by default."
   type        = map(string)
   default     = {}
 }
@@ -370,4 +382,20 @@ variable "windows_update_management_configuration_name" {
   description = "Custom configuration name for Windows Update management"
   type        = string
   default     = "Standard Windows Update Schedule"
+}
+
+###############################
+# VM Monitoring variables
+###############################
+variable "data_collection_syslog_facilities_names" {
+  description = "List of syslog to retrieve in Data Collection Rule"
+  type        = list(string)
+  default = ["auth", "authpriv", "cron", "daemon", "mark", "kern", "local0", "local1", "local2", "local3", "local4",
+  "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "UUCP"]
+}
+
+variable "data_collection_syslog_levels" {
+  description = "List of syslog levels to retrieve in Data Collection Rule"
+  type        = list(string)
+  default     = ["Error", "Critical", "Alert", "Emergency"]
 }

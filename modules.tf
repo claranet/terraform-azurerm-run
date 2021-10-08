@@ -109,3 +109,21 @@ module "update_management" {
 
   extra_tags = var.extra_tags
 }
+
+module "vm_monitoring" {
+  source = "./modules/vm-monitoring"
+
+  client_name    = var.client_name
+  location       = var.location
+  location_short = var.location_short
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = var.resource_group_name
+  extra_tags          = var.extra_tags
+
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  syslog_facilities_names = var.data_collection_syslog_facilities_names
+  syslog_levels           = var.data_collection_syslog_levels
+}

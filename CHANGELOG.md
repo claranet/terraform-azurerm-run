@@ -4,6 +4,9 @@ Breaking
   * AZ-546: Clean module, remove unused variables, needs a `terraform state mv` for renamed modules
   * AZ-160: Unify diagnostics settings on all Claranet modules
 
+Added
+  * AZ-302: Add a default Azure Monitor Data Collection Rule
+
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
   * AZ-532: Revamp README with latest `terraform-docs` tool

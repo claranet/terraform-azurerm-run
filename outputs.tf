@@ -60,3 +60,21 @@ output "automation_account_dsc_server_endpoint" {
   description = "Azure Automation Account DSC Server Endpoint"
   value       = module.automation_account.automation_account_dsc_server_endpoint
 }
+
+###############################
+# Azure Data Collection Rule outputs
+###############################
+output "data_collection_rule_id" {
+  description = "Id of the Azure Monitor Data Collection Rule"
+  value       = module.vm_monitoring.data_collection_rule_id
+}
+
+output "data_collection_rule_name" {
+  description = "Name of the Azure Monitor Data Collection Rule"
+  value       = module.vm_monitoring.data_collection_rule_name
+}
+
+output "data_collection_rule_data" {
+  description = "JSON data of the Azure Monitor Data Collection Rule"
+  value       = module.vm_monitoring.data_collection_rule_data
+}
