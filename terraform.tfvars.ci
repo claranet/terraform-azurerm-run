@@ -11,3 +11,4 @@ extra_tags = {
   foo = "bar"
 }
 recovery_vault_identity_type = "SystemAssigned"
+update_management_os_list = []

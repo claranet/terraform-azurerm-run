@@ -3,3 +3,5 @@ terraform.tfvars
 /main.tf
 /modules/*/main.tf
 .terraform.lock.hcl
+!examples/**/main.tf
+!examples/**/terraform.tfvars
