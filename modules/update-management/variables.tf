@@ -141,7 +141,7 @@ variable "linux_update_management_configuration" {
   }
 }
 
-variable "linux_update_management_config_name" {
+variable "linux_update_management_configuration_name" {
   description = "Custom configuration name for Linux Update management"
   type        = string
   default     = "Standard Linux Update Schedule"
@@ -190,7 +190,7 @@ variable "windows_update_management_configuration" {
   }
 }
 
-variable "windows_update_management_name" {
+variable "windows_update_management_configuration_name" {
 
   description = "Custom configuration name for Windows Update management"
   type        = string

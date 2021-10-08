@@ -96,7 +96,7 @@ module "update_management" {
   linux_update_management_tags_filtering_operator = var.linux_update_management_tags_filtering_operator
   linux_update_management_schedule                = var.linux_update_management_schedule
   linux_update_management_configuration           = var.linux_update_management_configuration
-  linux_update_management_config_name             = var.linux_update_management_config_name
+  linux_update_management_configuration_name      = var.linux_update_management_config_name
 
   windows_update_management_duration                = var.windows_update_management_duration
   windows_update_management_scope                   = var.windows_update_management_scope
@@ -104,5 +104,5 @@ module "update_management" {
   windows_update_management_tags_filtering_operator = var.windows_update_management_tags_filtering_operator
   windows_update_management_schedule                = var.windows_update_management_schedule
   windows_update_management_configuration           = var.windows_update_management_configuration
-  windows_update_management_name                    = var.windows_update_management_name
+  windows_update_management_configuration_name      = var.windows_update_management_configuration_name
 }

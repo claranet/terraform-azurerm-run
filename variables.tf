@@ -360,7 +360,7 @@ variable "windows_update_management_configuration" {
   }
 }
 
-variable "windows_update_management_name" {
+variable "windows_update_management_configuration_name" {
 
   description = "Custom configuration name for Windows Update management"
   type        = string

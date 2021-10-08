@@ -20,7 +20,7 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
   for_each = contains(toset([for s in var.update_management_os_list : lower(s)]), "linux") ? toset(["linux"]) : []
 
   deployment_mode     = "Incremental"
-  name                = substr(lower(format("%s%s-%s", local.name_prefix, local.arm_update_management_name, "linux")), 0, 63)
+  name                = substr(lower(format("%s-%s", local.arm_update_management_name, "linux")), 0, 63)
   resource_group_name = var.resource_group_name
 
   template_body = jsonencode({
@@ -30,7 +30,7 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
       {
         type       = "Microsoft.Automation/automationAccounts/softwareUpdateConfigurations"
         apiVersion = "2019-06-01"
-        name       = format("%s/%s%s", var.automation_account_name, local.name_prefix, var.linux_update_management_config_name)
+        name       = format("%s/%s", var.automation_account_name, local.linux_update_management_config_name)
         properties = {
           updateConfiguration = {
             operatingSystem = "Linux"
@@ -64,7 +64,7 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
   for_each = contains(toset([for s in var.update_management_os_list : lower(s)]), "windows") ? toset(["windows"]) : []
 
   deployment_mode     = "Incremental"
-  name                = substr(lower(format("%s%s-%s", local.name_prefix, local.arm_update_management_name, "windows")), 0, 63)
+  name                = substr(lower(format("%s-%s", local.arm_update_management_name, "windows")), 0, 63)
   resource_group_name = var.resource_group_name
 
   template_body = jsonencode({
@@ -74,7 +74,7 @@ resource "azurerm_template_deployment" "update_config_standard_windows" {
       {
         type       = "Microsoft.Automation/automationAccounts/softwareUpdateConfigurations"
         apiVersion = "2019-06-01"
-        name       = format("%s/%s%s", var.automation_account_name, local.name_prefix, var.windows_update_management_name)
+        name       = format("%s/%s", var.automation_account_name, local.windows_update_management_config_name)
         properties = {
           updateConfiguration = {
             operatingSystem = "Windows"
