@@ -77,6 +77,7 @@ module "update_management" {
   stack          = var.stack
 
   resource_group_name = var.resource_group_name
+  name_prefix         = try(coalesce(var.update_management_name_prefix, var.name_prefix), "")
 
   automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = var.log_analytics_workspace_id
@@ -105,4 +106,6 @@ module "update_management" {
   windows_update_management_schedule                = var.windows_update_management_schedule
   windows_update_management_configuration           = var.windows_update_management_configuration
   windows_update_management_configuration_name      = var.windows_update_management_configuration_name
+
+  extra_tags = var.extra_tags
 }
