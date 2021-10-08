@@ -1,19 +1,21 @@
+# v4.3.0 - 2021-10-08
+
+Added
+  * AZ-55: Add ability to manage Update management for Linux and Windows VMs with Automation account
+  * AZ-302: Add a default Azure Monitor Data Collection Rule
+
+Changed
+  * AZ-572: Revamp examples and improve CI
+
 # v4.2.0 - 2021-09-22
 
 Breaking
   * AZ-546: Clean module, remove unused variables, needs a `terraform state mv` for renamed modules
   * AZ-160: Unify diagnostics settings on all Claranet modules
 
-Added
-  * AZ-302: Add a default Azure Monitor Data Collection Rule
-
 Changed
   * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
   * AZ-532: Revamp README with latest `terraform-docs` tool
-  * AZ-572: Revamp examples and improve CI
-
-Added
-  * AZ-55: Add ability to manage Update management for Linux and Windows VMs with Automation account
 
 # v4.1.0 - 2021-02-22
 
