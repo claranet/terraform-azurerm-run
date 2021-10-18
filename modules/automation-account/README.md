@@ -84,6 +84,7 @@ module "automation-account" {
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.) | `string` | `null` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID that will be connected with the automation account | `string` | `""` | no |
+| log\_analytics\_workspace\_link\_enabled | Enable Log Analytics Workspace that will be connected with the automation account | `bool` | `true` | no |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |

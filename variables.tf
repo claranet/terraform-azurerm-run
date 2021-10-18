@@ -179,6 +179,12 @@ variable "file_share_backup_yearly" {
 # Log & Diagnostics
 ###############################
 
+variable "log_analytics_workspace_link_enabled" {
+  description = "Enable Log Analytics Workspace that will be connected with the automation account"
+  type        = bool
+  default     = true
+}
+
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account"
   type        = string
