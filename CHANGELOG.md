@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-589: Avoid plan drift when specifying Diagnostic Settings categories
+
 # v4.3.0 - 2021-10-08
 
 Added
