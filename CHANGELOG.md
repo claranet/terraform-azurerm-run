@@ -3,6 +3,9 @@
 Fixed
   * AZ-589: Avoid plan drift when specifying Diagnostic Settings categories
 
+Changed
+  * AZ-462: Add `log_analytics_workspace_link_enabled` to avoid `The "count" value depends on resource attributes that cannot be determined` on automation-account submodule
+
 # v4.3.0 - 2021-10-08
 
 Added

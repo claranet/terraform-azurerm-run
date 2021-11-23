@@ -57,9 +57,10 @@ module "automation_account" {
   automation_account_sku        = var.automation_account_sku
   automation_account_extra_tags = var.automation_account_extra_tags
 
-  custom_automation_account_name    = var.custom_automation_account_name
-  log_analytics_resource_group_name = var.log_analytics_resource_group_name
-  log_analytics_workspace_id        = var.log_analytics_workspace_id
+  custom_automation_account_name       = var.custom_automation_account_name
+  log_analytics_resource_group_name    = var.log_analytics_resource_group_name
+  log_analytics_workspace_link_enabled = var.log_analytics_workspace_link_enabled
+  log_analytics_workspace_id           = var.log_analytics_workspace_id
 
   logs_destinations_ids   = var.logs_destinations_ids
   logs_categories         = var.logs_categories

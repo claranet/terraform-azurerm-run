@@ -52,6 +52,12 @@ variable "log_analytics_resource_group_name" {
   default     = null
 }
 
+variable "log_analytics_workspace_link_enabled" {
+  description = "Enable Log Analytics Workspace that will be connected with the automation account"
+  type        = bool
+  default     = true
+}
+
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID that will be connected with the automation account"
   type        = string
