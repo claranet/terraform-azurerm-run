@@ -99,7 +99,7 @@ module "global_run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.48 |
+| azurerm | >= 2.57 |
 
 ## Modules
 
