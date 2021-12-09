@@ -15,6 +15,10 @@ Fixed
 Breaking
   * AZ-647: Fix `external` provider version constraint (compatible Terraform 0.13+ only)
 
+Breaking
+  * AZ-515: Option to use Azure CAF naming provider to name resources
+  * AZ-515: Require Terraform 0.13+
+
 Changed
   * AZ-572: Revamp examples and improve CI
   * AZ-650: Refactor `log` module and re-use our existing `storage-sas-token` module instead of inline script

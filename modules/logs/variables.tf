@@ -31,12 +31,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Extra tags to add"
   type        = map(string)
