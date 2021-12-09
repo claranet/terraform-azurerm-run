@@ -1,6 +1,7 @@
 module "function" {
-  source  = "claranet/function-app/azurerm"
-  version = "4.1.0"
+  # source  = "claranet/function-app/azurerm"
+  # version = "4.1.0"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=AZ-515_caf_naming"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -9,7 +10,9 @@ module "function" {
   location            = var.location
   location_short      = var.location_short
 
-  name_prefix = var.name_prefix
+  name_prefix    = local.name_prefix
+  name_suffix    = local.name_suffix
+  use_caf_naming = var.use_caf_naming
 
   storage_account_name             = var.storage_account_name
   function_app_custom_name         = var.function_app_custom_name
@@ -27,10 +30,11 @@ module "function" {
 
   application_zip_package_path = var.zip_package_path
 
-  logs_destinations_ids   = var.logs_destinations_ids
-  logs_categories         = var.logs_categories
-  logs_metrics_categories = var.logs_metrics_categories
-  logs_retention_days     = var.logs_retention_days
+  logs_destinations_ids           = var.logs_destinations_ids
+  logs_categories                 = var.logs_categories
+  logs_metrics_categories         = var.logs_metrics_categories
+  logs_retention_days             = var.logs_retention_days
+  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 
   storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
 
