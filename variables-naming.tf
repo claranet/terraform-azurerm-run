@@ -2,7 +2,7 @@
 variable "name_prefix" {
   description = "Optional prefix for the generated name"
   type        = string
-  default     = "fame"
+  default     = ""
 }
 
 variable "name_suffix" {

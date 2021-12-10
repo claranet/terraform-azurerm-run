@@ -10,7 +10,7 @@ module "function" {
   location            = var.location
   location_short      = var.location_short
 
-  name_prefix    = local.name_prefix
+  name_prefix    = coalesce(local.name_prefix, "fame")
   name_suffix    = local.name_suffix
   use_caf_naming = var.use_caf_naming
 

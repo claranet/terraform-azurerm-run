@@ -96,7 +96,7 @@ module "monitoring_function" {
   stack               = var.stack
 
   use_caf_naming = var.use_caf_naming
-  name_prefix    = var.name_prefix
+  name_prefix    = coalesce(var.name_prefix, "fame")
   name_suffix    = var.name_suffix
 
   storage_account_name             = var.monitoring_function_storage_account_custom_name

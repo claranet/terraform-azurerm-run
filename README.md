@@ -173,7 +173,7 @@ module "global_run" {
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
-| name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
