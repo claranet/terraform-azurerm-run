@@ -113,7 +113,7 @@ variable "application_insights_custom_name" {
 }
 
 variable "storage_account_enable_advanced_threat_protection" {
-  description = "FAME advanded thread protection (aka ATP) on Function App's storage account."
+  description = "FAME advanded thread protection (aka ATP) on Function App's storage account"
   type        = bool
   default     = false
 }
