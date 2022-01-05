@@ -70,12 +70,13 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Version |
 |------|---------|
 | azurerm | >= 2.1 |
-| external | ~> 2 |
 | null | ~> 3 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| log\_sas\_token | claranet/storage-sas-token/azurerm | 4.0.1 |
 
 ## Resources
 
@@ -89,7 +90,6 @@ No modules.
 | [azurerm_storage_share.archivedlogs_fileshare](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
 | [null_resource.log_workspace_config](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
-| [external_external.generate_storage_sas_token](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ## Inputs
 
