@@ -32,6 +32,8 @@ module "function" {
   logs_metrics_categories = var.logs_metrics_categories
   logs_retention_days     = var.logs_retention_days
 
+  storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
+
   extra_tags = merge(
     local.default_tags,
     var.extra_tags,

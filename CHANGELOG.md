@@ -3,6 +3,9 @@
 Changed
   * AZ-572: Revamp examples and improve CI
 
+Added
+  * AZ-569: Allow activating advanced threat protection on FAME function app's storage account 
+
 # v4.4.0 - 2021-09-07
 
 Breaking

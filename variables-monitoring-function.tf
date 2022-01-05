@@ -71,3 +71,9 @@ variable "monitoring_function_application_insights_custom_name" {
   type        = string
   default     = null
 }
+
+variable "monitoring_function_advanced_threat_protection_enabled" {
+  description = "FAME Enable Advanced Threat Protection on function app's storage account."
+  type        = bool
+  default     = false
+}

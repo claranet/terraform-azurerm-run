@@ -107,6 +107,8 @@ module "monitoring_function" {
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
+  storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
+
   extra_tags = var.monitoring_function_extra_tags
 }
 
