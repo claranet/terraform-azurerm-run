@@ -1,6 +1,6 @@
 module "log_sas_token" {
   source  = "claranet/storage-sas-token/azurerm"
-  version = "4.0.1"
+  version = "4.1.0"
 
   enabled              = true
   resource_group_name  = var.resource_group_name
