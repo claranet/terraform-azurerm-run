@@ -9,6 +9,9 @@ Changed
 Added
   * AZ-569: Allow activating advanced threat protection on FAME function app's storage account 
 
+Updated
+  * AZ-650: Refactor `log` module and re-use our existing `storage-sas-token` module instead of inline script
+
 # v4.4.0 - 2021-09-07
 
 Breaking
