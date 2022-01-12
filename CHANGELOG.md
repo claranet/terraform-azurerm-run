@@ -1,3 +1,9 @@
+# v5.0.0 - unreleased
+
+Breaking
+  * AZ-515: Option to use Azure CAF naming provider to name resources
+  * AZ-515: Require Terraform 0.13+
+
 # v4.6.0 - 2022-01-18
 
 Changed:
@@ -14,10 +20,6 @@ Fixed
 
 Breaking
   * AZ-647: Fix `external` provider version constraint (compatible Terraform 0.13+ only)
-
-Breaking
-  * AZ-515: Option to use Azure CAF naming provider to name resources
-  * AZ-515: Require Terraform 0.13+
 
 Changed
   * AZ-572: Revamp examples and improve CI
