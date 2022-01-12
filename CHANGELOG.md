@@ -1,16 +1,14 @@
-# Unreleased
+# v4.5.0 - 2022-01-12
 
 Breaking
   * AZ-647: Fix `external` provider version constraint (compatible Terraform 0.13+ only)
 
 Changed
   * AZ-572: Revamp examples and improve CI
+  * AZ-650: Refactor `log` module and re-use our existing `storage-sas-token` module instead of inline script
 
 Added
   * AZ-569: Allow activating advanced threat protection on FAME function app's storage account 
-
-Updated
-  * AZ-650: Refactor `log` module and re-use our existing `storage-sas-token` module instead of inline script
 
 # v4.4.0 - 2021-09-07
 
