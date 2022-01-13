@@ -29,6 +29,10 @@ module "global_run" {
 
   tenant_id                        = var.azure_tenant_id
   monitoring_function_splunk_token = "xxxxxx"
+  monitoring_function_metrics_extra_dimensions = {
+    env           = var.environment
+    sfx_monitored = "true"
+  }
 
   extra_tags = {
     foo = "bar"

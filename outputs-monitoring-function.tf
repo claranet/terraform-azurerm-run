@@ -21,6 +21,11 @@ output "monitoring_function_storage_account_name" {
   value       = try(module.monitoring_function[0].storage_account_name, null)
 }
 
+output "monitoring_function_storage_queries_table_name" {
+  description = "Name of the table in the Storage Account, empty if connection string provided"
+  value       = try(module.monitoring_function[0].storage_queries_table_name, null)
+}
+
 output "monitoring_function_storage_account_primary_connection_string" {
   description = "Primary connection string of the associated Storage Account, empty if connection string provided"
   value       = try(module.monitoring_function[0].storage_account_primary_connection_string, null)
