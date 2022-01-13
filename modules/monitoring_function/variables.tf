@@ -64,3 +64,9 @@ variable "extra_application_settings" {
   type        = map(string)
   default     = {}
 }
+
+variable "storage_account_enable_advanced_threat_protection" {
+  description = "FAME advanded thread protection (aka ATP) on Function App's storage account"
+  type        = bool
+  default     = false
+}

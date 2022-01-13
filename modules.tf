@@ -42,9 +42,8 @@ module "logs" {
 }
 
 module "keyvault" {
-  # source  = "claranet/keyvault/azurerm"
-  # version = "4.4.0"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/keyvault.git?ref=AZ-515_caf_naming"
+  source  = "claranet/keyvault/azurerm"
+  version = "5.0.0"
 
   client_name         = var.client_name
   environment         = var.environment

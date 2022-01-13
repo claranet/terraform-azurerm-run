@@ -105,7 +105,7 @@ module "global_run" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| keyvault | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/keyvault.git | AZ-515_caf_naming |
+| keyvault | claranet/keyvault/azurerm | 5.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring_function | n/a |
 
