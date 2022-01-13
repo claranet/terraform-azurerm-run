@@ -1,3 +1,11 @@
+# Unreleased
+
+Changed:
+  * AZ-664: Update README with FAME extra dimensions
+
+Added
+  * AZ-664: Add FAME queries table name output
+
 # v4.5.0 - 2022-01-12
 
 Breaking
