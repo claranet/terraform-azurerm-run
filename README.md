@@ -83,6 +83,10 @@ module "global_run" {
 
   tenant_id                        = var.azure_tenant_id
   monitoring_function_splunk_token = "xxxxxx"
+  monitoring_function_metrics_extra_dimensions = {
+    env           = var.environment
+    sfx_monitored = "true"
+  }
 
   extra_tags = {
     foo = "bar"
@@ -216,6 +220,7 @@ module "global_run" {
 | monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
+| monitoring\_function\_storage\_queries\_table\_name | Name of the table in the Storage Account, empty if connection string provided |
 <!-- END_TF_DOCS -->
 ## Related documentation
 
