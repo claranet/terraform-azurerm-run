@@ -6,6 +6,9 @@ Changed:
 Added
   * AZ-664: Add FAME queries table name output
 
+Fixed
+  * AZ-665: Fix FAME backup queries when logs stored in AzureDiagnostics table
+
 # v4.5.0 - 2022-01-12
 
 Breaking
