@@ -8,6 +8,7 @@ Added
 
 Fixed
   * AZ-665: Fix FAME backup queries when logs stored in AzureDiagnostics table
+  * AZ-665: Add time range all log queries
 
 # v4.5.0 - 2022-01-12
 

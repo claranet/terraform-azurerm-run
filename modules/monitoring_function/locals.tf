@@ -13,6 +13,7 @@ locals {
       Query : <<EOQ
         AzureDiagnostics
         | where ResourceType == "APPLICATIONGATEWAYS" and OperationName == "ApplicationGatewayAccess"
+        | where TimeGenerated > ago(20m)
         | summarize metric_value=dcount(instanceId_s) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
@@ -68,6 +69,7 @@ locals {
         | where OperationName == "IKELogEvent"
         | parse Message with * "Messid : " MessageId
         | where substring(Message, 1, 4) == "SEND"
+        | where TimeGenerated > ago(20m)
         | join (AzureDiagnostics
             | where Category == "IKEDiagnosticLog"
             | where OperationName == "IKELogEvent"
