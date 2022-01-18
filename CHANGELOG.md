@@ -1,4 +1,4 @@
-# Unreleased
+# v4.6.0 - 2022-01-18
 
 Changed:
   * AZ-664: Update README with FAME extra dimensions
