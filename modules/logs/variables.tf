@@ -31,12 +31,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Extra tags to add"
   type        = map(string)
@@ -46,22 +40,10 @@ variable "extra_tags" {
 ###############################
 # Log Management variables
 ###############################
-variable "log_analytics_workspace_name_prefix" {
-  description = "Log Analytics name prefix"
-  type        = string
-  default     = ""
-}
-
 variable "log_analytics_workspace_extra_tags" {
   description = "Extra tags to add to the Log Analytics Workspace"
   type        = map(string)
   default     = {}
-}
-
-variable "log_analytics_workspace_custom_name" {
-  description = "Azure Log Analytics Workspace custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
 }
 
 variable "log_analytics_workspace_sku" {
@@ -80,18 +62,6 @@ variable "log_analytics_workspace_enable_iis_logs" {
   description = "Specifies if IIS logs should be collected for linked Virtual Machines"
   type        = bool
   default     = false
-}
-
-variable "logs_storage_account_name_prefix" {
-  description = "Storage Account name prefix"
-  type        = string
-  default     = ""
-}
-
-variable "logs_storage_account_custom_name" {
-  description = "Storage Account for logs custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
 }
 
 variable "logs_storage_account_extra_tags" {
@@ -124,12 +94,6 @@ variable "logs_storage_account_enable_appservices_container" {
   default     = false
 }
 
-variable "logs_storage_account_appservices_container_name" {
-  description = "Name of the container in which App Services logs are stored"
-  type        = string
-  default     = "app-services"
-}
-
 variable "logs_storage_account_enable_advanced_threat_protection" {
   description = "Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
   type        = bool
@@ -146,12 +110,6 @@ variable "logs_storage_account_enable_archived_logs_fileshare" {
   description = "Enable/disable archived-logs file share creation"
   type        = bool
   default     = false
-}
-
-variable "logs_storage_account_archived_logs_fileshare_name" {
-  description = "Name of the file share in which externalized logs are stored"
-  type        = string
-  default     = "archived-logs"
 }
 
 variable "logs_storage_account_archived_logs_fileshare_quota" {

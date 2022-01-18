@@ -86,13 +86,13 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.21 |
+| azurerm | >= 2.57 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 4.1.0 |
+| function | claranet/function-app/azurerm | 5.0.0 |
 
 ## Resources
 
@@ -107,6 +107,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 |------|-------------|------|---------|:--------:|
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
 | client\_name | Client name | `string` | n/a | yes |
+| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_application\_settings | Extra application settings to set on monitoring function | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
@@ -114,17 +115,19 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries | `string` | n/a | yes |
-| logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
-| logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| name\_prefix | Name prefix for all resources generated name | `string` | `"fame"` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account | `bool` | `false` | no |
 | storage\_account\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
 
 ## Outputs

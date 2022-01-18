@@ -99,13 +99,13 @@ module "global_run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.48 |
+| azurerm | >= 2.57 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| keyvault | claranet/keyvault/azurerm | 4.4.0 |
+| keyvault | claranet/keyvault/azurerm | 5.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring_function | n/a |
 
@@ -173,10 +173,12 @@ module "global_run" {
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
-| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | tenant\_id | Tenant ID | `string` | n/a | yes |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 
 ## Outputs
 

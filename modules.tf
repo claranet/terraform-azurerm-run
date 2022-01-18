@@ -8,8 +8,11 @@ module "logs" {
   stack               = var.stack
   resource_group_name = coalesce(var.logs_resource_group_name, var.resource_group_name)
 
-  name_prefix = coalesce(var.name_prefix, "logs")
-  extra_tags  = var.extra_tags
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = coalesce(var.name_prefix, "logs")
+  name_suffix    = var.name_suffix
+
+  extra_tags = var.extra_tags
 
   logs_storage_account_name_prefix                       = var.logs_storage_account_name_prefix
   logs_storage_account_custom_name                       = var.logs_storage_account_custom_name
@@ -40,7 +43,7 @@ module "logs" {
 
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "4.4.0"
+  version = "5.0.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -50,9 +53,13 @@ module "keyvault" {
   stack               = var.stack
   tenant_id           = var.tenant_id
 
-  custom_name = var.keyvault_custom_name
-  sku_name    = var.keyvault_sku
-  extra_tags  = merge(var.extra_tags, var.keyvault_extra_tags)
+  custom_name    = var.keyvault_custom_name
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = var.name_prefix
+  name_suffix    = var.name_suffix
+
+  sku_name   = var.keyvault_sku
+  extra_tags = merge(var.extra_tags, var.keyvault_extra_tags)
 
   admin_objects_ids  = var.keyvault_admin_objects_ids
   reader_objects_ids = var.keyvault_reader_objects_ids
@@ -86,6 +93,10 @@ module "monitoring_function" {
   location_short      = var.location_short
   resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
   stack               = var.stack
+
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = coalesce(var.name_prefix, "fame")
+  name_suffix    = var.name_suffix
 
   storage_account_name             = var.monitoring_function_storage_account_custom_name
   function_app_custom_name         = var.monitoring_function_function_app_custom_name
