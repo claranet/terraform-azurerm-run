@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-672: Add FAME FrontDoor queries
+
 # v5.1.2 - 2022-04-21
 
 Fixed
