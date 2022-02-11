@@ -31,12 +31,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 variable "log_analytics_workspace_guid" {
   description = "GUID of the Log Analytics Workspace on which evaluate the queries"
   type        = string

@@ -24,12 +24,6 @@ variable "monitoring_function_logs_metrics_categories" {
   default     = null
 }
 
-variable "monitoring_function_extra_tags" {
-  description = "Monitoring function extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string

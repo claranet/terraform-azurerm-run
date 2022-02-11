@@ -13,12 +13,6 @@ variable "log_analytics_workspace_name_prefix" {
   default     = ""
 }
 
-variable "log_analytics_workspace_extra_tags" {
-  description = "Extra tags to add to the Log Analytics Workspace"
-  type        = map(string)
-  default     = {}
-}
-
 variable "log_analytics_workspace_custom_name" {
   description = "Azure Log Analytics Workspace custom name. Empty by default, using naming convention."
   type        = string
@@ -53,12 +47,6 @@ variable "logs_storage_account_custom_name" {
   description = "Storage Account for logs custom name. Empty by default, using naming convention."
   type        = string
   default     = ""
-}
-
-variable "logs_storage_account_extra_tags" {
-  description = "Extra tags to add to Storage Account"
-  type        = map(string)
-  default     = {}
 }
 
 variable "logs_storage_account_kind" {

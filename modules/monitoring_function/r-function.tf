@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "5.0.0"
+  version = "5.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -36,6 +36,8 @@ module "function" {
   custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 
   storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
+
+  default_tags_enabled = var.default_tags_enabled
 
   extra_tags = merge(
     local.default_tags,
