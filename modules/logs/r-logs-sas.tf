@@ -1,8 +1,6 @@
 module "log_sas_token" {
-  # source  = "claranet/storage-sas-token/azurerm"
-  # version = "4.1.0"
-
-  source = "git@git.fr.clara.net:claranet/projects/cloud/azure/terraform/modules/storage-sas-token.git?ref=AZ-674_fix_sa_ds_bug"
+  source  = "claranet/storage-sas-token/azurerm"
+  version = "4.2.0"
 
   storage_account_connection_string = azurerm_storage_account.storage_logs.primary_connection_string
 
