@@ -77,7 +77,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| log\_sas\_token | git@git.fr.clara.net:claranet/projects/cloud/azure/terraform/modules/storage-sas-token.git | AZ-674_fix_sa_ds_bug |
+| log\_sas\_token | claranet/storage-sas-token/azurerm | 4.2.0 |
 
 ## Resources
 
