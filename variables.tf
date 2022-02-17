@@ -35,9 +35,3 @@ variable "location_short" {
   description = "Short string for Azure location."
   type        = string
 }
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}

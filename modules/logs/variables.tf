@@ -31,21 +31,9 @@ variable "location_short" {
   type        = string
 }
 
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # Log Management variables
 ###############################
-variable "log_analytics_workspace_extra_tags" {
-  description = "Extra tags to add to the Log Analytics Workspace"
-  type        = map(string)
-  default     = {}
-}
-
 variable "log_analytics_workspace_sku" {
   description = "Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03)."
   type        = string
@@ -62,12 +50,6 @@ variable "log_analytics_workspace_enable_iis_logs" {
   description = "Specifies if IIS logs should be collected for linked Virtual Machines"
   type        = bool
   default     = false
-}
-
-variable "logs_storage_account_extra_tags" {
-  description = "Extra tags to add to Storage Account"
-  type        = map(string)
-  default     = {}
 }
 
 variable "logs_storage_account_kind" {

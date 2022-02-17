@@ -1,7 +1,10 @@
-# Unreleased 
+# Unreleased
 
-Fixed 
-  * AZ-674 : Fix SAS token generation bug (datasource that reference a non created resource). Clean no more needed module variables.
+Added
+  * AZ-615: Add an option to enable or disable default tags
+
+Fixed
+  * AZ-674: Fix SAS token generation bug (datasource that reference a non created resource). Clean no more needed module variables.
 
 # v5.0.0 - 2022-01-18
 
@@ -31,7 +34,7 @@ Changed
   * AZ-650: Refactor `log` module and re-use our existing `storage-sas-token` module instead of inline script
 
 Added
-  * AZ-569: Allow activating advanced threat protection on FAME function app's storage account 
+  * AZ-569: Allow activating advanced threat protection on FAME function app's storage account
 
 # v4.4.0 - 2021-09-07
 
@@ -94,7 +97,7 @@ Added
   * AZ-233: Add lifecycle management on storage account
 
 # v3.0.0 - 2020-07-22
-  
+
 Breaking
   * AZ-198: Upgrade module to be compliant with AzureRM 2.0
 

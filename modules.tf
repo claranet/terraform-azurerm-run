@@ -12,8 +12,6 @@ module "logs" {
   name_prefix    = coalesce(var.name_prefix, "logs")
   name_suffix    = var.name_suffix
 
-  extra_tags = var.extra_tags
-
   logs_storage_account_name_prefix                       = var.logs_storage_account_name_prefix
   logs_storage_account_custom_name                       = var.logs_storage_account_custom_name
   logs_storage_account_extra_tags                        = var.logs_storage_account_extra_tags
@@ -39,11 +37,15 @@ module "logs" {
   tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than
   tier_to_archive_after_days_since_modification_greater_than = var.logs_tier_to_archive_after_days_since_modification_greater_than
   delete_after_days_since_modification_greater_than          = var.logs_delete_after_days_since_modification_greater_than
+
+  default_tags_enabled = var.default_tags_enabled
+
+  extra_tags = var.extra_tags
 }
 
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "5.0.0"
+  version = "5.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -58,8 +60,7 @@ module "keyvault" {
   name_prefix    = var.name_prefix
   name_suffix    = var.name_suffix
 
-  sku_name   = var.keyvault_sku
-  extra_tags = merge(var.extra_tags, var.keyvault_extra_tags)
+  sku_name = var.keyvault_sku
 
   admin_objects_ids  = var.keyvault_admin_objects_ids
   reader_objects_ids = var.keyvault_reader_objects_ids
@@ -80,6 +81,10 @@ module "keyvault" {
   purge_protection_enabled = true
 
   network_acls = var.keyvault_network_acls
+
+  default_tags_enabled = var.default_tags_enabled
+
+  extra_tags = merge(var.extra_tags, var.keyvault_extra_tags)
 }
 
 module "monitoring_function" {
@@ -119,6 +124,8 @@ module "monitoring_function" {
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
   storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
+
+  default_tags_enabled = var.default_tags_enabled
 
   extra_tags = var.monitoring_function_extra_tags
 }

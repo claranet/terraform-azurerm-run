@@ -13,12 +13,6 @@ variable "keyvault_sku" {
   default     = "standard"
 }
 
-variable "keyvault_extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 variable "keyvault_custom_name" {
   description = "Name of the Key Vault, generated if not set."
   type        = string

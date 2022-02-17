@@ -1,9 +1,4 @@
 locals {
-  default_tags = {
-    env   = var.environment
-    stack = var.stack
-  }
-
   extra_dimensions = join(",", [for k, v in var.metrics_extra_dimensions : format("%s=%s", k, v)])
 
   log_queries = {
