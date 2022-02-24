@@ -28,12 +28,6 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "automation_account_extra_tags" {
-  description = "Extra tags to add to automation account"
-  type        = map(string)
-  default     = {}
-}
-
 variable "automation_account_sku" {
   description = "Automation account Sku"
   type        = string
@@ -56,10 +50,4 @@ variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID that will be connected with the automation account"
   type        = string
   default     = ""
-}
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
 }
