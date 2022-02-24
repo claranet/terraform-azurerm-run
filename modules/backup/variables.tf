@@ -32,12 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Extra tags to add"
   type        = map(string)
@@ -47,11 +41,6 @@ variable "extra_tags" {
 ###############################
 # Azure Recovery Vault variables
 ###############################
-variable "recovery_vault_custom_name" {
-  description = "Azure Recovery Vault custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "recovery_vault_extra_tags" {
   description = "Extra tags to add to recovery vault"
@@ -69,12 +58,6 @@ variable "recovery_vault_identity_type" {
   description = "Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`."
   type        = string
   default     = "SystemAssigned"
-}
-
-variable "vm_backup_policy_custom_name" {
-  description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
 }
 
 variable "vm_backup_policy_timezone" {
@@ -117,12 +100,6 @@ variable "vm_backup_yearly" {
   description = "Map to configure the yearly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
   type        = any
   default     = {}
-}
-
-variable "file_share_backup_policy_custom_name" {
-  description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
 }
 
 variable "file_share_backup_policy_timezone" {
