@@ -1,14 +1,10 @@
-location="fr-central"
-location_short="frc"
-client_name="test"
-environment="test"
-stack="ci"
-resource_group_name="rg-test"
-name_prefix="ci"
-logs_analytics_workspace_id = "law-test"
-logs_storage_account_id = "sto-test"
+location            = "fr-central"
+location_short      = "frc"
+client_name         = "test"
+environment         = "test"
+stack               = "ci"
+resource_group_name = "rg-test"
+name_prefix         = "ci"
 extra_tags = {
   foo = "bar"
 }
-recovery_vault_identity_type = "SystemAssigned"
-update_management_os_list = []
