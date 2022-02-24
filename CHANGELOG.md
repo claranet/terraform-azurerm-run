@@ -1,3 +1,11 @@
+# unreleased
+
+Breaking
+  * AZ-515: Option to use Azure CAF naming provider to name resources
+
+Changed
+  * AZ-589: Bump `diagnostics` module to latest `v5.0.0`
+
 # v4.4.0 - 2021-11-23
 
 Fixed

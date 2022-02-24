@@ -40,12 +40,6 @@ variable "automation_account_sku" {
   default     = "Basic"
 }
 
-variable "custom_automation_account_name" {
-  description = "Automation account custom name"
-  type        = string
-  default     = ""
-}
-
 variable "log_analytics_resource_group_name" {
   description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
   type        = string
