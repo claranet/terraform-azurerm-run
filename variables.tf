@@ -153,8 +153,25 @@ variable "file_share_backup_yearly" {
 }
 
 ###############################
-# Log & Diagnostics
+# Azure Automation Account variables
 ###############################
+variable "automation_account_sku" {
+  description = "Automation account Sku"
+  type        = string
+  default     = "Basic"
+}
+
+variable "automation_account_extra_tags" {
+  description = "Extra tags for Automation Account. Empty by default."
+  type        = map(string)
+  default     = {}
+}
+
+variable "log_analytics_resource_group_name" {
+  description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
+  type        = string
+  default     = null
+}
 
 variable "log_analytics_workspace_link_enabled" {
   description = "Enable Log Analytics Workspace that will be connected with the automation account"
@@ -165,50 +182,6 @@ variable "log_analytics_workspace_link_enabled" {
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account"
   type        = string
-}
-
-variable "logs_destinations_ids" {
-  type        = list(string)
-  description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
-}
-
-variable "logs_categories" {
-  type        = list(string)
-  description = "Log categories to send to destinations."
-  default     = null
-}
-
-variable "logs_metrics_categories" {
-  type        = list(string)
-  description = "Metrics categories to send to destinations."
-  default     = null
-}
-
-variable "logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account"
-  default     = 30
-}
-
-###############################
-# Azure Automation Account variables
-###############################
-variable "automation_account_sku" {
-  description = "Automation account Sku"
-  type        = string
-  default     = "Basic"
-}
-
-variable "log_analytics_resource_group_name" {
-  description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
-  type        = string
-  default     = null
-}
-
-variable "automation_account_extra_tags" {
-  description = "Extra tags for Automation Account. Empty by default."
-  type        = map(string)
-  default     = {}
 }
 
 ###############################
@@ -346,6 +319,7 @@ variable "windows_update_management_configuration" {
 ###############################
 # VM Monitoring variables
 ###############################
+
 variable "data_collection_syslog_facilities_names" {
   description = "List of syslog to retrieve in Data Collection Rule"
   type        = list(string)
