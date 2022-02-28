@@ -32,12 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Additional tags to add"
   type        = map(string)
@@ -141,12 +135,6 @@ variable "linux_update_management_configuration" {
   }
 }
 
-variable "linux_update_management_configuration_name" {
-  description = "Custom configuration name for Linux Update management"
-  type        = string
-  default     = "Standard Linux Update Schedule"
-}
-
 ## Windows specific Update Management variables
 
 variable "windows_update_management_duration" {
@@ -188,11 +176,4 @@ variable "windows_update_management_configuration" {
     included_kb_numbers    = []
     excluded_kb_numbers    = []
   }
-}
-
-variable "windows_update_management_configuration_name" {
-
-  description = "Custom configuration name for Windows Update management"
-  type        = string
-  default     = "Standard Windows Update Schedule"
 }

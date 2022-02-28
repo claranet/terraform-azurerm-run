@@ -118,7 +118,8 @@ module "update_management" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.57.0 |
+| azurecaf | ~> 1.1 |
+| azurerm | >= 2.57 |
 
 ## Modules
 
@@ -128,6 +129,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurecaf_name.update](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_log_analytics_solution.update_management](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
 | [azurerm_template_deployment.update_config_standard_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/template_deployment) | resource |
 | [azurerm_template_deployment.update_config_standard_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/template_deployment) | resource |
@@ -152,7 +154,8 @@ No modules.
 | location | Azure location | `string` | n/a | yes |
 | location\_short | Short string for Azure location | `string` | n/a | yes |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account | `string` | n/a | yes |
-| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | update\_management\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H) | `string` | `"PT2H"` | no |
@@ -161,6 +164,7 @@ No modules.
 | update\_management\_scope | Scope of the update management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `null` | no |
 | update\_management\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre> | `map(any)` | `{}` | no |
 | update\_management\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any` | `string` | `"Any"` | no |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. | `bool` | `true` | no |
 | windows\_update\_management\_configuration | Windows specific update management configuration. Possible values for reboot\_setting are `IfRequired`, `RebootOnly`, `Never`, `Always`. More informations on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#windowsproperties) | `any` | <pre>{<br>  "excluded_kb_numbers": [],<br>  "included_kb_numbers": [],<br>  "reboot_setting": "IfRequired",<br>  "update_classifications": "Critical, Security"<br>}</pre> | no |
 | windows\_update\_management\_configuration\_name | Custom configuration name for Windows Update management | `string` | `"Standard Windows Update Schedule"` | no |
 | windows\_update\_management\_duration | To set the maintenance window for Windows machines, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H) | `string` | `null` | no |
