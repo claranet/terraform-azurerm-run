@@ -95,6 +95,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_name | Custom name, generated if not set | `string` | `""` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
