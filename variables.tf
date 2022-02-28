@@ -32,12 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Extra tags to add"
   type        = map(string)
@@ -47,11 +41,6 @@ variable "extra_tags" {
 ###############################
 # Azure Recovery Vault variables
 ###############################
-variable "recovery_vault_custom_name" {
-  description = "Azure Recovery Vault custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "recovery_vault_sku" {
   description = "Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`."
@@ -74,12 +63,6 @@ variable "recovery_vault_extra_tags" {
 ###############################
 # VM Backup
 ###############################
-
-variable "vm_backup_policy_custom_name" {
-  description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "vm_backup_policy_timezone" {
   description = "Specifies the timezone for schedules. Defaults to `UTC`."
@@ -126,12 +109,6 @@ variable "vm_backup_yearly" {
 ###############################
 # File Share backup
 ###############################
-
-variable "file_share_backup_policy_custom_name" {
-  description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "file_share_backup_policy_timezone" {
   description = "Specifies the timezone for file share backup schedules. Defaults to `UTC`."
@@ -222,12 +199,6 @@ variable "automation_account_sku" {
   default     = "Basic"
 }
 
-variable "custom_automation_account_name" {
-  description = "Automation account custom name"
-  type        = string
-  default     = ""
-}
-
 variable "log_analytics_resource_group_name" {
   description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
   type        = string
@@ -243,11 +214,6 @@ variable "automation_account_extra_tags" {
 ###############################
 # Update management variables
 ###############################
-variable "update_management_name_prefix" {
-  description = "Name prefix to apply on Update Management resources"
-  type        = string
-  default     = null
-}
 
 variable "update_management_os_list" {
   description = "List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management."
@@ -334,12 +300,6 @@ variable "linux_update_management_configuration" {
   }
 }
 
-variable "linux_update_management_config_name" {
-  description = "Custom configuration name for Linux Update management"
-  type        = string
-  default     = "Standard Linux Update Schedule"
-}
-
 ## Windows specific Update Management variables
 
 variable "windows_update_management_duration" {
@@ -381,13 +341,6 @@ variable "windows_update_management_configuration" {
     included_kb_numbers    = []
     excluded_kb_numbers    = []
   }
-}
-
-variable "windows_update_management_configuration_name" {
-
-  description = "Custom configuration name for Windows Update management"
-  type        = string
-  default     = "Standard Windows Update Schedule"
 }
 
 ###############################

@@ -8,8 +8,12 @@ module "backup" {
   stack          = var.stack
 
   resource_group_name = var.resource_group_name
-  name_prefix         = var.name_prefix
-  extra_tags          = var.extra_tags
+
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = var.name_prefix
+  name_suffix    = var.name_suffix
+
+  extra_tags = var.extra_tags
 
   recovery_vault_custom_name   = var.recovery_vault_custom_name
   recovery_vault_sku           = var.recovery_vault_sku
@@ -52,12 +56,17 @@ module "automation_account" {
   stack          = var.stack
 
   resource_group_name = var.resource_group_name
-  extra_tags          = var.extra_tags
+
+  use_caf_naming                 = var.use_caf_naming
+  name_prefix                    = var.name_prefix
+  name_suffix                    = var.name_suffix
+  custom_automation_account_name = var.custom_automation_account_name
+
+  extra_tags = var.extra_tags
 
   automation_account_sku        = var.automation_account_sku
   automation_account_extra_tags = var.automation_account_extra_tags
 
-  custom_automation_account_name       = var.custom_automation_account_name
   log_analytics_resource_group_name    = var.log_analytics_resource_group_name
   log_analytics_workspace_link_enabled = var.log_analytics_workspace_link_enabled
   log_analytics_workspace_id           = var.log_analytics_workspace_id
@@ -78,7 +87,10 @@ module "update_management" {
   stack          = var.stack
 
   resource_group_name = var.resource_group_name
-  name_prefix         = try(coalesce(var.update_management_name_prefix, var.name_prefix), "")
+
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = try(coalesce(var.update_management_name_prefix, var.name_prefix), "")
+  name_suffix    = var.name_suffix
 
   automation_account_name    = module.automation_account.automation_account_name
   log_analytics_workspace_id = var.log_analytics_workspace_id
@@ -121,10 +133,16 @@ module "vm_monitoring" {
   stack          = var.stack
 
   resource_group_name = var.resource_group_name
-  extra_tags          = var.extra_tags
+
+  use_caf_naming = var.use_caf_naming
+  name_prefix    = var.name_prefix
+  name_suffix    = var.name_suffix
+  custom_name    = var.dcr_custom_name
 
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
   syslog_facilities_names = var.data_collection_syslog_facilities_names
   syslog_levels           = var.data_collection_syslog_levels
+
+  extra_tags = var.extra_tags
 }
