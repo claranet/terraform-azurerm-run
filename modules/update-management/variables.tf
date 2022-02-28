@@ -32,11 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "extra_tags" {
-  description = "Additional tags to add"
-  type        = map(string)
-  default     = null
-}
 ###############################
 # Update management variables
 ###############################

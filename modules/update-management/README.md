@@ -141,6 +141,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | automation\_account\_name | Automation account name | `string` | n/a | yes |
 | client\_name | Client name | `string` | n/a | yes |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
