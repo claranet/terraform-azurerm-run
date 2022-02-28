@@ -32,12 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # Azure Recovery Vault variables
 ###############################
@@ -52,12 +46,6 @@ variable "recovery_vault_identity_type" {
   description = "Azure Recovery Vault identity type. Possible values include: `null`, ``SystemAssigned`. Default to `SystemAssigned`."
   type        = string
   default     = "SystemAssigned"
-}
-
-variable "recovery_vault_extra_tags" {
-  description = "Extra tags for Azure Recovery Vault. Empty by default."
-  type        = map(string)
-  default     = {}
 }
 
 ###############################
@@ -159,12 +147,6 @@ variable "automation_account_sku" {
   description = "Automation account Sku"
   type        = string
   default     = "Basic"
-}
-
-variable "automation_account_extra_tags" {
-  description = "Extra tags for Automation Account. Empty by default."
-  type        = map(string)
-  default     = {}
 }
 
 variable "log_analytics_resource_group_name" {

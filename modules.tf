@@ -13,7 +13,8 @@ module "backup" {
   name_prefix    = var.name_prefix
   name_suffix    = var.name_suffix
 
-  extra_tags = var.extra_tags
+  default_tags_enabled = var.default_tags_enabled
+  extra_tags           = var.extra_tags
 
   recovery_vault_custom_name   = var.recovery_vault_custom_name
   recovery_vault_sku           = var.recovery_vault_sku
@@ -62,7 +63,8 @@ module "automation_account" {
   name_suffix                    = var.name_suffix
   custom_automation_account_name = var.custom_automation_account_name
 
-  extra_tags = var.extra_tags
+  default_tags_enabled = var.default_tags_enabled
+  extra_tags           = var.extra_tags
 
   automation_account_sku        = var.automation_account_sku
   automation_account_extra_tags = var.automation_account_extra_tags
@@ -120,7 +122,8 @@ module "update_management" {
   windows_update_management_configuration           = var.windows_update_management_configuration
   windows_update_management_configuration_name      = var.windows_update_management_configuration_name
 
-  extra_tags = var.extra_tags
+  default_tags_enabled = var.default_tags_enabled
+  extra_tags           = var.extra_tags
 }
 
 module "vm_monitoring" {
@@ -144,5 +147,6 @@ module "vm_monitoring" {
   syslog_facilities_names = var.data_collection_syslog_facilities_names
   syslog_levels           = var.data_collection_syslog_levels
 
-  extra_tags = var.extra_tags
+  default_tags_enabled = var.default_tags_enabled
+  extra_tags           = var.extra_tags
 }

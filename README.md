@@ -133,13 +133,14 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_extra\_tags | Extra tags for Automation Account. Empty by default. | `map(string)` | `{}` | no |
+| automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
 | data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "UUCP"<br>]</pre> | no |
 | data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | dcr\_custom\_name | VM Monitoring - Data Collection rule custom name. | `string` | `""` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
@@ -170,7 +171,7 @@ No resources.
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| recovery\_vault\_extra\_tags | Extra tags for Azure Recovery Vault. Empty by default. | `map(string)` | `{}` | no |
+| recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
