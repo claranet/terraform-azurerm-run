@@ -56,7 +56,7 @@ module "automation-account" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | >= 2.57 |
+| azurerm | >= 2.96.0 |
 
 ## Modules
 
@@ -77,6 +77,7 @@ module "automation-account" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
+| automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | `string` | `"SystemAssigned"` | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |

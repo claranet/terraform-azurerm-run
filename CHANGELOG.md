@@ -1,3 +1,11 @@
+# Unreleased
+
+Added
+  * AZ-685: Added `identity` variable for automation module
+
+Breaking
+  * AZ-685: Require AzureRM provider `v2.96`
+
 # v5.0.0 - 2022-03-11
 
 Breaking

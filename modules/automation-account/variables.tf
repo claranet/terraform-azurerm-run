@@ -34,6 +34,12 @@ variable "automation_account_sku" {
   default     = "Basic"
 }
 
+variable "automation_account_identity_type" {
+  description = "Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`."
+  type        = string
+  default     = "SystemAssigned"
+}
+
 variable "log_analytics_resource_group_name" {
   description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
   type        = string
