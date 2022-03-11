@@ -78,18 +78,20 @@ module "az-backup" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.57.0 |
+| azurecaf | ~> 1.1 |
+| azurerm | >= 2.57 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | 4.0.3 |
+| diagnostics | claranet/diagnostic-settings/azurerm | 5.0.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [azurecaf_name.vault](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_backup_policy_file_share.file_share_backup_policy](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share) | resource |
 | [azurerm_backup_policy_vm.vm_backup_policy](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm) | resource |
 | [azurerm_recovery_services_vault.vault](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/recovery_services_vault) | resource |
@@ -99,6 +101,8 @@ module "az-backup" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
+| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
@@ -115,13 +119,15 @@ module "az-backup" {
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
-| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to recovery vault | `map(string)` | `{}` | no |
 | recovery\_vault\_identity\_type | Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `recovery_vault_custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | vm\_backup\_daily\_policy\_retention | The number of daily VM backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
 | vm\_backup\_monthly | Map to configure the monthly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly | `any` | `{}` | no |
 | vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |

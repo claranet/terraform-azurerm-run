@@ -32,26 +32,9 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # Azure Recovery Vault variables
 ###############################
-variable "recovery_vault_custom_name" {
-  description = "Azure Recovery Vault custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "recovery_vault_sku" {
   description = "Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`."
@@ -65,21 +48,9 @@ variable "recovery_vault_identity_type" {
   default     = "SystemAssigned"
 }
 
-variable "recovery_vault_extra_tags" {
-  description = "Extra tags for Azure Recovery Vault. Empty by default."
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # VM Backup
 ###############################
-
-variable "vm_backup_policy_custom_name" {
-  description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
 
 variable "vm_backup_policy_timezone" {
   description = "Specifies the timezone for schedules. Defaults to `UTC`."
@@ -127,12 +98,6 @@ variable "vm_backup_yearly" {
 # File Share backup
 ###############################
 
-variable "file_share_backup_policy_custom_name" {
-  description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
-
 variable "file_share_backup_policy_timezone" {
   description = "Specifies the timezone for file share backup schedules. Defaults to `UTC`."
   type        = string
@@ -176,8 +141,19 @@ variable "file_share_backup_yearly" {
 }
 
 ###############################
-# Log & Diagnostics
+# Azure Automation Account variables
 ###############################
+variable "automation_account_sku" {
+  description = "Automation account Sku"
+  type        = string
+  default     = "Basic"
+}
+
+variable "log_analytics_resource_group_name" {
+  description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
+  type        = string
+  default     = null
+}
 
 variable "log_analytics_workspace_link_enabled" {
   description = "Enable Log Analytics Workspace that will be connected with the automation account"
@@ -190,64 +166,9 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
-variable "logs_destinations_ids" {
-  type        = list(string)
-  description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
-}
-
-variable "logs_categories" {
-  type        = list(string)
-  description = "Log categories to send to destinations."
-  default     = null
-}
-
-variable "logs_metrics_categories" {
-  type        = list(string)
-  description = "Metrics categories to send to destinations."
-  default     = null
-}
-
-variable "logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account"
-  default     = 30
-}
-
-###############################
-# Azure Automation Account variables
-###############################
-variable "automation_account_sku" {
-  description = "Automation account Sku"
-  type        = string
-  default     = "Basic"
-}
-
-variable "custom_automation_account_name" {
-  description = "Automation account custom name"
-  type        = string
-  default     = ""
-}
-
-variable "log_analytics_resource_group_name" {
-  description = "Log Analytics Workspace resource group name (if different from `resource_group_name` variable.)"
-  type        = string
-  default     = null
-}
-
-variable "automation_account_extra_tags" {
-  description = "Extra tags for Automation Account. Empty by default."
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # Update management variables
 ###############################
-variable "update_management_name_prefix" {
-  description = "Name prefix to apply on Update Management resources"
-  type        = string
-  default     = null
-}
 
 variable "update_management_os_list" {
   description = "List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management."
@@ -334,12 +255,6 @@ variable "linux_update_management_configuration" {
   }
 }
 
-variable "linux_update_management_config_name" {
-  description = "Custom configuration name for Linux Update management"
-  type        = string
-  default     = "Standard Linux Update Schedule"
-}
-
 ## Windows specific Update Management variables
 
 variable "windows_update_management_duration" {
@@ -383,16 +298,10 @@ variable "windows_update_management_configuration" {
   }
 }
 
-variable "windows_update_management_configuration_name" {
-
-  description = "Custom configuration name for Windows Update management"
-  type        = string
-  default     = "Standard Windows Update Schedule"
-}
-
 ###############################
 # VM Monitoring variables
 ###############################
+
 variable "data_collection_syslog_facilities_names" {
   description = "List of syslog to retrieve in Data Collection Rule"
   type        = list(string)

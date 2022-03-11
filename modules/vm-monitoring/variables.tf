@@ -32,18 +32,6 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the metrics are sent"
   type        = string

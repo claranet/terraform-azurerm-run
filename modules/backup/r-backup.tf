@@ -1,5 +1,5 @@
 resource "azurerm_recovery_services_vault" "vault" {
-  name                = coalesce(var.recovery_vault_custom_name, local.vault_default_name)
+  name                = local.vault_name
   location            = var.location
   resource_group_name = var.resource_group_name
 

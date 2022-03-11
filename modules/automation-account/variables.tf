@@ -28,22 +28,10 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "automation_account_extra_tags" {
-  description = "Extra tags to add to automation account"
-  type        = map(string)
-  default     = {}
-}
-
 variable "automation_account_sku" {
   description = "Automation account Sku"
   type        = string
   default     = "Basic"
-}
-
-variable "custom_automation_account_name" {
-  description = "Automation account custom name"
-  type        = string
-  default     = ""
 }
 
 variable "log_analytics_resource_group_name" {
@@ -62,33 +50,4 @@ variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID that will be connected with the automation account"
   type        = string
   default     = ""
-}
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
-variable "logs_destinations_ids" {
-  type        = list(string)
-  description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
-}
-
-variable "logs_categories" {
-  type        = list(string)
-  description = "Log categories to send to destinations."
-  default     = null
-}
-
-variable "logs_metrics_categories" {
-  type        = list(string)
-  description = "Metrics categories to send to destinations."
-  default     = null
-}
-
-variable "logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account"
-  default     = 30
 }

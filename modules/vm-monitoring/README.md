@@ -73,7 +73,8 @@ module "vm-monitoring" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 1.40.0 |
+| azurecaf | ~> 1.1 |
+| azurerm | >= 1.40 |
 | null | >= 3 |
 
 ## Modules
@@ -84,6 +85,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurecaf_name.dcr](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [null_resource.data_collection_rule](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 
@@ -92,16 +94,20 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | client\_name | Client name | `string` | n/a | yes |
+| custom\_name | Custom name, generated if not set | `string` | `""` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the metrics are sent | `string` | n/a | yes |
-| name\_prefix | Name prefix for all resources generated name | `string` | `""` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "UUCP"<br>]</pre> | no |
 | syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. | `bool` | `true` | no |
 
 ## Outputs
 

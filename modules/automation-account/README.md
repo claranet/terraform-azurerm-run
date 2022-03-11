@@ -55,18 +55,20 @@ module "automation-account" {
 
 | Name | Version |
 |------|---------|
+| azurecaf | ~> 1.1 |
 | azurerm | >= 2.57 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | 4.0.3 |
+| diagnostics | claranet/diagnostic-settings/azurerm | 5.0.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [azurecaf_name.automation_account](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_automation_account.automation_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_account) | resource |
 | [azurerm_log_analytics_linked_service.link_workspace_automation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_linked_service) | resource |
 
@@ -78,6 +80,8 @@ module "automation-account" {
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
+| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Project environment | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
@@ -89,8 +93,11 @@ module "automation-account" {
 | logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
 | stack | Project stack name | `string` | n/a | yes |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_automation_account_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 
 ## Outputs
 

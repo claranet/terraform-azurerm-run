@@ -1,5 +1,5 @@
 resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
-  name                = coalesce(var.file_share_backup_policy_custom_name, local.file_share_policy_default_name)
+  name                = local.file_share_policy_name
   resource_group_name = var.resource_group_name
   recovery_vault_name = azurerm_recovery_services_vault.vault.name
 

@@ -32,32 +32,9 @@ variable "location_short" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Name prefix for all resources generated name"
-  type        = string
-  default     = ""
-}
-
-variable "extra_tags" {
-  description = "Extra tags to add"
-  type        = map(string)
-  default     = {}
-}
-
 ###############################
 # Azure Recovery Vault variables
 ###############################
-variable "recovery_vault_custom_name" {
-  description = "Azure Recovery Vault custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
-
-variable "recovery_vault_extra_tags" {
-  description = "Extra tags to add to recovery vault"
-  type        = map(string)
-  default     = {}
-}
 
 variable "recovery_vault_sku" {
   description = "Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`."
@@ -69,12 +46,6 @@ variable "recovery_vault_identity_type" {
   description = "Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`."
   type        = string
   default     = "SystemAssigned"
-}
-
-variable "vm_backup_policy_custom_name" {
-  description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
 }
 
 variable "vm_backup_policy_timezone" {
@@ -119,12 +90,6 @@ variable "vm_backup_yearly" {
   default     = {}
 }
 
-variable "file_share_backup_policy_custom_name" {
-  description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
-  type        = string
-  default     = ""
-}
-
 variable "file_share_backup_policy_timezone" {
   description = "Specifies the timezone for file share backup schedules. Defaults to `UTC`."
   type        = string
@@ -165,27 +130,4 @@ variable "file_share_backup_yearly" {
   description = "Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
   type        = any
   default     = {}
-}
-
-variable "logs_destinations_ids" {
-  type        = list(string)
-  description = "List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging."
-}
-
-variable "logs_categories" {
-  type        = list(string)
-  description = "Log categories to send to destinations."
-  default     = null
-}
-
-variable "logs_metrics_categories" {
-  type        = list(string)
-  description = "Metrics categories to send to destinations."
-  default     = null
-}
-
-variable "logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account"
-  default     = 30
 }
