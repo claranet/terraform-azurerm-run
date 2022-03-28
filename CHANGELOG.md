@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-717: Prevent using the azurerm v3 provider
+
 # v5.1.0 - 2022-02-17
 
 Added
