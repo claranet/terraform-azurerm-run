@@ -1,3 +1,9 @@
+# Unreleased
+
+Breaking
+  * AZ-717: Minimum Terraform version required `v1.0`
+  * AZ-717: Upgrade module to AzureRM provider `v3.0+`
+
 # v5.2.0 - 2022-04-29
 
 Added

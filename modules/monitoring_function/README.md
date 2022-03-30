@@ -86,7 +86,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 2.57 |
+| azurerm | ~> 3.0 |
 
 ## Modules
 
