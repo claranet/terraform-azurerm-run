@@ -1,11 +1,11 @@
-output "app_service_plan_id" {
-  description = "Id of the created App Service Plan"
-  value       = module.function.app_service_plan_id
+output "service_plan_id" {
+  description = "ID of the created Service Plan"
+  value       = module.function.service_plan_id
 }
 
-output "app_service_plan_name" {
-  description = "Name of the created App Service Plan"
-  value       = module.function.app_service_plan_name
+output "service_plan_name" {
+  description = "Name of the created Service Plan"
+  value       = module.function.service_plan_name
 }
 
 output "storage_account_id" {

@@ -1,6 +1,7 @@
 module "function" {
-  source  = "claranet/function-app/azurerm"
-  version = "6.0.1"
+  # source  = "claranet/function-app/azurerm"
+  # version = "6.0.1"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=AZ-717_provider_azure_v3"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -24,7 +25,8 @@ module "function" {
     SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
   }, var.extra_application_settings)
 
-  app_service_plan_os         = "Linux"
+  os_type                     = "Linux"
+  sku_name                    = "Y1"
   function_language_for_linux = "python"
   function_app_version        = 3
 

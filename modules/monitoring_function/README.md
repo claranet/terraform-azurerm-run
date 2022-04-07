@@ -98,7 +98,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 6.0.1 |
+| function | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git | AZ-717_provider_azure_v3 |
 
 ## Resources
 
@@ -145,8 +145,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Description |
 |------|-------------|
-| app\_service\_plan\_id | Id of the created App Service Plan |
-| app\_service\_plan\_name | Name of the created App Service Plan |
 | application\_insights\_app\_id | App id of the associated Application Insights |
 | application\_insights\_application\_type | Application Type of the associated Application Insights |
 | application\_insights\_id | Id of the associated Application Insights |
@@ -157,6 +155,8 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | function\_app\_identity | Identity block output of the Function App |
 | function\_app\_name | Name of the created Function App |
 | function\_app\_outbound\_ip\_addresses | Outbound IP adresses of the created Function App |
+| service\_plan\_id | ID of the created Service Plan |
+| service\_plan\_name | Name of the created Service Plan |
 | storage\_account\_id | Id of the associated Storage Account, empty if connection string provided |
 | storage\_account\_name | Name of the associated Storage Account, empty if connection string provided |
 | storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided |
