@@ -7,9 +7,14 @@ resource "azurerm_automation_account" "automation_account" {
   sku_name = var.automation_account_sku
   tags     = merge(local.default_tags, var.extra_tags, var.automation_account_extra_tags)
 
-  identity {
-    type = var.automation_account_identity_type
+    dynamic "identity" {
+    for_each = var.automation_account_identity_type != null ? ["fake"] : []
+    content {
+      type         = var.automation_account_identity_type.type
+      identity_ids = var.automation_account_identity_type.identity_ids
+    }
   }
+
 }
 
 # Link automation account to log analytics workspace

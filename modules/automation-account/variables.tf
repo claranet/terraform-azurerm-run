@@ -34,10 +34,17 @@ variable "automation_account_sku" {
   default     = "Basic"
 }
 
+## Identity variables
 variable "automation_account_identity_type" {
   description = "Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`."
-  type        = string
-  default     = "SystemAssigned"
+  type = object({
+    type         = string
+    identity_ids = list(string)
+  })
+  default = {
+    type         = "SystemAssigned"
+    identity_ids = []
+  }
 }
 
 variable "log_analytics_resource_group_name" {

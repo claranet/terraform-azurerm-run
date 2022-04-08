@@ -134,7 +134,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
-| automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | `string` | `"SystemAssigned"` | no |
+| automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br>    type         = string<br>    identity_ids = list(string)<br>  })</pre> | <pre>{<br>  "identity_ids": [],<br>  "type": "SystemAssigned"<br>}</pre> | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name | `string` | `""` | no |
@@ -209,6 +209,7 @@ No resources.
 | automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
+| automation\_account\_identity\_id | Identity block with principal ID |
 | automation\_account\_name | Azure Automation Account name |
 | data\_collection\_rule\_data | JSON data of the Azure Monitor Data Collection Rule |
 | data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule |
