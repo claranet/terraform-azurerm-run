@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-726: Fix version of AzureRM provider due to [bug introduced in v2.99](https://github.com/hashicorp/terraform-provider-azurerm/issues/15821)
+
 # v5.1.1 - 2022-03-29
 
 Changed
