@@ -28,7 +28,7 @@ output "automation_account_dsc_server_endpoint" {
   value       = azurerm_automation_account.automation_account.dsc_server_endpoint
 }
 
-output "automation_account_identity_id" {
-  description = "Identity block with principal ID"
+output "automation_account_identity" {
+  description = "Identity block with principal ID and tenant ID"
   value       = azurerm_automation_account.automation_account.identity
 }

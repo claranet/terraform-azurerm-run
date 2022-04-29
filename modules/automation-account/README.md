@@ -108,6 +108,6 @@ module "automation-account" {
 | automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
 | automation\_account\_id | Azure Automation Account ID |
-| automation\_account\_identity\_id | Identity block with principal ID |
+| automation\_account\_identity | Identity block with principal ID and tenant ID |
 | automation\_account\_name | Azure Automation Account name |
 <!-- END_TF_DOCS -->

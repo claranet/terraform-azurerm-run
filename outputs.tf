@@ -56,12 +56,6 @@ output "automation_account_dsc_secondary_access_key" {
   sensitive   = true
 }
 
-#output "automation_account_identity_id" {
-#  description = "Identity block with principal ID"
-#  value       = module.automation_account.automation_account.identity
-#}
-
-
 output "automation_account_dsc_server_endpoint" {
   description = "Azure Automation Account DSC Server Endpoint"
   value       = module.automation_account.automation_account_dsc_server_endpoint
