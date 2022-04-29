@@ -18,7 +18,7 @@ locals {
       Query : <<EOQ
         AddonAzureBackupJobs
         | union (AzureDiagnostics
-        | where Category == "AddonAzureBackupJobs")
+          | where Category == "AddonAzureBackupJobs")
         | extend id_parts  = split(ResourceId, '/')
         | extend subscription_id = id_parts[2]
         | extend recovery_vault_name = id_parts[8]
@@ -40,7 +40,7 @@ locals {
       Query : <<EOQ
         AddonAzureBackupJobs
         | union (AzureDiagnostics
-        | where Category == "AddonAzureBackupJobs")
+          | where Category == "AddonAzureBackupJobs")
         | extend id_parts  = split(ResourceId, '/')
         | extend subscription_id = id_parts[2]
         | extend recovery_vault_name = id_parts[8]
@@ -66,10 +66,10 @@ locals {
         | where substring(Message, 1, 4) == "SEND"
         | where TimeGenerated > ago(20m)
         | join (AzureDiagnostics
-        | where Category == "IKEDiagnosticLog"
-        | where OperationName == "IKELogEvent"
-        | parse Message with * "Messid : " MessageId
-        | where substring(Message, 1, 4) == "RECV") on $left.MessageId == $right.MessageId  and $left.ResourceId == $right.ResourceId
+          | where Category == "IKEDiagnosticLog"
+          | where OperationName == "IKELogEvent"
+          | parse Message with * "Messid : " MessageId
+          | where substring(Message, 1, 4) == "RECV") on $left.MessageId == $right.MessageId  and $left.ResourceId == $right.ResourceId
         | summarize metric_value=dcount(MessageId) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
