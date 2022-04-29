@@ -166,6 +166,19 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
+## Identity variables
+variable "automation_account_identity_type" {
+  description = "Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`."
+  type = object({
+    type         = string
+    identity_ids = list(string)
+  })
+  default = {
+    type         = "SystemAssigned"
+    identity_ids = []
+  }
+}
+
 ###############################
 # Update management variables
 ###############################

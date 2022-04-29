@@ -66,8 +66,9 @@ module "automation_account" {
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
 
-  automation_account_sku        = var.automation_account_sku
-  automation_account_extra_tags = var.automation_account_extra_tags
+  automation_account_sku           = var.automation_account_sku
+  automation_account_extra_tags    = var.automation_account_extra_tags
+  automation_account_identity_type = var.automation_account_identity_type
 
   log_analytics_resource_group_name    = var.log_analytics_resource_group_name
   log_analytics_workspace_link_enabled = var.log_analytics_workspace_link_enabled
