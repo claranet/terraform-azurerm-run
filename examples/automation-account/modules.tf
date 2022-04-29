@@ -39,7 +39,8 @@ module "automation_account" {
   stack               = var.stack
   environment         = var.environment
 
-  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
+  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  logs_destinations_ids      = [module.logs.log_analytics_workspace_id]
 
   extra_tags = {
     foo = "bar"
