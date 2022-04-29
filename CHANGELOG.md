@@ -1,4 +1,4 @@
-# Unreleased
+# v5.1.0 - 2022-04-29
 
 Added
   * AZ-685: Added `identity` variable for automation module
