@@ -33,11 +33,6 @@ output "log_analytics_workspace_secondary_key" {
   sensitive   = true
 }
 
-output "log_analytics_workspace_portal_url" {
-  description = "The Portal URL for the Log Analytics Workspace."
-  value       = module.logs.log_analytics_workspace_portal_url
-}
-
 output "logs_storage_account_id" {
   description = "Id of the dedicated Storage Account"
   value       = module.logs.logs_storage_account_id

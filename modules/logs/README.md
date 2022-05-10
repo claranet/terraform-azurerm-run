@@ -70,7 +70,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | ~> 2.1, < 2.99 |
+| azurerm | ~> 3.0 |
 | null | ~> 3 |
 
 ## Modules
@@ -140,7 +140,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
 | log\_analytics\_workspace\_name | The Log Analytics Workspace name. |
-| log\_analytics\_workspace\_portal\_url | The Portal URL for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
 | logs\_resource\_group\_name | Resource Group the logs resources belongs to |
