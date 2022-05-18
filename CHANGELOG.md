@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-588: Bump monitoring/function-app module to `v6.0.1`
+
 # v6.0.0 - 2022-05-10
 
 Breaking
