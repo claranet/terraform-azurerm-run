@@ -79,7 +79,7 @@ module "az-backup" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | >= 2.57 |
+| azurerm | ~> 3.0 |
 
 ## Modules
 

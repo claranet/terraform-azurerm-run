@@ -56,7 +56,7 @@ module "automation-account" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | ~> 2.96 |
+| azurerm | ~> 3.0 |
 
 ## Modules
 
