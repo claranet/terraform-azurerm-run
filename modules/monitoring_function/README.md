@@ -87,6 +87,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Version |
 |------|---------|
 | azurerm | ~> 3.1 |
+| http | >= 2.0 |
 
 ## Modules
 
@@ -100,6 +101,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 |------|------|
 | [azurerm_storage_table.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
 | [azurerm_storage_table_entity.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) | resource |
+| [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs
 
