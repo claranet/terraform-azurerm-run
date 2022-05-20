@@ -74,7 +74,7 @@ module "vm-monitoring" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | >= 1.40 |
+| azurerm | ~> 3.0 |
 | null | >= 3 |
 
 ## Modules

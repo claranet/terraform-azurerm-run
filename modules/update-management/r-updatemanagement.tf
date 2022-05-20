@@ -16,14 +16,14 @@ resource "azurerm_log_analytics_solution" "update_management" {
   tags = local.tags
 }
 
-resource "azurerm_template_deployment" "update_config_standard_linux" {
+resource "azurerm_resource_group_template_deployment" "update_config_standard_linux" {
   for_each = contains(toset([for s in var.update_management_os_list : lower(s)]), "linux") ? toset(["linux"]) : []
 
   deployment_mode     = "Incremental"
   name                = substr(lower(format("%s-%s", local.arm_update_management_name, "linux")), 0, 63)
   resource_group_name = var.resource_group_name
 
-  template_body = jsonencode({
+  template_content = jsonencode({
     "$schema"      = "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
     contentVersion = "1.0.0.0"
     resources = [
@@ -60,14 +60,14 @@ resource "azurerm_template_deployment" "update_config_standard_linux" {
   })
 }
 
-resource "azurerm_template_deployment" "update_config_standard_windows" {
+resource "azurerm_resource_group_template_deployment" "update_config_standard_windows" {
   for_each = contains(toset([for s in var.update_management_os_list : lower(s)]), "windows") ? toset(["windows"]) : []
 
   deployment_mode     = "Incremental"
   name                = substr(lower(format("%s-%s", local.arm_update_management_name, "windows")), 0, 63)
   resource_group_name = var.resource_group_name
 
-  template_body = jsonencode({
+  template_content = jsonencode({
     "$schema"      = "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
     contentVersion = "1.0.0.0"
     resources = [
