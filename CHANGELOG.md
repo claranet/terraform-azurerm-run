@@ -4,7 +4,7 @@ Added
   * AZ-768: Add `monitoring_function_app_service_plan_name`
 
 Fixed
-  * AZ-588: Allow current IP to access FAME storage (required by table queries Terraform resources), or passing custom list of authorized CIDRs
+  * AZ-588: Add parameters to configure FAME storage network rules (required by table queries Terraform resources)
 
 # v6.0.1 - 2022-05-18
 
