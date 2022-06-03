@@ -35,3 +35,9 @@ variable "application_insights_custom_name" {
   type        = string
   default     = null
 }
+
+variable "app_service_plan_custom_name" {
+  description = "FAME App Service Plan custom name"
+  type        = string
+  default     = null
+}
