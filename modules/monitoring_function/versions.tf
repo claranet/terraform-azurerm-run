@@ -10,9 +10,5 @@ terraform {
       source  = "aztfmod/azurecaf"
       version = "~> 1.1"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = ">= 2.0"
-    }
   }
 }

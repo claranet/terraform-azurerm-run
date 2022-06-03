@@ -31,7 +31,7 @@ module "function" {
   # Allow the current run to access Storage Table for FAME queries
   storage_account_network_rules_enabled = var.storage_account_network_rules_enabled
   storage_account_network_bypass        = var.storage_account_network_bypass
-  storage_account_authorized_ips        = coalescelist(var.storage_account_authorized_ips, ["${data.http.myip.body}/32"])
+  storage_account_authorized_ips        = var.storage_account_authorized_ips
 
   application_zip_package_path = var.zip_package_path
 

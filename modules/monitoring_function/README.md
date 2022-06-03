@@ -7,12 +7,18 @@ Built-in metrics sent:
     * `fame.azure.backup.vm`: number of successful virtual machines backups
     * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
 
+Note:
+
+The storage account associated to the FAME Function app has now network rules created and enabled by default to follow hardening guidelines.
+You might need to authorize IPs or change the network rules parameters by using `storage_account_network_rules_enabled` or `storage_account_authorized_ips`.
+
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
-| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
-| >= 4.x.x       | 0.13.x            | >= 2.0          |
+| >= 6.x.x       | 1.x               | >= 3.0          |
+| >= 5.x.x       | 0.15.x            | >= 2.0          |
+| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
 | <  2.x.x       | 0.11.x            | < 2.0           |
@@ -87,7 +93,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Version |
 |------|---------|
 | azurerm | ~> 3.1 |
-| http | >= 2.0 |
 
 ## Modules
 
@@ -101,7 +106,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 |------|------|
 | [azurerm_storage_table.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
 | [azurerm_storage_table_entity.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) | resource |
-| [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs
 
