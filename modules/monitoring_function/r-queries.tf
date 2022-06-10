@@ -1,8 +1,6 @@
 resource "azurerm_storage_table" "queries" {
   name                 = "LogQueries"
   storage_account_name = module.function.storage_account_name
-
-  depends_on = [module.function]
 }
 
 resource "azurerm_storage_table_entity" "queries" {
