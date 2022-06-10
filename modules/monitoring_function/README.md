@@ -111,7 +111,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| app\_service\_plan\_custom\_name | FAME App Service Plan custom name | `string` | `null` | no |
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
@@ -131,6 +130,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
+| service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
 | splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | storage\_account\_authorized\_ips | IPs restriction for Function storage account in CIDR format | `list(string)` | `[]` | no |
