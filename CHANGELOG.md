@@ -2,6 +2,7 @@
 
 Added
   * AZ-768: Add `monitoring_function_app_service_plan_name`
+  * AZ-770: Add Terraform module info in output
 
 Fixed
   * AZ-588: Add parameters to configure FAME storage network rules (required by table queries Terraform resources)
