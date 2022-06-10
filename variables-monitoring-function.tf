@@ -61,13 +61,13 @@ variable "monitoring_function_function_app_custom_name" {
 }
 
 variable "monitoring_function_application_insights_custom_name" {
-  description = "FAME Application Insights custom name. Empty by default, using naming convention."
+  description = "FAME Application Insights custom name. Empty by default, using naming convention"
   type        = string
   default     = null
 }
 
 variable "monitoring_function_advanced_threat_protection_enabled" {
-  description = "FAME Enable Advanced Threat Protection on function app's storage account."
+  description = "FAME function app's storage account: Enable Advanced Threat Protection"
   type        = bool
   default     = false
 }
@@ -76,4 +76,22 @@ variable "monitoring_function_app_service_plan_name" {
   description = "FAME App Service Plan custom name. Empty by default, using naming convention."
   type        = string
   default     = null
+}
+
+variable "monitoring_function_storage_account_network_rules_enabled" {
+  description = "FAME function app's storage account: Enable Storage account network default rules for functions"
+  type        = bool
+  default     = true
+}
+
+variable "monitoring_function_storage_account_network_bypass" {
+  description = "FAME function app's storage account: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`."
+  type        = list(string)
+  default     = ["Logging", "Metrics", "AzureServices"]
+}
+
+variable "monitoring_function_storage_account_authorized_ips" {
+  description = "FAME function app's storage account: IPs restriction for Function storage account in CIDR format"
+  type        = list(string)
+  default     = []
 }

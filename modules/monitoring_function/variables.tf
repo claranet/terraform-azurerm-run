@@ -64,3 +64,21 @@ variable "storage_account_enable_advanced_threat_protection" {
   type        = bool
   default     = false
 }
+
+variable "storage_account_network_rules_enabled" {
+  description = "Enable Storage account network default rules for functions"
+  type        = bool
+  default     = true
+}
+
+variable "storage_account_network_bypass" {
+  description = "Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`."
+  type        = list(string)
+  default     = ["Logging", "Metrics", "AzureServices"]
+}
+
+variable "storage_account_authorized_ips" {
+  description = "IPs restriction for Function storage account in CIDR format"
+  type        = list(string)
+  default     = []
+}

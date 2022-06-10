@@ -28,6 +28,11 @@ module "function" {
   function_language_for_linux = "python"
   function_app_version        = 3
 
+  # Allow the current run to access Storage Table for FAME queries
+  storage_account_network_rules_enabled = var.storage_account_network_rules_enabled
+  storage_account_network_bypass        = var.storage_account_network_bypass
+  storage_account_authorized_ips        = var.storage_account_authorized_ips
+
   application_zip_package_path = var.zip_package_path
 
   logs_destinations_ids           = var.logs_destinations_ids
