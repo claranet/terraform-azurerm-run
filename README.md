@@ -232,6 +232,7 @@ module "global_run" {
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_queries\_table\_name | Name of the table in the Storage Account, empty if connection string provided |
+| terraform\_module | Information about this Terraform module |
 <!-- END_TF_DOCS -->
 ## Related documentation
 
