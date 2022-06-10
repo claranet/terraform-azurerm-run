@@ -1,3 +1,7 @@
+# Unreleased
+Added
+  * AZ-768: Add `monitoring_function_app_service_plan_name`
+
 # v6.0.1 - 2022-05-18
 
 Fixed

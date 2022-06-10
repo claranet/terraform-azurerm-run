@@ -106,6 +106,7 @@ module "monitoring_function" {
   storage_account_name             = var.monitoring_function_storage_account_custom_name
   function_app_custom_name         = var.monitoring_function_function_app_custom_name
   application_insights_custom_name = var.monitoring_function_application_insights_custom_name
+  app_service_plan_custom_name     = var.monitoring_function_app_service_plan_name
 
   zip_package_path           = var.monitoring_function_zip_package_path
   metrics_extra_dimensions   = var.monitoring_function_metrics_extra_dimensions

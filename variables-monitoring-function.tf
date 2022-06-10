@@ -71,3 +71,9 @@ variable "monitoring_function_advanced_threat_protection_enabled" {
   type        = bool
   default     = false
 }
+
+variable "monitoring_function_app_service_plan_name" {
+  description = "FAME App Service Plan custom name. Empty by default, using naming convention."
+  type        = string
+  default     = null
+}

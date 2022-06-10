@@ -16,6 +16,7 @@ module "function" {
   storage_account_name             = var.storage_account_name
   function_app_custom_name         = var.function_app_custom_name
   application_insights_custom_name = var.application_insights_custom_name
+  app_service_plan_custom_name     = var.app_service_plan_custom_name
 
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
