@@ -73,7 +73,16 @@ locals {
         | summarize metric_value=dcount(MessageId) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
-
+    vpn_tunnel_total_flow_count : {
+      MetricName : "fame.azure.virtual_network_gateway.total_flow_count"
+      MetricType : "gauge"
+      Query : <<EOQ
+        AzureMetrics
+        | where MetricName == "TunnelTotalFlowCount"
+        | where TimeGenerated > ago(20m)
+        | summarize metric_value=avg(Total) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId
+      EOQ
+    },
     frontdoor_response_status : {
       MetricName : "fame.azure.frontdoor.response_status"
       MetricType : "gauge"
