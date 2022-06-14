@@ -80,7 +80,7 @@ locals {
         AzureMetrics
         | where MetricName == "TunnelTotalFlowCount"
         | where TimeGenerated > ago(20m)
-        | summarize metric_value=avg(Total) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId
+        | summarize metric_value=sum(Total) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     },
     frontdoor_response_status : {
