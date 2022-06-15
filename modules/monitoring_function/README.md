@@ -139,7 +139,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | storage\_account\_network\_bypass | Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`. | `list(string)` | <pre>[<br>  "Logging",<br>  "Metrics",<br>  "AzureServices"<br>]</pre> | no |
 | storage\_account\_network\_rules\_enabled | Enable Storage account network default rules for functions | `bool` | `true` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
-| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"` | no |
 
 ## Outputs
 

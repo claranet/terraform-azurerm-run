@@ -27,7 +27,7 @@ variable "monitoring_function_logs_metrics_categories" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.0.0/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
