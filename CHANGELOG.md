@@ -6,6 +6,9 @@ Breaking
 Added
   * AZ-578: Add TotalFlowCount metric for VPN Gateways in FAME queries
 
+Changed
+  * AZ-686: Update FAME release version for better error management
+
 # v6.1.0 - 2022-06-10
 
 Added
