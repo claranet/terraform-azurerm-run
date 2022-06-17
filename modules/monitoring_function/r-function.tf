@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "6.0.1"
+  version = "6.2.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -16,7 +16,7 @@ module "function" {
   storage_account_name             = var.storage_account_name
   function_app_custom_name         = var.function_app_custom_name
   application_insights_custom_name = var.application_insights_custom_name
-  app_service_plan_custom_name     = var.app_service_plan_custom_name
+  service_plan_custom_name         = var.service_plan_custom_name
 
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
@@ -24,7 +24,8 @@ module "function" {
     SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
   }, var.extra_application_settings)
 
-  app_service_plan_os         = "Linux"
+  os_type                     = "Linux"
+  sku_name                    = "Y1"
   function_language_for_linux = "python"
   function_app_version        = 3
 

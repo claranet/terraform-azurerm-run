@@ -98,7 +98,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 6.0.1 |
+| function | claranet/function-app/azurerm | 6.2.0 |
 
 ## Resources
 
@@ -111,7 +111,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| app\_service\_plan\_custom\_name | FAME App Service Plan custom name | `string` | `null` | no |
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
@@ -131,6 +130,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
+| service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
 | splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
 | storage\_account\_authorized\_ips | IPs restriction for Function storage account in CIDR format | `list(string)` | `[]` | no |
@@ -145,8 +145,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Description |
 |------|-------------|
-| app\_service\_plan\_id | Id of the created App Service Plan |
-| app\_service\_plan\_name | Name of the created App Service Plan |
 | application\_insights\_app\_id | App id of the associated Application Insights |
 | application\_insights\_application\_type | Application Type of the associated Application Insights |
 | application\_insights\_id | Id of the associated Application Insights |
@@ -157,6 +155,8 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | function\_app\_identity | Identity block output of the Function App |
 | function\_app\_name | Name of the created Function App |
 | function\_app\_outbound\_ip\_addresses | Outbound IP adresses of the created Function App |
+| service\_plan\_id | ID of the created Service Plan |
+| service\_plan\_name | Name of the created Service Plan |
 | storage\_account\_id | Id of the associated Storage Account, empty if connection string provided |
 | storage\_account\_name | Name of the associated Storage Account, empty if connection string provided |
 | storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided |
