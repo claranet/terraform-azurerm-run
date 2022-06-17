@@ -1,4 +1,4 @@
-# Unreleased
+# v6.2.0 - 2022-06-17
 
 Breaking
   * AZ-717: Bump monitoring module to use latest function-app version for provider v3
