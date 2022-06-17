@@ -3,6 +3,9 @@
 Breaking
   * AZ-717: Bump monitoring module to use latest function-app version for provider v3
 
+Added
+  * AZ-578: Add TotalFlowCount metric for VPN Gateways in FAME queries
+
 # v6.1.0 - 2022-06-10
 
 Added
