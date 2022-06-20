@@ -1,71 +1,71 @@
 output "service_plan_id" {
   description = "ID of the created Service Plan"
-  value       = module.function.linux_function_app.service_plan_id
+  value       = module.function.service_plan_id
 }
 
 output "service_plan_name" {
   description = "Name of the created Service Plan"
-  value       = module.function.linux_function_app.service_plan_name
+  value       = module.function.service_plan_name
 }
 
 output "storage_account_id" {
   description = "Id of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_id
+  value       = module.function.storage_account_id
 }
 
 output "storage_account_name" {
   description = "Name of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_name
+  value       = module.function.storage_account_name
 }
 
 output "storage_account_primary_connection_string" {
   description = "Primary connection string of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_primary_connection_string
+  value       = module.function.storage_account_primary_connection_string
   sensitive   = true
 }
 
 output "storage_account_primary_access_key" {
   description = "Primary connection string of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_primary_access_key
+  value       = module.function.storage_account_primary_access_key
   sensitive   = true
 }
 
 output "storage_account_secondary_connection_string" {
   description = "Secondary connection string of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_secondary_connection_string
+  value       = module.function.storage_account_secondary_connection_string
   sensitive   = true
 }
 
 output "storage_account_secondary_access_key" {
   description = "Secondary connection string of the associated Storage Account, empty if connection string provided"
-  value       = module.function.linux_function_app.storage_account_secondary_access_key
+  value       = module.function.storage_account_secondary_access_key
   sensitive   = true
 }
 
 output "application_insights_id" {
   description = "Id of the associated Application Insights"
-  value       = module.function.linux_function_app.application_insights_id
+  value       = module.function.application_insights_id
 }
 
 output "application_insights_name" {
   description = "Name of the associated Application Insights"
-  value       = module.function.linux_function_app.application_insights_name
+  value       = module.function.application_insights_name
 }
 
 output "application_insights_app_id" {
   description = "App id of the associated Application Insights"
-  value       = module.function.linux_function_app.application_insights_app_id
+  value       = module.function.application_insights_app_id
 }
 
 output "application_insights_instrumentation_key" {
   description = "Instrumentation key of the associated Application Insights"
-  value       = module.function.linux_function_app.application_insights_instrumentation_key
+  value       = module.function.application_insights_instrumentation_key
   sensitive   = true
 }
 
 output "application_insights_application_type" {
   description = "Application Type of the associated Application Insights"
-  value       = module.function.linux_function_app.application_insights_application_type
+  value       = module.function.application_insights_application_type
 }
 
 output "function_app_id" {
