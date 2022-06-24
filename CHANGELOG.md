@@ -1,4 +1,4 @@
-# Unreleased
+# v6.2.1 - 2022-06-24
 
 Fixed
   * AZ-776: Fix outputs reference for `function-app` module (monitoring/FAME sub-module)
