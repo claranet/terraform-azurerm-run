@@ -1,5 +1,5 @@
 locals {
-  extra_dimensions = join(",", [for k, v in var.metrics_extra_dimensions : format("%s=%s", k, v)])
+  extra_dimensions = join(",", [for k, v in merge(local.default_tags, var.metrics_extra_dimensions) : format("%s=%s", k, v)])
 
   log_queries = {
     application_gateway_instances : {
