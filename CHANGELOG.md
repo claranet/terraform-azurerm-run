@@ -1,4 +1,4 @@
-# Unreleased
+# v6.3.0 - 2022-07-08
 
 Added
   * AZ-792: Add default tags as extra dimensions in FAME
