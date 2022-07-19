@@ -5,7 +5,7 @@ resource "azurerm_automation_account" "automation_account" {
   resource_group_name = var.resource_group_name
 
   sku_name = var.automation_account_sku
-  tags     = merge(local.default_tags, var.extra_tags, var.automation_account_extra_tags)
+  tags     = local.chunked_tags
 
   dynamic "identity" {
     for_each = var.automation_account_identity_type != null ? ["fake"] : []
