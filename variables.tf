@@ -4,6 +4,7 @@
 variable "tenant_id" {
   description = "Tenant ID"
   type        = string
+  default     = null
 }
 
 variable "client_name" {
