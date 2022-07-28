@@ -18,7 +18,7 @@ which set some terraform variables in the environment needed by this module.
 More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
 
 ```hcl
-module "azure-region" {
+module "azure_region" {
   source  = "claranet/regions/azurerm"
   version = "x.x.x"
 
@@ -29,7 +29,7 @@ module "rg" {
   source  = "claranet/rg/azurerm"
   version = "x.x.x"
 
-  location    = module.azure-region.location
+  location    = module.azure_region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
@@ -40,20 +40,20 @@ module "logs" {
   version = "x.x.x"
 
   client_name    = var.client_name
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
   environment    = var.environment
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
 }
 
-module "vm-monitoring" {
+module "vm_monitoring" {
   source  = "claranet/run-iaas/azurerm//modules/vm-monitoring"
   version = "x.x.x"
 
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
   client_name    = var.client_name
   environment    = var.environment
   stack          = var.stack
@@ -63,7 +63,7 @@ module "vm-monitoring" {
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
   extra_tags = {
-    foo    = "bar"
+    foo = "bar"
   }
 }
 ```

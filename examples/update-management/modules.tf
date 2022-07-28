@@ -51,7 +51,7 @@ resource "time_offset" "update_template" {
 }
 
 locals {
-  update_template_date = format("%s-%02d-%02d", "${time_offset.update_template.year}", "${time_offset.update_template.month}", "${time_offset.update_template.day + 1}")
+  update_template_date = format("%s-%02d-%02d", time_offset.update_template.year, time_offset.update_template.month, time_offset.update_template.day + 1)
 }
 
 module "update_management" {
