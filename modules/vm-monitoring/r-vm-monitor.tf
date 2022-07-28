@@ -6,22 +6,21 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
   destinations {
     log_analytics {
       workspace_resource_id = var.log_analytics_workspace_id
-      name                  = "centralWorkspace"
+      name                  = "default-workspace"
     }
-
     azure_monitor_metrics {
-      name = "azureMonitorMetrics-default"
+      name = "default-azure-monitor-metrics"
     }
   }
 
   data_flow {
     streams      = ["Microsoft-InsightsMetrics"]
-    destinations = ["azureMonitorMetrics-default"]
+    destinations = ["default-azure-monitor-metrics"]
   }
 
   data_flow {
     streams      = ["Microsoft-Perf", "Microsoft-Event", "Microsoft-Syslog"]
-    destinations = ["centralWorkspace"]
+    destinations = ["default-workspace"]
   }
 
   data_sources {
@@ -76,7 +75,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
         "\\Network Interface(*)\\Packets Outbound Errors",
         "\\Network Interface(*)\\Packets Received Errors",
       ]
-      name = "perfCounterDataSource"
+      name = "default-datasource-perfcounter"
     }
 
     windows_event_log {
@@ -85,13 +84,13 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
         "Application!*[System[(Level=1 or Level=2)]]",
         "System!*[System[(Level=1 or Level=2)]]"
       ]
-      name = "eventLogsDataSource"
+      name = "default-datasource-wineventlog"
     }
 
     syslog {
       facility_names = var.syslog_facilities_names
       log_levels     = var.syslog_levels
-      name           = "sysLogsDataSource"
+      name           = "default-datasource-syslog"
     }
   }
 
