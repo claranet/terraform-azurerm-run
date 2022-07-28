@@ -74,7 +74,7 @@ output "data_collection_rule_name" {
   value       = module.vm_monitoring.data_collection_rule_name
 }
 
-output "data_collection_rule_data" {
-  description = "JSON data of the Azure Monitor Data Collection Rule"
-  value       = module.vm_monitoring.data_collection_rule_data
+output "data_collection_rule" {
+  description = "Azure Monitor Data Collection Rule object"
+  value       = module.vm_monitoring.data_collection_rule
 }

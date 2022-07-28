@@ -41,7 +41,7 @@ variable "syslog_facilities_names" {
   description = "List of syslog to retrieve in Data Collection Rule"
   type        = list(string)
   default = ["auth", "authpriv", "cron", "daemon", "mark", "kern", "local0", "local1", "local2", "local3", "local4",
-  "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "UUCP"]
+  "local5", "local6", "local7", "lpr", "mail", "news", "syslog", "user", "uucp"]
 }
 
 variable "syslog_levels" {
