@@ -30,7 +30,6 @@ module "global_run" {
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
-  tenant_id           = var.azure_tenant_id
 
   monitoring_function_storage_account_authorized_ips = ["${data.http.myip.body}/32"]
   monitoring_function_splunk_token                   = "xxxxxx"

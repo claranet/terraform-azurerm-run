@@ -85,7 +85,6 @@ module "global_run" {
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
-  tenant_id           = var.azure_tenant_id
 
   monitoring_function_storage_account_authorized_ips = ["${data.http.myip.body}/32"]
   monitoring_function_splunk_token                   = "xxxxxx"
@@ -187,7 +186,7 @@ module "global_run" {
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| tenant\_id | Tenant ID | `string` | n/a | yes |
+| tenant\_id | Tenant ID | `string` | `null` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 
 ## Outputs

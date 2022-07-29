@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-808: Use current Tenant ID by default
+
 # v6.3.0 - 2022-07-08
 
 Added
