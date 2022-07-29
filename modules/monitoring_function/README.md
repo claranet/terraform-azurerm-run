@@ -2,10 +2,11 @@
 
 This module deploys [FAME](https://github.com/claranet/fame) monitoring extension in an Azure Function for addition monitoring capabilities.
 Built-in metrics sent:
-    * `fame.azure.application_gateway.instances`: number of Application Gateway instances
-    * `fame.azure.backup.file_share`: number of successful file share backups
-    * `fame.azure.backup.vm`: number of successful virtual machines backups
-    * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
+
+  * `fame.azure.application_gateway.instances`: number of Application Gateway instances
+  * `fame.azure.backup.file_share`: number of successful file share backups
+  * `fame.azure.backup.vm`: number of successful virtual machines backups
+  * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
 
 Note:
 
