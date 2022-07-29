@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-809: Update examples to fix CI with latest tflint rules
+
 # v6.0.0 - 2022-05-20
 
 Breaking
