@@ -78,6 +78,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Source | Version |
 |------|--------|---------|
 | log\_sas\_token | claranet/storage-sas-token/azurerm | 4.2.0 |
+| storage\_logs | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/storage-account.git | AZ-130-initiate-storage-account-module |
 
 ## Resources
 
@@ -85,9 +86,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 |------|------|
 | [azurecaf_name.log_analytics_workspace](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurecaf_name.storage_account](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
-| [azurerm_advanced_threat_protection.storage_threat_protection](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/advanced_threat_protection) | resource |
 | [azurerm_log_analytics_workspace.log_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
-| [azurerm_storage_account.storage_logs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
 | [azurerm_storage_container.container_webapps](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) | resource |
 | [azurerm_storage_management_policy.archive_storage](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_management_policy) | resource |
 | [azurerm_storage_share.archivedlogs_fileshare](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |

@@ -1,5 +1,8 @@
 # Unreleased
 
+Breaking
+  * AZ-130: Use our `storage-account` module instead of inline resources
+
 Changed
   * AZ-808: Use current Tenant ID by default
 

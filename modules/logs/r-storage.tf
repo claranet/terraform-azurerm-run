@@ -35,10 +35,7 @@ module "storage_logs" {
   network_rules_enabled = false
 
   # Diagnostics/logs
-  logs_destinations_ids   = var.logs_destinations_ids
-  logs_categories         = var.logs_categories
-  logs_metrics_categories = var.logs_metrics_categories
-  logs_retention_days     = var.logs_retention_days
+  logs_destinations_ids = []
 
   # Tagging
   default_tags_enabled = var.default_tags_enabled
@@ -63,21 +60,21 @@ moved {
 resource "azurerm_storage_container" "container_webapps" {
   count                = var.logs_storage_account_enable_appservices_container ? 1 : 0
   name                 = var.logs_storage_account_appservices_container_name
-  storage_account_name = azurerm_storage_account.storage_logs.name
+  storage_account_name = module.storage_logs.storage_account_properties.name
 }
 
 # Archived Logs File Shares
 resource "azurerm_storage_share" "archivedlogs_fileshare" {
   count                = var.logs_storage_account_enable_archived_logs_fileshare ? 1 : 0
   name                 = var.logs_storage_account_archived_logs_fileshare_name
-  storage_account_name = azurerm_storage_account.storage_logs.name
+  storage_account_name = module.storage_logs.storage_account_properties.name
   quota                = var.logs_storage_account_archived_logs_fileshare_quota
 }
 
 # Blob Archive policy
 resource "azurerm_storage_management_policy" "archive_storage" {
   count              = lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
-  storage_account_id = azurerm_storage_account.storage_logs.id
+  storage_account_id = module.storage_logs.storage_account_properties.id
 
   rule {
     name    = "Archive"
