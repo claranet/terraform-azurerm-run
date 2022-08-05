@@ -74,8 +74,7 @@ module "vm_monitoring" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | ~> 3.0 |
-| null | >= 3 |
+| azurerm | ~> 3.15 |
 
 ## Modules
 
@@ -86,8 +85,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurecaf_name.dcr](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
-| [null_resource.data_collection_rule](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
+| [azurerm_monitor_data_collection_rule.dcr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_data_collection_rule) | resource |
 
 ## Inputs
 
@@ -105,7 +103,7 @@ No modules.
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
-| syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "UUCP"<br>]</pre> | no |
+| syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "uucp"<br>]</pre> | no |
 | syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. | `bool` | `true` | no |
 
@@ -113,7 +111,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| data\_collection\_rule\_data | JSON data of the Azure Monitor Data Collection Rule |
-| data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule | Azure Monitor Data Collection Rule object |
+| data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule |
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule |
 <!-- END_TF_DOCS -->

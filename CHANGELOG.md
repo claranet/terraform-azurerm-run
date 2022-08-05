@@ -1,5 +1,8 @@
 # Unreleased
 
+Breaking
+  * AZ-807: use native Azure resource to create Data Collection Rule
+
 Fixed
   * AZ-809: Update examples to fix CI with latest tflint rules
 
