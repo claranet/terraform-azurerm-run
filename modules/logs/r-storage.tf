@@ -29,8 +29,14 @@ module "storage_logs" {
   #   identity_type = var.storage_account_identity_type
   #   identity_ids  = var.storage_account_identity_ids
 
-  # Data protection - not needed for functions
-  storage_blob_data_protection = null
+  # Data protection - not needed for now
+  storage_blob_data_protection = {
+    change_feed_enabled                       = false
+    versioning_enabled                        = false
+    delete_retention_policy_in_days           = 0
+    container_delete_retention_policy_in_days = 0
+    container_point_in_time_restore           = false
+  }
 
   # Network rules - handle out of module to avoid Terraform cycle
   network_rules_enabled = false
