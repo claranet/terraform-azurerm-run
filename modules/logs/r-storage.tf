@@ -47,15 +47,16 @@ module "storage_logs" {
   )
 }
 
-moved {
-  from = azurerm_storage_account.storage_logs
-  to   = module.storage_logs.azurerm_storage_account.storage
-}
+## This statement declares a move to an object declared in external module package "registry.terraform.io/claranet/storage-account/azurerm". Move statements can be only within a single module package.
+# moved {
+#   from = azurerm_storage_account.storage_logs
+#   to   = module.storage_logs.azurerm_storage_account.storage
+# }
 
-moved {
-  from = azurerm_advanced_threat_protection.storage_threat_protection
-  to   = module.storage_logs.azurerm_advanced_threat_protection.threat_protection
-}
+# moved {
+#   from = azurerm_advanced_threat_protection.storage_threat_protection
+#   to   = module.storage_logs.azurerm_advanced_threat_protection.threat_protection
+# }
 
 # Container for App Services logs which is not automatically created
 resource "azurerm_storage_container" "container_webapps" {
