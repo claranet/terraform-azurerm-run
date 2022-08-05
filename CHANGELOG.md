@@ -1,4 +1,4 @@
-# Unreleased
+# v6.1.0 - 2022-08-05
 
 Breaking
   * AZ-807: use native Azure resource to create Data Collection Rule
