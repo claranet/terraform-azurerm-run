@@ -15,8 +15,8 @@ module "storage_logs" {
   storage_account_custom_name = local.storage_default_name
 
   # Storage account kind/SKU/tier
-  account_replication_type = "LRS"
-  account_tier             = "Standard"
+  account_replication_type = var.logs_storage_account_replication_type
+  account_tier             = var.logs_storage_account_tier
   account_kind             = var.logs_storage_account_kind
 
   # Storage account options / security

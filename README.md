@@ -161,7 +161,9 @@ module "global_run" {
 | logs\_storage\_account\_extra\_tags | Extra tags to add to the Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
+| logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_sas\_expiry | Storage Account SAS Token end date (expiry). Specifies the UTC datetime (Y-m-d'T'H:M'Z') at which the SAS becomes invalid. | `string` | `"2042-01-01T00:00:00Z"` | no |
+| logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |
 | logs\_storage\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
 | logs\_tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
 | logs\_tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
