@@ -1,4 +1,4 @@
-# Unreleased
+# v6.4.0 - 2022-08-12
 
 Breaking
   * AZ-130: Use our `storage-account` module instead of inline resources
