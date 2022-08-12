@@ -16,6 +16,8 @@ module "logs" {
   logs_storage_account_custom_name                       = var.logs_storage_account_custom_name
   logs_storage_account_extra_tags                        = var.logs_storage_account_extra_tags
   logs_storage_account_kind                              = var.logs_storage_account_kind
+  logs_storage_account_tier                              = var.logs_storage_account_tier
+  logs_storage_account_replication_type                  = var.logs_storage_account_replication_type
   logs_storage_min_tls_version                           = var.logs_storage_min_tls_version
   logs_storage_account_sas_expiry                        = var.logs_storage_account_sas_expiry
   logs_storage_account_enable_appservices_container      = var.logs_storage_account_enable_appservices_container

@@ -35,35 +35,35 @@ output "log_analytics_workspace_secondary_key" {
 
 output "logs_storage_account_id" {
   description = "Id of the dedicated Storage Account"
-  value       = azurerm_storage_account.storage_logs.id
+  value       = module.storage_logs.storage_account_properties.id
 }
 
 output "logs_storage_account_name" {
   description = "Name of the logs Storage Account"
-  value       = azurerm_storage_account.storage_logs.name
+  value       = module.storage_logs.storage_account_properties.name
 }
 
 output "logs_storage_account_primary_connection_string" {
   description = "Primary connection string of the logs Storage Account, empty if connection string provided"
-  value       = azurerm_storage_account.storage_logs.primary_connection_string
+  value       = module.storage_logs.storage_account_properties.primary_connection_string
   sensitive   = true
 }
 
 output "logs_storage_account_primary_access_key" {
   description = "Primary connection string of the logs Storage Account, empty if connection string provided"
-  value       = azurerm_storage_account.storage_logs.primary_access_key
+  value       = module.storage_logs.storage_account_properties.primary_access_key
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_connection_string" {
   description = "Secondary connection string of the logs Storage Account, empty if connection string provided"
-  value       = azurerm_storage_account.storage_logs.secondary_connection_string
+  value       = module.storage_logs.storage_account_properties.secondary_connection_string
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_access_key" {
   description = "Secondary connection string of the logs Storage Account, empty if connection string provided"
-  value       = azurerm_storage_account.storage_logs.secondary_access_key
+  value       = module.storage_logs.storage_account_properties.secondary_access_key
   sensitive   = true
 }
 

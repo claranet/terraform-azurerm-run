@@ -58,6 +58,18 @@ variable "logs_storage_account_kind" {
   default     = "StorageV2"
 }
 
+variable "logs_storage_account_tier" {
+  description = "Storage Account tier"
+  type        = string
+  default     = "Standard"
+}
+
+variable "logs_storage_account_replication_type" {
+  description = "Storage Account Replication type"
+  type        = string
+  default     = "LRS"
+}
+
 variable "logs_storage_min_tls_version" {
   description = "Storage Account minimal TLS version"
   type        = string
