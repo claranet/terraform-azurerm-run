@@ -1,7 +1,12 @@
+# Unreleased
+
+Added:
+  * GH-3: Expose `storage_mode_type`, `cross_region_restore_enabled` and `soft_delete_enabled` vault variables
+
 # v6.1.0 - 2022-08-05
 
 Breaking
-  * AZ-807: use native Azure resource to create Data Collection Rule
+  * AZ-807: Use native Azure resource to create Data Collection Rule
 
 Fixed
   * AZ-809: Update examples to fix CI with latest tflint rules

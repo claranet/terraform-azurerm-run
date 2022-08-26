@@ -5,6 +5,10 @@ resource "azurerm_recovery_services_vault" "vault" {
 
   sku = var.recovery_vault_sku
 
+  storage_mode_type            = var.recovery_vault_storage_mode_type
+  cross_region_restore_enabled = var.recovery_vault_cross_region_restore_enabled
+  soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
+
   dynamic "identity" {
     for_each = toset(var.recovery_vault_identity_type != null ? ["fake"] : [])
     content {
