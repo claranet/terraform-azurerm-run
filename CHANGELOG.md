@@ -1,7 +1,7 @@
-# Unreleased
+# v6.2.0 - 2022-09-09
 
 Added:
-  * GH-3: Expose `storage_mode_type`, `cross_region_restore_enabled` and `soft_delete_enabled` vault variables
+  * [GH-3](https://github.com/claranet/terraform-azurerm-run-iaas/pull/3): Expose `storage_mode_type`, `cross_region_restore_enabled` and `soft_delete_enabled` vault variables
 
 # v6.1.0 - 2022-08-05
 
