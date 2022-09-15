@@ -1,6 +1,7 @@
 module "function" {
-  source  = "claranet/function-app/azurerm"
-  version = "6.2.1"
+  # source  = "claranet/function-app/azurerm"
+  # version = "6.2.1"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=AZ-835-Azurerm3-fixes"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -24,10 +25,9 @@ module "function" {
     SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
   }, var.extra_application_settings)
 
-  os_type                     = "Linux"
-  sku_name                    = "Y1"
-  function_language_for_linux = "python"
-  function_app_version        = 3
+  os_type              = "Linux"
+  sku_name             = "Y1"
+  function_app_version = 3
 
   # Allow the current run to access Storage Table for FAME queries
   storage_account_network_rules_enabled = var.storage_account_network_rules_enabled

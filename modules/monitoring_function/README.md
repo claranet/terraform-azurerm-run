@@ -99,7 +99,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 6.2.1 |
+| function | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git | AZ-835-Azurerm3-fixes |
 
 ## Resources
 
