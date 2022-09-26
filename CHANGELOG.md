@@ -1,4 +1,4 @@
-# unreleased
+# Unreleased
 
 Breaking
   * AZ-840: Upgrade to Terraform 1.3+

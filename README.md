@@ -104,7 +104,7 @@ module "global_run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.1 |
+| azurerm | ~> 3.22 |
 
 ## Modules
 
