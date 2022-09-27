@@ -28,6 +28,11 @@ module "function" {
   os_type              = "Linux"
   sku_name             = "Y1"
   function_app_version = 3
+  function_app_site_config = {
+    application_stack = {
+      python_version = "3.8"
+    }
+  }
 
   # Allow the current run to access Storage Table for FAME queries
   storage_account_network_rules_enabled = var.storage_account_network_rules_enabled
