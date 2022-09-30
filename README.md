@@ -104,13 +104,13 @@ module "global_run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.1 |
+| azurerm | ~> 3.22 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| keyvault | claranet/keyvault/azurerm | 5.1.0 |
+| keyvault | claranet/keyvault/azurerm | 6.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring_function | n/a |
 
