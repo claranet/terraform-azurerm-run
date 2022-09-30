@@ -46,9 +46,8 @@ module "logs" {
 }
 
 module "keyvault" {
-  # source  = "claranet/keyvault/azurerm"
-  # version = "5.1.0"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/keyvault.git?ref=AZ-839_log_update"
+  source  = "claranet/keyvault/azurerm"
+  version = "6.0.0"
 
   client_name         = var.client_name
   environment         = var.environment

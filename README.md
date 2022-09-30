@@ -110,7 +110,7 @@ module "global_run" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| keyvault | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/keyvault.git | AZ-839_log_update |
+| keyvault | claranet/keyvault/azurerm | 6.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring_function | n/a |
 
