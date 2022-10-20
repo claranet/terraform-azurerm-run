@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-800: Automation account can only have 15 tags maximum
+
 # v6.2.0 - 2022-09-09
 
 Added:

@@ -5,7 +5,8 @@ locals {
   } : {}
 
   merged_tags = merge(local.default_tags, var.extra_tags, var.automation_account_extra_tags)
-  chunked_tags_keys = chunklist(keys(local.merged_tags), 15)
-  chunked_tags_values = chunklist(values(local.merged_tags), 15)
-  chunked_tags = zipmap(local.chunked_tags_keys[0], local.chunked_tags_values[0])
+
+  curtailed_tags = {
+    for key in slice(keys(local.merged_tags), 0, length(local.merged_tags) >= 15 ? 15 : length(local.merged_tags)) : key => lookup(local.merged_tags, key)
+  }
 }
