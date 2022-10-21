@@ -85,7 +85,7 @@ module "az-backup" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | 5.0.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | 6.1.0 |
 
 ## Resources
 
