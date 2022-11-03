@@ -241,6 +241,10 @@ variable "deploy_update_management_solution" {
   description = "Should we deploy the Log Analytics Update solution or not"
   type        = bool
   default     = true
+  validation {
+    condition     = var.deploy_update_management_solution && var.update_management_center_enabled
+    error_message = "Variables deploy_update_management_solution and update_management_center_enabled can't be both true at the same time."
+  }
 }
 
 ## Linux specific Update Management variables

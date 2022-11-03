@@ -1,35 +1,5 @@
-variable "client_name" {
-  description = "Client name."
-  type        = string
-}
-
-variable "environment" {
-  description = "Environment name."
-  type        = string
-}
-
-variable "stack" {
-  description = "Stack name."
-  type        = string
-}
-
-variable "resource_group_name" {
-  description = "Resource Group the resources will belong to."
-  type        = string
-}
-
-variable "location" {
-  description = "Azure location."
-  type        = string
-}
-
-variable "location_short" {
-  description = "Short string for Azure location."
-  type        = string
-}
-
 variable "maintenance_configurations" {
-  description = "Maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations"
+  description = "Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations"
   type = list(object({
     configuration_name = string
     start_date_time    = string
@@ -56,20 +26,30 @@ variable "maintenance_configurations" {
   default = []
 }
 
-variable "auto_assessment_enabled" {
+variable "patching_auto_assessment_enabled" {
   description = "Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy."
   type        = bool
   default     = true
 }
 
-variable "auto_assessment_scopes" {
+variable "patching_auto_assessment_scopes" {
   description = "Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines."
   type        = list(string)
   default     = []
 }
 
-variable "auto_assessment_exclusions" {
+variable "patching_auto_assessment_exclusions" {
   description = "Exclude some resources from auto-assessment."
   type        = list(string)
   default     = []
+}
+
+variable "update_management_center_enabled" {
+  description = "Enable the Update Management Center"
+  type        = bool
+  default     = false
+  validation {
+    condition     = var.deploy_update_management_solution && var.update_management_center_enabled
+    error_message = "Variables deploy_update_management_solution and update_management_center_enabled can't be both true at the same time."
+  }
 }

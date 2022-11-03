@@ -158,3 +158,21 @@ module "vm_monitoring" {
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
 }
+
+module "update_management_center" {
+  for_each = var.update_management_center_enabled ? ["enabled"] : []
+  source   = "./modules/update-management-center"
+
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
+  location            = var.location
+  location_short      = var.location_short
+  resource_group_name = var.resource_group_name
+
+  auto_assessment_enabled    = var.patching_auto_assessment_enabled
+  auto_assessment_scopes     = var.patching_auto_assessment_scopes
+  auto_assessment_exclusions = var.patching_auto_assessment_exclusions
+
+  maintenance_configurations = var.maintenance_configurations
+}
