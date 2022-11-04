@@ -11,5 +11,15 @@ terraform {
       source  = "aztfmod/azurecaf"
       version = "~> 1.2, >= 1.2.22"
     }
+    # tflint-ignore: terraform_unused_required_providers
+    azapi = {
+      source  = "azure/azapi"
+      version = "~> 0.1"
+    }
+    # tflint-ignore: terraform_unused_required_providers
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }
   }
 }

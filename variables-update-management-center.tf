@@ -48,8 +48,4 @@ variable "update_management_center_enabled" {
   description = "Enable the Update Management Center"
   type        = bool
   default     = false
-  validation {
-    condition     = var.deploy_update_management_solution && var.update_management_center_enabled
-    error_message = "Variables deploy_update_management_solution and update_management_center_enabled can't be both true at the same time."
-  }
 }

@@ -164,7 +164,7 @@
 resource "azapi_resource" "maintenance_configurations" {
   for_each  = { for config in var.maintenance_configurations : config.configuration_name => config }
   name      = "mc-${each.key}"
-  parent_id = var.resource_group_name
+  parent_id = data.azurerm_resource_group.rg.id
   type      = "Microsoft.Maintenance/maintenanceConfigurations@2021-09-01-preview"
   body = jsonencode(
     {
@@ -181,7 +181,7 @@ resource "azapi_resource" "maintenance_configurations" {
           timeZone      = each.value.time_zone
           recurEvery    = each.value.recur_every
         }
-        visibitlity = "Custom"
+        visibility = "Custom"
         installPatches = {
           rebootSetting = each.value.reboot_setting
           windowsParameters = {
@@ -198,24 +198,3 @@ resource "azapi_resource" "maintenance_configurations" {
   response_export_values  = ["*"]
   ignore_missing_property = true
 }
-
-
-
-
-# VM Patch mode must be AutomaticByPlatform
-resource "azapi_resource" "virtual_machines_associations" {
-  for_each  = toset(var.virtual_machines_associations)
-  name      = "${split("/", each.value.virtual_machine_id)[7]}-schedule"
-  location  = var.location
-  parent_id = each.value.virtual_machine_id
-  type      = "Microsoft.Maintenance/configurationAssignments@2021-09-01-preview"
-  body = jsonencode({
-    properties = {
-      maintenanceConfigurationId = jsondecode(azapi_resource.maintenance_configurations[each.value.maintenance_configuration_name].output)["id"]
-    }
-  })
-  tags                    = local.tags
-  response_export_values  = ["*"]
-  ignore_missing_property = true
-}
-

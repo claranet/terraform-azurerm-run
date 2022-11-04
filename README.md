@@ -124,6 +124,7 @@ No providers.
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | update\_management | ./modules/update-management | n/a |
+| update\_management\_center | ./modules/update-management-center | n/a |
 | vm\_monitoring | ./modules/vm-monitoring | n/a |
 
 ## Resources
@@ -175,8 +176,11 @@ No resources.
 =======
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | maintenance\_configurations | Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations | <pre>list(object({<br>    configuration_name = string<br>    start_date_time    = string<br>    duration           = optional(string, "02:00")<br>    time_zone          = optional(string, "UTC")<br>    recur_every        = string<br>    reboot_setting     = optional(string, "IfRequired")<br>    windows_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Definition",<br>      "FeaturePack",<br>      "Security",<br>      "ServicePack",<br>      "Tools",<br>      "UpdateRollup",<br>      "Updates"<br>    ])<br>    linux_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Security",<br>      "Other",<br>    ])<br>  }))</pre> | `[]` | no |
+<<<<<<< HEAD
 | maintenance\_virtual\_machines\_associations | Associate Virtual Machine to Maintenance Configuration. | <pre>list(object({<br>    virtual_machine_id             = string<br>    maintenance_configuration_name = string<br>  }))</pre> | n/a | yes |
 >>>>>>> 7ebc7a9 (AZ-837 Add variables in the main module)
+=======
+>>>>>>> 99adb83 (AZ-837 Add precondition)
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | patching\_auto\_assessment\_enabled | Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy. | `bool` | `true` | no |
@@ -191,6 +195,7 @@ No resources.
 | recovery\_vault\_storage\_mode\_type | The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
 | stack | Stack name | `string` | n/a | yes |
+| update\_management\_center\_enabled | Enable the Update Management Center | `bool` | `false` | no |
 | update\_management\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
 | update\_management\_name\_prefix | Name prefix to apply on Update Management resources | `string` | `null` | no |
 | update\_management\_os\_list | List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management. | `list(string)` | n/a | yes |
