@@ -78,7 +78,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Source | Version |
 |------|--------|---------|
 | log\_sas\_token | claranet/storage-sas-token/azurerm | 4.2.0 |
-| storage\_logs | claranet/storage-account/azurerm | 7.0.0 |
+| storage\_logs | claranet/storage-account/azurerm | 7.2.0 |
 
 ## Resources
 
