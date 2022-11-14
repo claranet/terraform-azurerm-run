@@ -2,7 +2,7 @@
 
 Changed
   * AZ-901: Bump `storage-account` module to `v7.2.0` in `logs` submodule
-  * AZ-901: Bump `keyvault` module to `v7.0.0`
+  * AZ-901: Bump `keyvault` module to `v7.0.1`
   * AZ-901: Bump `function-app` module to `v7.0.1` - fix Storage Account firewall for monitoring function
 
 # v7.0.0 - 2022-09-30
