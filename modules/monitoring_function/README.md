@@ -93,13 +93,13 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.1 |
+| azurerm | ~> 3.25 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 7.0.0 |
+| function | claranet/function-app/azurerm | 7.0.1 |
 
 ## Resources
 

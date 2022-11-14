@@ -51,14 +51,13 @@ variable "keyvault_reader_objects_ids" {
 
 variable "keyvault_network_acls" {
   description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations."
-  default     = null
-
   type = object({
-    bypass                     = string,
-    default_action             = string,
-    ip_rules                   = list(string),
-    virtual_network_subnet_ids = list(string)
+    bypass                     = optional(string, "None"),
+    default_action             = optional(string, "Deny"),
+    ip_rules                   = optional(list(string)),
+    virtual_network_subnet_ids = optional(list(string)),
   })
+  default = {}
 }
 
 # Keyvault Diagnotics
