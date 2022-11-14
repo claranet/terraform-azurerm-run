@@ -1,4 +1,4 @@
-# Unreleased
+# v7.1.0 - 2022-11-14
 
 Changed
   * AZ-901: Bump `storage-account` module to `v7.2.0` in `logs` submodule
