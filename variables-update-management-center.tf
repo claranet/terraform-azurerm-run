@@ -1,5 +1,5 @@
 variable "maintenance_configurations" {
-  description = "Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations"
+  description = "Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations."
   type = list(object({
     configuration_name = string
     start_date_time    = string
@@ -45,7 +45,7 @@ variable "patching_auto_assessment_exclusions" {
 }
 
 variable "update_management_center_enabled" {
-  description = "Enable the Update Management Center"
+  description = "Enable the Update Management Center."
   type        = bool
   default     = false
 }
