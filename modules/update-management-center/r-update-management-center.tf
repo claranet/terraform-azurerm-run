@@ -168,7 +168,7 @@ resource "azapi_resource" "maintenance_configurations" {
   type      = "Microsoft.Maintenance/maintenanceConfigurations@2021-09-01-preview"
   body = jsonencode(
     {
-      location = var.location
+      location = lower(var.location)
       properties = {
         namespace = null
         extensionProperties = {
