@@ -1,4 +1,4 @@
-resource "azurecaf_name" "dcr" {
+data "azurecaf_name" "dcr" {
   name          = var.stack
   resource_type = "azurerm_resource_group"
   prefixes      = compact([local.name_prefix, var.use_caf_naming ? "dcr" : ""])

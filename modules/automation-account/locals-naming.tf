@@ -5,6 +5,6 @@ locals {
 
   automation_account_name = coalesce(
     var.custom_automation_account_name,
-    azurecaf_name.automation_account.result,
+    data.azurecaf_name.automation_account.result,
   )
 }

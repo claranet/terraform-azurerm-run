@@ -1,4 +1,4 @@
-resource "azurecaf_name" "vault" {
+data "azurecaf_name" "vault" {
   name          = var.stack
   resource_type = "azurerm_recovery_services_vault"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]

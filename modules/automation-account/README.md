@@ -55,7 +55,7 @@ module "automation-account" {
 
 | Name | Version |
 |------|---------|
-| azurecaf | ~> 1.1 |
+| azurecaf | ~> 1.2, >= 1.2.22 |
 | azurerm | ~> 3.22 |
 
 ## Modules
@@ -68,9 +68,9 @@ module "automation-account" {
 
 | Name | Type |
 |------|------|
-| [azurecaf_name.automation_account](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_automation_account.automation_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_account) | resource |
 | [azurerm_log_analytics_linked_service.link_workspace_automation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_linked_service) | resource |
+| [azurecaf_name.automation_account](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 
