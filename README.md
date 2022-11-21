@@ -202,6 +202,7 @@ module "global_run" {
 | keyvault\_uri | URI of the Key Vault |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
+| log\_analytics\_workspace\_location | The Log Analytics Workspace location. |
 | log\_analytics\_workspace\_name | The Log Analytics Workspace name. |
 | log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
 | log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |

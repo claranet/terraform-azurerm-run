@@ -18,7 +18,7 @@ output "log_analytics_workspace_name" {
 
 output "log_analytics_workspace_location" {
   description = "The Log Analytics Workspace location."
-  value       = azurerm_log_analytics_workspace.log_workspace.location
+  value       = module.logs.log_analytics_workspace_location
 }
 
 output "log_analytics_workspace_guid" {
