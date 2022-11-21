@@ -77,21 +77,3 @@ variable "monitoring_function_app_service_plan_name" {
   type        = string
   default     = null
 }
-
-variable "monitoring_function_storage_account_network_rules_enabled" {
-  description = "FAME function app's storage account: Enable Storage account network default rules for functions"
-  type        = bool
-  default     = true
-}
-
-variable "monitoring_function_storage_account_network_bypass" {
-  description = "FAME function app's storage account: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`."
-  type        = list(string)
-  default     = ["Logging", "Metrics", "AzureServices"]
-}
-
-variable "monitoring_function_storage_account_authorized_ips" {
-  description = "FAME function app's storage account: IPs restriction for Function storage account in CIDR format"
-  type        = list(string)
-  default     = []
-}

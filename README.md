@@ -71,10 +71,6 @@ module "rg" {
   stack       = var.stack
 }
 
-data "http" "myip" {
-  url = "http://ip4.clara.net/?raw"
-}
-
 module "global_run" {
   source  = "claranet/run-common/azurerm"
   version = "x.x.x"
@@ -87,8 +83,7 @@ module "global_run" {
 
   resource_group_name = module.rg.resource_group_name
 
-  monitoring_function_storage_account_authorized_ips = ["${data.http.myip.body}/32"]
-  monitoring_function_splunk_token                   = "xxxxxx"
+  monitoring_function_splunk_token = "xxxxxx"
   monitoring_function_metrics_extra_dimensions = {
     env           = var.environment
     sfx_monitored = "true"
@@ -180,10 +175,7 @@ module "global_run" {
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
-| monitoring\_function\_storage\_account\_authorized\_ips | FAME function app's storage account: IPs restriction for Function storage account in CIDR format | `list(string)` | `[]` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_storage\_account\_network\_bypass | FAME function app's storage account: Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of `Logging`, `Metrics`, `AzureServices`, or `None`. | `list(string)` | <pre>[<br>  "Logging",<br>  "Metrics",<br>  "AzureServices"<br>]</pre> | no |
-| monitoring\_function\_storage\_account\_network\_rules\_enabled | FAME function app's storage account: Enable Storage account network default rules for functions | `bool` | `true` | no |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
