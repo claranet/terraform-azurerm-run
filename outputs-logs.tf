@@ -16,6 +16,11 @@ output "log_analytics_workspace_name" {
   value       = module.logs.log_analytics_workspace_name
 }
 
+output "log_analytics_workspace_location" {
+  description = "The Log Analytics Workspace location."
+  value       = module.logs.log_analytics_workspace_location
+}
+
 output "log_analytics_workspace_guid" {
   description = "The Log Analytics Workspace GUID."
   value       = module.logs.log_analytics_workspace_guid
