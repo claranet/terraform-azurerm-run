@@ -1,4 +1,4 @@
-resource "azurecaf_name" "log_analytics_workspace" {
+data "azurecaf_name" "log_analytics_workspace" {
   name          = var.stack
   resource_type = "azurerm_log_analytics_workspace"
   prefixes      = var.log_analytics_workspace_name_prefix == "" ? null : [local.log_analytics_workspace_name_prefix]
@@ -8,7 +8,7 @@ resource "azurecaf_name" "log_analytics_workspace" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "storage_account" {
+data "azurecaf_name" "storage_account" {
   name          = var.stack
   resource_type = "azurerm_storage_account"
   prefixes      = null

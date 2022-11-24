@@ -3,6 +3,9 @@
 Added
   * [GH-2](https://github.com/claranet/terraform-azurerm-run-common/pull/2): Expose `log_analytics_workspace_location`
 
+Changed
+  * AZ-908: Use the new data source for CAF naming (instead of resource)
+
 # v7.1.0 - 2022-11-14
 
 Changed
