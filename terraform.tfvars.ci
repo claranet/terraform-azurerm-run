@@ -8,3 +8,4 @@ name_prefix         = "ci"
 extra_tags = {
   foo = "bar"
 }
+azure_tenant_id = "aaaaaa-aaaaaaa-aaaaaaa"
