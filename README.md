@@ -105,7 +105,7 @@ module "global_run" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| keyvault | claranet/keyvault/azurerm | 7.0.1 |
+| keyvault | claranet/keyvault/azurerm | 7.1.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring_function | n/a |
 
