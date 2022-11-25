@@ -6,6 +6,9 @@ Added
 Changed
   * AZ-908: Use the new data source for CAF naming (instead of resource)
 
+Fixed
+  * AZ-907: Remove Storage Account firewall for monitoring function
+
 # v7.1.0 - 2022-11-14
 
 Changed

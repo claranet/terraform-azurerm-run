@@ -5,10 +5,6 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.22"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = "~> 2.0"
-    }
   }
 }
 

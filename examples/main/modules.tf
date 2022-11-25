@@ -15,10 +15,6 @@ module "rg" {
   stack       = var.stack
 }
 
-data "http" "myip" {
-  url = "http://ip4.clara.net/?raw"
-}
-
 module "global_run" {
   source  = "claranet/run-common/azurerm"
   version = "x.x.x"
@@ -31,8 +27,7 @@ module "global_run" {
 
   resource_group_name = module.rg.resource_group_name
 
-  monitoring_function_storage_account_authorized_ips = ["${data.http.myip.body}/32"]
-  monitoring_function_splunk_token                   = "xxxxxx"
+  monitoring_function_splunk_token = "xxxxxx"
   monitoring_function_metrics_extra_dimensions = {
     env           = var.environment
     sfx_monitored = "true"

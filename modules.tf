@@ -47,7 +47,7 @@ module "logs" {
 
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "7.0.1"
+  version = "7.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -127,9 +127,6 @@ module "monitoring_function" {
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
   storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
-  storage_account_network_rules_enabled             = var.monitoring_function_storage_account_network_rules_enabled
-  storage_account_authorized_ips                    = var.monitoring_function_storage_account_authorized_ips
-  storage_account_network_bypass                    = var.monitoring_function_storage_account_network_bypass
 
   default_tags_enabled = var.default_tags_enabled
 

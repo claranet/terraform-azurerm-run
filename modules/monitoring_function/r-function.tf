@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "7.0.1"
+  version = "7.1.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -33,10 +33,7 @@ module "function" {
     }
   }
 
-  # Allow the current run to access Storage Table for FAME queries
-  storage_account_network_rules_enabled = var.storage_account_network_rules_enabled
-  storage_account_network_bypass        = var.storage_account_network_bypass
-  storage_account_authorized_ips        = var.storage_account_authorized_ips
+  storage_account_network_rules_enabled = false
 
   application_zip_package_path = var.zip_package_path
 
