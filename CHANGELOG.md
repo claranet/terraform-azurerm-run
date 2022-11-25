@@ -1,4 +1,4 @@
-# Unreleased
+# v7.2.0 - 2022-11-25
 
 Added
   * [GH-2](https://github.com/claranet/terraform-azurerm-run-common/pull/2): Expose `log_analytics_workspace_location`
