@@ -48,6 +48,8 @@ module "backup" {
   logs_categories         = var.logs_categories
   logs_metrics_categories = var.logs_metrics_categories
   logs_retention_days     = var.logs_retention_days
+
+  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 }
 
 module "automation_account" {
@@ -81,6 +83,8 @@ module "automation_account" {
   logs_categories         = var.logs_categories
   logs_metrics_categories = var.logs_metrics_categories
   logs_retention_days     = var.logs_retention_days
+
+  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 }
 
 module "update_management" {

@@ -1,4 +1,4 @@
-resource "azurecaf_name" "automation_account" {
+data "azurecaf_name" "automation_account" {
   name          = var.stack
   resource_type = "azurerm_automation_account"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]

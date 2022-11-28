@@ -1,6 +1,11 @@
 # Unreleased
 
 Changed
+  * AZ-908: Use the new data source for CAF naming (instead of resource)
+
+# Unreleased
+
+Changed
   * AZ-800: Automation account can only have 15 tags maximum
   * AZ-846: Bump diagnotics settings module
 

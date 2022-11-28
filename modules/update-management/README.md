@@ -118,7 +118,7 @@ module "update_management" {
 
 | Name | Version |
 |------|---------|
-| azurecaf | ~> 1.1 |
+| azurecaf | ~> 1.2, >= 1.2.22 |
 | azurerm | ~> 3.0 |
 
 ## Modules
@@ -129,10 +129,10 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurecaf_name.update](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_log_analytics_solution.update_management](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_solution) | resource |
 | [azurerm_resource_group_template_deployment.update_config_standard_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group_template_deployment) | resource |
 | [azurerm_resource_group_template_deployment.update_config_standard_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group_template_deployment) | resource |
+| [azurecaf_name.update](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/data-sources/name) | data source |
 | [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
 
 ## Inputs
