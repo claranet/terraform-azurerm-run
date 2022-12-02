@@ -9,7 +9,7 @@ terraform {
     # tflint-ignore: terraform_unused_required_providers
     azapi = {
       source  = "azure/azapi"
-      version = "~> 0.1"
+      version = "~> 1.0"
     }
   }
 }
