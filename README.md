@@ -169,6 +169,7 @@ module "global_run" {
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | file\_share\_backup\_weekly | Map to configure the weekly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly. | `any` | `{}` | no |
 | file\_share\_backup\_yearly | Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly. | `any` | `{}` | no |
+| iaas\_features\_enabled | Whether or not IaaS (Virtual Machine related) modules are created. | `bool` | `true` | no |
 | keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
 | keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
@@ -284,7 +285,7 @@ module "global_run" {
 | automation\_account\_id | Azure Automation Account ID |
 | automation\_account\_name | Azure Automation Account name |
 | data\_collection\_rule | Azure Monitor Data Collection Rule object. |
-| data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule. |
+| data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule. |
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
 | file\_share\_backup\_policy\_id | File share Backup policy ID |
 | file\_share\_backup\_policy\_name | File share Backup policy name |

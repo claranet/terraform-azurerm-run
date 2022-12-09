@@ -1,6 +1,8 @@
 module "backup" {
   source = "./modules/backup"
 
+  count = var.iaas_features_enabled ? 1 : 0
+
   client_name    = var.client_name
   location       = var.location
   location_short = var.location_short
@@ -55,6 +57,8 @@ module "backup" {
 module "automation_account" {
   source = "./modules/automation-account"
 
+  count = var.iaas_features_enabled ? 1 : 0
+
   client_name    = var.client_name
   location       = var.location
   location_short = var.location_short
@@ -90,6 +94,8 @@ module "automation_account" {
 module "update_management" {
   source = "./modules/update-management"
 
+  count = var.iaas_features_enabled ? 1 : 0
+
   client_name    = var.client_name
   location       = var.location
   location_short = var.location_short
@@ -102,7 +108,7 @@ module "update_management" {
   name_prefix    = try(coalesce(var.update_management_name_prefix, var.name_prefix), "")
   name_suffix    = var.name_suffix
 
-  automation_account_name    = module.automation_account.automation_account_name
+  automation_account_name    = one(module.automation_account[*].automation_account_name)
   log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
 
   deploy_update_management_solution = var.deploy_update_management_solution
@@ -136,6 +142,8 @@ module "update_management" {
 
 module "vm_monitoring" {
   source = "./modules/vm-monitoring"
+
+  count = var.iaas_features_enabled ? 1 : 0
 
   client_name    = var.client_name
   location       = var.location

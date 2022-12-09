@@ -36,3 +36,9 @@ variable "location_short" {
   description = "Short string for Azure location."
   type        = string
 }
+
+variable "iaas_features_enabled" {
+  description = "Whether or not IaaS (Virtual Machine related) modules are created."
+  type        = bool
+  default     = true
+}
