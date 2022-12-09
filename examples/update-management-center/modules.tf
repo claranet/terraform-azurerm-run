@@ -130,9 +130,9 @@ module "linux_vm" {
 
   subnet_id = module.subnet.subnet_id
 
-  admin_username  = "claranet"
-  ssh_private_key = file("~/.ssh/id_rsa")
-  ssh_public_key  = file("~/.ssh/id_rsa.pub")
+  admin_username = "claranet"
+  #  ssh_private_key = file("~/.ssh/id_rsa")
+  #  ssh_public_key  = file("~/.ssh/id_rsa.pub")
 
   azure_monitor_data_collection_rule_id = module.run_iaas.data_collection_rule.id
   backup_policy_id                      = null
