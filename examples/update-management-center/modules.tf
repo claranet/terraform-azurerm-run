@@ -150,8 +150,8 @@ module "linux_vm" {
     version   = "latest"
   }
 
-  patch_mode                    = "AutomaticByPlatform"
-  maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config1"].id, module.run_iaas.maintenance_configurations["config2"].id]
+  patch_mode = "AutomaticByPlatform"
+  #maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config1"].id, module.run_iaas.maintenance_configurations["config2"].id]
 
 }
 
@@ -189,7 +189,7 @@ module "windows_vm" {
 
   vm_size = "Standard_B2ms"
 
-  subnet_id                     = module.subnet.subnet_id
-  patch_mode                    = "AutomaticByPlatform"
-  maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config2"].id]
+  subnet_id  = module.subnet.subnet_id
+  patch_mode = "AutomaticByPlatform"
+  #maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config2"].id]
 }
