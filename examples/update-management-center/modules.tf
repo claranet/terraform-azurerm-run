@@ -1,5 +1,3 @@
-data "azurerm_subscription" "current" {}
-
 module "azure_region" {
   source  = "claranet/regions/azurerm"
   version = "x.x.x"
