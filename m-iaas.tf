@@ -44,12 +44,12 @@ module "backup" {
   file_share_backup_monthly = var.file_share_backup_monthly
   file_share_backup_yearly  = var.file_share_backup_yearly
 
-  logs_destinations_ids   = var.logs_destinations_ids
-  logs_categories         = var.logs_categories
-  logs_metrics_categories = var.logs_metrics_categories
-  logs_retention_days     = var.logs_retention_days
+  logs_destinations_ids   = coalescelist(var.backup_logs_destinations_ids, local.logs_destinations_ids)
+  logs_categories         = var.backup_logs_categories
+  logs_metrics_categories = var.backup_logs_metrics_categories
+  logs_retention_days     = var.backup_logs_retention_days
 
-  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
+  custom_diagnostic_settings_name = var.backup_custom_diagnostic_settings_name
 }
 
 module "automation_account" {
@@ -77,14 +77,14 @@ module "automation_account" {
 
   log_analytics_resource_group_name    = var.log_analytics_resource_group_name
   log_analytics_workspace_link_enabled = var.log_analytics_workspace_link_enabled
-  log_analytics_workspace_id           = var.log_analytics_workspace_id
+  log_analytics_workspace_id           = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
 
-  logs_destinations_ids   = var.logs_destinations_ids
-  logs_categories         = var.logs_categories
-  logs_metrics_categories = var.logs_metrics_categories
-  logs_retention_days     = var.logs_retention_days
+  logs_destinations_ids   = coalescelist(var.automation_logs_destinations_ids, local.logs_destinations_ids)
+  logs_categories         = var.automation_logs_categories
+  logs_metrics_categories = var.automation_logs_metrics_categories
+  logs_retention_days     = var.automation_logs_retention_days
 
-  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
+  custom_diagnostic_settings_name = var.automation_custom_diagnostic_settings_name
 }
 
 module "update_management" {
@@ -103,7 +103,7 @@ module "update_management" {
   name_suffix    = var.name_suffix
 
   automation_account_name    = module.automation_account.automation_account_name
-  log_analytics_workspace_id = var.log_analytics_workspace_id
+  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
 
   deploy_update_management_solution = var.deploy_update_management_solution
 
@@ -150,7 +150,7 @@ module "vm_monitoring" {
   name_suffix    = var.name_suffix
   custom_name    = var.dcr_custom_name
 
-  log_analytics_workspace_id = var.log_analytics_workspace_id
+  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
 
   syslog_facilities_names = var.data_collection_syslog_facilities_names
   syslog_levels           = var.data_collection_syslog_levels

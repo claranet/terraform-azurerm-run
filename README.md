@@ -142,9 +142,18 @@ module "global_run" {
 | automation\_account\_extra\_tags | Extra tags to add to automation account. | `map(string)` | `{}` | no |
 | automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br>    type         = string<br>    identity_ids = list(string)<br>  })</pre> | <pre>{<br>  "identity_ids": [],<br>  "type": "SystemAssigned"<br>}</pre> | no |
 | automation\_account\_sku | Automation account Sku. | `string` | `"Basic"` | no |
+| automation\_custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| automation\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
+| automation\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
+| automation\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| automation\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
+| backup\_custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| backup\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
+| backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
+| backup\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| backup\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | client\_name | Client name. | `string` | n/a | yes |
 | custom\_automation\_account\_name | Automation account custom name. | `string` | `""` | no |
-| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "uucp"<br>]</pre> | no |
 | data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | dcr\_custom\_name | VM Monitoring - Data Collection rule custom name. | `string` | `""` | no |
@@ -190,12 +199,8 @@ module "global_run" {
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
 | log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
-| logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
-| logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
-| logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | logs\_storage\_account\_appservices\_container\_name | Name of the container in which App Services logs are stored | `string` | `"app-services"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | `null` | no |
@@ -239,7 +244,7 @@ module "global_run" {
 | recovery\_vault\_storage\_mode\_type | The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | resource\_group\_name | Resource Group the resources will belong to. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
-| tenant\_id | Tenant ID | `string` | `null` | no |
+| tenant\_id | Tenant ID. | `string` | `null` | no |
 | update\_center\_enabled | Enable the Update Management Center. | `bool` | `false` | no |
 | update\_center\_maintenance\_configurations | Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations. | <pre>list(object({<br>    configuration_name = string<br>    start_date_time    = string<br>    duration           = optional(string, "02:00")<br>    time_zone          = optional(string, "UTC")<br>    recur_every        = string<br>    reboot_setting     = optional(string, "IfRequired")<br>    windows_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Definition",<br>      "FeaturePack",<br>      "Security",<br>      "ServicePack",<br>      "Tools",<br>      "UpdateRollup",<br>      "Updates",<br>    ])<br>    linux_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Security",<br>      "Other",<br>    ])<br>  }))</pre> | `[]` | no |
 | update\_center\_periodic\_assessment\_enabled | Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy. | `bool` | `true` | no |
@@ -273,16 +278,16 @@ module "global_run" {
 
 | Name | Description |
 |------|-------------|
-| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC Primary Acess Key. |
-| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key. |
-| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint. |
-| automation\_account\_id | Azure Automation Account ID. |
-| automation\_account\_name | Azure Automation Account name. |
+| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC Primary Acess Key |
+| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
+| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
+| automation\_account\_id | Azure Automation Account ID |
+| automation\_account\_name | Azure Automation Account name |
 | data\_collection\_rule | Azure Monitor Data Collection Rule object. |
 | data\_collection\_rule\_id | Id of the Azure Monitor Data Collection Rule. |
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
-| file\_share\_backup\_policy\_id | File share Backup policy ID. |
-| file\_share\_backup\_policy\_name | File share Backup policy name. |
+| file\_share\_backup\_policy\_id | File share Backup policy ID |
+| file\_share\_backup\_policy\_name | File share Backup policy name |
 | keyvault\_id | Id of the Key Vault |
 | keyvault\_name | Name of the Key Vault |
 | keyvault\_resource\_group\_name | Resource Group the Key Vault belongs to |
@@ -323,11 +328,11 @@ module "global_run" {
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_queries\_table\_name | Name of the table in the Storage Account, empty if connection string provided |
-| recovery\_vault\_id | Azure Recovery Services Vault ID. |
-| recovery\_vault\_name | Azure Recovery Services Vault name. |
+| recovery\_vault\_id | Azure Recovery Services Vault ID |
+| recovery\_vault\_name | Azure Recovery Services Vault name |
 | terraform\_module | Information about this Terraform module |
-| vm\_backup\_policy\_id | VM Backup policy ID. |
-| vm\_backup\_policy\_name | VM Backup policy name. |
+| vm\_backup\_policy\_id | VM Backup policy ID |
+| vm\_backup\_policy\_name | VM Backup policy name |
 <!-- END_TF_DOCS -->
 ## Related documentation
 
