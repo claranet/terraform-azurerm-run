@@ -13,7 +13,7 @@ It includes:
 
 | Name | Version |
 |------|---------|
-| azapi | ~> 0.1 |
+| azapi | ~> 1.0 |
 | azurerm | ~> 3.22 |
 
 ## Modules
