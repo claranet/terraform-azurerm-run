@@ -7,6 +7,7 @@ It includes:
 ## Requirements
 
 * During the preview you have to register for `InGuestAutoAssessmentVMPreview` [documentation](https://learn.microsoft.com/en-us/azure/update-center/enable-machines?tabs=portal-periodic)
+* You need to be at least `Contributor` on the subscriptions to use `auto_assessment_enabled` with Update Management Centrer module.
 
 <!-- BEGIN_TF_DOCS -->
 ## Providers
