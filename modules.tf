@@ -160,7 +160,7 @@ module "vm_monitoring" {
 }
 
 module "update_management_center" {
-  for_each = toset(var.update_management_center_enabled ? ["enabled"] : [])
+  for_each = toset(var.update_center_enabled ? ["enabled"] : [])
   source   = "./modules/update-management-center"
 
   environment         = var.environment
@@ -168,28 +168,10 @@ module "update_management_center" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  auto_assessment_enabled    = var.patching_auto_assessment_enabled
-  auto_assessment_scopes     = var.patching_auto_assessment_scopes
-  auto_assessment_exclusions = var.patching_auto_assessment_exclusions
+  auto_assessment_enabled    = var.update_center_periodic_assessment_enabled
+  auto_assessment_scopes     = var.update_center_periodic_assessment_scopes
+  auto_assessment_exclusions = var.update_center_periodic_assessment_exclusions
 
-  maintenance_configurations = var.maintenance_configurations
+  maintenance_configurations = var.update_center_maintenance_configurations
 }
 
-# Don't work :(
-# tflint-ignore: terraform_unused_declarations
-#data "null_data_source" "preconditions" {
-#  inputs = {
-#    dummy                                   = timestamp()
-#    update_management_center_enabled        = var.update_management_center_enabled
-#    deploy_update_management_solution       = var.deploy_update_management_solution
-#    windows_update_management_configuration = length(var.windows_update_management_configuration)
-#    linux_update_management_configuration   = length(var.linux_update_management_configuration)
-#  }
-#  lifecycle {
-#    precondition {
-#      condition     = var.update_management_center_enabled == true
-#      error_message = "You can't set patching_auto_assessment_enabled with update_management_solution or windows_update_management_configuration or linux_update_management_configuration."
-#    }
-#
-#  }
-#}
