@@ -113,6 +113,10 @@ module "run_iaas" {
   recovery_vault_soft_delete_enabled = false
 }
 
+resource "tls_private_key" "ssh_key" {
+  algorithm = "RSA"
+  rsa_bits  = 3048
+}
 
 module "linux_vm" {
   source  = "claranet/linux-vm/azurerm"
@@ -128,9 +132,9 @@ module "linux_vm" {
 
   subnet_id = module.subnet.subnet_id
 
-  admin_username = "claranet"
-  #  ssh_private_key = file("~/.ssh/id_rsa")
-  #  ssh_public_key  = file("~/.ssh/id_rsa.pub")
+  admin_username  = "claranet"
+  ssh_private_key = tls_private_key.ssh_key.private_key_pem
+  ssh_public_key  = tls_private_key.ssh_key.public_key_openssh
 
   azure_monitor_data_collection_rule_id = module.run_iaas.data_collection_rule.id
   backup_policy_id                      = null
@@ -165,11 +169,8 @@ module "windows_vm" {
   location_short      = module.azure_region.location_short
   resource_group_name = module.rg.resource_group_name
 
-  custom_computer_name = "vmjerempatching"
-  custom_name          = "vmjerempatching"
-  custom_nic_name      = "nic-vmjerempatching"
-  admin_username       = "claranet"
-  admin_password       = "SuP3rStr0ng!"
+  admin_username = "claranet"
+  admin_password = "SuP3rStr0ng!"
 
   public_ip_sku = null
 

@@ -12,7 +12,7 @@ It includes:
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) - Available only in module version >= 2.2.0 ([example](examples/automation-account/modules.tf))
   * Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
   * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
-  * Azure Update Management using Update Management Center ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview)) ([example](examples/update-management-center/modules.tf))
+  * Azure Update Center using Update Management Center ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview)) ([example](examples/update-management-center/modules.tf))
 
 ## Requirements
 
@@ -129,7 +129,7 @@ No providers.
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | update\_management | ./modules/update-management | n/a |
-| update\_management\_center | ./modules/update-management-center | n/a |
+| update\_management\_center | ./modules/update-center | n/a |
 | vm\_monitoring | ./modules/vm-monitoring | n/a |
 
 ## Resources

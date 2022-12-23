@@ -161,7 +161,7 @@ module "vm_monitoring" {
 
 module "update_management_center" {
   for_each = toset(var.update_center_enabled ? ["enabled"] : [])
-  source   = "./modules/update-management-center"
+  source   = "./modules/update-center"
 
   environment         = var.environment
   stack               = var.stack
