@@ -95,10 +95,10 @@ module "run_iaas" {
   update_management_schedule        = []
   deploy_update_management_solution = true
 
-  update_management_center_enabled = true
-  patching_auto_assessment_enabled = true
-  patching_auto_assessment_scopes  = [module.rg.resource_group_id]
-  maintenance_configurations = [
+  update_center_enabled                     = true
+  update_center_periodic_assessment_enabled = true
+  update_center_periodic_assessment_scopes  = [module.rg.resource_group_id]
+  update_center_maintenance_configurations = [
     {
       configuration_name = "config1"
       start_date_time    = "2021-08-21 04:00"
@@ -149,7 +149,7 @@ module "linux_vm" {
   }
 
   patch_mode = "AutomaticByPlatform"
-  #maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config1"].id, module.run_iaas.maintenance_configurations["config2"].id]
+  #maintenance_configuration_ids = [module.run_iaas.update_center_maintenance_configurations["config1"].id, module.run_iaas.update_center_maintenance_configurations["config2"].id]
 
 }
 
@@ -189,5 +189,5 @@ module "windows_vm" {
 
   subnet_id  = module.subnet.subnet_id
   patch_mode = "AutomaticByPlatform"
-  #maintenance_configuration_ids = [module.run_iaas.maintenance_configurations["config2"].id]
+  #maintenance_configuration_ids = [module.run_iaas.update_center_maintenance_configurations["config2"].id]
 }
