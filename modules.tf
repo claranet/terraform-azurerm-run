@@ -160,7 +160,7 @@ module "vm_monitoring" {
 }
 
 module "update_management_center" {
-  for_each = var.update_management_center_enabled ? toset(["enabled"]) : toset([])
+  for_each = toset(var.update_management_center_enabled ? ["enabled"] : [])
   source   = "./modules/update-management-center"
 
   environment         = var.environment
