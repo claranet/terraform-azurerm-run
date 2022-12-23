@@ -16,7 +16,7 @@ It includes:
 
 ## Requirements
 
-* You need to be at least `Contributor` on the subscriptions to use `auto_assessment_enabled` with Update Management Centrer module.
+* You need to have at least the `Contributor` role on the subscriptions to use `update_center_periodic_assessment_enabled` with Update Management Center module.
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
