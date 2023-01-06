@@ -15,7 +15,7 @@ variable "update_center_maintenance_configurations" {
       "ServicePack",
       "Tools",
       "UpdateRollup",
-      "Updates"
+      "Updates",
     ])
     linux_classifications_to_include = optional(list(string), [
       "Critical",

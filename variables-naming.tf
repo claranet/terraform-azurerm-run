@@ -53,13 +53,13 @@ variable "update_management_name_prefix" {
 variable "linux_update_management_config_name" {
   description = "Custom configuration name for Linux Update management."
   type        = string
-  default     = "Standard Linux Update Schedule."
+  default     = "Standard Linux Update Schedule"
 }
 
 variable "windows_update_management_configuration_name" {
   description = "Custom configuration name for Windows Update management."
   type        = string
-  default     = "Standard Windows Update Schedule."
+  default     = "Standard Windows Update Schedule"
 }
 
 # VM Monitoring
