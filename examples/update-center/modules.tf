@@ -75,30 +75,16 @@ module "run_common" {
 }
 
 
-module "run_iaas" {
-  source  = "claranet/run-iaas/azurerm"
+module "update_management" {
+  source  = "claranet/run-iaas/azurerm//modules/update-center"
   version = "x.x.x"
 
-  client_name    = var.client_name
-  environment    = var.environment
-  stack          = var.stack
-  location       = module.azure_region.location
-  location_short = module.azure_region.location_short
+  location            = module.azure_region.location
+  environment         = var.environment
+  stack               = var.stack
+  resource_group_name = module.rg.resource_group_name
 
-  log_analytics_workspace_id = module.run_common.log_analytics_workspace_id
-  logs_destinations_ids = [
-    module.run_common.log_analytics_workspace_id,
-    module.run_common.logs_storage_account_id
-  ]
-  resource_group_name               = module.rg.resource_group_name
-  update_management_os_list         = []
-  update_management_schedule        = []
-  deploy_update_management_solution = true
-
-  update_center_enabled                     = true
-  update_center_periodic_assessment_enabled = true
-  update_center_periodic_assessment_scopes  = [module.rg.resource_group_id]
-  update_center_maintenance_configurations = [
+  maintenance_configurations = [
     {
       configuration_name = "config1"
       start_date_time    = "2021-08-21 04:00"
@@ -110,7 +96,6 @@ module "run_iaas" {
       recur_every        = "1Week"
     }
   ]
-  recovery_vault_soft_delete_enabled = false
 }
 
 resource "tls_private_key" "ssh_key" {
@@ -136,7 +121,7 @@ module "linux_vm" {
   ssh_private_key = tls_private_key.ssh_key.private_key_pem
   ssh_public_key  = tls_private_key.ssh_key.public_key_openssh
 
-  azure_monitor_data_collection_rule_id = module.run_iaas.data_collection_rule.id
+  azure_monitor_data_collection_rule_id = null
   backup_policy_id                      = null
 
   diagnostics_storage_account_name      = module.run_common.logs_storage_account_name
@@ -174,9 +159,9 @@ module "windows_vm" {
 
   public_ip_sku = null
 
-  azure_monitor_data_collection_rule_id = module.run_iaas.data_collection_rule.id
+  azure_monitor_data_collection_rule_id = null
 
-  backup_policy_id = module.run_iaas.vm_backup_policy_id
+  backup_policy_id = null
 
   diagnostics_storage_account_key  = ""
   diagnostics_storage_account_name = module.run_common.logs_storage_account_name
