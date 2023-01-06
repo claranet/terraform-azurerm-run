@@ -279,8 +279,8 @@ variable "linux_update_management_configuration" {
   description = "Linux specific update management configuration. Possible values for reboot_setting are `IfRequired`, `RebootOnly`, `Never`, `Always`. More informations on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#linuxproperties)."
   type        = any
   default = {
-    update_classifications = "Critical, Security."
-    reboot_setting         = "IfRequired."
+    update_classifications = "Critical, Security"
+    reboot_setting         = "IfRequired"
     included_packages      = []
     excluded_packages      = []
   }
