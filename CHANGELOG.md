@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-837: Fix default Update management values
+
 # v6.4.0 - 2023-01-06
 
 Added
