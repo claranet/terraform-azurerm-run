@@ -5,19 +5,19 @@ variable "default_tags_enabled" {
 }
 
 variable "extra_tags" {
-  description = "Extra tags to add"
+  description = "Extra tags to add."
   type        = map(string)
   default     = {}
 }
 
 variable "automation_account_extra_tags" {
-  description = "Extra tags to add to automation account"
+  description = "Extra tags to add to automation account."
   type        = map(string)
   default     = {}
 }
 
 variable "recovery_vault_extra_tags" {
-  description = "Extra tags to add to recovery vault"
+  description = "Extra tags to add to recovery vault."
   type        = map(string)
   default     = {}
 }
