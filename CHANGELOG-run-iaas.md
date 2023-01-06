@@ -1,3 +1,8 @@
+# v6.4.0 - 2023-01-06
+
+Added
+  * AZ-837: Add Update Management Center
+
 # v6.3.0 - 2022-12-09
 
 Changed
