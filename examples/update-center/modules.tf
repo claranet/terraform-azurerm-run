@@ -64,6 +64,8 @@ module "run_common" {
   monitoring_function_enabled      = false
   monitoring_function_splunk_token = ""
 
+  update_center_enabled = false
+
   keyvault_network_acls = {
     bypass   = "AzureServices"
     ip_rules = []

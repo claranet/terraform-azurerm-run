@@ -5,6 +5,7 @@
 variable "update_management_os_list" {
   description = "List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management."
   type        = list(string)
+  default     = []
 }
 
 variable "update_management_scope" {
@@ -36,6 +37,7 @@ variable "update_management_tags_filtering_operator" {
 variable "update_management_schedule" {
   description = "List of Map with schedule parameters for update management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object)."
   type        = list(any)
+  default     = []
 }
 
 variable "deploy_update_management_solution" {

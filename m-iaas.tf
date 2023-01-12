@@ -168,7 +168,7 @@ module "vm_monitoring" {
 }
 
 module "update_management_center" {
-  for_each = toset(var.update_center_enabled ? ["enabled"] : [])
+  for_each = toset(var.update_center_enabled && var.iaas_features_enabled ? ["enabled"] : [])
   source   = "./modules/update-center"
 
   environment         = var.environment
@@ -182,4 +182,3 @@ module "update_management_center" {
 
   maintenance_configurations = var.update_center_maintenance_configurations
 }
-

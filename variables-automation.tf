@@ -23,6 +23,7 @@ variable "log_analytics_workspace_link_enabled" {
 variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID where the logs are sent and linked to Automation account."
   type        = string
+  default     = null
 }
 
 ## Identity variables
