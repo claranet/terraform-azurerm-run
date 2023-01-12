@@ -68,6 +68,10 @@ variable "linux_update_management_tags_filtering_operator" {
   description = "Filter Linux VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`."
   type        = string
   default     = null
+  validation {
+    condition     = contains([null, "All", "Any"], var.linux_update_management_tags_filtering_operator)
+    error_message = "The value for var.linux_update_management_tags_filtering_operator must be either `All` or `Any`."
+  }
 }
 
 variable "linux_update_management_schedule" {
@@ -111,6 +115,10 @@ variable "windows_update_management_tags_filtering_operator" {
   description = "Filter Windows VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`."
   type        = string
   default     = null
+  validation {
+    condition     = contains([null, "All", "Any"], var.linux_update_management_tags_filtering_operator)
+    error_message = "The value for var.windows_update_management_tags_filtering_operator must be either `All` or `Any`."
+  }
 }
 
 variable "windows_update_management_schedule" {

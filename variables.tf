@@ -38,7 +38,7 @@ variable "location_short" {
 }
 
 variable "iaas_features_enabled" {
-  description = "Whether or not IaaS (Virtual Machine related) modules are created."
+  description = "Whether IaaS (Virtual Machine related) modules are created."
   type        = bool
   default     = true
 }
