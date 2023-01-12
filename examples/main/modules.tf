@@ -15,8 +15,8 @@ module "rg" {
   stack       = var.stack
 }
 
-module "global_run" {
-  source  = "claranet/run-common/azurerm"
+module "run" {
+  source  = "claranet/run/azurerm"
   version = "x.x.x"
 
   client_name    = var.client_name

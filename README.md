@@ -29,25 +29,33 @@ It includes some IaaS specifics:
 
 * You need to have at least the `Contributor` role on the subscriptions to use `update_center_periodic_assessment_enabled` with Update Management Center module.
 
-## Requirements
-
-* [PowerShell with Az module](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-3.6.1) >= 3.6 is mandatory and is used to configure IIS logs collect in Azure Monitor
-
 ## Using sub-modules
 
 The integrated services can be used separately with the same inputs and outputs when it's a sub module.
 
 ### Log management
 
-See `logs` sub-module [README](./modules/logs/README.md).
+See `logs` module [README](./modules/logs/README.md).
 
 ### Monitoring function
 
-See `monitoring_function` [README](./modules/monitoring\_function/README.md)
+See `monitoring_function` module [README](./modules/monitoring\_function/README.md)
 
 ### Key Vault
 
 See Key Vault module: [terraform-azurerm-keyvault](https://github.com/claranet/terraform-azurerm-keyvault).
+
+### Azure Backup
+
+See Azure Backup module [README](./modules/backup/README.md).
+
+### Automation Account
+
+See Automation Account module [README](./modules/automation-account/README.md).
+
+### Azure Update
+
+See Update Management module (legacy) [README](./modules/update-management/README.md) and Update Center module [README](./modules/update-center/README.md).
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -86,8 +94,8 @@ module "rg" {
   stack       = var.stack
 }
 
-module "global_run" {
-  source  = "claranet/run-common/azurerm"
+module "run" {
+  source  = "claranet/run/azurerm"
   version = "x.x.x"
 
   client_name    = var.client_name
@@ -169,7 +177,7 @@ module "global_run" {
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | file\_share\_backup\_weekly | Map to configure the weekly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly. | `any` | `{}` | no |
 | file\_share\_backup\_yearly | Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly. | `any` | `{}` | no |
-| iaas\_features\_enabled | Whether or not IaaS (Virtual Machine related) modules are created. | `bool` | `true` | no |
+| iaas\_features\_enabled | Whether IaaS (Virtual Machine related) modules are created. | `bool` | `true` | no |
 | keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
 | keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
