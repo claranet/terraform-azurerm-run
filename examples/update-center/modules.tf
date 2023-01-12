@@ -48,7 +48,7 @@ module "subnet" {
 
 
 module "run_common" {
-  source  = "claranet/run-common/azurerm"
+  source  = "claranet/run/azurerm"
   version = "x.x.x"
 
   client_name    = var.client_name
@@ -76,7 +76,7 @@ module "run_common" {
 
 
 module "update_management" {
-  source  = "claranet/run-iaas/azurerm//modules/update-center"
+  source  = "claranet/run/azurerm//modules/update-center"
   version = "x.x.x"
 
   location            = module.azure_region.location
