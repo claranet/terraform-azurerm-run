@@ -33,6 +33,27 @@ variable "location_short" {
 }
 
 ###############################
+# Azure Backup flags
+###############################
+variable "backup_vm_enabled" {
+  description = ""
+  type = bool
+  default = true
+}
+
+variable "backup_fileshare_enabled" {
+  description = ""
+  type = bool
+  default = true
+}
+
+variable "backup_postgresql_enabled" {
+  description = ""
+  type = bool
+  default = true
+}
+
+###############################
 # Azure Recovery Vault variables
 ###############################
 

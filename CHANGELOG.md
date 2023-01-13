@@ -1,3 +1,8 @@
+# Unreleased
+
+Breaking
+  * AZ-926: Cleaning and refactoring
+
 # v7.0.0 - 2023-01-13
 
 Added

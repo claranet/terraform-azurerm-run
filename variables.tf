@@ -37,8 +37,41 @@ variable "location_short" {
   type        = string
 }
 
-variable "iaas_features_enabled" {
-  description = "Whether IaaS (Virtual Machine related) modules are created."
-  type        = bool
-  default     = true
+###############################
+# Features flags
+###############################
+variable "backup_vm_enabled" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "backup_fileshare_enabled" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "backup_postgresql_enabled" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "automation_account_enabled" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "update_management_legacy_enabled" {
+  description = ""
+  type = bool
+  default = false
+}
+
+variable "update_management_enabled" {
+  description = ""
+  type = bool
+  default = false
 }

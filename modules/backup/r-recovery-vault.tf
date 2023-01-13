@@ -1,4 +1,6 @@
 resource "azurerm_recovery_services_vault" "vault" {
+  count = var.backup_vm_enabled || var.backup_fileshare_enabled ? 1 : 0
+
   name                = local.vault_name
   location            = var.location
   resource_group_name = var.resource_group_name
