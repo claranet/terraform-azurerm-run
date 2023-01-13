@@ -16,7 +16,7 @@ module "rg" {
 }
 
 module "logs" {
-  source  = "claranet/run-common/azurerm//modules/logs"
+  source  = "claranet/run/azurerm//modules/logs"
   version = "x.x.x"
 
   client_name    = var.client_name
@@ -29,7 +29,7 @@ module "logs" {
 }
 
 module "automation_account" {
-  source  = "claranet/run-iaas/azurerm//modules/automation-account"
+  source  = "claranet/run/azurerm//modules/automation-account"
   version = "x.x.x"
 
   location            = module.azure_region.location
