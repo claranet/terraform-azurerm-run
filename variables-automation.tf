@@ -2,6 +2,12 @@
 # Azure Automation Account variables
 ###############################
 
+variable "automation_account_enabled" {
+  description = "Whether to enabled Automation Account. Enabled if legacy Update Management is enabled."
+  type        = bool
+  default     = false
+}
+
 variable "automation_account_sku" {
   description = "Automation account Sku."
   type        = string

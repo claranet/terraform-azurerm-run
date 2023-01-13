@@ -1,7 +1,7 @@
 module "update_management_center" {
-  source   = "./modules/update-center"
+  source = "./modules/update-center"
 
-  count = toset(var.update_management_enabled ? 1 : 0)
+  count = var.update_center_enabled ? 1 : 0
 
   environment         = var.environment
   stack               = var.stack

@@ -57,7 +57,7 @@ resource "azurerm_log_analytics_workspace" "example" {
 }
 
 module "monitoring_function" {
-  source  = "claranet/run-common/azurerm//modules/monitoring_function"
+  source  = "claranet/run-common/azurerm//modules/monitoring-function"
   version = "x.x.x"
 
   client_name    = var.client_name
@@ -99,7 +99,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | 7.1.0 |
+| function | claranet/function-app/azurerm | ~> 7.1.0 |
 
 ## Resources
 

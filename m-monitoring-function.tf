@@ -1,5 +1,5 @@
 module "monitoring_function" {
-  source = "./modules/monitoring_function"
+  source = "./modules/monitoring-function"
 
   count = var.monitoring_function_enabled ? 1 : 0
 
