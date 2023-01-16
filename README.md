@@ -112,6 +112,11 @@ module "run" {
     sfx_monitored = "true"
   }
 
+  backup_vm_enabled         = true
+  backup_postgresql_enabled = true
+
+  update_center_enabled = true
+
   extra_tags = {
     foo = "bar"
   }
