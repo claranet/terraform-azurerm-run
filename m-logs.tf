@@ -19,9 +19,6 @@ module "logs" {
   logs_storage_account_tier                              = var.logs_storage_account_tier
   logs_storage_account_replication_type                  = var.logs_storage_account_replication_type
   logs_storage_min_tls_version                           = var.logs_storage_min_tls_version
-  logs_storage_account_sas_expiry                        = var.logs_storage_account_sas_expiry
-  logs_storage_account_enable_appservices_container      = var.logs_storage_account_enable_appservices_container
-  logs_storage_account_appservices_container_name        = var.logs_storage_account_appservices_container_name
   logs_storage_account_enable_advanced_threat_protection = var.logs_storage_account_enable_advanced_threat_protection
   logs_storage_account_enable_https_traffic_only         = var.logs_storage_account_enable_https_traffic_only
   logs_storage_account_enable_archived_logs_fileshare    = var.logs_storage_account_enable_archived_logs_fileshare
@@ -33,7 +30,6 @@ module "logs" {
   log_analytics_workspace_extra_tags        = var.log_analytics_workspace_extra_tags
   log_analytics_workspace_retention_in_days = var.log_analytics_workspace_retention_in_days
   log_analytics_workspace_sku               = var.log_analytics_workspace_sku
-  log_analytics_workspace_enable_iis_logs   = var.log_analytics_workspace_enable_iis_logs
 
   logs_storage_account_enable_archiving                      = var.logs_storage_account_enable_archiving
   tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than
