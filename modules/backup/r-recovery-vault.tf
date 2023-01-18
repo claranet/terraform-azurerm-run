@@ -20,3 +20,8 @@ resource "azurerm_recovery_services_vault" "vault" {
 
   tags = merge(local.default_tags, var.extra_tags, var.recovery_vault_extra_tags)
 }
+
+moved {
+  from = azurerm_recovery_services_vault.vault
+  to   = azurerm_recovery_services_vault.vault[0]
+}

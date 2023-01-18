@@ -6,6 +6,10 @@ Breaking
 Added
   * AZ-926: Add Backup Vault resources
 
+Removed
+  * AZ-926: Remove Log Storage SAS token exposition
+  * AZ-926: Remove legacy IIS log ingestion configuration
+
 # v7.0.0 - 2023-01-13
 
 Added

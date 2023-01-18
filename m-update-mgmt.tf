@@ -14,3 +14,8 @@ module "update_management_center" {
 
   maintenance_configurations = var.update_center_maintenance_configurations
 }
+
+moved {
+  from = module.update_management_center["enabled"]
+  to   = module.update_management_center[0]
+}

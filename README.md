@@ -31,7 +31,7 @@ It includes some IaaS specifics:
 
 ## Using sub-modules
 
-The integrated services can be used separately with the same inputs and outputs when it's a sub module.
+The integrated services can be used separately with the same inputs and outputs when it's a sub-module.
 
 ### Log management
 
@@ -55,7 +55,28 @@ See Automation Account module [README](./modules/automation-account/README.md).
 
 ### Azure Update
 
-See Update Management module (legacy) [README](./modules/update-management/README.md) and Update Center module [README](./modules/update-center/README.md).
+See Update Center module [README](./modules/update-center/README.md) and Update Management module (legacy) [README](./modules/update-management/README.md).
+
+## Migrating from older modules
+
+This `run` module is a merge of the previous [run-common](https://registry.terraform.io/modules/claranet/run-common) and 
+[run-iaas](https://registry.terraform.io/modules/claranet/run-common) modules.
+
+Some previously pre-activated backup and update management features must now be explicitly enabled though `*_enabled` variables.
+
+You can migrate you Terrafom state with the following commands:
+
+```shell
+terraform state mv module.run_common.module.keyvault module.run.module.keyvault
+terraform state mv module.run_common.module.logs module.run.module.logs
+terraform state mv module.run_common.module.monitoring_function[0] module.run.module.monitoring_function[0]
+terraform state mv module.run_iaas.module.automation_account module.run.module.automation_account[0]
+terraform state mv module.run_iaas.module.backup module.run.module.backup[0]
+terraform state mv module.run_iaas.module.update_management module.run.module.update_management[0]
+terraform state mv 'module.run_iaas.module.update_management_center["enabled"]' 'module.run.module.update_management_center["enabled"]'
+terraform state mv module.run_iaas.module.vm_monitoring module.run.module.vm_monitoring[0]
+terraform state mv module.run_common.azurerm_role_assignment.function_workspace[0] module.run.azurerm_role_assignment.function_workspace[0]
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules

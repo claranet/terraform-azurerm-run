@@ -43,3 +43,8 @@ resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
     }
   }
 }
+
+moved {
+  from = azurerm_backup_policy_file_share.file_share_backup_policy
+  to   = azurerm_backup_policy_file_share.file_share_backup_policy[0]
+}

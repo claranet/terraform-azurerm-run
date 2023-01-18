@@ -16,3 +16,8 @@ module "diagnostics" {
   name_prefix    = var.name_prefix
   name_suffix    = var.name_suffix
 }
+
+moved {
+  from = module.diagnostics
+  to   = module.diagnostics[0]
+}
