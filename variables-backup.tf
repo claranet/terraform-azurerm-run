@@ -190,8 +190,8 @@ variable "backup_vault_datastore_type" {
 
 variable "backup_vault_geo_redundancy_enabled" {
   description = "Whether the geo redundancy is enabled no the Backup Vault."
-  type        = string
-  default     = "GeoRedundant"
+  type        = bool
+  default     = true
 }
 
 variable "backup_vault_identity_type" {
@@ -205,13 +205,13 @@ variable "backup_vault_identity_type" {
 ###############################
 
 variable "managed_disk_backup_policy_time" {
-  description = "The time of day to perform the Managed Disk backup in 24hour format."
+  description = "The time of day to perform the Managed Disk backup in 24 hours format (eg 04:00)."
   type        = string
   default     = "04:00"
 }
 
 variable "managed_disk_backup_policy_interval_in_hours" {
-  description = "The interval how to perform the Managed DIsk backup in hours."
+  description = "The Managed Disk backup interval in hours."
   type        = string
   default     = 24
 }
@@ -240,13 +240,13 @@ variable "managed_disk_backup_weekly_policy_retention_in_weeks" {
 ###############################
 
 variable "postgresql_backup_policy_time" {
-  description = "The time of day to perform the Postgresql backup in 24hour format."
+  description = "The time of day to perform the Postgresql backup in 24 hours format (eg 04:00)."
   type        = string
   default     = "04:00"
 }
 
 variable "postgresql_backup_policy_interval_in_hours" {
-  description = "The interval how to perform the Postgresql backup in hours."
+  description = "The Postgresql backup interval in hours."
   type        = string
   default     = 24
 }
