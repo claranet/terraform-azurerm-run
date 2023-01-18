@@ -8,7 +8,7 @@ resource "azurerm_data_protection_backup_vault" "vault" {
   redundancy          = var.backup_vault_geo_redundancy_enabled ? "GeoRedundant" : "LocallyRedundant"
 
   dynamic "identity" {
-    for_each = toset(var.backup_vault_identity_type != null ? ["fake"] : [])
+    for_each = toset(var.backup_vault_identity_type != null ? ["_"] : [])
     content {
       type = var.backup_vault_identity_type
     }

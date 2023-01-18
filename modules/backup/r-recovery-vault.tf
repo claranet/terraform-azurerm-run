@@ -12,7 +12,7 @@ resource "azurerm_recovery_services_vault" "vault" {
   soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
 
   dynamic "identity" {
-    for_each = toset(var.recovery_vault_identity_type != null ? ["fake"] : [])
+    for_each = toset(var.recovery_vault_identity_type != null ? ["_"] : [])
     content {
       type = var.recovery_vault_identity_type
     }

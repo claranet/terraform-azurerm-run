@@ -8,7 +8,7 @@ resource "azurerm_automation_account" "automation_account" {
   tags     = local.curtailed_tags
 
   dynamic "identity" {
-    for_each = var.automation_account_identity_type != null ? ["fake"] : []
+    for_each = var.automation_account_identity_type != null ? ["_"] : []
     content {
       type         = var.automation_account_identity_type.type
       identity_ids = var.automation_account_identity_type.identity_ids
