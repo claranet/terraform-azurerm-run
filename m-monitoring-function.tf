@@ -1,3 +1,18 @@
+resource "null_resource" "fake_function_condition" {
+  count = var.monitoring_function_enabled ? 1 : 0
+
+  triggers = {
+    splunk_token = var.monitoring_function_splunk_token
+  }
+
+  lifecycle {
+    precondition {
+      condition     = var.monitoring_function_splunk_token != null
+      error_message = "Variable monitoring_function_splunk_token must be set when variable monitoring_function_enabled is set to true."
+    }
+  }
+}
+
 module "monitoring_function" {
   source = "./modules/monitoring-function"
 
@@ -40,6 +55,8 @@ module "monitoring_function" {
   default_tags_enabled = var.default_tags_enabled
 
   extra_tags = var.monitoring_function_extra_tags
+
+  depends_on = [null_resource.fake_function_condition]
 }
 
 resource "azurerm_role_assignment" "function_workspace" {

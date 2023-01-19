@@ -76,6 +76,7 @@ terraform state mv module.run_iaas.module.update_management module.run.module.up
 terraform state mv 'module.run_iaas.module.update_management_center["enabled"]' 'module.run.module.update_management_center["enabled"]'
 terraform state mv module.run_iaas.module.vm_monitoring module.run.module.vm_monitoring[0]
 terraform state mv module.run_common.azurerm_role_assignment.function_workspace[0] module.run.azurerm_role_assignment.function_workspace[0]
+terraform apply -target=module.run.null_resource.fake_function_condition[0]
 ```
 
 <!-- BEGIN_TF_DOCS -->
@@ -149,6 +150,7 @@ module "run" {
 | Name | Version |
 |------|---------|
 | azurerm | ~> 3.25 |
+| null | ~> 3.0 |
 
 ## Modules
 
@@ -168,6 +170,7 @@ module "run" {
 | Name | Type |
 |------|------|
 | [azurerm_role_assignment.function_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
+| [null_resource.fake_function_condition](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 
 ## Inputs
 
@@ -277,7 +280,7 @@ module "run" {
 | monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
+| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
