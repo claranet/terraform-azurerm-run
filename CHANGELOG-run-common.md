@@ -73,7 +73,6 @@ Breaking
   * AZ-717: Minimum Terraform version required `v1.1`
   * AZ-717: Upgrade module to AzureRM provider `v3.0+`
 
-<<<<<<< HEAD
 # v5.2.0 - 2022-04-29
 
 Added
@@ -90,22 +89,10 @@ Changed
   * AZ-717: Prevent using the azurerm v3 provider
 
 # v5.1.0 - 2022-02-17
-=======
-# v5.1.0 - 2022-04-29
-
-Added
-  * AZ-685: Added `identity` variable for automation module
-
-# v5.0.0 - 2022-03-11
-
-Breaking
-  * AZ-515: Option to use Azure CAF naming provider to name resources
->>>>>>> iaas/master
 
 Added
   * AZ-615: Add an option to enable or disable default tags
 
-<<<<<<< HEAD
 Fixed
   * AZ-674: Fix SAS token generation bug (datasource that reference a non created resource). Clean no more needed module variables.
 
@@ -185,56 +172,10 @@ Fixed
   * AZ-326: Add missing keyvault's inputs
 
 # v3.1.2/v4.0.0 - 2020-12-11
-=======
-Changed
-  * AZ-589: Bump `diagnostics` module to latest `v5.0.0`
-
-# v4.4.0 - 2021-11-23
-
-Fixed
-  * AZ-589: Avoid plan drift when specifying Diagnostic Settings categories
-
-Changed
-  * AZ-462: Add `log_analytics_workspace_link_enabled` to avoid `The "count" value depends on resource attributes that cannot be determined` on automation-account submodule
-
-# v4.3.0 - 2021-10-08
-
-Added
-  * AZ-55: Add ability to manage Update management for Linux and Windows VMs with Automation account
-  * AZ-302: Add a default Azure Monitor Data Collection Rule
-
-Changed
-  * AZ-572: Revamp examples and improve CI
-
-# v4.2.0 - 2021-09-22
-
-Breaking
-  * AZ-546: Clean module, remove unused variables, needs a `terraform state mv` for renamed modules
-  * AZ-160: Unify diagnostics settings on all Claranet modules
-
-Changed
-  * AZ-516: Add management of weekly, monthly and yearly backup in backup policies
-  * AZ-532: Revamp README with latest `terraform-docs` tool
-
-# v4.1.0 - 2021-02-22
-
-Changed
-  * AZ-445: Remove datasource to get log_analytics_workspace_id and get it from variable (https://github.com/terraform-providers/terraform-provider-azurerm/pull/10162)
-  * AZ-445: Fix deprecation warns on automation-account
-
-Added
-  * AZ-448: Added `identity` variable for backup module
-
-Breaking
-  * AZ-448/AZ-445: Require AzureRM provider `v2.43+`
-
-# v3.1.1/v4.0.0 - 2020-11-19
->>>>>>> iaas/master
 
 Updated
   * AZ-273: Module now compatible terraform `v0.13+`
 
-<<<<<<< HEAD
 # v3.1.1 - 2020-08-06
 
 Fixed
@@ -295,47 +236,6 @@ Fixed
 
 Changed
   * AZ-119: Revamp README for public release
-=======
-# v3.1.0 - 2020-11-19
-
-Added
-  * AZ-316: Add input for resource specific tags
-
-Changed
-  * AZ-320: Add more outputs for automation account
-
-# v3.0.0 - 2020-07-30
-
-Breaking
-  * AZ-198: Upgrade AzureRM 2.0
-
-Changed
-  * AZ-209: Update CI with Gitlab template
-
-# v2.3.0 - 2020-07-30
-
-Added
-  * AZ-216: Enable diagnostics settings
-
-Breaking
-  * AZ-216: Change and unify module input variables
-  * AZ-216: Automation default name now contains region and environment
-
-# v2.2.0 - 2020-03-30
-
-Added
-  * AZ-208: Add automation account module
-
-# v2.1.0 - 2020-01-31
-
-Added
-  * AZ-137: File share backup policy
-
-# v2.0.1 - 2020-01-23
-
-Changed
-  * AZ-119: Revamp README and publish this module to Terraform registry
->>>>>>> iaas/master
 
 Added
   * AZ-119: Add CONTRIBUTING.md doc and `terraform-wrapper` usage with the module
@@ -348,7 +248,6 @@ Breaking
 Added
   * AZ-118: Add LICENSE, NOTICE & Github badges
 
-<<<<<<< HEAD
 # v1.1.0 - 2019-06-18
 
 Fixed
@@ -363,9 +262,3 @@ Fixed
 
 Added
   * AZ-48: First version with Key Vault and Log Analytics
-=======
-# v0.1.0 - 2019-07-01
-
-Added
-  * AZ-102: First version with Azure Recovery Vault for VM backups.
->>>>>>> iaas/master
