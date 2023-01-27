@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-926: Fix VM monitoring module creation condition
+
 # v7.1.0 - 2023-01-27
 
 Breaking
