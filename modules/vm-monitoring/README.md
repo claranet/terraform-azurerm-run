@@ -111,7 +111,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| data\_collection\_rule | Azure Monitor Data Collection Rule object |
-| data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule |
-| data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule |
+| data\_collection\_rule | Azure Monitor Data Collection Rule object. |
+| data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule. |
+| data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
 <!-- END_TF_DOCS -->

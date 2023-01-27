@@ -177,18 +177,18 @@ module "az-backup" {
 
 | Name | Description |
 |------|-------------|
-| backup\_vault\_id | Azure Backup Vault ID |
+| backup\_vault\_id | Azure Backup Vault ID. |
 | backup\_vault\_identity | Azure Backup Services Vault identity. |
-| backup\_vault\_name | Azure Backup Vault name |
-| file\_share\_backup\_policy\_id | File share Backup policy ID |
-| file\_share\_backup\_policy\_name | File share Backup policy name |
-| managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID |
-| postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID |
-| recovery\_vault\_id | Azure Recovery Services Vault ID |
+| backup\_vault\_name | Azure Backup Vault name. |
+| file\_share\_backup\_policy\_id | File share Backup policy ID. |
+| file\_share\_backup\_policy\_name | File share Backup policy name. |
+| managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID. |
+| postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID. |
+| recovery\_vault\_id | Azure Recovery Services Vault ID. |
 | recovery\_vault\_identity | Azure Recovery Services Vault identity. |
-| recovery\_vault\_name | Azure Recovery Services Vault name |
-| storage\_blob\_backup\_policy\_id | Storage blob Backup policy ID |
-| vm\_backup\_policy\_id | VM Backup policy ID |
+| recovery\_vault\_name | Azure Recovery Services Vault name. |
+| storage\_blob\_backup\_policy\_id | Storage blob Backup policy ID. |
+| vm\_backup\_policy\_id | VM Backup policy ID. |
 | vm\_backup\_policy\_name | VM Backup policy name |
 <!-- END_TF_DOCS -->
 

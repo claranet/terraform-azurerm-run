@@ -18,3 +18,4 @@ backup_postgresql_enabled        = true
 backup_storage_blob_enabled      = true
 backup_managed_disk_enabled      = true
 monitoring_function_enabled      = true
+vm_monitoring_enabled            = true

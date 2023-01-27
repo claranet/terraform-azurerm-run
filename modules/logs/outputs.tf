@@ -2,7 +2,7 @@
 # Log Management outputs
 ###############################
 output "logs_resource_group_name" {
-  description = "Resource Group the logs resources belongs to"
+  description = "Resource Group of the logs resources."
   value       = var.resource_group_name
 }
 
@@ -33,13 +33,13 @@ output "log_analytics_workspace_primary_key" {
 }
 
 output "log_analytics_workspace_secondary_key" {
-  description = "The Secondary shared key for the Log Analytics Workspace."
+  description = "The secondary shared key for the Log Analytics Workspace."
   value       = azurerm_log_analytics_workspace.log_workspace.secondary_shared_key
   sensitive   = true
 }
 
 output "logs_storage_account_id" {
-  description = "Id of the dedicated Storage Account"
+  description = "ID of the logs Storage Account."
   value       = module.storage_logs.storage_account_properties.id
 }
 
@@ -49,30 +49,30 @@ output "logs_storage_account_name" {
 }
 
 output "logs_storage_account_primary_connection_string" {
-  description = "Primary connection string of the logs Storage Account, empty if connection string provided"
+  description = "Primary connection string of the logs Storage Account."
   value       = module.storage_logs.storage_account_properties.primary_connection_string
   sensitive   = true
 }
 
 output "logs_storage_account_primary_access_key" {
-  description = "Primary connection string of the logs Storage Account, empty if connection string provided"
+  description = "Primary connection string of the logs Storage Account."
   value       = module.storage_logs.storage_account_properties.primary_access_key
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_connection_string" {
-  description = "Secondary connection string of the logs Storage Account, empty if connection string provided"
+  description = "Secondary connection string of the logs Storage Account."
   value       = module.storage_logs.storage_account_properties.secondary_connection_string
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_access_key" {
-  description = "Secondary connection string of the logs Storage Account, empty if connection string provided"
+  description = "Secondary connection string of the logs Storage Account."
   value       = module.storage_logs.storage_account_properties.secondary_access_key
   sensitive   = true
 }
 
 output "logs_storage_account_archived_logs_fileshare_name" {
-  description = "Name of the file share in which externalized logs are stored"
+  description = "Name of the file share in which externalized logs are stored."
   value       = one(azurerm_storage_share.archivedlogs_fileshare[*].name)
 }
