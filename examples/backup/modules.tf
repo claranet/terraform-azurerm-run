@@ -40,12 +40,15 @@ module "az_vm_backup" {
 
   resource_group_name = module.rg.resource_group_name
 
+  backup_vm_enabled         = true
+  backup_postgresql_enabled = true
+
   vm_backup_policy_time = "23:00"
 
-  vm_backup_monthly = {
-    "retention" = 3
-    "weekdays"  = ["Sunday"]
-    "weeks"     = ["First"]
+  vm_backup_monthly_retention = {
+    count    = 3
+    weekdays = "Sunday"
+    weeks    = "First"
   }
 
   logs_destinations_ids = [module.logs.log_analytics_workspace_id]

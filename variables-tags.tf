@@ -17,7 +17,7 @@ variable "keyvault_extra_tags" {
 }
 
 variable "automation_account_extra_tags" {
-  description = "Extra tags to add to automation account."
+  description = "Extra tags to add to Automation Account."
   type        = map(string)
   default     = {}
 }
@@ -29,7 +29,7 @@ variable "log_analytics_workspace_extra_tags" {
 }
 
 variable "logs_storage_account_extra_tags" {
-  description = "Extra tags to add to the Storage Account"
+  description = "Extra tags to add to the logs Storage Account"
   type        = map(string)
   default     = {}
 }
@@ -41,7 +41,13 @@ variable "monitoring_function_extra_tags" {
 }
 
 variable "recovery_vault_extra_tags" {
-  description = "Extra tags to add to recovery vault."
+  description = "Extra tags to add to Recovery Vault."
+  type        = map(string)
+  default     = {}
+}
+
+variable "backup_vault_extra_tags" {
+  description = "Extra tags to add to Backup Vault."
   type        = map(string)
   default     = {}
 }

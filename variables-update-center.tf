@@ -1,3 +1,9 @@
+variable "update_center_enabled" {
+  description = "Whether the Update Management Center is enabled."
+  type        = bool
+  default     = false
+}
+
 variable "update_center_maintenance_configurations" {
   description = "Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations."
   type = list(object({
@@ -42,10 +48,4 @@ variable "update_center_periodic_assessment_exclusions" {
   description = "Exclude some resources from auto-assessment."
   type        = list(string)
   default     = []
-}
-
-variable "update_center_enabled" {
-  description = "Enable the Update Management Center."
-  type        = bool
-  default     = false
 }

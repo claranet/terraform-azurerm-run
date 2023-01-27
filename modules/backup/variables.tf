@@ -33,6 +33,40 @@ variable "location_short" {
 }
 
 ###############################
+# Azure Backup flags
+###############################
+
+variable "backup_vm_enabled" {
+  description = "Whether the Virtual Machines backup is enabled."
+  type        = bool
+  default     = true
+}
+
+variable "backup_file_share_enabled" {
+  description = "Whether the File Share backup is enabled."
+  type        = bool
+  default     = true
+}
+
+variable "backup_postgresql_enabled" {
+  description = "Whether the PostgreSQL backup is enabled."
+  type        = bool
+  default     = true
+}
+
+variable "backup_storage_blob_enabled" {
+  description = "Whether the Storage blob backup is enabled."
+  type        = bool
+  default     = true
+}
+
+variable "backup_managed_disk_enabled" {
+  description = "Whether the Managed Disk backup is enabled."
+  type        = bool
+  default     = true
+}
+
+###############################
 # Azure Recovery Vault variables
 ###############################
 
@@ -90,23 +124,39 @@ variable "vm_backup_daily_policy_retention" {
   default     = 30
 }
 
-variable "vm_backup_weekly" {
-  description = "Map to configure the weekly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly"
-  type        = any
-  default     = {}
+variable "vm_backup_weekly_retention" {
+  description = "Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly"
+  type = object({
+    count    = number,
+    weekdays = string,
+  })
+  default = null
 }
 
-variable "vm_backup_monthly" {
-  description = "Map to configure the monthly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly"
-  type        = any
-  default     = {}
+variable "vm_backup_monthly_retention" {
+  description = "Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly"
+  type = object({
+    count    = number,
+    weekdays = string,
+    weeks    = string,
+  })
+  default = null
 }
 
-variable "vm_backup_yearly" {
-  description = "Map to configure the yearly VM backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
-  type        = any
-  default     = {}
+variable "vm_backup_yearly_retention" {
+  description = "Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
+  type = object({
+    count    = number,
+    weekdays = string,
+    weeks    = string,
+    months   = string,
+  })
+  default = null
 }
+
+###############################
+# File Share backup
+###############################
 
 variable "file_share_backup_policy_timezone" {
   description = "Specifies the timezone for file share backup schedules. Defaults to `UTC`."
@@ -132,20 +182,139 @@ variable "file_share_backup_policy_frequency" {
   default     = "Daily"
 }
 
-variable "file_share_backup_weekly" {
-  description = "Map to configure the weekly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly"
-  type        = any
-  default     = {}
+variable "file_share_backup_weekly_retention" {
+  description = "Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly"
+  type = object({
+    count    = number,
+    weekdays = string,
+  })
+  default = null
 }
 
-variable "file_share_backup_monthly" {
-  description = "Map to configure the monthly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly"
-  type        = any
-  default     = {}
+variable "file_share_backup_monthly_retention" {
+  description = "Map to configure the monthly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly"
+  type = object({
+    count    = number,
+    weekdays = string,
+    weeks    = string,
+  })
+  default = null
 }
 
-variable "file_share_backup_yearly" {
-  description = "Map to configure the yearly File Share backup policy according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
-  type        = any
-  default     = {}
+variable "file_share_backup_yearly_retention" {
+  description = "Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
+  type = object({
+    count    = number,
+    weekdays = string,
+    weeks    = string,
+    months   = string,
+  })
+  default = null
+}
+
+###############################
+# Azure Backup Vault variables
+###############################
+
+variable "backup_vault_datastore_type" {
+  description = "Type of data store used for the Backup Vault."
+  type        = string
+  default     = "VaultStore"
+}
+
+variable "backup_vault_geo_redundancy_enabled" {
+  description = "Whether the geo redundancy is enabled no the Backup Vault."
+  type        = bool
+  default     = true
+}
+
+variable "backup_vault_identity_type" {
+  description = "Azure Backup Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`."
+  type        = string
+  default     = "SystemAssigned"
+}
+
+###############################
+# Managed disk backup
+###############################
+
+variable "managed_disk_backup_policy_time" {
+  description = "The time of day to perform the Managed Disk backup in 24 hours format (eg 04:00)."
+  type        = string
+  default     = "04:00"
+}
+
+variable "managed_disk_backup_policy_interval_in_hours" {
+  description = "The Managed Disk backup interval in hours."
+  type        = string
+  default     = 24
+}
+
+variable "managed_disk_backup_policy_retention_in_days" {
+  description = "The number of days to keep the Managed Disk backup."
+  type        = number
+  default     = 30
+}
+
+variable "managed_disk_backup_daily_policy_retention_in_days" {
+  description = "The number of days to keep the first daily Managed Disk backup."
+  type        = number
+  default     = null
+}
+
+variable "managed_disk_backup_weekly_policy_retention_in_weeks" {
+  description = "The number of weeks to keep the first weekly Managed Disk backup."
+  type        = number
+  default     = null
+}
+
+
+###############################
+# PostgreSQL backup
+###############################
+
+variable "postgresql_backup_policy_time" {
+  description = "The time of day to perform the Postgresql backup in 24 hours format (eg 04:00)."
+  type        = string
+  default     = "04:00"
+}
+
+variable "postgresql_backup_policy_interval_in_hours" {
+  description = "The Postgresql backup interval in hours."
+  type        = string
+  default     = 24
+}
+
+variable "postgresql_backup_policy_retention_in_days" {
+  description = "The number of days to keep the Postgresql backup."
+  type        = number
+  default     = 30
+}
+
+variable "postgresql_backup_daily_policy_retention_in_days" {
+  description = "The number of days to keep the first daily Postgresql backup."
+  type        = number
+  default     = null
+}
+
+variable "postgresql_backup_weekly_policy_retention_in_weeks" {
+  description = "The number of weeks to keep the first weekly Postgresql backup."
+  type        = number
+  default     = null
+}
+
+variable "postgresql_backup_monthly_policy_retention_in_months" {
+  description = "The number of months to keep the first monthly Postgresql backup."
+  type        = number
+  default     = null
+}
+
+###############################
+# Storage blob backup
+###############################
+
+variable "storage_blob_backup_policy_retention_in_days" {
+  description = "The number of days to keep the Storage blob backup."
+  type        = number
+  default     = 30
 }

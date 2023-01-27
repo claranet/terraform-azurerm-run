@@ -1,3 +1,9 @@
+variable "update_management_legacy_enabled" {
+  description = "Whether the legacy Update Management is enabled. This enable the Automation Account feature."
+  type        = bool
+  default     = false
+}
+
 ###############################
 # Update management variables
 ###############################

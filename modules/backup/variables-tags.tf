@@ -5,13 +5,19 @@ variable "default_tags_enabled" {
 }
 
 variable "recovery_vault_extra_tags" {
-  description = "Extra tags to add to recovery vault"
+  description = "Extra tags to add to Recovery Vault."
+  type        = map(string)
+  default     = {}
+}
+
+variable "backup_vault_extra_tags" {
+  description = "Extra tags to add to Backup Vault."
   type        = map(string)
   default     = {}
 }
 
 variable "extra_tags" {
-  description = "Extra tags to add"
+  description = "Extra tags to add."
   type        = map(string)
   default     = {}
 }

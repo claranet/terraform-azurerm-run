@@ -1,7 +1,7 @@
 # Storage account for Logs
 module "storage_logs" {
   source  = "claranet/storage-account/azurerm"
-  version = "7.3.0"
+  version = "~> 7.3.0"
 
   client_name    = var.client_name
   environment    = var.environment
@@ -62,13 +62,6 @@ module "storage_logs" {
 #   from = azurerm_advanced_threat_protection.storage_threat_protection
 #   to   = module.storage_logs.azurerm_advanced_threat_protection.threat_protection
 # }
-
-# Container for App Services logs which is not automatically created
-resource "azurerm_storage_container" "container_webapps" {
-  count                = var.logs_storage_account_enable_appservices_container ? 1 : 0
-  name                 = var.logs_storage_account_appservices_container_name
-  storage_account_name = module.storage_logs.storage_account_properties.name
-}
 
 # Archived Logs File Shares
 resource "azurerm_storage_share" "archivedlogs_fileshare" {

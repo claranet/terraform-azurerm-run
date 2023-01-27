@@ -1,5 +1,7 @@
 resource "azurerm_recovery_services_vault" "vault" {
-  name                = local.vault_name
+  count = var.backup_vm_enabled || var.backup_file_share_enabled ? 1 : 0
+
+  name                = local.recovery_vault_name
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -10,11 +12,16 @@ resource "azurerm_recovery_services_vault" "vault" {
   soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
 
   dynamic "identity" {
-    for_each = toset(var.recovery_vault_identity_type != null ? ["fake"] : [])
+    for_each = toset(var.recovery_vault_identity_type != null ? ["_"] : [])
     content {
       type = var.recovery_vault_identity_type
     }
   }
 
   tags = merge(local.default_tags, var.extra_tags, var.recovery_vault_extra_tags)
+}
+
+moved {
+  from = azurerm_recovery_services_vault.vault
+  to   = azurerm_recovery_services_vault.vault[0]
 }

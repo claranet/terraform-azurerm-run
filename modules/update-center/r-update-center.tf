@@ -5,7 +5,7 @@
 resource "azapi_resource" "maintenance_configurations" {
   for_each  = { for config in var.maintenance_configurations : config.configuration_name => config }
   name      = "mc-${each.key}"
-  parent_id = data.azurerm_resource_group.rg.id
+  parent_id = local.rg_id
   type      = "Microsoft.Maintenance/maintenanceConfigurations@2021-09-01-preview"
   body = jsonencode(
     {

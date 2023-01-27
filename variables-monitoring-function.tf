@@ -10,6 +10,7 @@ variable "monitoring_function_enabled" {
 variable "monitoring_function_splunk_token" {
   description = "Access Token to send metrics to Splunk Observability"
   type        = string
+  default     = null
 }
 
 variable "monitoring_function_logs_categories" {

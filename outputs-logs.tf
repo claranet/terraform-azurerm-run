@@ -72,17 +72,6 @@ output "logs_storage_account_secondary_access_key" {
   sensitive   = true
 }
 
-output "logs_storage_account_sas_token" {
-  description = "SAS Token generated for logs access on Storage Account with full permissions on containers and objects for blob and table services."
-  value       = module.logs.logs_storage_account_sas_token
-  sensitive   = true
-}
-
-output "logs_storage_account_appservices_container_name" {
-  description = "Name of the container in which App Services logs are stored"
-  value       = module.logs.logs_storage_account_appservices_container_name
-}
-
 output "logs_storage_account_archived_logs_fileshare_name" {
   description = "Name of the file share in which externalized logs are stored"
   value       = module.logs.logs_storage_account_archived_logs_fileshare_name

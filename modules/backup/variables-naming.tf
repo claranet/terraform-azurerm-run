@@ -24,6 +24,12 @@ variable "recovery_vault_custom_name" {
   default     = ""
 }
 
+variable "backup_vault_custom_name" {
+  description = "Azure Backup Vault custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
 variable "vm_backup_policy_custom_name" {
   description = "Azure Backup - VM backup policy custom name. Empty by default, using naming convention."
   type        = string
@@ -32,6 +38,24 @@ variable "vm_backup_policy_custom_name" {
 
 variable "file_share_backup_policy_custom_name" {
   description = "Azure Backup - File share backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
+variable "postgresql_backup_policy_custom_name" {
+  description = "Azure Backup - PostgreSQL backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
+variable "managed_disk_backup_policy_custom_name" {
+  description = "Azure Backup - Managed disk backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
+variable "storage_blob_backup_policy_custom_name" {
+  description = "Azure Backup - Storage blob backup policy custom name. Empty by default, using naming convention."
   type        = string
   default     = ""
 }
