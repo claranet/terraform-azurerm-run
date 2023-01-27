@@ -2,7 +2,7 @@
 # Monitoring function
 ###############################
 variable "monitoring_function_enabled" {
-  description = "Enable/disable monitoring function"
+  description = "Whether additional Monitoring Function is enabled."
   type        = bool
   default     = true
 }

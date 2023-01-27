@@ -1,7 +1,7 @@
 module "vm_monitoring" {
   source = "./modules/vm-monitoring"
 
-  count = var.monitoring_function_enabled ? 1 : 0
+  count = var.vm_monitoring_enabled ? 1 : 0
 
   client_name    = var.client_name
   location       = var.location

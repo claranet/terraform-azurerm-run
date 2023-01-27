@@ -55,5 +55,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| maintenance\_configurations | Maintenance Configurations informations. |
+| maintenance\_configurations | Maintenance Configurations information. |
 <!-- END_TF_DOCS -->

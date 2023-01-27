@@ -176,7 +176,7 @@ module "run" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_enabled | Whether to enabled Automation Account. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
+| automation\_account\_enabled | Whether to enable Automation Account. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
 | automation\_account\_extra\_tags | Extra tags to add to Automation Account. | `map(string)` | `{}` | no |
 | automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br>    type         = string<br>    identity_ids = list(string)<br>  })</pre> | <pre>{<br>  "identity_ids": [],<br>  "type": "SystemAssigned"<br>}</pre> | no |
 | automation\_account\_sku | Automation account Sku. | `string` | `"Basic"` | no |
@@ -273,7 +273,7 @@ module "run" {
 | monitoring\_function\_app\_service\_plan\_name | FAME App Service Plan custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention | `string` | `null` | no |
 | monitoring\_function\_assign\_role\_on\_workspace | True to assign role for the monitoring Function on the Log Analytics Workspace | `bool` | `true` | no |
-| monitoring\_function\_enabled | Enable/disable monitoring function | `bool` | `true` | no |
+| monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
@@ -326,6 +326,7 @@ module "run" {
 | vm\_backup\_policy\_timezone | Specifies the timezone for VM backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | vm\_backup\_weekly\_retention | Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>  })</pre> | `null` | no |
 | vm\_backup\_yearly\_retention | Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>    weeks    = string,<br>    months   = string,<br>  })</pre> | `null` | no |
+| vm\_monitoring\_enabled | Whether Data Collection Rules for VM monitoring are enabled. | `bool` | `false` | no |
 | windows\_update\_management\_configuration | Windows specific update management configuration. Possible values for reboot\_setting are `IfRequired`, `RebootOnly`, `Never`, `Always`. More informations on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#windowsproperties). | `any` | <pre>{<br>  "excluded_kb_numbers": [],<br>  "included_kb_numbers": [],<br>  "reboot_setting": "IfRequired",<br>  "update_classifications": "Critical, Security"<br>}</pre> | no |
 | windows\_update\_management\_configuration\_name | Custom configuration name for Windows Update management. | `string` | `"Standard Windows Update Schedule"` | no |
 | windows\_update\_management\_duration | To set the maintenance window for Windows machines, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `null` | no |
@@ -338,66 +339,67 @@ module "run" {
 
 | Name | Description |
 |------|-------------|
-| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC Primary Acess Key |
-| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC Secondary Acess Key |
-| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC Server Endpoint |
-| automation\_account\_id | Azure Automation Account ID |
-| automation\_account\_name | Azure Automation Account name |
-| backup\_vault\_id | Azure Backup Vault ID |
+| automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC primary access key. |
+| automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC secondary access key. |
+| automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC server endpoint. |
+| automation\_account\_id | Azure Automation Account ID. |
+| automation\_account\_identity | Identity block with principal ID and tenant ID |
+| automation\_account\_name | Azure Automation Account name. |
+| backup\_vault\_id | Azure Backup Vault ID. |
 | backup\_vault\_identity | Azure Backup Services Vault identity. |
-| backup\_vault\_name | Azure Backup Vault name |
+| backup\_vault\_name | Azure Backup Vault name. |
 | data\_collection\_rule | Azure Monitor Data Collection Rule object. |
 | data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule. |
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
-| file\_share\_backup\_policy\_id | File share Backup policy ID |
-| file\_share\_backup\_policy\_name | File share Backup policy name |
-| keyvault\_id | Id of the Key Vault |
-| keyvault\_name | Name of the Key Vault |
-| keyvault\_resource\_group\_name | Resource Group the Key Vault belongs to |
-| keyvault\_uri | URI of the Key Vault |
+| file\_share\_backup\_policy\_id | File share Backup policy ID. |
+| file\_share\_backup\_policy\_name | File share Backup policy name. |
+| keyvault\_id | ID of the Key Vault. |
+| keyvault\_name | Name of the Key Vault. |
+| keyvault\_resource\_group\_name | Resource Group of the Key Vault. |
+| keyvault\_uri | URI of the Key Vault. |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
 | log\_analytics\_workspace\_location | The Log Analytics Workspace location. |
 | log\_analytics\_workspace\_name | The Log Analytics Workspace name. |
-| log\_analytics\_workspace\_primary\_key | The Primary shared key for the Log Analytics Workspace. |
-| log\_analytics\_workspace\_secondary\_key | The Secondary shared key for the Log Analytics Workspace. |
-| logs\_resource\_group\_name | Resource Group the logs resources belongs to |
-| logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored |
-| logs\_storage\_account\_id | Id of the dedicated Storage Account |
-| logs\_storage\_account\_name | Name of the logs Storage Account |
-| logs\_storage\_account\_primary\_access\_key | Primary connection string of the logs Storage Account, empty if connection string provided |
-| logs\_storage\_account\_primary\_connection\_string | Primary connection string of the logs Storage Account, empty if connection string provided |
-| logs\_storage\_account\_secondary\_access\_key | Secondary connection string of the logs Storage Account, empty if connection string provided |
-| logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account, empty if connection string provided |
-| maintenance\_configurations | Maintenance Configurations informations. |
-| managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID |
-| monitoring\_function\_app\_service\_plan\_id | Id of the created App Service Plan |
-| monitoring\_function\_app\_service\_plan\_name | Name of the created App Service Plan |
-| monitoring\_function\_application\_insights\_app\_id | App id of the associated Application Insights |
+| log\_analytics\_workspace\_primary\_key | The primary shared key for the Log Analytics Workspace. |
+| log\_analytics\_workspace\_secondary\_key | The secondary shared key for the Log Analytics Workspace. |
+| logs\_resource\_group\_name | Resource Group of the logs resources. |
+| logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored. |
+| logs\_storage\_account\_id | ID of the logs Storage Account. |
+| logs\_storage\_account\_name | Name of the logs Storage Account. |
+| logs\_storage\_account\_primary\_access\_key | Primary connection string of the logs Storage Account. |
+| logs\_storage\_account\_primary\_connection\_string | Primary connection string of the logs Storage Account. |
+| logs\_storage\_account\_secondary\_access\_key | Secondary connection string of the logs Storage Account. |
+| logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account. |
+| maintenance\_configurations | Update Center Maintenance Configurations information. |
+| managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID. |
+| monitoring\_function\_application\_insights\_app\_id | App ID of the associated Application Insights |
 | monitoring\_function\_application\_insights\_application\_type | Application Type of the associated Application Insights |
-| monitoring\_function\_application\_insights\_id | Id of the associated Application Insights |
+| monitoring\_function\_application\_insights\_id | ID of the associated Application Insights |
 | monitoring\_function\_application\_insights\_instrumentation\_key | Instrumentation key of the associated Application Insights |
 | monitoring\_function\_application\_insights\_name | Name of the associated Application Insights |
 | monitoring\_function\_function\_app\_connection\_string | Connection string of the created Function App |
-| monitoring\_function\_function\_app\_id | Id of the created Function App |
+| monitoring\_function\_function\_app\_id | ID of the created Function App |
 | monitoring\_function\_function\_app\_identity | Identity block output of the Function App |
 | monitoring\_function\_function\_app\_name | Name of the created Function App |
-| monitoring\_function\_function\_app\_outbound\_ip\_addresses | Outbound IP adresses of the created Function App |
-| monitoring\_function\_storage\_account\_id | Id of the associated Storage Account, empty if connection string provided |
+| monitoring\_function\_function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App |
+| monitoring\_function\_service\_plan\_id | Id of the created Service Plan |
+| monitoring\_function\_service\_plan\_name | Name of the created Service Plan |
+| monitoring\_function\_storage\_account\_id | ID of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_name | Name of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
 | monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_queries\_table\_name | Name of the table in the Storage Account, empty if connection string provided |
-| postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID |
-| recovery\_vault\_id | Azure Recovery Services Vault ID |
+| monitoring\_function\_storage\_queries\_table\_name | Name of the queries table in the Storage Account, empty if connection string provided |
+| postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID. |
+| recovery\_vault\_id | Azure Recovery Services Vault ID. |
 | recovery\_vault\_identity | Azure Recovery Services Vault identity. |
-| recovery\_vault\_name | Azure Recovery Services Vault name |
-| storage\_blob\_backup\_policy\_id | Storage blob Backup policy ID |
+| recovery\_vault\_name | Azure Recovery Services Vault name. |
+| storage\_blob\_backup\_policy\_id | Storage blob Backup policy ID. |
 | terraform\_module | Information about this Terraform module |
-| vm\_backup\_policy\_id | VM Backup policy ID |
-| vm\_backup\_policy\_name | VM Backup policy name |
+| vm\_backup\_policy\_id | VM Backup policy ID. |
+| vm\_backup\_policy\_name | VM Backup policy name. |
 <!-- END_TF_DOCS -->
 ## Related documentation
 
