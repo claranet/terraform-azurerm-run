@@ -74,7 +74,7 @@
             "\\Network Interface(*)\\Packets Received Errors"
           ],
           "name": "perfCounterDataSource",
-          "samplingFrequencyInSeconds": 30,
+          "samplingFrequencyInSeconds": 60,
           "scheduledTransferPeriod": "PT1M",
           "streams": [
             "Microsoft-Perf",
