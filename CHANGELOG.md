@@ -1,4 +1,4 @@
-# Unreleased
+# v7.1.2 - 2023-02-10
 
 Fixed
   * AZ-998: Fix `samplingFrequencyInSeconds` value (`30` to `60`) in `vm-monitoring` submodule
