@@ -59,7 +59,7 @@ See Update Center module [README](./modules/update-center/README.md) and Update 
 
 ## Migrating from older modules
 
-This `run` module is a merge of the previous [run-common](https://registry.terraform.io/modules/claranet/run-common) and 
+This `run` module is a merge of the previous [run-common](https://registry.terraform.io/modules/claranet/run-common) and
 [run-iaas](https://registry.terraform.io/modules/claranet/run-common) modules.
 
 Some previously pre-activated backup and update management features must now be explicitly enabled though `*_enabled` variables.
@@ -91,6 +91,13 @@ terraform apply -target=module.run.null_resource.fake_function_condition[0]
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
 | <  2.x.x       | 0.11.x            | < 2.0           |
+
+## Contributing
+
+If you want to contribute to this repository, feel free to use our [pre-commit](https://pre-commit.com/) git hook configuration
+which will help you automatically update and format some files for you by enforcing our Terraform code module best-practices.
+
+More details are available in the [CONTRIBUTING.md](./CONTRIBUTING.md#pull-request-process) file.
 
 ## Usage
 
