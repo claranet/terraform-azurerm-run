@@ -92,4 +92,3 @@ resource "azurerm_storage_management_policy" "archive_storage" {
   }
 
 }
-

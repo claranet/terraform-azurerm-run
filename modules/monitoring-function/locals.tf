@@ -126,7 +126,7 @@ locals {
       MetricName : "fame.azure.frontdoor.cache_hit_rate"
       MetricType : "gauge"
       Query : <<EOQ
-        AzureDiagnostics 
+        AzureDiagnostics
         | where Category == "FrontDoorAccessLog"
         | where TimeGenerated > ago(20m)
         | summarize metric_value = tostring(todouble(countif(cacheStatus_s == "HIT" or cacheStatus_s == "REMOTE_HIT")) / count() * 100) by timestamp=bin(TimeGenerated, 1m), endpoint=endpoint_s, azure_resource_name=Resource, azure_resource_group_name=ResourceGroup, subscription_id=SubscriptionId

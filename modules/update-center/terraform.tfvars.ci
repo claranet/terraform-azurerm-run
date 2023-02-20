@@ -4,4 +4,3 @@ client_name         = "test"
 environment         = "test"
 stack               = "ci"
 resource_group_name = "rg-test"
-

@@ -5,8 +5,8 @@ This sub-module includes:
 * A Recovery Services Vault to store VM & File shares backups if enabled ([documentation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)).
 * A Backup Vault to store PostgreSQL, Managed Disks and Storage blob if enabled ([documentation](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)).
 * A VM backup policy to assign on VM instances via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module.
-* A File share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) 
-via the [storage-file](https://registry.terraform.io/modules/claranet/storage-file/azurerm/) module or the 
+* A File share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
+via the [storage-file](https://registry.terraform.io/modules/claranet/storage-file/azurerm/) module or the
 [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource
 * Diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
 
