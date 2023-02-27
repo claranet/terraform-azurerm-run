@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-926: README typos
+
 # v7.1.2 - 2023-02-10
 
 Fixed
