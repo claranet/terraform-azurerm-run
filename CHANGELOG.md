@@ -3,6 +3,9 @@
 Fixed
   * AZ-926: README typos
 
+Changed
+  * AZ-1014: Bump logs `storage-account` and monitoring function modules versions
+
 # v7.1.2 - 2023-02-10
 
 Fixed

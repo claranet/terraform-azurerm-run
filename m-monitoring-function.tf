@@ -29,7 +29,7 @@ module "monitoring_function" {
   name_prefix    = coalesce(var.name_prefix, "fame")
   name_suffix    = var.name_suffix
 
-  storage_account_name             = var.monitoring_function_storage_account_custom_name
+  storage_account_custom_name      = var.monitoring_function_storage_account_custom_name
   function_app_custom_name         = var.monitoring_function_function_app_custom_name
   application_insights_custom_name = var.monitoring_function_application_insights_custom_name
   service_plan_custom_name         = var.monitoring_function_app_service_plan_name
