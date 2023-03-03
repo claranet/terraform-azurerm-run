@@ -124,13 +124,13 @@ module "az-backup" {
 | environment | Environment name | `string` | n/a | yes |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
-| file\_share\_backup\_monthly\_retention | Map to configure the monthly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>    weeks    = string,<br>  })</pre> | `null` | no |
+| file\_share\_backup\_monthly\_retention | Map to configure the monthly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>    weeks    = list(string),<br>  })</pre> | `null` | no |
 | file\_share\_backup\_policy\_custom\_name | Azure Backup - File share backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | file\_share\_backup\_policy\_frequency | Specifies the frequency for file\_share backup schedules. Must be either `Daily` or `Weekly`. | `string` | `"Daily"` | no |
 | file\_share\_backup\_policy\_time | The time of day to perform the file share backup in 24hour format. | `string` | `"04:00"` | no |
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
-| file\_share\_backup\_weekly\_retention | Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>  })</pre> | `null` | no |
-| file\_share\_backup\_yearly\_retention | Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>    weeks    = string,<br>    months   = string,<br>  })</pre> | `null` | no |
+| file\_share\_backup\_weekly\_retention | Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>  })</pre> | `null` | no |
+| file\_share\_backup\_yearly\_retention | Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>    weeks    = list(string),<br>    months   = list(string),<br>  })</pre> | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
@@ -165,13 +165,13 @@ module "az-backup" {
 | storage\_blob\_backup\_policy\_retention\_in\_days | The number of days to keep the Storage blob backup. | `number` | `30` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `recovery_vault_custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | vm\_backup\_daily\_policy\_retention | The number of daily VM backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
-| vm\_backup\_monthly\_retention | Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>    weeks    = string,<br>  })</pre> | `null` | no |
+| vm\_backup\_monthly\_retention | Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>    weeks    = list(string),<br>  })</pre> | `null` | no |
 | vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | vm\_backup\_policy\_frequency | Specifies the frequency for VM backup schedules. Must be either `Daily` or `Weekly`. | `string` | `"Daily"` | no |
 | vm\_backup\_policy\_time | The time of day to perform the VM backup in 24hour format. | `string` | `"04:00"` | no |
 | vm\_backup\_policy\_timezone | Specifies the timezone for VM backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
-| vm\_backup\_weekly\_retention | Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>  })</pre> | `null` | no |
-| vm\_backup\_yearly\_retention | Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly | <pre>object({<br>    count    = number,<br>    weekdays = string,<br>    weeks    = string,<br>    months   = string,<br>  })</pre> | `null` | no |
+| vm\_backup\_weekly\_retention | Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>  })</pre> | `null` | no |
+| vm\_backup\_yearly\_retention | Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly | <pre>object({<br>    count    = number,<br>    weekdays = list(string),<br>    weeks    = list(string),<br>    months   = list(string),<br>  })</pre> | `null` | no |
 
 ## Outputs
 
