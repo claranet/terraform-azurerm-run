@@ -47,8 +47,8 @@ module "az_vm_backup" {
 
   vm_backup_monthly_retention = {
     count    = 3
-    weekdays = "Sunday"
-    weeks    = "First"
+    weekdays = ["Sunday"]
+    weeks    = ["First"]
   }
 
   logs_destinations_ids = [module.logs.log_analytics_workspace_id]
