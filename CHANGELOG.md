@@ -1,4 +1,4 @@
-# Unreleased
+# v7.2.0 - 2023-03-03
 
 Fixed
   * AZ-1021: variables types for backup inputs
