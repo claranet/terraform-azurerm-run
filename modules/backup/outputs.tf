@@ -13,7 +13,7 @@ output "recovery_vault_id" {
 
 output "recovery_vault_identity" {
   description = "Azure Recovery Services Vault identity."
-  value       = try(azurerm_recovery_services_vault.vault[*].identity[0])
+  value       = try(azurerm_recovery_services_vault.vault[*].identity[0], null)
 }
 
 output "backup_vault_name" {
@@ -28,7 +28,7 @@ output "backup_vault_id" {
 
 output "backup_vault_identity" {
   description = "Azure Backup Services Vault identity."
-  value       = try(azurerm_data_protection_backup_vault.vault[*].identity[0])
+  value       = try(azurerm_data_protection_backup_vault.vault[*].identity[0], null)
 }
 
 output "vm_backup_policy_name" {
