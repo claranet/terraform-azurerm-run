@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "~> 7.2.1"
+  version = "~> 7.3.1"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -13,7 +13,7 @@ module "function" {
   name_suffix    = local.name_suffix
   use_caf_naming = var.use_caf_naming
 
-  storage_account_name             = var.storage_account_name
+  storage_account_custom_name      = var.storage_account_custom_name
   function_app_custom_name         = var.function_app_custom_name
   application_insights_custom_name = var.application_insights_custom_name
   service_plan_custom_name         = var.service_plan_custom_name

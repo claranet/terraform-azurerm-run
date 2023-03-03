@@ -70,13 +70,13 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.25 |
+| azurerm | ~> 3.36 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| storage\_logs | claranet/storage-account/azurerm | ~> 7.3.0 |
+| storage\_logs | claranet/storage-account/azurerm | ~> 7.4.0 |
 
 ## Resources
 

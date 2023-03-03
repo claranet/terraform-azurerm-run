@@ -18,7 +18,7 @@ variable "use_caf_naming" {
 }
 
 # Custom naming override
-variable "storage_account_name" {
+variable "storage_account_custom_name" {
   description = "FAME Storage Account custom name. Empty by default, using naming convention."
   type        = string
   default     = null
