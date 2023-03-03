@@ -62,9 +62,9 @@ See Update Center module [README](./modules/update-center/README.md) and Update 
 This `run` module is a merge of the previous [run-common](https://registry.terraform.io/modules/claranet/run-common) and
 [run-iaas](https://registry.terraform.io/modules/claranet/run-common) modules.
 
-Some previously pre-activated backup and update management features must now be explicitly enabled though `*_enabled` variables.
+Some previously pre-activated backup and update management features must now be explicitly enabled through `*_enabled` variables.
 
-You can migrate you Terrafom state with the following commands:
+You can migrate your Terrafom state with the following commands:
 
 ```shell
 terraform state mv module.run_common.module.keyvault module.run.module.keyvault
