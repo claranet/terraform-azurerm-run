@@ -5,6 +5,7 @@ Fixed
 
 Changed
   * AZ-1014: Bump logs `storage-account` and monitoring function modules versions
+  * AZ-1020: Fix outputs in `backup` submodule
 
 # v7.1.2 - 2023-02-10
 
