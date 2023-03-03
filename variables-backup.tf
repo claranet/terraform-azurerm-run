@@ -94,7 +94,7 @@ variable "vm_backup_weekly_retention" {
   description = "Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly"
   type = object({
     count    = number,
-    weekdays = string,
+    weekdays = list(string),
   })
   default = null
 }
@@ -103,8 +103,8 @@ variable "vm_backup_monthly_retention" {
   description = "Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly"
   type = object({
     count    = number,
-    weekdays = string,
-    weeks    = string,
+    weekdays = list(string),
+    weeks    = list(string),
   })
   default = null
 }
@@ -113,9 +113,9 @@ variable "vm_backup_yearly_retention" {
   description = "Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
   type = object({
     count    = number,
-    weekdays = string,
-    weeks    = string,
-    months   = string,
+    weekdays = list(string),
+    weeks    = list(string),
+    months   = list(string),
   })
   default = null
 }
@@ -152,7 +152,7 @@ variable "file_share_backup_weekly_retention" {
   description = "Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly"
   type = object({
     count    = number,
-    weekdays = string,
+    weekdays = list(string),
   })
   default = null
 }
@@ -161,8 +161,8 @@ variable "file_share_backup_monthly_retention" {
   description = "Map to configure the monthly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly"
   type = object({
     count    = number,
-    weekdays = string,
-    weeks    = string,
+    weekdays = list(string),
+    weeks    = list(string),
   })
   default = null
 }
@@ -171,9 +171,9 @@ variable "file_share_backup_yearly_retention" {
   description = "Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
   type = object({
     count    = number,
-    weekdays = string,
-    weeks    = string,
-    months   = string,
+    weekdays = list(string),
+    weeks    = list(string),
+    months   = list(string),
   })
   default = null
 }

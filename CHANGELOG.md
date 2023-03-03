@@ -1,6 +1,9 @@
 # Unreleased
 
 Fixed
+  * AZ-1021: variables types for backup inputs
+
+Fixed
   * AZ-926: README typos
 
 Changed
