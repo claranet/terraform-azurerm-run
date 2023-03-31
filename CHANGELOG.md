@@ -1,6 +1,6 @@
-# Unreleased
+# v7.2.1 - 2023-03-31
 
-Changed
+Fixed
   * AZ-1037: Bump function-app module for monitoring function
 
 # v7.2.0 - 2023-03-03
