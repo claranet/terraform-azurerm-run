@@ -25,6 +25,12 @@ variable "monitoring_function_logs_metrics_categories" {
   default     = null
 }
 
+variable "monitoring_function_logs_retention_days" {
+  type        = number
+  description = "Number of days to keep logs on storage account."
+  default     = 30
+}
+
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string

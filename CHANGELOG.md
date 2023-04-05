@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-1051: Fix logs retention variables for Key Vault and monitoring function modules
+
 # v7.2.1 - 2023-03-31
 
 Fixed
