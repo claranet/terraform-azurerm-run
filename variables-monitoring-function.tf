@@ -49,8 +49,8 @@ variable "monitoring_function_extra_application_settings" {
   default     = {}
 }
 
-variable "monitoring_function_assign_role_on_workspace" {
-  description = "True to assign role for the monitoring Function on the Log Analytics Workspace"
+variable "monitoring_function_assign_roles" {
+  description = "True to assign role for the monitoring Function on the Log Analytics Workspace and the Subscription."
   type        = bool
   default     = true
 }

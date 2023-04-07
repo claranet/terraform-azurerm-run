@@ -3,6 +3,7 @@ locals {
     frontdoor_response_status = {
       MetricName = "fame.azure.frontdoor.response_status"
       MetricType = "gauge"
+      QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
         | where ResourceProvider == "MICROSOFT.CDN"
@@ -16,6 +17,7 @@ locals {
     frontdoor_probe_response_status = {
       MetricName = "fame.azure.frontdoor.probe_response_status"
       MetricType = "gauge"
+      QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
         | where ResourceProvider == "MICROSOFT.CDN"
@@ -29,6 +31,7 @@ locals {
     frontdoor_waf_actions = {
       MetricName = "fame.azure.frontdoor.waf_actions"
       MetricType = "gauge"
+      QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
         | where ResourceProvider == "MICROSOFT.CDN"
@@ -42,6 +45,7 @@ locals {
     frontdoor_cache_hit_rate = {
       MetricName = "fame.azure.frontdoor.cache_hit_rate"
       MetricType = "gauge"
+      QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
         | where Category == "FrontDoorAccessLog"

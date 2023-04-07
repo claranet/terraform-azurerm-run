@@ -21,15 +21,16 @@ module "function" {
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
     LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
+    SUBSCRIPTION_ID              = data.azurerm_client_config.current.subscription_id
     SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
   }, var.extra_application_settings)
 
   os_type              = "Linux"
   sku_name             = "Y1"
-  function_app_version = 3
+  function_app_version = 4
   function_app_site_config = {
     application_stack = {
-      python_version = "3.8"
+      python_version = "3.10"
     }
   }
 
