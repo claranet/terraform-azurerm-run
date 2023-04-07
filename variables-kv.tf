@@ -73,3 +73,9 @@ variable "keyvault_logs_metrics_categories" {
   description = "Metrics categories to send to destinations. All by default."
   default     = null
 }
+
+variable "keyvault_logs_retention_days" {
+  type        = number
+  description = "Number of days to keep logs on storage account."
+  default     = 30
+}

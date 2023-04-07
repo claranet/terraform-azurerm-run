@@ -29,7 +29,7 @@ module "keyvault" {
     module.logs.logs_storage_account_id,
   ]
 
-  logs_retention_days     = var.log_analytics_workspace_retention_in_days
+  logs_retention_days     = var.keyvault_logs_retention_days
   logs_categories         = var.keyvault_logs_categories
   logs_metrics_categories = var.keyvault_logs_metrics_categories
 
