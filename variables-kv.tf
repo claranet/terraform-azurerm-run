@@ -60,6 +60,12 @@ variable "keyvault_network_acls" {
   default = {}
 }
 
+variable "keyvault_public_network_access_enabled" {
+  description = "Whether the Key Vault is available from public network."
+  type        = bool
+  default     = false
+}
+
 # Keyvault Diagnotics
 
 variable "keyvault_logs_categories" {
@@ -78,4 +84,12 @@ variable "keyvault_logs_retention_days" {
   type        = number
   description = "Number of days to keep logs on storage account."
   default     = 30
+}
+
+# Keyvault HSM
+
+variable "keyvault_managed_hardware_security_module_enabled" {
+  description = "Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created."
+  type        = bool
+  default     = false
 }

@@ -1,3 +1,8 @@
+# Unreleased
+
+Breaking
+  * AZ-1038: Bump KeyVault module. Use `var.keyvault_custom_name` to keep your KeyVault when upgrading.
+
 # v7.2.2 - 2023-04-07
 
 Fixed

@@ -165,7 +165,7 @@ module "run" {
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| keyvault | claranet/keyvault/azurerm | ~> 7.1.0 |
+| keyvault | claranet/keyvault/azurerm | ~> 7.4.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring-function | n/a |
 | update\_management | ./modules/update-management | n/a |
@@ -233,7 +233,9 @@ module "run" {
 | keyvault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | keyvault\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
+| keyvault\_managed\_hardware\_security\_module\_enabled | Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
 | keyvault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br>    bypass                     = optional(string, "None"),<br>    default_action             = optional(string, "Deny"),<br>    ip_rules                   = optional(list(string)),<br>    virtual_network_subnet_ids = optional(list(string)),<br>  })</pre> | `{}` | no |
+| keyvault\_public\_network\_access\_enabled | Whether the Key Vault is available from public network. | `bool` | `false` | no |
 | keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | keyvault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
@@ -362,6 +364,7 @@ module "run" {
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
 | file\_share\_backup\_policy\_id | File share Backup policy ID. |
 | file\_share\_backup\_policy\_name | File share Backup policy name. |
+| key\_vault\_hsm\_uri | The URI of the Key Vault Managed Hardware Security Module, used for performing operations on keys. |
 | keyvault\_id | ID of the Key Vault. |
 | keyvault\_name | Name of the Key Vault. |
 | keyvault\_resource\_group\_name | Resource Group of the Key Vault. |
