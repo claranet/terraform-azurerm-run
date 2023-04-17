@@ -24,7 +24,8 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
-  purge_protection_enabled = true
+  purge_protection_enabled   = true
+  soft_delete_retention_days = var.keyvault_soft_delete_retention_days
 
   rbac_authorization_enabled = var.keyvault_rbac_authorization_enabled
 

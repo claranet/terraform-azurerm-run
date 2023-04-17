@@ -60,6 +60,12 @@ variable "keyvault_network_acls" {
   default = {}
 }
 
+variable "keyvault_soft_delete_retention_days" {
+  description = "The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days."
+  type        = number
+  default     = 7
+}
+
 variable "keyvault_rbac_authorization_enabled" {
   description = "Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies."
   type        = bool
