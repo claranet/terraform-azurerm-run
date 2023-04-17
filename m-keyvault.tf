@@ -24,6 +24,12 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
+  purge_protection_enabled = true
+
+  rbac_authorization_enabled = var.keyvault_rbac_authorization_enabled
+
+  public_network_access_enabled = var.keyvault_public_network_access_enabled
+
   managed_hardware_security_module_enabled = var.keyvault_managed_hardware_security_module_enabled
 
   logs_destinations_ids = [
@@ -35,11 +41,7 @@ module "keyvault" {
   logs_categories         = var.keyvault_logs_categories
   logs_metrics_categories = var.keyvault_logs_metrics_categories
 
-  purge_protection_enabled = true
-
   network_acls = var.keyvault_network_acls
-
-  public_network_access_enabled = var.keyvault_public_network_access_enabled
 
   default_tags_enabled = var.default_tags_enabled
 

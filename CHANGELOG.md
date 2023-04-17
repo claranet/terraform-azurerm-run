@@ -1,7 +1,10 @@
 # Unreleased
 
+Added
+  * AZ-1038: Add parameters to Key Vault module
+
 Breaking
-  * AZ-1038: Bump KeyVault module. Use `var.keyvault_custom_name` to keep your KeyVault when upgrading.
+  * AZ-1038: Bump Key Vault module. Use `var.keyvault_custom_name` to keep your Key Vault when upgrading.
 
 # v7.2.2 - 2023-04-07
 

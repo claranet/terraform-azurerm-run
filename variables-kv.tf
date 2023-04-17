@@ -60,6 +60,12 @@ variable "keyvault_network_acls" {
   default = {}
 }
 
+variable "keyvault_rbac_authorization_enabled" {
+  description = "Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies."
+  type        = bool
+  default     = false
+}
+
 variable "keyvault_public_network_access_enabled" {
   description = "Whether the Key Vault is available from public network."
   type        = bool
