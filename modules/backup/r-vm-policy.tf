@@ -5,15 +5,20 @@ resource "azurerm_backup_policy_vm" "vm_backup_policy" {
   resource_group_name = var.resource_group_name
   recovery_vault_name = azurerm_recovery_services_vault.vault[0].name
 
-  timezone = var.vm_backup_policy_timezone
+  timezone    = var.vm_backup_policy_timezone
+  policy_type = var.vm_backup_policy_type
 
   backup {
     frequency = var.vm_backup_policy_frequency
     time      = var.vm_backup_policy_time
+    weekdays  = var.vm_backup_policy_frequency == "Daily" ? null : coalescelist(var.vm_backup_weekly_retention.weekdays, var.vm_backup_monthly_retention.weekdays, var.vm_backup_yearly_retention.weekdays)
   }
 
-  retention_daily {
-    count = var.vm_backup_daily_policy_retention
+  dynamic "retention_daily" {
+    for_each = var.vm_backup_policy_frequency == "Daily" ? ["_"] : []
+    content {
+      count = var.vm_backup_daily_policy_retention
+    }
   }
 
   dynamic "retention_weekly" {

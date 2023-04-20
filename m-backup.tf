@@ -43,6 +43,7 @@ module "backup" {
   vm_backup_policy_timezone        = var.vm_backup_policy_timezone
   vm_backup_policy_frequency       = var.vm_backup_policy_frequency
   vm_backup_policy_time            = var.vm_backup_policy_time
+  vm_backup_policy_type            = var.vm_backup_policy_type
   vm_backup_daily_policy_retention = var.vm_backup_daily_policy_retention
   vm_backup_weekly_retention       = var.vm_backup_weekly_retention
   vm_backup_monthly_retention      = var.vm_backup_monthly_retention

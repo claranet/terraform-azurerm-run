@@ -84,6 +84,12 @@ variable "vm_backup_policy_frequency" {
   default     = "Daily"
 }
 
+variable "vm_backup_policy_type" {
+  description = "Type of the Backup Policy. Possible values are `V1` and `V2` where `V2` stands for the Enhanced Policy. Defaults to `V1`. Changing this forces a new resource to be created."
+  type        = string
+  default     = "V1"
+}
+
 variable "vm_backup_daily_policy_retention" {
   description = "The number of daily VM backups to keep. Must be between 7 and 9999."
   type        = number

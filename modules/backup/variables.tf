@@ -112,6 +112,12 @@ variable "vm_backup_policy_time" {
   default     = "04:00"
 }
 
+variable "vm_backup_policy_type" {
+  description = "Type of the Backup Policy. Possible values are `V1` and `V2` where `V2` stands for the Enhanced Policy. Defaults to `V1`. Changing this forces a new resource to be created."
+  type        = string
+  default     = "V1"
+}
+
 variable "vm_backup_policy_frequency" {
   description = "Specifies the frequency for VM backup schedules. Must be either `Daily` or `Weekly`."
   type        = string
