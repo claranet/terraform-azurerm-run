@@ -60,6 +60,24 @@ variable "keyvault_network_acls" {
   default = {}
 }
 
+variable "keyvault_soft_delete_retention_days" {
+  description = "The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days."
+  type        = number
+  default     = 7
+}
+
+variable "keyvault_rbac_authorization_enabled" {
+  description = "Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies."
+  type        = bool
+  default     = false
+}
+
+variable "keyvault_public_network_access_enabled" {
+  description = "Whether the Key Vault is available from public network."
+  type        = bool
+  default     = false
+}
+
 # Keyvault Diagnotics
 
 variable "keyvault_logs_categories" {
@@ -78,4 +96,12 @@ variable "keyvault_logs_retention_days" {
   type        = number
   description = "Number of days to keep logs on storage account."
   default     = 30
+}
+
+# Keyvault HSM
+
+variable "keyvault_managed_hardware_security_module_enabled" {
+  description = "Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created."
+  type        = bool
+  default     = false
 }

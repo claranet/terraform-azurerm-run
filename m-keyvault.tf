@@ -1,6 +1,6 @@
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "~> 7.1.0"
+  version = "~> 7.4.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -24,6 +24,15 @@ module "keyvault" {
   enabled_for_disk_encryption     = var.keyvault_enabled_for_disk_encryption
   enabled_for_template_deployment = var.keyvault_enabled_for_template_deployment
 
+  purge_protection_enabled   = true
+  soft_delete_retention_days = var.keyvault_soft_delete_retention_days
+
+  rbac_authorization_enabled = var.keyvault_rbac_authorization_enabled
+
+  public_network_access_enabled = var.keyvault_public_network_access_enabled
+
+  managed_hardware_security_module_enabled = var.keyvault_managed_hardware_security_module_enabled
+
   logs_destinations_ids = [
     module.logs.log_analytics_workspace_id,
     module.logs.logs_storage_account_id,
@@ -32,8 +41,6 @@ module "keyvault" {
   logs_retention_days     = var.keyvault_logs_retention_days
   logs_categories         = var.keyvault_logs_categories
   logs_metrics_categories = var.keyvault_logs_metrics_categories
-
-  purge_protection_enabled = true
 
   network_acls = var.keyvault_network_acls
 
