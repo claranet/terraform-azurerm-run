@@ -76,7 +76,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 
 | Name | Source | Version |
 |------|--------|---------|
-| storage\_logs | claranet/storage-account/azurerm | ~> 7.4.0 |
+| storage\_logs | claranet/storage-account/azurerm | ~> 7.6.0 |
 
 ## Resources
 
@@ -86,7 +86,6 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | [azurerm_storage_management_policy.archive_storage](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_management_policy) | resource |
 | [azurerm_storage_share.archivedlogs_fileshare](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
 | [azurecaf_name.log_analytics_workspace](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/data-sources/name) | data source |
-| [azurecaf_name.storage_account](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 

@@ -3,6 +3,8 @@
 Added
   * AZ-1038: Add parameters to Key Vault module
   * AZ-1070: Add `vm_backup_policy_type` new parameter
+  * AZ-1055: Add `client_name` in Storage Account name. Use `var.logs_storage_account_custom_name` to keep your storage when upgrading.
+  * AZ-1056: Bump `function-app` module for monitoring function
 
 Breaking
   * AZ-1038: Bump Key Vault module. Use `var.keyvault_custom_name` to keep your Key Vault when upgrading
@@ -18,7 +20,7 @@ Fixed
 # v7.2.1 - 2023-03-31
 
 Fixed
-  * AZ-1037: Bump function-app module for monitoring function
+  * AZ-1037: Bump `function-app` module for monitoring function
 
 # v7.2.0 - 2023-03-03
 
