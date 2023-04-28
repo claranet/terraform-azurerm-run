@@ -1,4 +1,4 @@
-# Unreleased
+# v7.3.0 - 2023-04-28
 
 Added
   * AZ-1038: Add parameters to Key Vault module
