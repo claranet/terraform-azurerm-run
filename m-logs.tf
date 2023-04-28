@@ -9,7 +9,7 @@ module "logs" {
   resource_group_name = coalesce(var.logs_resource_group_name, var.resource_group_name)
 
   use_caf_naming = var.use_caf_naming
-  name_prefix    = coalesce(var.name_prefix, "logs")
+  name_prefix    = var.name_prefix
   name_suffix    = var.name_suffix
 
   logs_storage_account_name_prefix                       = var.logs_storage_account_name_prefix

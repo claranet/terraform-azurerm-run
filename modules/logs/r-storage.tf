@@ -1,7 +1,7 @@
 # Storage account for Logs
 module "storage_logs" {
   source  = "claranet/storage-account/azurerm"
-  version = "~> 7.4.0"
+  version = "~> 7.6.0"
 
   client_name    = var.client_name
   environment    = var.environment
@@ -11,7 +11,9 @@ module "storage_logs" {
 
   resource_group_name = var.resource_group_name
 
-  storage_account_custom_name = local.storage_default_name
+  storage_account_custom_name = var.logs_storage_account_custom_name
+  name_prefix                 = local.logs_storage_account_name_prefix
+  name_suffix                 = "${var.name_suffix}log"
 
   # Storage account kind/SKU/tier
   account_replication_type = var.logs_storage_account_replication_type
