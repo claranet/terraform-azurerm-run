@@ -1,4 +1,4 @@
-# Unreleased
+# v7.3.1 - 2023-05-12
 
 Fixed
   * AZ-1078: Fix Fame backup queries
