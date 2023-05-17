@@ -72,7 +72,7 @@ resource "azurerm_role_assignment" "function_subscription" {
   count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
 
   principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
-  scope        = format("/subscription/%s", data.azurerm_client_config.current.subscription_id)
+  scope        = format("/subscriptions/%s", data.azurerm_client_config.current.subscription_id)
 
   role_definition_name = "Reader"
 }
