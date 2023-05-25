@@ -34,7 +34,7 @@ variable "monitoring_function_logs_retention_days" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"
+  default     = "https://github.com/BzSpi/fame/releases/download/v1.2.0-beta1/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
