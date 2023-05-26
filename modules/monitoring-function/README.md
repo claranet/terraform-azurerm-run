@@ -138,7 +138,7 @@ Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account | `bool` | `false` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
-| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/BzSpi/fame/releases/download/v1.2.0-beta1/fame.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/BzSpi/fame/releases/download/v1.2.0-beta2/fame.zip"` | no |
 
 ## Outputs
 
