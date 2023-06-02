@@ -1,4 +1,4 @@
-# Unreleased
+# v7.3.2 - 2023-06-02
 
 Changed
   * AZ-1038: Bump `Keyvault` module to remove deprecation warning with AzureRM v4 provider
