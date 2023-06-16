@@ -1,6 +1,6 @@
 # Storage account for Logs
 module "storage_logs" {
-  count = var.logs_storage_account_creation ? 1 : 0
+  count = var.logs_storage_account_enabled ? 1 : 0
 
   source  = "claranet/storage-account/azurerm"
   version = "~> 7.7.0"
@@ -69,7 +69,7 @@ module "storage_logs" {
 
 # Archived Logs File Shares
 resource "azurerm_storage_share" "archivedlogs_fileshare" {
-  count                = var.logs_storage_account_creation && var.logs_storage_account_enable_archived_logs_fileshare ? 1 : 0
+  count                = var.logs_storage_account_enabled && var.logs_storage_account_enable_archived_logs_fileshare ? 1 : 0
   name                 = var.logs_storage_account_archived_logs_fileshare_name
   storage_account_name = one(module.storage_logs[*].storage_account_name)
   quota                = var.logs_storage_account_archived_logs_fileshare_quota
@@ -77,7 +77,7 @@ resource "azurerm_storage_share" "archivedlogs_fileshare" {
 
 # Blob Archive policy
 resource "azurerm_storage_management_policy" "archive_storage" {
-  count              = var.logs_storage_account_creation && lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
+  count              = var.logs_storage_account_enabled && lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_enable_archiving ? 1 : 0
   storage_account_id = one(module.storage_logs[*].storage_account_id)
 
   rule {
