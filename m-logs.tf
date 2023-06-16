@@ -12,6 +12,7 @@ module "logs" {
   name_prefix    = var.name_prefix
   name_suffix    = var.name_suffix
 
+  logs_storage_account_enabled                           = var.logs_storage_account_enabled
   logs_storage_account_name_prefix                       = var.logs_storage_account_name_prefix
   logs_storage_account_custom_name                       = var.logs_storage_account_custom_name
   logs_storage_account_extra_tags                        = var.logs_storage_account_extra_tags

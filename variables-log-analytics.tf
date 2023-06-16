@@ -31,6 +31,12 @@ variable "log_analytics_workspace_retention_in_days" {
   default     = 30
 }
 
+variable "logs_storage_account_enabled" {
+  description = "Whether the dedicated Storage Account for logs is created."
+  type        = bool
+  default     = true
+}
+
 variable "logs_storage_account_name_prefix" {
   description = "Storage Account name prefix"
   type        = string

@@ -40,35 +40,35 @@ output "log_analytics_workspace_secondary_key" {
 
 output "logs_storage_account_id" {
   description = "ID of the logs Storage Account."
-  value       = module.storage_logs.storage_account_properties.id
+  value       = one(module.storage_logs[*].storage_account_id)
 }
 
 output "logs_storage_account_name" {
   description = "Name of the logs Storage Account"
-  value       = module.storage_logs.storage_account_properties.name
+  value       = one(module.storage_logs[*].storage_account_name)
 }
 
 output "logs_storage_account_primary_connection_string" {
   description = "Primary connection string of the logs Storage Account."
-  value       = module.storage_logs.storage_account_properties.primary_connection_string
+  value       = one(module.storage_logs[*].storage_account_properties.primary_connection_string)
   sensitive   = true
 }
 
 output "logs_storage_account_primary_access_key" {
   description = "Primary connection string of the logs Storage Account."
-  value       = module.storage_logs.storage_account_properties.primary_access_key
+  value       = one(module.storage_logs[*].storage_account_properties.primary_access_key)
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_connection_string" {
   description = "Secondary connection string of the logs Storage Account."
-  value       = module.storage_logs.storage_account_properties.secondary_connection_string
+  value       = one(module.storage_logs[*].storage_account_properties.secondary_connection_string)
   sensitive   = true
 }
 
 output "logs_storage_account_secondary_access_key" {
   description = "Secondary connection string of the logs Storage Account."
-  value       = module.storage_logs.storage_account_properties.secondary_access_key
+  value       = one(module.storage_logs[*].storage_account_properties.secondary_access_key)
   sensitive   = true
 }
 

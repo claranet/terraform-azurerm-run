@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-1093: Add `logs_storage_account_enabled` option to `logs` submodule
+
 # v7.3.2 - 2023-06-02
 
 Changed
