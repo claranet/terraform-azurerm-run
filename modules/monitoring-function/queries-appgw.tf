@@ -3,6 +3,7 @@ locals {
     application_gateway_instances = {
       MetricName = "fame.azure.application_gateway.instances"
       MetricType = "gauge"
+      QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
         | where ResourceType == "APPLICATIONGATEWAYS" and OperationName == "ApplicationGatewayAccess"

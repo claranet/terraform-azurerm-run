@@ -44,7 +44,7 @@ variable "splunk_token" {
 variable "zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v1.2.0/fame.zip"
 }
 
 variable "metrics_extra_dimensions" {

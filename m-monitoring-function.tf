@@ -60,10 +60,19 @@ module "monitoring_function" {
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
-  count = var.monitoring_function_enabled && var.monitoring_function_assign_role_on_workspace ? 1 : 0
+  count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
 
   principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
   scope        = module.logs.log_analytics_workspace_id
 
   role_definition_name = "Log Analytics Reader"
+}
+
+resource "azurerm_role_assignment" "function_subscription" {
+  count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
+
+  principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
+  scope        = format("/subscriptions/%s", data.azurerm_client_config.current.subscription_id)
+
+  role_definition_name = "Reader"
 }

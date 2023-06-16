@@ -34,7 +34,7 @@ variable "monitoring_function_logs_retention_days" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function"
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.1.0/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v1.2.0/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
@@ -49,8 +49,8 @@ variable "monitoring_function_extra_application_settings" {
   default     = {}
 }
 
-variable "monitoring_function_assign_role_on_workspace" {
-  description = "True to assign role for the monitoring Function on the Log Analytics Workspace"
+variable "monitoring_function_assign_roles" {
+  description = "True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader)."
   type        = bool
   default     = true
 }
