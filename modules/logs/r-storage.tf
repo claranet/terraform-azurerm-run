@@ -94,5 +94,9 @@ resource "azurerm_storage_management_policy" "archive_storage" {
       }
     }
   }
+}
 
+moved {
+  from = module.storage_logs
+  to   = module.storage_logs[0]
 }
