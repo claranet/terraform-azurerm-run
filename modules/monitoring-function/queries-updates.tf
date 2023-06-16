@@ -7,18 +7,16 @@ locals {
       Query      = <<EOQ
         patchinstallationresources
         | where type == 'microsoft.compute/virtualmachines/patchinstallationresults'
-        | extend id_parts  = split(id, '/')
-        | extend subscription_id = tostring(id_parts[2])
-        | extend azure_resource_group_name = tostring(id_parts[4])
-        | extend azure_resource_name = tostring(id_parts[8])
-        | extend ts=todatetime(properties.lastModifiedDateTime)
-        | where ts > ago(15m)
-        | summarize timestamp = arg_max(ts, status=tolower(properties.status))
+        | extend azure_resource_name = tostring(split(id, '/')[8])
+        | extend last_updated=todatetime(properties.lastModifiedDateTime)
+        | where last_updated > ago(1d)
+        | summarize last_updated = arg_max(last_updated, status=tolower(properties.status))
             by
-            subscription_id,
+            subscription_id=subscriptionId,
             azure_resource_name,
-            azure_resource_group_name,
-            metric_value = 1
+            azure_resource_group_name=resourceGroup,
+            metric_value = 1,
+            timestamp = now()
       EOQ
     }
 
