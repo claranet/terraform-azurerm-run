@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-1112: Add missing Update Center tags
+
 # v7.4.0 - 2023-06-16
 
 Added

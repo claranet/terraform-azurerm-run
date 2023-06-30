@@ -35,7 +35,7 @@ resource "azapi_resource" "maintenance_configurations" {
       }
     }
   )
-  tags                    = local.tags
+  tags                    = local.mc_tags
   response_export_values  = ["*"]
   ignore_missing_property = true
 }
