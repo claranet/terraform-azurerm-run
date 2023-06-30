@@ -3,6 +3,9 @@
 Fixed
   * AZ-1112: Add missing Update Center tags
 
+Changed
+  * AZ-1113: Update sub-modules READMEs (according to their example)
+
 # v7.4.0 - 2023-06-16
 
 Added
