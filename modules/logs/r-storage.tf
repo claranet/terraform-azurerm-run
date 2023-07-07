@@ -22,6 +22,9 @@ module "storage_logs" {
   account_tier             = var.logs_storage_account_tier
   account_kind             = var.logs_storage_account_kind
 
+  # Storage access tier
+  access_tier = var.logs_storage_account_access_tier
+
   # Storage account options / security
   min_tls_version                    = var.logs_storage_min_tls_version
   https_traffic_only_enabled         = var.logs_storage_account_enable_https_traffic_only
