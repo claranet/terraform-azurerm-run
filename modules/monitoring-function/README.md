@@ -13,71 +13,6 @@ Note:
 The storage account associated to the FAME Function app has now network rules created and enabled by default to follow hardening guidelines.
 You might need to authorize IPs or change the network rules parameters by using `storage_account_network_rules_enabled` or `storage_account_authorized_ips`.
 
-## Version compatibility
-
-| Module version | Terraform version | AzureRM version |
-| -------------- | ----------------- | --------------- |
-| >= 6.x.x       | 1.x               | >= 3.0          |
-| >= 5.x.x       | 0.15.x            | >= 2.0          |
-| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
-| >= 3.x.x       | 0.12.x            | >= 2.0          |
-| >= 2.x.x       | 0.12.x            | < 2.0           |
-| <  2.x.x       | 0.11.x            | < 2.0           |
-
-## Usage
-
-This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
-which set some terraform variables in the environment needed by this module.
-More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
-
-```hcl
-module "azure-region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure-region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
-resource "azurerm_log_analytics_workspace" "example" {
-  name                = "acctest-01"
-  location            = module.azure-region.location
-  resource_group_name = module.rg.resource_group_name
-  sku                 = "PerGB2018"
-  retention_in_days   = 30
-}
-
-module "monitoring_function" {
-  source  = "claranet/run-common/azurerm//modules/monitoring-function"
-  version = "x.x.x"
-
-  client_name    = var.client_name
-  location       = module.azure-region.location
-  location_short = module.azure-region.location_short
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-
-  splunk_token = "xxxxxx"
-
-  log_analytics_workspace_guid = azurerm_log_analytics_workspace.example.workspace_id
-
-  extra_tags = {
-    foo = "bar"
-  }
-}
-```
-
 ## Related documentation
 
 Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
@@ -89,6 +24,86 @@ Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/s
 Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
 
 <!-- BEGIN_TF_DOCS -->
+## Global versioning rule for Claranet Azure modules
+
+| Module version | Terraform version | AzureRM version |
+| -------------- | ----------------- | --------------- |
+| >= 7.x.x       | 1.3.x             | >= 3.0          |
+| >= 6.x.x       | 1.x               | >= 3.0          |
+| >= 5.x.x       | 0.15.x            | >= 2.0          |
+| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
+| >= 3.x.x       | 0.12.x            | >= 2.0          |
+| >= 2.x.x       | 0.12.x            | < 2.0           |
+| <  2.x.x       | 0.11.x            | < 2.0           |
+
+## Contributing
+
+If you want to contribute to this repository, feel free to use our [pre-commit](https://pre-commit.com/) git hook configuration
+which will help you automatically update and format some files for you by enforcing our Terraform code module best-practices.
+
+More details are available in the [CONTRIBUTING.md](../../CONTRIBUTING.md#pull-request-process) file.
+
+## Usage
+
+This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
+which set some terraform variables in the environment needed by this module.
+More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
+
+```hcl
+module "azure_region" {
+  source  = "claranet/regions/azurerm"
+  version = "x.x.x"
+
+  azure_region = var.azure_region
+}
+
+module "rg" {
+  source  = "claranet/rg/azurerm"
+  version = "x.x.x"
+
+  location    = module.azure_region.location
+  client_name = var.client_name
+  environment = var.environment
+  stack       = var.stack
+}
+
+module "logs" {
+  source  = "claranet/run/azurerm//modules/logs"
+  version = "x.x.x"
+
+  client_name    = var.client_name
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = module.rg.resource_group_name
+}
+
+module "monitoring" {
+  source  = "claranet/run/azurerm//modules/monitoring-function"
+  version = "x.x.x"
+
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
+  client_name    = var.client_name
+  environment    = var.environment
+  stack          = var.stack
+
+  resource_group_name = module.rg.resource_group_name
+
+  log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
+
+  splunk_token = "xxxxxx"
+
+  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
+
+  extra_tags = {
+    foo = "bar"
+  }
+}
+```
+
 ## Providers
 
 | Name | Version |

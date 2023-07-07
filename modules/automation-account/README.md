@@ -4,53 +4,83 @@ This module creates an automation acccount.
 It can be linked to a Log Analytics Workspace (mandatory is you aim to use the Patch Management solution too).
 Please note that the associated RunAs Account is not created.
 
-## Version compatibility
+<!-- BEGIN_TF_DOCS -->
+## Global versioning rule for Claranet Azure modules
 
-| Module version    | Terraform version | AzureRM version |
-| ----------------- | ----------------- | --------------- |
-| >= 5.x.x          | 0.15.x & 1.0.x    | >= 2.57         |
-| >= 4.x.x          | 0.13.x            | >= 2.57         |
-| >= 3.x.x          | 0.12.x            | >= 2.0          |
-| >= 2.x.x, < 3.x.x | 0.12.x            | <  2.0          |
-| <  2.x.x          | 0.11.x            | <  2.0          |
+| Module version | Terraform version | AzureRM version |
+| -------------- | ----------------- | --------------- |
+| >= 7.x.x       | 1.3.x             | >= 3.0          |
+| >= 6.x.x       | 1.x               | >= 3.0          |
+| >= 5.x.x       | 0.15.x            | >= 2.0          |
+| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
+| >= 3.x.x       | 0.12.x            | >= 2.0          |
+| >= 2.x.x       | 0.12.x            | < 2.0           |
+| <  2.x.x       | 0.11.x            | < 2.0           |
+
+## Contributing
+
+If you want to contribute to this repository, feel free to use our [pre-commit](https://pre-commit.com/) git hook configuration
+which will help you automatically update and format some files for you by enforcing our Terraform code module best-practices.
+
+More details are available in the [CONTRIBUTING.md](../../CONTRIBUTING.md#pull-request-process) file.
 
 ## Usage
 
-Terraform module declaration example for your dashboard stack with all required modules:
+This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
+which set some terraform variables in the environment needed by this module.
+More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
 
 ```hcl
-module "azure-region" {
+module "azure_region" {
   source  = "claranet/regions/azurerm"
-  version = "2.x.x"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
   source  = "claranet/rg/azurerm"
-  version = "2.x.x"
+  version = "x.x.x"
 
-  location    = module.azure-region.location
+  location    = module.azure_region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
-module "automation-account" {
-  source  = "claranet/run-iaas/azurerm//modules/automation-account"
+module "logs" {
+  source  = "claranet/run/azurerm//modules/logs"
   version = "x.x.x"
 
   client_name    = var.client_name
-  location       = var.location
-  location_short = var.location_short
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name          = module.rg.resource_group_name
+  resource_group_name = module.rg.resource_group_name
+}
+
+module "automation_account" {
+  source  = "claranet/run/azurerm//modules/automation-account"
+  version = "x.x.x"
+
+  location            = module.azure_region.location
+  location_short      = module.azure_region.location_short
+  resource_group_name = module.rg.resource_group_name
+  client_name         = var.client_name
+  stack               = var.stack
+  environment         = var.environment
+
+  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  logs_destinations_ids      = [module.logs.log_analytics_workspace_id]
+
+  extra_tags = {
+    foo = "bar"
+  }
 }
 ```
 
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 | Name | Version |
