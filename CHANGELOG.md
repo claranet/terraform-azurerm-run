@@ -3,6 +3,9 @@
 Added
   * AZ-1114: Add `access_tier` option to `logs` submodule
 
+Fixed
+  * AZ-1116: Add missing quotes in migration instructions
+
 # v7.4.1 - 2023-07-07
 
 Fixed
