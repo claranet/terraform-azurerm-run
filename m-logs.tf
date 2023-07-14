@@ -18,6 +18,7 @@ module "logs" {
   logs_storage_account_extra_tags                        = var.logs_storage_account_extra_tags
   logs_storage_account_kind                              = var.logs_storage_account_kind
   logs_storage_account_tier                              = var.logs_storage_account_tier
+  logs_storage_account_access_tier                       = var.logs_storage_account_access_tier
   logs_storage_account_replication_type                  = var.logs_storage_account_replication_type
   logs_storage_min_tls_version                           = var.logs_storage_min_tls_version
   logs_storage_account_enable_advanced_threat_protection = var.logs_storage_account_enable_advanced_threat_protection

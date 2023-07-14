@@ -61,6 +61,12 @@ variable "logs_storage_account_tier" {
   default     = "Standard"
 }
 
+variable "logs_storage_account_access_tier" {
+  description = "Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`."
+  type        = string
+  default     = "Hot"
+}
+
 variable "logs_storage_account_replication_type" {
   description = "Storage Account Replication type"
   type        = string
