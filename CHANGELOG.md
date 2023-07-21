@@ -1,4 +1,4 @@
-# Unreleased
+# v7.5.0 - 2023-07-21
 
 Added
   * AZ-1114: Add `access_tier` option to `logs` submodule
