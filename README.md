@@ -63,20 +63,21 @@ This `run` module is a merge of the previous [run-common](https://registry.terra
 [run-iaas](https://registry.terraform.io/modules/claranet/run-common) modules.
 
 Some previously pre-activated backup and update management features must now be explicitly enabled through `*_enabled` variables.
+You must be on the latest version of `run_iaas` and `run_common` modules before updating to `run` module.
 
 You can migrate your Terrafom state with the following commands:
 
 ```shell
 terraform state mv module.run_common.module.keyvault module.run.module.keyvault
 terraform state mv module.run_common.module.logs module.run.module.logs
-terraform state mv module.run_common.module.monitoring_function[0] module.run.module.monitoring_function[0]
-terraform state mv module.run_iaas.module.automation_account module.run.module.automation_account[0]
-terraform state mv module.run_iaas.module.backup module.run.module.backup[0]
-terraform state mv module.run_iaas.module.update_management module.run.module.update_management[0]
+terraform state mv 'module.run_common.module.monitoring_function[0]' 'module.run.module.monitoring_function[0]'
+terraform state mv module.run_iaas.module.automation_account 'module.run.module.automation_account[0]'
+terraform state mv module.run_iaas.module.backup 'module.run.module.backup[0]'
+terraform state mv module.run_iaas.module.update_management 'module.run.module.update_management[0]'
 terraform state mv 'module.run_iaas.module.update_management_center["enabled"]' 'module.run.module.update_management_center["enabled"]'
-terraform state mv module.run_iaas.module.vm_monitoring module.run.module.vm_monitoring[0]
-terraform state mv module.run_common.azurerm_role_assignment.function_workspace[0] module.run.azurerm_role_assignment.function_workspace[0]
-terraform apply -target=module.run.null_resource.fake_function_condition[0]
+terraform state mv module.run_iaas.module.vm_monitoring 'module.run.module.vm_monitoring[0]'
+terraform state mv 'module.run_common.azurerm_role_assignment.function_workspace[0]' 'module.run.azurerm_role_assignment.function_workspace[0]'
+terraform apply -target='module.run.null_resource.fake_function_condition[0]'
 ```
 
 <!-- BEGIN_TF_DOCS -->
