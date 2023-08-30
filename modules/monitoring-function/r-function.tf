@@ -41,7 +41,7 @@ module "function" {
   logs_destinations_ids           = var.logs_destinations_ids
   logs_categories                 = var.logs_categories
   logs_metrics_categories         = var.logs_metrics_categories
-  logs_retention_days             = var.logs_retention_days
+  logs_retention_days             = null
   custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 
   storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection

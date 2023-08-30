@@ -1,5 +1,8 @@
 # Unreleased
 
+Breaking
+  * AZ-1153: Remove `retention_days` parameters, it must be handled at destination level now. (for reference: [Provider issue](https://github.com/hashicorp/terraform-provider-azurerm/issues/23051))
+
 Added
   * AZ-1111: Add `windows_kb_ids_to_exclude` and `linux_package_names_to_exclude` parameters for the `update_center_maintenance_configurations` variable
 

@@ -317,12 +317,6 @@ variable "backup_logs_metrics_categories" {
   default     = null
 }
 
-variable "backup_logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account."
-  default     = 30
-}
-
 variable "backup_custom_diagnostic_settings_name" {
   description = "Custom name of the diagnostics settings, name will be 'default' if not set."
   type        = string

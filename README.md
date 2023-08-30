@@ -194,13 +194,11 @@ module "run" {
 | automation\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | automation\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
 | automation\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
-| automation\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | backup\_custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | backup\_file\_share\_enabled | Whether the File Share backup is enabled. | `bool` | `false` | no |
 | backup\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
 | backup\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
-| backup\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | backup\_managed\_disk\_enabled | Whether the Managed Disk backup is enabled. | `bool` | `false` | no |
 | backup\_postgresql\_enabled | Whether the PostgreSQL backup is enabled. | `bool` | `false` | no |
 | backup\_storage\_blob\_enabled | Whether the Storage blob backup is enabled. | `bool` | `false` | no |
@@ -235,7 +233,6 @@ module "run" {
 | keyvault\_extra\_tags | Extra tags to add to the Key Vault | `map(string)` | `{}` | no |
 | keyvault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| keyvault\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | keyvault\_managed\_hardware\_security\_module\_enabled | Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
 | keyvault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br>    bypass                     = optional(string, "None"),<br>    default_action             = optional(string, "Deny"),<br>    ip_rules                   = optional(list(string)),<br>    virtual_network_subnet_ids = optional(list(string)),<br>  })</pre> | `{}` | no |
 | keyvault\_public\_network\_access\_enabled | Whether the Key Vault is available from public network. | `bool` | `false` | no |
@@ -296,7 +293,6 @@ module "run" {
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| monitoring\_function\_logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |

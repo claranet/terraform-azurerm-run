@@ -1,6 +1,7 @@
 module "diagnostics" {
-  source  = "claranet/diagnostic-settings/azurerm"
-  version = "~> 6.4.1"
+  # source  = "claranet/diagnostic-settings/azurerm"
+  # version = "~> 6.4.1"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/diagnostic-settings.git?ref=AZ-1153_drop_retention_param"
 
   count = var.backup_vm_enabled || var.backup_file_share_enabled ? 1 : 0
 
@@ -9,7 +10,6 @@ module "diagnostics" {
   logs_destinations_ids = var.logs_destinations_ids
   log_categories        = var.logs_categories
   metric_categories     = var.logs_metrics_categories
-  retention_days        = var.logs_retention_days
 
   use_caf_naming = var.use_caf_naming
   custom_name    = var.custom_diagnostic_settings_name

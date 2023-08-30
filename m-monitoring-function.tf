@@ -45,8 +45,6 @@ module "monitoring_function" {
     module.logs.log_analytics_workspace_id,
     module.logs.logs_storage_account_id,
   ]
-
-  logs_retention_days     = var.monitoring_function_logs_retention_days
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
