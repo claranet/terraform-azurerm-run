@@ -27,7 +27,15 @@ It includes some IaaS specifics:
 
 ### Default deployed resources
 
+With default example usage:
+
 ![Default deployed resources](./examples/main/default.svg)
+
+### All deployed resources
+
+With the [full](./examples/full/) example usage which enable all features:
+
+![All deployed resources](./examples/full/full.svg)
 
 ## Requirements
 
@@ -145,11 +153,6 @@ module "run" {
     env           = var.environment
     sfx_monitored = "true"
   }
-
-  backup_vm_enabled         = true
-  backup_postgresql_enabled = true
-
-  update_center_enabled = true
 
   extra_tags = {
     foo = "bar"
