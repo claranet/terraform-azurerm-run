@@ -112,12 +112,6 @@ variable "logs_storage_account_enable_archiving" {
   default     = true
 }
 
-variable "logs_storage_account_logs_retention_in_days" {
-  description = "Log storage account logs retention (appendBlob) in days."
-  type        = number
-  default     = 30
-}
-
 variable "tier_to_cool_after_days_since_modification_greater_than" {
   description = "Change blob tier to cool after x days without modification"
   type        = number
