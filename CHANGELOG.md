@@ -5,6 +5,7 @@ Breaking
 
 Added
   * AZ-1111: Add `windows_kb_ids_to_exclude` and `linux_package_names_to_exclude` parameters for the `update_center_maintenance_configurations` variable
+  * AZ-1154: Add `purgeLog` rule to the archive policy in replacement of the `retention_days` parameter deletion.
 
 # v7.5.0 - 2023-07-21
 

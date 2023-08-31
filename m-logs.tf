@@ -34,6 +34,7 @@ module "logs" {
   log_analytics_workspace_sku               = var.log_analytics_workspace_sku
 
   logs_storage_account_enable_archiving                      = var.logs_storage_account_enable_archiving
+  logs_storage_account_logs_retention_in_days                = var.logs_storage_account_logs_retention_in_days
   tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than
   tier_to_archive_after_days_since_modification_greater_than = var.logs_tier_to_archive_after_days_since_modification_greater_than
   delete_after_days_since_modification_greater_than          = var.logs_delete_after_days_since_modification_greater_than

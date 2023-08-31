@@ -175,6 +175,7 @@ module "logs" {
 | logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is created. | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to the Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
+| logs\_storage\_account\_logs\_retention\_in\_days | Log storage account logs retention (appendBlob) in days. | `number` | `30` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
 | logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |

@@ -97,6 +97,19 @@ resource "azurerm_storage_management_policy" "archive_storage" {
       }
     }
   }
+
+  rule {
+    name    = "PurgeLogs"
+    enabled = true
+    filters {
+      blob_types = ["appendBlob"]
+    }
+    actions {
+      base_blob {
+        delete_after_days_since_creation_greater_than = var.logs_storage_account_logs_retention_in_days
+      }
+    }
+  }
 }
 
 moved {
