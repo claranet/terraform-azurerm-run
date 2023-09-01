@@ -1,7 +1,6 @@
 module "diagnostics" {
-  # source  = "claranet/diagnostic-settings/azurerm"
-  # version = "~> 6.4.1"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/diagnostic-settings.git?ref=AZ-1153_drop_retention_param"
+  source  = "claranet/diagnostic-settings/azurerm"
+  version = "~> 6.5.0"
 
   resource_id = azurerm_automation_account.automation_account.id
 
