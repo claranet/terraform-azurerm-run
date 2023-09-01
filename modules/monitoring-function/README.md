@@ -7,21 +7,15 @@ Built-in metrics sent:
   * `fame.azure.backup.file_share`: number of successful file share backups
   * `fame.azure.backup.vm`: number of successful virtual machines backups
   * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
+  * `fame.azure.update_center.updates_status`: number of updates performed with Update Center along with their statuses
+  * `fame.azure.update_center.missing_updates`: number of updates missing on Virtual Machines managed by Update Center
+  * `fame.azure.automation_update.updates_status`: number of updates performed with legacy Update Management along with their statuses
+  * `fame.azure.automation_update.missing_updates`: number of updates missing on Virtual Machines managed by legacy Update Management
 
 Note:
 
-The storage account associated to the FAME Function app has now network rules created and enabled by default to follow hardening guidelines.
+The Storage Account associated to the FAME Function app has now network rules created and enabled by default to follow hardening guidelines.
 You might need to authorize IPs or change the network rules parameters by using `storage_account_network_rules_enabled` or `storage_account_authorized_ips`.
-
-## Related documentation
-
-Terraform Azure Log Analytics Workspace: [terraform.io/docs/providers/azurerm/r/log\_analytics\_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)
-
-Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
-
-Microsoft Azure Storage Account documentation: [docs.microsoft.com/en-us/azure/storage/common/storage-account-overview](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-Microsoft Azure Blob lifecycle management documentation: [docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules

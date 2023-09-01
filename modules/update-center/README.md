@@ -1,8 +1,9 @@
 # Azure Update Management Center
 
 It includes:
+
 * Azure Update Management Center (preview) ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview))
-* Azure policy assignement to enable periodic assessment ([documentation](https://learn.microsoft.com/en-us/azure/update-center/assessment-options))
+* Azure policy assignment to enable periodic assessment ([documentation](https://learn.microsoft.com/en-us/azure/update-center/assessment-options))
 
 ## Requirements
 
