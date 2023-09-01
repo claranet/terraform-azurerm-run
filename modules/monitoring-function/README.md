@@ -108,13 +108,13 @@ module "monitoring" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.25 |
+| azurerm | ~> 3.64 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | ~> 7.5.0 |
+| function | claranet/function-app/azurerm | ~> 7.6.0 |
 
 ## Resources
 

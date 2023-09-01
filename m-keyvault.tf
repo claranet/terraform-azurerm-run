@@ -1,6 +1,6 @@
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "~> 7.4.1"
+  version = "~> 7.5.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -37,7 +37,6 @@ module "keyvault" {
     module.logs.log_analytics_workspace_id,
     module.logs.logs_storage_account_id,
   ]
-  logs_retention_days     = null
   logs_categories         = var.keyvault_logs_categories
   logs_metrics_categories = var.keyvault_logs_metrics_categories
 

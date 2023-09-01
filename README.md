@@ -157,7 +157,7 @@ module "run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.39 |
+| azurerm | ~> 3.64 |
 | null | ~> 3.0 |
 
 ## Modules
@@ -166,7 +166,7 @@ module "run" {
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| keyvault | claranet/keyvault/azurerm | ~> 7.4.1 |
+| keyvault | claranet/keyvault/azurerm | ~> 7.5.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring-function | n/a |
 | update\_management | ./modules/update-management | n/a |

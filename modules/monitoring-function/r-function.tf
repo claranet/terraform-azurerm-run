@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "~> 7.5.0"
+  version = "~> 7.6.0"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -41,7 +41,6 @@ module "function" {
   logs_destinations_ids           = var.logs_destinations_ids
   logs_categories                 = var.logs_categories
   logs_metrics_categories         = var.logs_metrics_categories
-  logs_retention_days             = null
   custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 
   storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
