@@ -13,6 +13,9 @@ Changed
 Removed
   * AZ-1163: Remove FrontDoor Fame queries
 
+Fixed
+  * AZ-1151: Bump fame version to v1.2.1 for monitoring function
+
 # v7.5.0 - 2023-07-21
 
 Added
