@@ -1,8 +1,9 @@
 # Azure Automation Account
 
-This module creates an automation acccount.
-It can be linked to a Log Analytics Workspace (mandatory is you aim to use the Patch Management solution too).
-Please note that the associated RunAs Account is not created.
+This module creates an [Automation Account](https://learn.microsoft.com/en-us/azure/automation/overview) that may be
+linked a Log Analytics Workspace for legacy Update Management solution.
+
+Please note that the associated `RunAs Account` is not created.
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules

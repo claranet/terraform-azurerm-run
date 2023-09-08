@@ -4,7 +4,6 @@ locals {
   log_queries = merge(
     local.log_queries_appgw,
     local.log_queries_backup,
-    local.log_queries_frontdoor,
     local.log_queries_updates,
     local.log_queries_vpn,
   )
