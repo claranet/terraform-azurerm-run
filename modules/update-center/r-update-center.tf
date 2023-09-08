@@ -27,9 +27,11 @@ resource "azapi_resource" "maintenance_configurations" {
           rebootSetting = each.value.reboot_setting
           windowsParameters = {
             classificationsToInclude = each.value.windows_classifications_to_include
+            kbNumbersToExclude       = each.value.windows_kb_ids_to_exclude
           }
           linuxParameters = {
-            classificationsToInclude = each.value.linux_classifications_to_include
+            classificationsToInclude  = each.value.linux_classifications_to_include
+            packageNameMasksToExclude = each.value.linux_package_names_to_exclude
           }
         }
       }
