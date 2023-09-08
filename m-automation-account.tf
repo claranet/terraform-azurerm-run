@@ -30,7 +30,6 @@ module "automation_account" {
   logs_destinations_ids   = coalescelist(var.automation_logs_destinations_ids, local.logs_destinations_ids)
   logs_categories         = var.automation_logs_categories
   logs_metrics_categories = var.automation_logs_metrics_categories
-  logs_retention_days     = var.automation_logs_retention_days
 
   custom_diagnostic_settings_name = var.automation_custom_diagnostic_settings_name
 }

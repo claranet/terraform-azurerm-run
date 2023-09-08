@@ -3,7 +3,7 @@ module "storage_logs" {
   count = var.logs_storage_account_enabled ? 1 : 0
 
   source  = "claranet/storage-account/azurerm"
-  version = "~> 7.7.0"
+  version = "~> 7.8.0"
 
   client_name    = var.client_name
   environment    = var.environment
@@ -94,6 +94,19 @@ resource "azurerm_storage_management_policy" "archive_storage" {
         tier_to_cool_after_days_since_modification_greater_than    = var.tier_to_cool_after_days_since_modification_greater_than
         tier_to_archive_after_days_since_modification_greater_than = var.tier_to_archive_after_days_since_modification_greater_than
         delete_after_days_since_modification_greater_than          = var.delete_after_days_since_modification_greater_than
+      }
+    }
+  }
+
+  rule {
+    name    = "PurgeLogs"
+    enabled = true
+    filters {
+      blob_types = ["appendBlob"]
+    }
+    actions {
+      base_blob {
+        delete_after_days_since_creation_greater_than = var.delete_after_days_since_modification_greater_than
       }
     }
   }

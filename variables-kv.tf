@@ -92,12 +92,6 @@ variable "keyvault_logs_metrics_categories" {
   default     = null
 }
 
-variable "keyvault_logs_retention_days" {
-  type        = number
-  description = "Number of days to keep logs on storage account."
-  default     = 30
-}
-
 # Keyvault HSM
 
 variable "keyvault_managed_hardware_security_module_enabled" {

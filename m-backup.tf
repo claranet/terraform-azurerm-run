@@ -83,7 +83,6 @@ module "backup" {
   logs_destinations_ids   = coalescelist(var.backup_logs_destinations_ids, local.logs_destinations_ids)
   logs_categories         = var.backup_logs_categories
   logs_metrics_categories = var.backup_logs_metrics_categories
-  logs_retention_days     = var.backup_logs_retention_days
 
   custom_diagnostic_settings_name = var.backup_custom_diagnostic_settings_name
 }
