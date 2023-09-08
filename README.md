@@ -25,15 +25,9 @@ It includes some IaaS specifics:
   * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
   * Azure Update Center using Update Management Center ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview)) ([example](examples/update-management-center/modules.tf))
 
-### Default deployed resources
-
-With default example usage:
-
-![Default deployed resources](./examples/main/default.svg)
-
 ### All deployed resources
 
-With the [full](./examples/full/) example usage which enable all features:
+Diagram of the [full example](./examples/full/) usage having all features enabled:
 
 ![All deployed resources](./examples/full/full.svg)
 

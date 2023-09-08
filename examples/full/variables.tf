@@ -17,3 +17,8 @@ variable "stack" {
   description = "Project stack name"
   type        = string
 }
+
+variable "splunk_token" {
+  description = "Splunk infrastructure monitoring token"
+  type        = string
+}
