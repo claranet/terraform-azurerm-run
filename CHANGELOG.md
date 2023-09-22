@@ -16,6 +16,9 @@ Removed
 Fixed
   * AZ-1151: Bump fame version to v1.2.1 for monitoring function
 
+Changed
+  * AZ-1131: Add deployed resources visualizer in README
+
 # v7.5.0 - 2023-07-21
 
 Added

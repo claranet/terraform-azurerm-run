@@ -25,6 +25,12 @@ It includes some IaaS specifics:
   * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
   * Azure Update Center using Update Management Center ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview)) ([example](examples/update-management-center/modules.tf))
 
+### All deployed resources
+
+Diagram of the [full example](./examples/full/) usage having all features enabled:
+
+![All deployed resources](./examples/full/full.svg)
+
 ## Requirements
 
 * You need to have at least the `Contributor` role on the subscriptions to use `update_center_periodic_assessment_enabled` with Update Management Center module.
@@ -141,11 +147,6 @@ module "run" {
     env           = var.environment
     sfx_monitored = "true"
   }
-
-  backup_vm_enabled         = true
-  backup_postgresql_enabled = true
-
-  update_center_enabled = true
 
   extra_tags = {
     foo = "bar"
