@@ -1,4 +1,4 @@
-# Unreleased
+# v7.6.2 - 2023-09-29
 
 Fixed
   * AZ-1191: Fix tags truncation in `automation-account` submodule
