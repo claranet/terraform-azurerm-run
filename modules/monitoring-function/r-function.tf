@@ -1,6 +1,7 @@
 module "function" {
-  source  = "claranet/function-app/azurerm"
-  version = "~> 7.6.0"
+  #  source  = "claranet/function-app/azurerm"
+  #  version = "~> 7.6.0"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=AZ-1218-isolate-worker"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -18,6 +19,7 @@ module "function" {
   application_insights_custom_name = var.application_insights_custom_name
   service_plan_custom_name         = var.service_plan_custom_name
 
+  function_app_application_settings_drift_ignore = false
   function_app_application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
     LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
