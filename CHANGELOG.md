@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-1218: Bump function-app module version
+
 # v7.6.2 - 2023-09-29
 
 Fixed
