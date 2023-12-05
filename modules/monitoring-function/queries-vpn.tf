@@ -31,5 +31,18 @@ locals {
         | summarize metric_value=sum(Total) by timestamp=bin(TimeGenerated, 1m), azure_resource_name=Resource, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId
       EOQ
     }
+
+    vpn_tunnel_status = {
+      MetricName = "fame.azure.virtual_network_gateway.tunnel_status"
+      MetricType = "gauge"
+      QueryType  = "log_analytics"
+      Query      = <<EOQ
+        AzureDiagnostics
+        | where Category == "TunnelDiagnosticLog"
+        | where TimeGenerated > ago(20m)
+        | extend status_int = case(status_s  == "Connected", 1, 0)
+        | project timestamp=TimeGenerated, metric_value=status_int, status_s, ResourceGroup, SubscriptionId, Resource, remoteIP_s
+      EOQ
+    }
   }
 }
