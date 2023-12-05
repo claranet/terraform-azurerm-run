@@ -9,6 +9,7 @@ resource "azurerm_log_analytics_workspace" "log_workspace" {
 
   sku               = var.log_analytics_workspace_sku
   retention_in_days = var.log_analytics_workspace_retention_in_days
+  daily_quota_gb    = var.log_analytics_workspace_daily_quota_gb
 
   tags = merge(
     local.default_tags,

@@ -1,3 +1,11 @@
+# Unreleased
+
+Added
+ * [GITHUB-2](https://github.com/claranet/terraform-azurerm-run/pull/2): Add `log_analytics_workspace_daily_quota_gb` variable
+
+Fixed
+ * [GITHUB-2](https://github.com/claranet/terraform-azurerm-run/pull/2): Lookup with 2 arguments is deprecated (terraform_deprecated_lookup)
+
 # v7.6.3 - 2023-10-20
 
 Changed

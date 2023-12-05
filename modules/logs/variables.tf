@@ -46,6 +46,12 @@ variable "log_analytics_workspace_retention_in_days" {
   default     = 30
 }
 
+variable "log_analytics_workspace_daily_quota_gb" {
+  description = "The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited)."
+  type        = number
+  default     = -1
+}
+
 variable "logs_storage_account_enabled" {
   description = "Whether the dedicated Storage Account for logs is created."
   type        = bool
