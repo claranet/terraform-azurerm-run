@@ -1,4 +1,4 @@
-# Unreleased
+# v7.7.0 - 2023-12-05
 
 Added
  * [GITHUB-2](https://github.com/claranet/terraform-azurerm-run/pull/2): Add `log_analytics_workspace_daily_quota_gb` variable
