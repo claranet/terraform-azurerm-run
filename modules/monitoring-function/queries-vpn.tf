@@ -41,7 +41,7 @@ locals {
         | where Category == "TunnelDiagnosticLog"
         | where TimeGenerated > ago(20m)
         | extend status_int = case(status_s  == "Connected", 1, 0)
-        | project timestamp=TimeGenerated, metric_value=status_int, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, remote_ip=remoteIP_s
+        | project timestamp=TimeGenerated, metric_value=status_int, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, remote_ip=remoteIP_s, status=status_s
       EOQ
     }
   }
