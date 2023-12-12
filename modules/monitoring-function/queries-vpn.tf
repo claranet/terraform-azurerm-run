@@ -39,9 +39,10 @@ locals {
       Query      = <<EOQ
         AzureDiagnostics
         | where Category == "TunnelDiagnosticLog"
-        | where TimeGenerated > ago(20m)
+        | where TimeGenerated > ago(90d)
         | extend status_int = case(status_s  == "Connected", 1, 0)
-        | project timestamp=TimeGenerated, metric_value=status_int, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, remote_ip=remoteIP_s
+        | summarize last_state_change=arg_max(TimeGenerated, metric_value=status_int) by remote_ip=remoteIP_s, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, timestamp=now()
+        | project-away last_state_change
       EOQ
     }
   }
