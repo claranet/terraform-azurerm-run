@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-1269: Add FAME query to check IPSEC Tunnels on VPN Gateways
+
 # v7.7.0 - 2023-12-05
 
 Added

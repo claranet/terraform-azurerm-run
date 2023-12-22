@@ -7,6 +7,8 @@ Built-in metrics sent:
   * `fame.azure.backup.file_share`: number of successful file share backups
   * `fame.azure.backup.vm`: number of successful virtual machines backups
   * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
+  * `fame.azure.virtual_network_gateway.total_flow_count`: number of packets transiting through the VPN Gateway
+  * `fame.azure.virtual_network_gateway.tunnel_status`: IPSEC Tunnels status on VPN Gateway
   * `fame.azure.update_center.updates_status`: number of updates performed with Update Center along with their statuses
   * `fame.azure.update_center.missing_updates`: number of updates missing on Virtual Machines managed by Update Center
   * `fame.azure.automation_update.updates_status`: number of updates performed with legacy Update Management along with their statuses
