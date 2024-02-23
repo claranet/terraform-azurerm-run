@@ -1,4 +1,4 @@
-# Unreleased
+# v7.8.1 - 2024-02-23
 
 Fixed
   * AZ-1354: Amended cross region RSV variable description to avoid confusion
