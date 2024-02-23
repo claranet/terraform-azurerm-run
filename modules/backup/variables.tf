@@ -83,7 +83,7 @@ variable "recovery_vault_storage_mode_type" {
 }
 
 variable "recovery_vault_cross_region_restore_enabled" {
-  description = "Is cross region restore enabled for this Vault? Only can be `true`, when `storage_mode_type` is `GeoRedundant`. Defaults to `false`."
+  description = "Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`."
   type        = bool
   default     = true
 }
