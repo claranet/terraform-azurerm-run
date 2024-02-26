@@ -50,6 +50,9 @@ module "monitoring_function" {
 
   storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
 
+  application_insights_enabled                    = var.monitoring_function_application_insights_enabled
+  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+
   default_tags_enabled = var.default_tags_enabled
 
   extra_tags = var.monitoring_function_extra_tags

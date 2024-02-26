@@ -9,5 +9,6 @@ tenant_id           = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 extra_tags = {
   foo = "bar"
 }
-splunk_token                 = "abcdefghijkl"
-log_analytics_workspace_guid = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+splunk_token                                    = "abcdefghijkl"
+log_analytics_workspace_guid                    = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+application_insights_log_analytics_workspace_id = "/aaaaaa/bbbbbb/ccccc"

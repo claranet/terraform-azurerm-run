@@ -44,6 +44,9 @@ module "function" {
   logs_metrics_categories         = var.logs_metrics_categories
   custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
 
+  application_insights_enabled                    = var.application_insights_enabled
+  application_insights_log_analytics_workspace_id = var.application_insights_log_analytics_workspace_id
+
   storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
 
   default_tags_enabled = var.default_tags_enabled

@@ -90,6 +90,8 @@ module "monitoring" {
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
 
+  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+
   splunk_token = "xxxxxx"
 
   logs_destinations_ids = [module.logs.log_analytics_workspace_id]
@@ -125,6 +127,8 @@ module "monitoring" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
+| application\_insights\_enabled | Whether Application Insights should be deployed. | `bool` | `true` | no |
+| application\_insights\_log\_analytics\_workspace\_id | ID of the Log Analytics Workspace to be used with Application Insights. | `string` | n/a | yes |
 | client\_name | Client name | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |

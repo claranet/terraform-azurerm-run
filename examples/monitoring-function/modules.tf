@@ -42,6 +42,8 @@ module "monitoring" {
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
 
+  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+
   splunk_token = "xxxxxx"
 
   logs_destinations_ids = [module.logs.log_analytics_workspace_id]
