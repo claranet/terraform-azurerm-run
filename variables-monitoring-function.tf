@@ -49,6 +49,12 @@ variable "monitoring_function_assign_roles" {
   default     = true
 }
 
+variable "monitoring_function_application_insights_enabled" {
+  description = "Whether FAME Application Insights should be deployed."
+  type        = bool
+  default     = true
+}
+
 variable "monitoring_function_storage_account_custom_name" {
   description = "FAME Storage Account custom name. Empty by default, using naming convention."
   type        = string

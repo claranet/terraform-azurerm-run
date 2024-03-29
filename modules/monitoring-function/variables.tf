@@ -64,3 +64,14 @@ variable "storage_account_enable_advanced_threat_protection" {
   type        = bool
   default     = false
 }
+
+variable "application_insights_enabled" {
+  description = "Whether Application Insights should be deployed."
+  type        = bool
+  default     = true
+}
+
+variable "application_insights_log_analytics_workspace_id" {
+  description = "ID of the Log Analytics Workspace to be used with Application Insights."
+  type        = string
+}
