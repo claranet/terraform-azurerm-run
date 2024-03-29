@@ -1,4 +1,4 @@
-# Unreleased
+# v7.9.0 - 2024-03-29
 
 Changed
   * AZ-1362: Migrate App Insights of monitoring function to workspace-based
