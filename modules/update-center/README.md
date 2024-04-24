@@ -224,7 +224,6 @@ module "windows_vm" {
 
 | Name | Version |
 |------|---------|
-| azapi | ~> 1.0 |
 | azurerm | ~> 3.22 |
 
 ## Modules
@@ -235,7 +234,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azapi_resource.maintenance_configurations](https://registry.terraform.io/providers/azure/azapi/latest/docs/resources/resource) | resource |
+| [azurerm_maintenance_configuration.maintenance_configurations](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/maintenance_configuration) | resource |
 | [azurerm_management_group_policy_assignment.update_check_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
 | [azurerm_management_group_policy_assignment.update_check_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
 | [azurerm_resource_group_policy_assignment.update_check_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group_policy_assignment) | resource |
@@ -244,7 +243,6 @@ No modules.
 | [azurerm_resource_policy_assignment.update_check_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_policy_assignment) | resource |
 | [azurerm_subscription_policy_assignment.update_check_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription_policy_assignment) | resource |
 | [azurerm_subscription_policy_assignment.update_check_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription_policy_assignment) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 
 ## Inputs
 
@@ -257,7 +255,7 @@ No modules.
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
-| maintenance\_configurations | Maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations | <pre>list(object({<br>    configuration_name = string<br>    start_date_time    = string<br>    duration           = optional(string, "02:00")<br>    time_zone          = optional(string, "UTC")<br>    recur_every        = string<br>    reboot_setting     = optional(string, "IfRequired")<br>    windows_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Definition",<br>      "FeaturePack",<br>      "Security",<br>      "ServicePack",<br>      "Tools",<br>      "UpdateRollup",<br>      "Updates"<br>    ])<br>    linux_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Security",<br>      "Other",<br>    ])<br>    windows_kb_ids_to_exclude      = optional(list(string), [])<br>    linux_package_names_to_exclude = optional(list(string), [])<br>  }))</pre> | `[]` | no |
+| maintenance\_configurations | Maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations | <pre>list(object({<br>    configuration_name = string<br>    start_date_time    = string<br>    duration           = optional(string, "02:00")<br>    time_zone          = optional(string, "UTC")<br>    recur_every        = string<br>    reboot_setting     = optional(string, "IfRequired")<br>    windows_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Definition",<br>      "FeaturePack",<br>      "Security",<br>      "ServicePack",<br>      "Tools",<br>      "UpdateRollup",<br>      "Updates"<br>    ])<br>    linux_classifications_to_include = optional(list(string), [<br>      "Critical",<br>      "Security",<br>      "Other",<br>    ])<br>    windows_kb_ids_to_exclude           = optional(list(string), [])<br>    windows_kb_numbers_to_include       = optional(list(string), [])<br>    linux_package_names_to_exclude      = optional(list(string), [])<br>    linux_package_names_mask_to_include = optional(list(string), [])<br>  }))</pre> | `[]` | no |
 | resource\_group\_name | Resource Group the resources will belong to. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
 
