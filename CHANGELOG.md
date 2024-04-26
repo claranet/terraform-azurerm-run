@@ -1,3 +1,15 @@
+## 7.10.1 (2024-04-26)
+
+
+### Styles
+
+* **output:** remove unused version from outputs-module ca87dfe
+
+
+### Miscellaneous Chores
+
+* **release:** remove legacy `VERSION` file 470397a
+
 ## 7.10.0 (2024-04-26)
 
 
