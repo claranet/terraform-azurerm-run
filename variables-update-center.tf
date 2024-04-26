@@ -28,8 +28,10 @@ variable "update_center_maintenance_configurations" {
       "Security",
       "Other",
     ])
-    windows_kb_ids_to_exclude      = optional(list(string), [])
+    windows_kb_numbers_to_exclude  = optional(list(string), [])
+    windows_kb_numbers_to_include  = optional(list(string), [])
     linux_package_names_to_exclude = optional(list(string), [])
+    linux_package_names_to_include = optional(list(string), [])
   }))
   default = []
 }

@@ -6,10 +6,5 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.22"
     }
-    # tflint-ignore: terraform_unused_required_providers
-    azapi = {
-      source  = "azure/azapi"
-      version = "~> 1.0"
-    }
   }
 }
