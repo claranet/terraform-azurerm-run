@@ -1,3 +1,27 @@
+## 7.10.0 (2024-04-26)
+
+
+### Features
+
+* **AZ-1400:** fix naming fa371b0
+* **AZ-1400:** remove AzAPI resource for update-center submodule and use dedicated azurerm resource b225079
+
+
+### Continuous Integration
+
+* **AZ-1391:** enable semantic-release [skip ci] a4c8b73
+* **AZ-1391:** update semantic-release config [skip ci] e307bcb
+
+
+### Miscellaneous Chores
+
+* **deps:** enable automerge on renovate 586f73c
+* **deps:** update dependency claranet/storage-account/azurerm to ~> 7.11.0 440881e
+* **deps:** update dependency trivy to v0.50.2 5e1e471
+* **deps:** update dependency trivy to v0.50.4 f7c560a
+* **deps:** update terraform claranet/function-app/azurerm to ~> 7.9.0 f07f31e
+* **pre-commit:** update commitlint hook 8f3b72a
+
 # v7.9.0 - 2024-03-29
 
 Changed
