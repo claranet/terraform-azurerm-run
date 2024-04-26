@@ -21,11 +21,11 @@ resource "azurerm_maintenance_configuration" "maintenance_configurations" {
     linux {
       classifications_to_include    = each.value.linux_classifications_to_include
       package_names_mask_to_exclude = each.value.linux_package_names_to_exclude
-      package_names_mask_to_include = each.value.linux_package_names_mask_to_include
+      package_names_mask_to_include = each.value.linux_package_names_to_include
     }
     windows {
       classifications_to_include = each.value.windows_classifications_to_include
-      kb_numbers_to_exclude      = each.value.windows_kb_ids_to_exclude
+      kb_numbers_to_exclude      = each.value.windows_kb_numbers_to_exclude
       kb_numbers_to_include      = each.value.windows_kb_numbers_to_include
     }
     reboot = each.value.reboot_setting
