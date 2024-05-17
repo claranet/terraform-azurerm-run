@@ -35,6 +35,9 @@ repos:
       - id: terraform_validate
         stages: [pre-commit]
         exclude: ^examples
+        args:
+          - --tf-init-args=-upgrade
+          - --hook-config=--retry-once-with-cleanup=true
       - id: terraform_tflint
         stages: [pre-commit]
         exclude: ^examples

@@ -73,7 +73,7 @@ variable "keyvault_rbac_authorization_enabled" {
 }
 
 variable "keyvault_public_network_access_enabled" {
-  description = "Whether the Key Vault is available from public network."
+  description = "Whether access to the Key Vault, from a public network is allowed."
   type        = bool
   default     = false
 }

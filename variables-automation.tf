@@ -3,7 +3,7 @@
 ###############################
 
 variable "automation_account_enabled" {
-  description = "Whether to enable Automation Account. Enabled if legacy Update Management is enabled."
+  description = "Whether the Automation Account is enabled. Enabled if legacy Update Management is enabled."
   type        = bool
   default     = false
 }

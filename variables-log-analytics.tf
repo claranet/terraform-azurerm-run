@@ -38,7 +38,7 @@ variable "log_analytics_workspace_daily_quota_gb" {
 }
 
 variable "logs_storage_account_enabled" {
-  description = "Whether the dedicated Storage Account for logs is created."
+  description = "Whether the dedicated Storage Account for logs is deployed."
   type        = bool
   default     = true
 }
