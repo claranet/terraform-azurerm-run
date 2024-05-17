@@ -1,3 +1,24 @@
+## 7.10.2 (2024-05-17)
+
+
+### Documentation
+
+* variable messages tweaks a83bd42
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/storage-account/azurerm to ~> 7.12.0 7822c86
+* **deps:** update dependency opentofu to v1.7.0 6efa8e6
+* **deps:** update dependency opentofu to v1.7.1 938d55f
+* **deps:** update dependency pre-commit to v3.7.1 7daeda6
+* **deps:** update dependency tflint to v0.51.0 5c6b89c
+* **deps:** update dependency tflint to v0.51.1 4e597a7
+* **deps:** update dependency trivy to v0.51.0 0765b22
+* **deps:** update dependency trivy to v0.51.1 00cfe73
+* **deps:** update terraform claranet/function-app/azurerm to ~> 7.10.0 f4cc6e4
+* **deps:** update terraform claranet/function-app/azurerm to ~> 7.11.0 35ccd40
+
 ## 7.10.1 (2024-04-26)
 
 
