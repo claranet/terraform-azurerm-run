@@ -1,5 +1,5 @@
 variable "default_tags_enabled" {
-  description = "Option to enable or disable default tags."
+  description = "Whether the default tags are enabled."
   type        = bool
   default     = true
 }

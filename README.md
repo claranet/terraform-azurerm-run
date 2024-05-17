@@ -4,13 +4,13 @@
 A Terraform modules composition (feature) which includes services needed for Claranet RUN/MSP.
 
 It includes:
-* Log Management with following resources
+* Log Management with the following resources:
   * Log Analytics Workspace
   * Storage Account with SAS Token to upload logs to
-* Key Vault
-* [FAME](https://github.com/claranet/fame) monitoring function for additional metrics. Built-in metrics sent:
+* A Key Vault
+* [FAME](https://github.com/claranet/fame) monitoring function for additional metrics. The following built-in metrics are sent:
   * `fame.azure.application_gateway.instances`: number of Application Gateway instances
-  * `fame.azure.backup.file_share`: number of successful file share backups
+  * `fame.azure.backup.file_share`: number of successful file shares backups
   * `fame.azure.backup.vm`: number of successful virtual machines backups
   * `fame.azure.virtual_network_gateway.ike_event_success`: number of successful ike events for a VPN Gateway
 
@@ -33,7 +33,7 @@ Diagram of the [full example](./examples/full/) usage having all features enable
 
 ## Requirements
 
-* You need to have at least the `Contributor` role on the subscriptions to use `update_center_periodic_assessment_enabled` with Update Management Center module.
+* You need at least the `Contributor` role on the subscriptions to use `update_center_periodic_assessment_enabled` with Update Management Center module.
 
 ## Using sub-modules
 
@@ -187,7 +187,7 @@ module "run" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_enabled | Whether to enable Automation Account. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
+| automation\_account\_enabled | Whether the Automation Account is enabled. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
 | automation\_account\_extra\_tags | Extra tags to add to Automation Account. | `map(string)` | `{}` | no |
 | automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br>    type         = string<br>    identity_ids = list(string)<br>  })</pre> | <pre>{<br>  "identity_ids": [],<br>  "type": "SystemAssigned"<br>}</pre> | no |
 | automation\_account\_sku | Automation account Sku. | `string` | `"Basic"` | no |
@@ -214,8 +214,8 @@ module "run" {
 | data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br>  "auth",<br>  "authpriv",<br>  "cron",<br>  "daemon",<br>  "mark",<br>  "kern",<br>  "local0",<br>  "local1",<br>  "local2",<br>  "local3",<br>  "local4",<br>  "local5",<br>  "local6",<br>  "local7",<br>  "lpr",<br>  "mail",<br>  "news",<br>  "syslog",<br>  "user",<br>  "uucp"<br>]</pre> | no |
 | data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br>  "Error",<br>  "Critical",<br>  "Alert",<br>  "Emergency"<br>]</pre> | no |
 | dcr\_custom\_name | VM Monitoring - Data Collection rule custom name. | `string` | `""` | no |
-| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
-| deploy\_update\_management\_solution | Should we deploy the Log Analytics Update solution or not. | `bool` | `true` | no |
+| default\_tags\_enabled | Whether the default tags are enabled. | `bool` | `true` | no |
+| deploy\_update\_management\_solution | Whether the Log Analytics Update solution is deployed. | `bool` | `true` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
@@ -236,7 +236,7 @@ module "run" {
 | keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | keyvault\_managed\_hardware\_security\_module\_enabled | Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
 | keyvault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br>    bypass                     = optional(string, "None"),<br>    default_action             = optional(string, "Deny"),<br>    ip_rules                   = optional(list(string)),<br>    virtual_network_subnet_ids = optional(list(string)),<br>  })</pre> | `{}` | no |
-| keyvault\_public\_network\_access\_enabled | Whether the Key Vault is available from public network. | `bool` | `false` | no |
+| keyvault\_public\_network\_access\_enabled | Whether access to the Key Vault, from a public network is allowed. | `bool` | `false` | no |
 | keyvault\_rbac\_authorization\_enabled | Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies. | `bool` | `false` | no |
 | keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
 | keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
@@ -270,7 +270,7 @@ module "run" {
 | logs\_storage\_account\_enable\_archived\_logs\_fileshare | Enable/disable archived-logs file share creation | `bool` | `false` | no |
 | logs\_storage\_account\_enable\_archiving | Enable/disable blob archiving lifecycle | `bool` | `true` | no |
 | logs\_storage\_account\_enable\_https\_traffic\_only | Enable/disable HTTPS traffic only | `bool` | `true` | no |
-| logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is created. | `bool` | `true` | no |
+| logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is deployed. | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to the logs Storage Account | `map(string)` | `{}` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
@@ -288,7 +288,7 @@ module "run" {
 | monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection | `bool` | `false` | no |
 | monitoring\_function\_app\_service\_plan\_name | FAME App Service Plan custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention | `string` | `null` | no |
-| monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights should be deployed. | `bool` | `true` | no |
+| monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |

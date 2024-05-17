@@ -51,7 +51,7 @@ variable "update_management_schedule" {
 }
 
 variable "deploy_update_management_solution" {
-  description = "Should we deploy the Log Analytics Update solution or not."
+  description = "Whether the Log Analytics Update solution is deployed."
   type        = bool
   default     = true
 }

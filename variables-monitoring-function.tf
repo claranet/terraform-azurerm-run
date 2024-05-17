@@ -50,7 +50,7 @@ variable "monitoring_function_assign_roles" {
 }
 
 variable "monitoring_function_application_insights_enabled" {
-  description = "Whether FAME Application Insights should be deployed."
+  description = "Whether FAME Application Insights is deployed."
   type        = bool
   default     = true
 }
