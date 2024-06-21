@@ -4,5 +4,5 @@ resource "azurerm_data_protection_backup_policy_blob_storage" "blob_policy" {
   name     = local.blob_policy_name
   vault_id = azurerm_data_protection_backup_vault.vault[0].id
 
-  retention_duration = "P${var.storage_blob_backup_policy_retention_in_days}D"
+  operational_default_retention_duration = "P${var.storage_blob_backup_policy_retention_in_days}D"
 }
