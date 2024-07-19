@@ -1,3 +1,23 @@
+## 7.10.4 (2024-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **AZ-1429:** require AzureRM provider `v3.107.0+`
+
+### Code Refactoring
+
+* **AZ-1429:** replace deprecated `retention_duration` with `operational_default_retention_duration` 120a4ba
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.7.3 8f7461a
+* **deps:** update dependency tflint to v0.51.2 a05a99f
+* **deps:** update dependency tflint to v0.52.0 e272565
+* **deps:** update dependency trivy to v0.53.0 be53c38
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.92.0 ce433aa
+
 ## 7.10.3 (2024-06-14)
 
 
