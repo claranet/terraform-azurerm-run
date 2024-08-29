@@ -3,7 +3,7 @@ module "storage_logs" {
   count = var.logs_storage_account_enabled ? 1 : 0
 
   source  = "claranet/storage-account/azurerm"
-  version = "~> 7.13.0"
+  version = "~> 7.13.3"
 
   client_name    = var.client_name
   environment    = var.environment
