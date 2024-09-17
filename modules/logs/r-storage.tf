@@ -32,9 +32,10 @@ module "storage_logs" {
   advanced_threat_protection_enabled = var.logs_storage_account_enable_advanced_threat_protection
 
   # Identity
-  #   identity_type = var.storage_account_identity_type
-  #   identity_ids  = var.storage_account_identity_ids
+  identity_type = var.logs_storage_account_identity_type
+  identity_ids  = var.logs_storage_account_identity_ids
 
+  customer_managed_key = var.logs_storage_account_customer_managed_key
   # Data protection - not needed for now
   storage_blob_data_protection = {
     change_feed_enabled                       = false
