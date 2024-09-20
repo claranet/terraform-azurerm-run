@@ -138,3 +138,25 @@ variable "logs_delete_after_days_since_modification_greater_than" {
   type        = number
   default     = 365
 }
+
+variable "logs_storage_account_customer_managed_key" {
+  description = "Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information."
+  type = object({
+    key_vault_key_id          = optional(string)
+    managed_hsm_key_id        = optional(string)
+    user_assigned_identity_id = optional(string)
+  })
+  default = null
+}
+
+variable "logs_storage_account_identity_type" {
+  description = "The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`."
+  type        = string
+  default     = "SystemAssigned"
+}
+
+variable "logs_storage_account_identity_ids" {
+  description = "List of User Assigned Identity IDs to assign to the Storage Account."
+  type        = list(string)
+  default     = null
+}

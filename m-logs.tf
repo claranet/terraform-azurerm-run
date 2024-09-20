@@ -26,12 +26,16 @@ module "logs" {
   logs_storage_account_enable_archived_logs_fileshare    = var.logs_storage_account_enable_archived_logs_fileshare
   logs_storage_account_archived_logs_fileshare_name      = var.logs_storage_account_archived_logs_fileshare_name
   logs_storage_account_archived_logs_fileshare_quota     = var.logs_storage_account_archived_logs_fileshare_quota
-  log_analytics_workspace_name_prefix                    = var.log_analytics_workspace_name_prefix
-  log_analytics_workspace_custom_name                    = var.log_analytics_workspace_custom_name
-  log_analytics_workspace_extra_tags                     = var.log_analytics_workspace_extra_tags
-  log_analytics_workspace_retention_in_days              = var.log_analytics_workspace_retention_in_days
-  log_analytics_workspace_daily_quota_gb                 = var.log_analytics_workspace_daily_quota_gb
-  log_analytics_workspace_sku                            = var.log_analytics_workspace_sku
+  logs_storage_account_customer_managed_key              = var.logs_storage_account_customer_managed_key
+  logs_storage_account_identity_type                     = var.logs_storage_account_identity_type
+  logs_storage_account_identity_ids                      = var.logs_storage_account_identity_ids
+
+  log_analytics_workspace_name_prefix       = var.log_analytics_workspace_name_prefix
+  log_analytics_workspace_custom_name       = var.log_analytics_workspace_custom_name
+  log_analytics_workspace_extra_tags        = var.log_analytics_workspace_extra_tags
+  log_analytics_workspace_retention_in_days = var.log_analytics_workspace_retention_in_days
+  log_analytics_workspace_daily_quota_gb    = var.log_analytics_workspace_daily_quota_gb
+  log_analytics_workspace_sku               = var.log_analytics_workspace_sku
 
   logs_storage_account_enable_archiving                      = var.logs_storage_account_enable_archiving
   tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than
