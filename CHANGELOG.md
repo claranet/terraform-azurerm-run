@@ -1,3 +1,22 @@
+## 7.11.0 (2024-09-20)
+
+### Features
+
+* **AZ-1457:** add Customer Managed Key usage 890e2ad
+
+### Miscellaneous Chores
+
+* **deps:** update dependency terraform-docs to v0.19.0 ba63499
+* **deps:** update dependency trivy to v0.55.0 7521663
+* **deps:** update dependency trivy to v0.55.1 67ed4e2
+* **deps:** update dependency trivy to v0.55.2 b77555a
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.18.0 88e4538
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.94.3 b88484e
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.95.0 370c618
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.96.0 776fa7c
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.96.1 05eadc3
+* **deps:** update tools 81d53ae
+
 ## 7.10.5 (2024-08-31)
 
 ### Bug Fixes
