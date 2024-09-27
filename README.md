@@ -1,5 +1,5 @@
 # Azure RUN feature
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/run/azurerm/)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-blue.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![OpenTofu Registry](https://img.shields.io/badge/opentofu-registry-yellow.svg)](https://search.opentofu.org/module/claranet/run/azurerm/)
 
 A Terraform modules composition (feature) which includes services needed for Claranet RUN/MSP.
 
@@ -17,7 +17,7 @@ It includes:
 It includes some IaaS specifics:
   * Azure Backup ([example](examples/backup/modules.tf))
       * A Recovery Services Vault to store VM backups ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-overview)).
-      * A VM backup policy to assign on VM instances (via the [vm-backup](https://registry.terraform.io/modules/claranet/vm-backup/) module).
+      * A VM backup policy to assign on VM instances (via the [vm-backup](https://search.opentofu.org/module/claranet/vm-backup/) module).
       * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) ([example](examples/automation-account/modules.tf))
@@ -65,8 +65,8 @@ See Update Center module [README](./modules/update-center/README.md) and Update 
 
 ## Migrating from older modules
 
-This `run` module is a merge of the previous [run-common](https://registry.terraform.io/modules/claranet/run-common) and
-[run-iaas](https://registry.terraform.io/modules/claranet/run-common) modules.
+This `run` module is a merge of the previous [run-common](https://search.opentofu.org/module/claranet/run-common) and
+[run-iaas](https://search.opentofu.org/module/claranet/run-common) modules.
 
 Some previously pre-activated backup and update management features must now be explicitly enabled through `*_enabled` variables.
 You must be on the latest version of `run_iaas` and `run_common` modules before updating to `run` module.
