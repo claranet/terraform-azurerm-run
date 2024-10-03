@@ -7,7 +7,7 @@ terraform {
     }
     # tflint-ignore: terraform_unused_required_providers
     azurecaf = {
-      source  = "aztfmod/azurecaf"
+      source  = "claranet/azurecaf"
       version = "~> 1.2, >= 1.2.22"
     }
     # tflint-ignore: terraform_unused_required_providers
