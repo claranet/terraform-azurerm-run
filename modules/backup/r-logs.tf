@@ -1,6 +1,6 @@
 module "diagnostics" {
   source  = "claranet/diagnostic-settings/azurerm"
-  version = "~> 6.5.0"
+  version = "~> 7.0.0"
 
   count = var.backup_vm_enabled || var.backup_file_share_enabled ? 1 : 0
 
