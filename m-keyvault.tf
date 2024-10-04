@@ -1,6 +1,6 @@
 module "keyvault" {
   source  = "claranet/keyvault/azurerm"
-  version = "~> 7.5.0"
+  version = "~> 7.6.0"
 
   client_name         = var.client_name
   environment         = var.environment
