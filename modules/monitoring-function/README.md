@@ -50,36 +50,6 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-module "azure_region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure_region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
-module "logs" {
-  source  = "claranet/run/azurerm//modules/logs"
-  version = "x.x.x"
-
-  client_name    = var.client_name
-  location       = module.azure_region.location
-  location_short = module.azure_region.location_short
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-}
-
 module "monitoring" {
   source  = "claranet/run/azurerm//modules/monitoring-function"
   version = "x.x.x"
@@ -90,7 +60,7 @@ module "monitoring" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
 
@@ -110,20 +80,20 @@ module "monitoring" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.64 |
+| azurerm | ~> 4.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | ~> 7.13.0 |
+| function | claranet/function-app/azurerm | ~> 8.0.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [azurerm_storage_table.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
-| [azurerm_storage_table_entity.queries](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) | resource |
+| [azurerm_storage_table.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
+| [azurerm_storage_table_entity.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table_entity) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 
 ## Inputs
@@ -133,52 +103,54 @@ module "monitoring" {
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
 | application\_insights\_enabled | Whether Application Insights should be deployed. | `bool` | `true` | no |
 | application\_insights\_log\_analytics\_workspace\_id | ID of the Log Analytics Workspace to be used with Application Insights. | `string` | n/a | yes |
-| client\_name | Client name | `string` | n/a | yes |
+| client\_name | Client name. | `string` | n/a | yes |
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
-| environment | Environment name | `string` | n/a | yes |
-| extra\_application\_settings | Extra application settings to set on monitoring function | `map(string)` | `{}` | no |
+| environment | Environment name. | `string` | n/a | yes |
+| extra\_application\_settings | Extra application settings to set on monitoring function. | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | function\_app\_custom\_name | FAME Function App custom name | `string` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries | `string` | n/a | yes |
+| log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources Ids for logs diagnostics destination. Can be Storage Account, Log Analytics Workspace and Event Hub. No more than one of each can be set. Empty list to disable logging. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
-| metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
+| metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
-| resource\_group\_name | Resource Group the resources will belong to | `string` | n/a | yes |
+| resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
-| splunk\_token | Access Token to send metrics to Splunk Observability | `string` | n/a | yes |
-| stack | Stack name | `string` | n/a | yes |
+| splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | n/a | yes |
+| stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account | `bool` | `false` | no |
-| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
-| zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
+| storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
+| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| application\_insights\_app\_id | App ID of the associated Application Insights |
-| application\_insights\_application\_type | Application Type of the associated Application Insights |
-| application\_insights\_id | ID of the associated Application Insights |
-| application\_insights\_instrumentation\_key | Instrumentation key of the associated Application Insights |
-| application\_insights\_name | Name of the associated Application Insights |
-| function\_app\_connection\_string | Connection string of the created Function App |
-| function\_app\_id | ID of the created Function App |
-| function\_app\_identity | Identity block output of the Function App |
-| function\_app\_name | Name of the created Function App |
-| function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App |
-| service\_plan\_id | ID of the created Service Plan |
-| service\_plan\_name | Name of the created Service Plan |
-| storage\_account\_id | ID of the associated Storage Account, empty if connection string provided |
-| storage\_account\_name | Name of the associated Storage Account, empty if connection string provided |
-| storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided |
-| storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
-| storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
-| storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
-| storage\_queries\_table\_name | Name of the queries table in the Storage Account |
+| application\_insights\_app\_id | App ID of the associated Application Insights. |
+| application\_insights\_application\_type | Application Type of the associated Application Insights. |
+| application\_insights\_id | ID of the associated Application Insights. |
+| application\_insights\_instrumentation\_key | Instrumentation key of the associated Application Insights. |
+| application\_insights\_name | Name of the associated Application Insights. |
+| function\_app\_connection\_string | Connection string of the created Function App. |
+| function\_app\_id | ID of the created Function App. |
+| function\_app\_identity | Identity block output of the Function App. |
+| function\_app\_name | Name of the created Function App. |
+| function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App. |
+| module\_function | Module function outputs. |
+| resource | Storage table resource object. |
+| resource\_query | Storage table query resource object. |
+| service\_plan\_id | ID of the created Service Plan. |
+| service\_plan\_name | Name of the created Service Plan. |
+| storage\_account\_id | ID of the associated Storage Account, empty if connection string provided. |
+| storage\_account\_name | Name of the associated Storage Account, empty if connection string provided. |
+| storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided. |
+| storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided. |
+| storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided. |
+| storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided. |
+| storage\_queries\_table\_name | Name of the queries table in the Storage Account. |
 <!-- END_TF_DOCS -->

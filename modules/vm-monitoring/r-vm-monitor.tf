@@ -1,4 +1,4 @@
-resource "azurerm_monitor_data_collection_rule" "dcr" {
+resource "azurerm_monitor_data_collection_rule" "main" {
   name                = local.name
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -95,4 +95,9 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
   }
 
   tags = merge(local.default_tags, var.extra_tags)
+}
+
+moved {
+  from = azurerm_monitor_data_collection_rule.dcr
+  to   = azurerm_monitor_data_collection_rule.main
 }

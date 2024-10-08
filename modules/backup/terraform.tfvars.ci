@@ -4,3 +4,4 @@ client_name         = "test"
 environment         = "test"
 stack               = "ci"
 resource_group_name = "rg-test"
+managed_disk_backup_daily_policy_retention_in_days = 7

@@ -10,10 +10,9 @@ module "keyvault" {
   stack               = var.stack
   tenant_id           = var.tenant_id
 
-  custom_name    = var.keyvault_custom_name
-  use_caf_naming = var.use_caf_naming
-  name_prefix    = var.name_prefix
-  name_suffix    = var.name_suffix
+  custom_name = var.keyvault_custom_name
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
 
   sku_name = var.keyvault_sku
 
@@ -35,7 +34,7 @@ module "keyvault" {
 
   logs_destinations_ids = [
     module.logs.log_analytics_workspace_id,
-    module.logs.logs_storage_account_id,
+    module.logs.storage_account_id,
   ]
   logs_categories         = var.keyvault_logs_categories
   logs_metrics_categories = var.keyvault_logs_metrics_categories

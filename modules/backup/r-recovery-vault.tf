@@ -1,4 +1,4 @@
-resource "azurerm_recovery_services_vault" "vault" {
+resource "azurerm_recovery_services_vault" "main" {
   count = var.backup_vm_enabled || var.backup_file_share_enabled ? 1 : 0
 
   name                = local.recovery_vault_name
@@ -12,7 +12,7 @@ resource "azurerm_recovery_services_vault" "vault" {
   soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
 
   dynamic "identity" {
-    for_each = toset(var.recovery_vault_identity_type != null ? ["_"] : [])
+    for_each = var.recovery_vault_identity_type[*]
     content {
       type = var.recovery_vault_identity_type
     }
@@ -22,6 +22,6 @@ resource "azurerm_recovery_services_vault" "vault" {
 }
 
 moved {
-  from = azurerm_recovery_services_vault.vault
-  to   = azurerm_recovery_services_vault.vault[0]
+  from = azurerm_recovery_services_vault.vault[0]
+  to   = azurerm_recovery_services_vault.main[0]
 }

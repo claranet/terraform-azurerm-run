@@ -1,4 +1,4 @@
-resource "azurerm_maintenance_configuration" "maintenance_configurations" {
+resource "azurerm_maintenance_configuration" "main" {
   for_each = { for config in var.maintenance_configurations : config.configuration_name => config }
 
   name                = "mc-${each.key}"
@@ -32,4 +32,9 @@ resource "azurerm_maintenance_configuration" "maintenance_configurations" {
   }
 
   tags = local.mc_tags
+}
+
+moved {
+  from = azurerm_maintenance_configuration.maintenance_configuration
+  to   = azurerm_maintenance_configuration.main
 }

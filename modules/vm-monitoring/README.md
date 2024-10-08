@@ -34,36 +34,6 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-module "azure_region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure_region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
-module "logs" {
-  source  = "claranet/run/azurerm//modules/logs"
-  version = "x.x.x"
-
-  client_name    = var.client_name
-  location       = module.azure_region.location
-  location_short = module.azure_region.location_short
-  environment    = var.environment
-  stack          = var.stack
-
-  resource_group_name = module.rg.resource_group_name
-}
-
 module "vm_monitoring" {
   source  = "claranet/run/azurerm//modules/vm-monitoring"
   version = "x.x.x"
@@ -74,7 +44,7 @@ module "vm_monitoring" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   log_analytics_workspace_id = module.logs.log_analytics_workspace_id
 
@@ -88,8 +58,8 @@ module "vm_monitoring" {
 
 | Name | Version |
 |------|---------|
-| azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.15 |
+| azurecaf | ~> 1.2.28 |
+| azurerm | ~> 4.0 |
 
 ## Modules
 
@@ -99,8 +69,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_monitor_data_collection_rule.dcr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_data_collection_rule) | resource |
-| [azurecaf_name.dcr](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/data-sources/name) | data source |
+| [azurerm_monitor_data_collection_rule.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_data_collection_rule) | resource |
+| [azurecaf_name.dcr](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 
@@ -120,13 +90,12 @@ No modules.
 | stack | Stack name | `string` | n/a | yes |
 | syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule | `list(string)` | <pre>[<br/>  "auth",<br/>  "authpriv",<br/>  "cron",<br/>  "daemon",<br/>  "mark",<br/>  "kern",<br/>  "local0",<br/>  "local1",<br/>  "local2",<br/>  "local3",<br/>  "local4",<br/>  "local5",<br/>  "local6",<br/>  "local7",<br/>  "lpr",<br/>  "mail",<br/>  "news",<br/>  "syslog",<br/>  "user",<br/>  "uucp"<br/>]</pre> | no |
 | syslog\_levels | List of syslog levels to retrieve in Data Collection Rule | `list(string)` | <pre>[<br/>  "Error",<br/>  "Critical",<br/>  "Alert",<br/>  "Emergency"<br/>]</pre> | no |
-| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. | `bool` | `true` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| data\_collection\_rule | Azure Monitor Data Collection Rule object. |
-| data\_collection\_rule\_id | ID of the Azure Monitor Data Collection Rule. |
-| data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
+| id | ID of the Azure Monitor Data Collection Rule. |
+| name | Name of the Azure Monitor Data Collection Rule. |
+| resource | Azure Monitor Data Collection Rule resource object. |
 <!-- END_TF_DOCS -->

@@ -1,7 +1,7 @@
 module "automation_account" {
   source = "./modules/automation-account"
 
-  count = var.automation_account_enabled || var.update_management_legacy_enabled ? 1 : 0
+  count = var.automation_account_enabled ? 1 : 0
 
   client_name    = var.client_name
   location       = var.location
@@ -14,7 +14,7 @@ module "automation_account" {
   use_caf_naming                 = var.use_caf_naming
   name_prefix                    = var.name_prefix
   name_suffix                    = var.name_suffix
-  custom_automation_account_name = var.custom_automation_account_name
+  automation_account_custom_name = var.automation_account_custom_name
 
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
@@ -31,5 +31,5 @@ module "automation_account" {
   logs_categories         = var.automation_logs_categories
   logs_metrics_categories = var.automation_logs_metrics_categories
 
-  custom_diagnostic_settings_name = var.automation_custom_diagnostic_settings_name
+  diagnostic_settings_custom_name = var.automation_diagnostic_settings_custom_name
 }

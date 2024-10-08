@@ -25,9 +25,8 @@ module "monitoring_function" {
   resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
   stack               = var.stack
 
-  use_caf_naming = var.use_caf_naming
-  name_prefix    = coalesce(var.name_prefix, "fame")
-  name_suffix    = var.name_suffix
+  name_prefix = coalesce(var.name_prefix, "fame")
+  name_suffix = var.name_suffix
 
   storage_account_custom_name      = var.monitoring_function_storage_account_custom_name
   function_app_custom_name         = var.monitoring_function_function_app_custom_name
@@ -43,7 +42,7 @@ module "monitoring_function" {
 
   logs_destinations_ids = [
     module.logs.log_analytics_workspace_id,
-    module.logs.logs_storage_account_id,
+    module.logs.storage_account_id,
   ]
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories

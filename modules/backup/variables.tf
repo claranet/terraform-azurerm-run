@@ -3,22 +3,22 @@
 ###############################
 
 variable "client_name" {
-  description = "Client name"
+  description = "Client name."
   type        = string
 }
 
 variable "environment" {
-  description = "Environment name"
+  description = "Environment name."
   type        = string
 }
 
 variable "stack" {
-  description = "Stack name"
+  description = "Stack name."
   type        = string
 }
 
 variable "resource_group_name" {
-  description = "Resource Group the resources will belong to"
+  description = "Resource group to which the resources will belong."
   type        = string
 }
 
@@ -131,7 +131,7 @@ variable "vm_backup_daily_policy_retention" {
 }
 
 variable "vm_backup_weekly_retention" {
-  description = "Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly"
+  description = "Map to configure the weekly VM backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly)."
   type = object({
     count    = number,
     weekdays = list(string),
@@ -140,7 +140,7 @@ variable "vm_backup_weekly_retention" {
 }
 
 variable "vm_backup_monthly_retention" {
-  description = "Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly"
+  description = "Map to configure the monthly VM backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly)."
   type = object({
     count    = number,
     weekdays = list(string),
@@ -150,7 +150,7 @@ variable "vm_backup_monthly_retention" {
 }
 
 variable "vm_backup_yearly_retention" {
-  description = "Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly"
+  description = "Map to configure the yearly VM backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly)."
   type = object({
     count    = number,
     weekdays = list(string),
@@ -189,7 +189,7 @@ variable "file_share_backup_policy_frequency" {
 }
 
 variable "file_share_backup_weekly_retention" {
-  description = "Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly"
+  description = "Map to configure the weekly File Share backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly)."
   type = object({
     count    = number,
     weekdays = list(string),
@@ -198,7 +198,7 @@ variable "file_share_backup_weekly_retention" {
 }
 
 variable "file_share_backup_monthly_retention" {
-  description = "Map to configure the monthly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly"
+  description = "Map to configure the monthly File Share backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_monthly)."
   type = object({
     count    = number,
     weekdays = list(string),
@@ -208,7 +208,7 @@ variable "file_share_backup_monthly_retention" {
 }
 
 variable "file_share_backup_yearly_retention" {
-  description = "Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly"
+  description = "Map to configure the yearly File Share backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly)"
   type = object({
     count    = number,
     weekdays = list(string),

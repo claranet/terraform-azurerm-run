@@ -11,12 +11,6 @@ variable "name_suffix" {
   default     = ""
 }
 
-variable "use_caf_naming" {
-  description = "Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`."
-  type        = bool
-  default     = true
-}
-
 # Custom naming override
 variable "log_analytics_workspace_name_prefix" {
   description = "Log Analytics name prefix"

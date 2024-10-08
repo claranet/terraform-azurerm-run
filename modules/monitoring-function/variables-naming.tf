@@ -11,12 +11,6 @@ variable "name_suffix" {
   default     = ""
 }
 
-variable "use_caf_naming" {
-  description = "Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`."
-  type        = bool
-  default     = true
-}
-
 # Custom naming override
 variable "storage_account_custom_name" {
   description = "FAME Storage Account custom name. Empty by default, using naming convention."

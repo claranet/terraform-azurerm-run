@@ -1,5 +1,5 @@
 # Log Analytics
-resource "azurerm_log_analytics_workspace" "log_workspace" {
+resource "azurerm_log_analytics_workspace" "main" {
   name = coalesce(
     var.log_analytics_workspace_custom_name,
     local.log_analytics_name,

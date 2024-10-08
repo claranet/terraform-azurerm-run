@@ -9,7 +9,7 @@ variable "stack" {
 }
 
 variable "resource_group_name" {
-  description = "Resource Group the resources will belong to."
+  description = "Resource group to which the resources will belong."
   type        = string
 }
 
@@ -19,7 +19,7 @@ variable "location" {
 }
 
 variable "maintenance_configurations" {
-  description = "Maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations"
+  description = "Maintenance configurations following the [provider's documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations)."
   type = list(object({
     configuration_name = string
     start_date_time    = string

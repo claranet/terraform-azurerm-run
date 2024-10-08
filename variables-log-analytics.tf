@@ -85,19 +85,19 @@ variable "logs_storage_min_tls_version" {
   default     = "TLS1_2"
 }
 
-variable "logs_storage_account_enable_advanced_threat_protection" {
+variable "logs_storage_account_advanced_threat_protection_enabled" {
   description = "Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
   type        = bool
   default     = false
 }
 
-variable "logs_storage_account_enable_https_traffic_only" {
+variable "logs_storage_account_https_traffic_only_enabled" {
   description = "Enable/disable HTTPS traffic only"
   type        = bool
   default     = true
 }
 
-variable "logs_storage_account_enable_archived_logs_fileshare" {
+variable "logs_storage_account_archived_logs_fileshare_enabled" {
   description = "Enable/disable archived-logs file share creation"
   type        = bool
   default     = false
@@ -115,7 +115,7 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
   default     = null
 }
 
-variable "logs_storage_account_enable_archiving" {
+variable "logs_storage_account_archiving_enabled" {
   description = "Enable/disable blob archiving lifecycle"
   type        = bool
   default     = true
