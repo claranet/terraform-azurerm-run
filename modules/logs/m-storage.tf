@@ -1,6 +1,6 @@
 # Storage account for Logs
 module "storage" {
-  count = var.logs_storage_account_enabled ? 1 : 0
+  count = var.storage_account_enabled ? 1 : 0
 
   source  = "claranet/storage-account/azurerm"
   version = "~> 8.0.0"
@@ -13,29 +13,29 @@ module "storage" {
 
   resource_group_name = var.resource_group_name
 
-  storage_account_custom_name = var.logs_storage_account_custom_name
-  name_prefix                 = local.logs_storage_account_name_prefix
+  storage_account_custom_name = var.storage_account_custom_name
+  name_prefix                 = local.storage_account_name_prefix
   name_suffix                 = "${var.name_suffix}log"
 
   # Storage account kind/SKU/tier
-  account_replication_type = var.logs_storage_account_replication_type
-  account_tier             = var.logs_storage_account_tier
-  account_kind             = var.logs_storage_account_kind
+  account_replication_type = var.storage_account_replication_type
+  account_tier             = var.storage_account_tier
+  account_kind             = var.storage_account_kind
 
   # Storage access tier
-  access_tier = var.logs_storage_account_access_tier
+  access_tier = var.storage_account_access_tier
 
   # Storage account options / security
-  min_tls_version                    = var.logs_storage_min_tls_version
-  https_traffic_only_enabled         = var.logs_storage_account_https_traffic_only_enable
+  min_tls_version                    = var.storage_account_min_tls_version
+  https_traffic_only_enabled         = var.storage_account_https_traffic_only_enabled
   public_nested_items_allowed        = false
-  advanced_threat_protection_enabled = var.logs_storage_account_advanced_threat_protection_enabled
+  advanced_threat_protection_enabled = var.storage_account_advanced_threat_protection_enabled
 
   # Identity
-  identity_type = var.logs_storage_account_identity_type
-  identity_ids  = var.logs_storage_account_identity_ids
+  identity_type = var.storage_account_identity_type
+  identity_ids  = var.storage_account_identity_ids
 
-  customer_managed_key = var.logs_storage_account_customer_managed_key
+  customer_managed_key = var.storage_account_customer_managed_key
   # Data protection - not needed for now
   blob_data_protection = {
     change_feed_enabled                       = false
@@ -56,7 +56,7 @@ module "storage" {
   extra_tags = merge(
     local.default_tags,
     var.extra_tags,
-    var.logs_storage_account_extra_tags,
+    var.storage_account_extra_tags,
   )
 }
 

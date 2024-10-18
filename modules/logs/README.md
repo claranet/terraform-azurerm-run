@@ -82,7 +82,7 @@ module "logs" {
 | [azurerm_log_analytics_workspace.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_storage_management_policy.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_management_policy) | resource |
 | [azurerm_storage_share.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
-| [azurecaf_name.log_analytics_workspace](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
+| [azurecaf_name.workspace](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 
@@ -95,36 +95,36 @@ module "logs" {
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| log\_analytics\_workspace\_daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited). | `number` | `-1` | no |
-| log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
-| log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
-| log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
-| log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
-| logs\_storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
-| logs\_storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
-| logs\_storage\_account\_archived\_logs\_fileshare\_enabled | Enable/disable archived-logs file share creation. | `bool` | `false` | no |
-| logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
-| logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120. | `number` | `null` | no |
-| logs\_storage\_account\_archiving\_enabled | Enable/disable blob archiving lifecycle. | `bool` | `true` | no |
-| logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| logs\_storage\_account\_customer\_managed\_key | Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information. | <pre>object({<br/>    key_vault_key_id          = optional(string)<br/>    managed_hsm_key_id        = optional(string)<br/>    user_assigned_identity_id = optional(string)<br/>  })</pre> | `null` | no |
-| logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is created. | `bool` | `true` | no |
-| logs\_storage\_account\_extra\_tags | Extra tags to add to the Storage Account | `map(string)` | `{}` | no |
-| logs\_storage\_account\_https\_traffic\_only\_enable | Enable/disable HTTPS traffic only. | `bool` | `true` | no |
-| logs\_storage\_account\_identity\_ids | List of User Assigned Identity IDs to assign to the Storage Account. | `list(string)` | `null` | no |
-| logs\_storage\_account\_identity\_type | The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`. | `string` | `"SystemAssigned"` | no |
-| logs\_storage\_account\_kind | Storage Account Kind. | `string` | `"StorageV2"` | no |
-| logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
-| logs\_storage\_account\_replication\_type | Storage Account Replication type. | `string` | `"LRS"` | no |
-| logs\_storage\_account\_tier | Storage Account tier. | `string` | `"Standard"` | no |
-| logs\_storage\_min\_tls\_version | Storage Account minimal TLS version. | `string` | `"TLS1_2"` | no |
-| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
-| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
+| storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
+| storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| storage\_account\_archived\_logs\_fileshare\_enabled | Enable/disable archived-logs file share creation. | `bool` | `false` | no |
+| storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored. | `string` | `"archived-logs"` | no |
+| storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120. | `number` | `null` | no |
+| storage\_account\_archiving\_enabled | Enable/disable blob archiving lifecycle. | `bool` | `true` | no |
+| storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| storage\_account\_customer\_managed\_key | Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information. | <pre>object({<br/>    key_vault_key_id          = optional(string)<br/>    managed_hsm_key_id        = optional(string)<br/>    user_assigned_identity_id = optional(string)<br/>  })</pre> | `null` | no |
+| storage\_account\_enabled | Whether the dedicated Storage Account for logs is created. | `bool` | `true` | no |
+| storage\_account\_extra\_tags | Extra tags to add to the Storage Account | `map(string)` | `{}` | no |
+| storage\_account\_https\_traffic\_only\_enabled | Enable/disable HTTPS traffic only. | `bool` | `true` | no |
+| storage\_account\_identity\_ids | List of User Assigned Identity IDs to assign to the Storage Account. | `list(string)` | `null` | no |
+| storage\_account\_identity\_type | The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`. | `string` | `"SystemAssigned"` | no |
+| storage\_account\_kind | Storage Account Kind. | `string` | `"StorageV2"` | no |
+| storage\_account\_min\_tls\_version | Storage Account minimal TLS version. | `string` | `"TLS1_2"` | no |
+| storage\_account\_name\_prefix | Storage Account name prefix. | `string` | `""` | no |
+| storage\_account\_replication\_type | Storage Account Replication type. | `string` | `"LRS"` | no |
+| storage\_account\_tier | Storage Account tier. | `string` | `"Standard"` | no |
 | tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification. | `number` | `90` | no |
 | tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification. | `number` | `30` | no |
+| workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| workspace\_daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited). | `number` | `-1` | no |
+| workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
+| workspace\_name\_prefix | Log Analytics name prefix. | `string` | `""` | no |
+| workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
+| workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
 
 ## Outputs
 

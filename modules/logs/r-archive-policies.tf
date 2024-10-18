@@ -1,9 +1,9 @@
 # Archived Logs File Shares
 resource "azurerm_storage_share" "main" {
-  count                = var.logs_storage_account_enabled && var.logs_storage_account_archived_logs_fileshare_enabled ? 1 : 0
-  name                 = var.logs_storage_account_archived_logs_fileshare_name
+  count                = var.storage_account_enabled && var.storage_account_archived_logs_fileshare_enabled ? 1 : 0
+  name                 = var.storage_account_archived_logs_fileshare_name
   storage_account_name = one(module.storage[*].storage_account_name)
-  quota                = var.logs_storage_account_archived_logs_fileshare_quota
+  quota                = var.storage_account_archived_logs_fileshare_quota
 }
 
 moved {
@@ -13,7 +13,7 @@ moved {
 
 # Blob Archive policy
 resource "azurerm_storage_management_policy" "main" {
-  count              = var.logs_storage_account_enabled && lower(var.logs_storage_account_kind) == "storagev2" && var.logs_storage_account_archiving_enabled ? 1 : 0
+  count              = var.storage_account_enabled && lower(var.storage_account_kind) == "storagev2" && var.storage_account_archiving_enabled ? 1 : 0
   storage_account_id = one(module.storage[*].id)
 
   rule {

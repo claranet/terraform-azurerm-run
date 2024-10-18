@@ -12,8 +12,8 @@ variable "name_suffix" {
 }
 
 # Custom naming override
-variable "log_analytics_workspace_name_prefix" {
-  description = "Log Analytics name prefix"
+variable "workspace_name_prefix" {
+  description = "Log Analytics name prefix."
   type        = string
   default     = ""
 }
@@ -24,20 +24,20 @@ variable "workspace_custom_name" {
   default     = ""
 }
 
-variable "logs_storage_account_name_prefix" {
-  description = "Storage Account name prefix"
+variable "storage_account_name_prefix" {
+  description = "Storage Account name prefix."
   type        = string
   default     = ""
 }
 
-variable "logs_storage_account_custom_name" {
+variable "storage_account_custom_name" {
   description = "Storage Account for logs custom name. Empty by default, using naming convention."
   type        = string
   default     = ""
 }
 
-variable "logs_storage_account_archived_logs_fileshare_name" {
-  description = "Name of the file share in which externalized logs are stored"
+variable "storage_account_archived_logs_fileshare_name" {
+  description = "Name of the file share in which externalized logs are stored."
   type        = string
   default     = "archived-logs"
 }
