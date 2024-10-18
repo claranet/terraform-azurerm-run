@@ -22,7 +22,7 @@ module "monitoring_function" {
   environment         = var.environment
   location            = var.location
   location_short      = var.location_short
-  resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
+  resource_group_name = coalesce(var.key_vault_resource_group_name, var.resource_group_name)
   stack               = var.stack
 
   name_prefix = coalesce(var.name_prefix, "fame")
