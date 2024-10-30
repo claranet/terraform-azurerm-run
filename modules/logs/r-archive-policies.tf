@@ -2,7 +2,7 @@
 resource "azurerm_storage_share" "main" {
   count                = var.storage_account_enabled && var.storage_account_archived_logs_fileshare_enabled ? 1 : 0
   name                 = var.storage_account_archived_logs_fileshare_name
-  storage_account_name = one(module.storage[*].storage_account_name)
+  storage_account_name = one(module.storage[*].name)
   quota                = var.storage_account_archived_logs_fileshare_quota
 }
 

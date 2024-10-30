@@ -115,7 +115,7 @@ module "az_vm_backup" {
 | backup\_vm\_enabled | Whether the Virtual Machines backup is enabled. | `bool` | `true` | no |
 | client\_name | Client name. | `string` | n/a | yes |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
-| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |

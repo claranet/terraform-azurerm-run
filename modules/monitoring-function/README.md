@@ -86,7 +86,7 @@ module "monitoring" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | claranet/function-app/azurerm | ~> 8.0.0 |
+| function | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git | refactor/AZ-1088-rework-module |
 
 ## Resources
 
@@ -104,8 +104,8 @@ module "monitoring" {
 | application\_insights\_enabled | Whether Application Insights should be deployed. | `bool` | `true` | no |
 | application\_insights\_log\_analytics\_workspace\_id | ID of the Log Analytics Workspace to be used with Application Insights. | `string` | n/a | yes |
 | client\_name | Client name. | `string` | n/a | yes |
-| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
+| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_application\_settings | Extra application settings to set on monitoring function. | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |

@@ -8,7 +8,7 @@ module "diagnostics" {
   log_categories        = var.logs_categories
   metric_categories     = var.logs_metrics_categories
 
-  custom_name    = var.diagnostic_settings_custom_name
-  name_prefix    = var.name_prefix
-  name_suffix    = var.name_suffix
+  custom_name = var.diagnostic_settings_custom_name
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
 }

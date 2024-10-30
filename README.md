@@ -353,7 +353,6 @@ module "run" {
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
 | file\_share\_backup\_policy\_id | File share Backup policy ID. |
 | file\_share\_backup\_policy\_name | File share Backup policy name. |
-| key\_vault\_hsm\_uri | The URI of the Key Vault Managed Hardware Security Module, used for performing operations on keys. |
 | key\_vault\_id | ID of the Key Vault. |
 | key\_vault\_name | Name of the Key Vault. |
 | key\_vault\_resource\_group\_name | Resource Group of the Key Vault. |

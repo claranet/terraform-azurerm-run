@@ -8,12 +8,12 @@ output "logs_resource_group_name" {
 
 output "log_analytics_workspace_id" {
   description = "The Log Analytics Workspace ID."
-  value       = module.logs.log_analytics_workspace_id
+  value       = module.logs.id
 }
 
 output "log_analytics_workspace_name" {
   description = "The Log Analytics Workspace name."
-  value       = module.logs.log_analytics_workspace_name
+  value       = module.logs.name
 }
 
 output "log_analytics_workspace_location" {

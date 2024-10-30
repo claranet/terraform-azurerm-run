@@ -1,6 +1,6 @@
 # Automation Account
 resource "azurerm_automation_account" "main" {
-  name                = local.automation_account_name
+  name                = local.name
   location            = var.location
   resource_group_name = var.resource_group_name
 

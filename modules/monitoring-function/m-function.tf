@@ -1,6 +1,7 @@
 module "function" {
-  source  = "claranet/function-app/azurerm"
-  version = "~> 8.0.0"
+  # source  = "claranet/function-app/azurerm"
+  # version = "~> 8.0.0"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=refactor/AZ-1088-rework-module"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -41,7 +42,7 @@ module "function" {
   logs_destinations_ids           = var.logs_destinations_ids
   logs_categories                 = var.logs_categories
   logs_metrics_categories         = var.logs_metrics_categories
-  custom_diagnostic_settings_name = var.custom_diagnostic_settings_name
+  diagnostic_settings_custom_name = var.diagnostic_settings_custom_name
 
   application_insights_enabled                    = var.application_insights_enabled
   application_insights_log_analytics_workspace_id = var.application_insights_log_analytics_workspace_id

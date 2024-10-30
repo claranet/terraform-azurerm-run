@@ -13,9 +13,9 @@ module "storage" {
 
   resource_group_name = var.resource_group_name
 
-  storage_account_custom_name = var.storage_account_custom_name
-  name_prefix                 = local.storage_account_name_prefix
-  name_suffix                 = "${var.name_suffix}log"
+  custom_name = var.storage_account_custom_name
+  name_prefix = local.storage_account_name_prefix
+  name_suffix = "${var.name_suffix}log"
 
   # Storage account kind/SKU/tier
   account_replication_type = var.storage_account_replication_type
@@ -64,4 +64,3 @@ moved {
   from = module.storage
   to   = module.storage[0]
 }
-

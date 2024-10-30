@@ -15,7 +15,7 @@ module "vm_monitoring" {
   name_suffix = var.name_suffix
   custom_name = var.dcr_custom_name
 
-  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
+  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.id)
 
   syslog_facilities_names = var.data_collection_syslog_facilities_names
   syslog_levels           = var.data_collection_syslog_levels

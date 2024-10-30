@@ -81,13 +81,13 @@ module "automation_account" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| automation\_account\_custom\_name | Automation account custom name. | `string` | `""` | no |
 | automation\_account\_extra\_tags | Extra tags to add to automation account | `map(string)` | `{}` | no |
 | automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br/>    type         = string<br/>    identity_ids = list(string)<br/>  })</pre> | <pre>{<br/>  "identity_ids": [],<br/>  "type": "SystemAssigned"<br/>}</pre> | no |
 | automation\_account\_sku | Automation account Sku | `string` | `"Basic"` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
+| custom\_name | Automation account custom name. | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
-| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Project environment | `string` | n/a | yes |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
@@ -102,7 +102,6 @@ module "automation_account" {
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
 | stack | Project stack name | `string` | n/a | yes |
-| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_automation_account_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 
 ## Outputs
 

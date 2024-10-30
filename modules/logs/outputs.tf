@@ -50,25 +50,25 @@ output "storage_account_name" {
 
 output "storage_account_primary_connection_string" {
   description = "Primary connection string of the logs Storage Account."
-  value       = one(module.storage[*].storage_account_properties.primary_connection_string)
+  value       = one(module.storage[*].resource.primary_connection_string)
   sensitive   = true
 }
 
 output "storage_account_primary_access_key" {
   description = "Primary connection string of the logs Storage Account."
-  value       = one(module.storage[*].storage_account_properties.primary_access_key)
+  value       = one(module.storage[*].resource.primary_access_key)
   sensitive   = true
 }
 
 output "storage_account_secondary_connection_string" {
   description = "Secondary connection string of the logs Storage Account."
-  value       = one(module.storage[*].storage_account_properties.secondary_connection_string)
+  value       = one(module.storage[*].resource.secondary_connection_string)
   sensitive   = true
 }
 
 output "storage_account_secondary_access_key" {
   description = "Secondary connection string of the logs Storage Account."
-  value       = one(module.storage[*].storage_account_properties.secondary_access_key)
+  value       = one(module.storage[*].resource.secondary_access_key)
   sensitive   = true
 }
 

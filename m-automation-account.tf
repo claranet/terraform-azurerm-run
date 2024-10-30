@@ -11,10 +11,9 @@ module "automation_account" {
 
   resource_group_name = var.resource_group_name
 
-  use_caf_naming                 = var.use_caf_naming
-  name_prefix                    = var.name_prefix
-  name_suffix                    = var.name_suffix
-  automation_account_custom_name = var.automation_account_custom_name
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
+  custom_name = var.automation_account_custom_name
 
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
@@ -25,7 +24,7 @@ module "automation_account" {
 
   log_analytics_resource_group_name    = var.log_analytics_resource_group_name
   log_analytics_workspace_link_enabled = var.log_analytics_workspace_link_enabled
-  log_analytics_workspace_id           = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
+  log_analytics_workspace_id           = coalesce(var.log_analytics_workspace_id, module.logs.id)
 
   logs_destinations_ids   = coalescelist(var.automation_logs_destinations_ids, local.logs_destinations_ids)
   logs_categories         = var.automation_logs_categories

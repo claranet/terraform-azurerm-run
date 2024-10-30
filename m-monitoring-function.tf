@@ -41,7 +41,7 @@ module "monitoring_function" {
   splunk_token                 = var.monitoring_function_splunk_token
 
   logs_destinations_ids = [
-    module.logs.log_analytics_workspace_id,
+    module.logs.id,
     module.logs.storage_account_id,
   ]
   logs_categories         = var.monitoring_function_logs_categories
@@ -50,7 +50,7 @@ module "monitoring_function" {
   storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
 
   application_insights_enabled                    = var.monitoring_function_application_insights_enabled
-  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  application_insights_log_analytics_workspace_id = module.logs.id
 
   default_tags_enabled = var.default_tags_enabled
 
@@ -63,7 +63,7 @@ resource "azurerm_role_assignment" "function_workspace" {
   count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
 
   principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
-  scope        = module.logs.log_analytics_workspace_id
+  scope        = module.logs.id
 
   role_definition_name = "Log Analytics Reader"
 }

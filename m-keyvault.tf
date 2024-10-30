@@ -33,7 +33,7 @@ module "key_vault" {
   managed_hardware_security_module_enabled = var.key_vault_managed_hardware_security_module_enabled
 
   logs_destinations_ids = [
-    module.logs.log_analytics_workspace_id,
+    module.logs.id,
     module.logs.storage_account_id,
   ]
   logs_categories         = var.key_vault_logs_categories
