@@ -75,27 +75,27 @@ output "application_insights_application_type" {
 
 output "function_app_id" {
   description = "ID of the created Function App."
-  value       = module.function.linux_function_app.function_app_id
+  value       = module.function.id
 }
 
 output "function_app_name" {
   description = "Name of the created Function App."
-  value       = module.function.linux_function_app.function_app_name
+  value       = module.function.name
 }
 
 output "function_app_outbound_ip_addresses" {
   description = "Outbound IP addresses of the created Function App."
-  value       = module.function.linux_function_app.function_app_outbound_ip_addresses
+  value       = module.function.outbound_ip_addresses
 }
 
 output "function_app_connection_string" {
   description = "Connection string of the created Function App."
-  value       = module.function.linux_function_app.function_app_connection_string
+  value       = module.function.connection_string
   sensitive   = true
 }
 
 output "function_app_identity" {
-  value       = module.function.linux_function_app.function_app_identity
+  value       = module.function.identity
   description = "Identity block output of the Function App."
 }
 
