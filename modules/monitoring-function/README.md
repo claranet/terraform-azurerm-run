@@ -64,11 +64,11 @@ module "monitoring" {
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
 
-  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  application_insights_log_analytics_workspace_id = module.logs.id
 
   splunk_token = "xxxxxx"
 
-  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
+  logs_destinations_ids = [module.logs.id]
 
   extra_tags = {
     foo = "bar"

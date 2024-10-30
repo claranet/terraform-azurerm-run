@@ -51,7 +51,7 @@ module "az_vm_backup" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   backup_vm_enabled         = true
   backup_postgresql_enabled = true
@@ -64,7 +64,7 @@ module "az_vm_backup" {
     weeks    = ["First"]
   }
 
-  logs_destinations_ids = [module.logs.log_analytics_workspace_id]
+  logs_destinations_ids = [module.logs.id]
 
   extra_tags = {
     foo = "bar"

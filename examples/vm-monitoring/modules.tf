@@ -10,7 +10,7 @@ module "vm_monitoring" {
 
   resource_group_name = module.rg.name
 
-  log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  log_analytics_workspace_id = module.logs.id
 
   extra_tags = {
     foo = "bar"

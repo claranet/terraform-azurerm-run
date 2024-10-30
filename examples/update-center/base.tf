@@ -23,7 +23,7 @@ module "vnet" {
   client_name         = var.client_name
   environment         = var.environment
   stack               = var.stack
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   location       = module.azure_region.location
   location_short = module.azure_region.location_short
@@ -31,21 +31,21 @@ module "vnet" {
   cidrs = ["10.10.10.0/24"]
 }
 
-module "subnet" {
-  source  = "claranet/subnet/azurerm"
-  version = "x.x.x"
+# module "subnet" {
+#   source  = "claranet/subnet/azurerm"
+#   version = "x.x.x"
 
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
+#   client_name = var.client_name
+#   environment = var.environment
+#   stack       = var.stack
 
-  resource_group_name = module.rg.name
-  location_short      = module.azure_region.location_short
-  subnet_cidr_list = [
-    "10.10.10.0/27"
-  ]
-  virtual_network_name = module.vnet.name
-}
+#   resource_group_name = module.rg.name
+#   location_short      = module.azure_region.location_short
+#   subnet_cidr_list = [
+#     "10.10.10.0/27"
+#   ]
+#   virtual_network_name = module.vnet.name
+# }
 
 
 module "run" {
@@ -67,13 +67,12 @@ module "run" {
 
   update_center_enabled = false
 
-  keyvault_network_acls = {
+  key_vault_network_acls = {
     bypass   = "AzureServices"
     ip_rules = []
   }
 
-  keyvault_admin_objects_ids = []
+  key_vault_admin_objects_ids = []
 
-  keyvault_enabled_for_deployment = true
+  key_vault_enabled_for_deployment = true
 }
-
