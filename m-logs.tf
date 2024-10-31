@@ -29,6 +29,11 @@ module "logs" {
   storage_account_identity_type                      = var.logs_storage_account_identity_type
   storage_account_identity_ids                       = var.logs_storage_account_identity_ids
 
+  # RBAC/access
+  storage_shared_access_key_enabled           = var.logs_storage_shared_access_key_enabled
+  rbac_storage_contributor_role_principal_ids = var.logs_rbac_storage_contributor_role_principal_ids
+  rbac_storage_blob_role_principal_ids        = var.logs_rbac_storage_blob_role_principal_ids
+
   workspace_name_prefix       = var.log_analytics_workspace_name_prefix
   workspace_custom_name       = var.log_analytics_workspace_custom_name
   workspace_extra_tags        = var.log_analytics_workspace_extra_tags

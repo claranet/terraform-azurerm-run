@@ -138,7 +138,7 @@ module "monitoring" {
 | application\_insights\_name | Name of the associated Application Insights. |
 | function\_app\_connection\_string | Connection string of the created Function App. |
 | function\_app\_id | ID of the created Function App. |
-| function\_app\_identity | Identity block output of the Function App. |
+| function\_app\_identity\_principal\_id | Identity principal ID output of the Function App. |
 | function\_app\_name | Name of the created Function App. |
 | function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App. |
 | module\_function | Module function outputs. |

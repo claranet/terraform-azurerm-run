@@ -238,6 +238,8 @@ module "run" {
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
 | log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
 | logs\_delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
+| logs\_rbac\_storage\_blob\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Blob Data *` different roles to if Blob containers are created. | <pre>object({<br/>    blob_owners       = optional(list(string), [])<br/>    blob_contributors = optional(list(string), [])<br/>    blob_readers      = optional(list(string), [])<br/>  })</pre> | <pre>{<br/>  "blob_contributors": [],<br/>  "blob_owners": [],<br/>  "blob_readers": []<br/>}</pre> | no |
+| logs\_rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | logs\_storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
 | logs\_storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
@@ -257,6 +259,7 @@ module "run" {
 | logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |
 | logs\_storage\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
+| logs\_storage\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
 | logs\_tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
 | logs\_tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 | managed\_disk\_backup\_daily\_policy\_retention\_in\_days | The number of days to keep the first daily Managed Disk backup. | `number` | `null` | no |
@@ -361,6 +364,7 @@ module "run" {
 | module\_logs | Module logs outputs. |
 | module\_maintenance\_configurations | Module maintenance configurations outputs. |
 | module\_monitoring\_function | Monitoring function module outputs. |
+| monitoring\_function\_app\_identity\_principal\_id | Identity principal ID output of the Function App. |
 | monitoring\_function\_application\_insights\_app\_id | App ID of the associated Application Insights. |
 | monitoring\_function\_application\_insights\_application\_type | Application Type of the associated Application Insights. |
 | monitoring\_function\_application\_insights\_id | ID of the associated Application Insights. |
@@ -368,7 +372,6 @@ module "run" {
 | monitoring\_function\_application\_insights\_name | Name of the associated Application Insights. |
 | monitoring\_function\_function\_app\_connection\_string | Connection string of the created Function App. |
 | monitoring\_function\_function\_app\_id | ID of the created Function App. |
-| monitoring\_function\_function\_app\_identity | Identity block output of the Function App. |
 | monitoring\_function\_function\_app\_name | Name of the created Function App. |
 | monitoring\_function\_function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App. |
 | monitoring\_function\_service\_plan\_id | Id of the created Service Plan. |

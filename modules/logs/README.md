@@ -73,7 +73,7 @@ module "logs" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| storage | claranet/storage-account/azurerm | ~> 8.0.0 |
+| storage | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/storage-account.git | feat/AZ-1088_storage_rbac |
 
 ## Resources
 
@@ -97,6 +97,8 @@ module "logs" {
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
+| rbac\_storage\_blob\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Blob Data *` different roles to if Blob containers are created. | <pre>object({<br/>    blob_owners       = optional(list(string), [])<br/>    blob_contributors = optional(list(string), [])<br/>    blob_readers      = optional(list(string), [])<br/>  })</pre> | <pre>{<br/>  "blob_contributors": [],<br/>  "blob_owners": [],<br/>  "blob_readers": []<br/>}</pre> | no |
+| rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
@@ -117,6 +119,7 @@ module "logs" {
 | storage\_account\_name\_prefix | Storage Account name prefix. | `string` | `""` | no |
 | storage\_account\_replication\_type | Storage Account Replication type. | `string` | `"LRS"` | no |
 | storage\_account\_tier | Storage Account tier. | `string` | `"Standard"` | no |
+| storage\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
 | tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification. | `number` | `90` | no |
 | tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification. | `number` | `30` | no |
 | workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |

@@ -97,9 +97,9 @@ output "monitoring_function_function_app_connection_string" {
   sensitive   = true
 }
 
-output "monitoring_function_function_app_identity" {
-  description = "Identity block output of the Function App."
-  value       = one(module.monitoring_function[*].function_app_identity)
+output "monitoring_function_app_identity_principal_id" {
+  description = "Identity principal ID output of the Function App."
+  value       = one(module.monitoring_function[*].function_app_identity_principal_id)
 }
 
 output "module_monitoring_function" {

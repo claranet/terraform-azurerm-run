@@ -94,9 +94,9 @@ output "function_app_connection_string" {
   sensitive   = true
 }
 
-output "function_app_identity" {
-  value       = module.function.identity
-  description = "Identity block output of the Function App."
+output "function_app_identity_principal_id" {
+  description = "Identity principal ID output of the Function App."
+  value       = module.function.identity_principal_id
 }
 
 output "module_function" {

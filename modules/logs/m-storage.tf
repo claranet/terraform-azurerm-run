@@ -2,8 +2,9 @@
 module "storage" {
   count = var.storage_account_enabled ? 1 : 0
 
-  source  = "claranet/storage-account/azurerm"
-  version = "~> 8.0.0"
+  # source  = "claranet/storage-account/azurerm"
+  # version = "~> 8.1.0"
+  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/storage-account.git?ref=feat/AZ-1088_storage_rbac"
 
   client_name    = var.client_name
   environment    = var.environment
@@ -16,6 +17,11 @@ module "storage" {
   custom_name = var.storage_account_custom_name
   name_prefix = local.storage_account_name_prefix
   name_suffix = "${var.name_suffix}log"
+
+  # RBAC/access
+  shared_access_key_enabled                   = var.storage_shared_access_key_enabled
+  rbac_storage_contributor_role_principal_ids = var.rbac_storage_contributor_role_principal_ids
+  rbac_storage_blob_role_principal_ids        = var.rbac_storage_blob_role_principal_ids
 
   # Storage account kind/SKU/tier
   account_replication_type = var.storage_account_replication_type
@@ -36,6 +42,7 @@ module "storage" {
   identity_ids  = var.storage_account_identity_ids
 
   customer_managed_key = var.storage_account_customer_managed_key
+
   # Data protection - not needed for now
   blob_data_protection = {
     change_feed_enabled                       = false
