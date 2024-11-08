@@ -47,7 +47,7 @@ module "monitoring_function" {
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
-  storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
+  storage_account_advanced_threat_protection_enabled = var.monitoring_function_advanced_threat_protection_enabled
 
   application_insights_enabled                    = var.monitoring_function_application_insights_enabled
   application_insights_log_analytics_workspace_id = module.logs.id

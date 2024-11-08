@@ -268,21 +268,21 @@ module "run" {
 | managed\_disk\_backup\_policy\_retention\_in\_days | The number of days to keep the Managed Disk backup. | `number` | `30` | no |
 | managed\_disk\_backup\_policy\_time | The time of day to perform the Managed Disk backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | managed\_disk\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Managed Disk backup. | `number` | `null` | no |
-| monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection | `bool` | `false` | no |
+| monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection. | `bool` | `false` | no |
 | monitoring\_function\_app\_service\_plan\_name | FAME App Service Plan custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention | `string` | `null` | no |
+| monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
-| monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |
+| monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function. | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | `null` | no |
+| monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
+| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
+| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | postgresql\_backup\_daily\_policy\_retention\_in\_days | The number of days to keep the first daily Postgresql backup. | `number` | `null` | no |

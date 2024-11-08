@@ -18,8 +18,8 @@ module "function" {
   application_insights_custom_name = var.application_insights_custom_name
   service_plan_custom_name         = var.service_plan_custom_name
 
-  function_app_application_settings_drift_ignore = false
-  function_app_application_settings = merge({
+  application_settings_drift_ignore = false
+  application_settings = merge({
     SFX_TOKEN                    = var.splunk_token
     LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
     SUBSCRIPTION_ID              = data.azurerm_client_config.current.subscription_id
@@ -29,9 +29,9 @@ module "function" {
   os_type              = "Linux"
   sku_name             = "Y1"
   function_app_version = 4
-  function_app_site_config = {
+  site_config = {
     application_stack = {
-      python_version = "3.10"
+      python_version = "3.12"
     }
   }
 
@@ -47,7 +47,7 @@ module "function" {
   application_insights_enabled                    = var.application_insights_enabled
   application_insights_log_analytics_workspace_id = var.application_insights_log_analytics_workspace_id
 
-  storage_account_enable_advanced_threat_protection = var.storage_account_enable_advanced_threat_protection
+  storage_account_advanced_threat_protection_enabled = var.storage_account_advanced_threat_protection_enabled
 
   default_tags_enabled = var.default_tags_enabled
 

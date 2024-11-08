@@ -123,8 +123,8 @@ module "monitoring" {
 | service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
 | splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
+| storage\_account\_advanced\_threat\_protection\_enabled | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| storage\_account\_enable\_advanced\_threat\_protection | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
 
 ## Outputs
