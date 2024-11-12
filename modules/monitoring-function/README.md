@@ -119,6 +119,8 @@ module "monitoring" {
 | metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
+| rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
 | splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | n/a | yes |

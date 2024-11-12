@@ -84,3 +84,20 @@ variable "monitoring_function_app_service_plan_name" {
   type        = string
   default     = null
 }
+
+variable "monitoring_rbac_storage_contributor_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
+
+variable "monitoring_rbac_storage_table_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to."
+  type = object({
+    contributors = optional(list(string), [])
+    readers      = optional(list(string), [])
+  })
+  default  = {}
+  nullable = false
+}

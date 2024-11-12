@@ -35,7 +35,9 @@ module "function" {
     }
   }
 
-  storage_account_network_rules_enabled = false
+  storage_account_network_rules_enabled       = false
+  rbac_storage_contributor_role_principal_ids = var.rbac_storage_contributor_role_principal_ids
+  rbac_storage_table_role_principal_ids       = var.rbac_storage_table_role_principal_ids
 
   application_zip_package_path = var.zip_package_path
 
