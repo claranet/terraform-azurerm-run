@@ -2,9 +2,8 @@
 module "storage" {
   count = var.storage_account_enabled ? 1 : 0
 
-  # source  = "claranet/storage-account/azurerm"
-  # version = "~> 8.1.0"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/storage-account.git?ref=feat/AZ-1088_storage_rbac"
+  source  = "claranet/storage-account/azurerm"
+  version = "~> 8.1.0"
 
   client_name    = var.client_name
   environment    = var.environment

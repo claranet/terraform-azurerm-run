@@ -73,7 +73,7 @@ module "logs" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| storage | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/storage-account.git | feat/AZ-1088_storage_rbac |
+| storage | claranet/storage-account/azurerm | ~> 8.1.0 |
 
 ## Resources
 
