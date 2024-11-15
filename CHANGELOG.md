@@ -1,3 +1,63 @@
+## 8.0.0 (2024-11-15)
+
+### ⚠ BREAKING CHANGES
+
+* **AZ-1088:** rework logs variables
+* **AZ-1088:** refactor Key Vault variables
+* **AZ-1088:** new module v8 structure changes
+* **AZ-1088:** remove deprecated update service with automation account
+
+### Features
+
+* **AZ-1088:** add Storage account RBAC options ded243d
+* **AZ-1088:** add streams new attribute to `azurerm_monitor_data_collection_rule` f26ed44
+* **AZ-1088:** bump AzureRM Provider to v4+ and OpenTofu to 1.8+ 0327c99
+* **AZ-1088:** change storage-account module source for logs submodule c29457e
+* **AZ-1088:** include RBAC for Storage variables 22c998b
+* **AZ-1088:** refactor Key Vault variables ae00139
+* **AZ-1088:** remove deprecated update service with automation account 09c8a1a
+* **AZ-1088:** rework logs variables 76a8a2d
+
+### Bug Fixes
+
+* **AZ-1088:** update outputs 1f60872
+
+### Documentation
+
+* **AZ-1088:** update examples 2b5a193
+* **update-center:** light example for update-center ad9d488
+
+### Code Refactoring
+
+* **AZ-1088:** module deps updates 55ccca6
+
+### Miscellaneous Chores
+
+* **AZ-1088:** apply suggestions 04a6664
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to v7 20cf18f
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to v8 827a8ae
+* **deps:** update dependency claranet/function-app/azurerm to ~> 7.13.0 85273bb
+* **deps:** update dependency claranet/keyvault/azurerm to ~> 7.6.0 080f4c3
+* **deps:** update dependency claranet/keyvault/azurerm to ~> 7.7.0 da24b3e
+* **deps:** update dependency claranet/keyvault/azurerm to v8 a819e66
+* **deps:** update dependency claranet/storage-account/azurerm to ~> 7.14.0 bfedbfc
+* **deps:** update dependency claranet/storage-account/azurerm to v8 ef0285f
+* **deps:** update dependency module v8 8de7c12
+* **deps:** update dependency opentofu to v1.8.3 cb808a4
+* **deps:** update dependency opentofu to v1.8.4 9260c93
+* **deps:** update dependency pre-commit to v4 4bbeeef
+* **deps:** update dependency pre-commit to v4.0.1 2d578c4
+* **deps:** update dependency tflint to v0.54.0 7fbf039
+* **deps:** update dependency trivy to v0.56.1 991894f
+* **deps:** update dependency trivy to v0.56.2 773412e
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v5 a521076
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.1.0 7035e4c
+* **deps:** update tools 130c101
+* prepare for new examples structure 18a768c
+* update code 6fda61c
+* update examples structure ba63dd8
+* update submodule READMEs with latest template ee1723f
+
 ## 7.12.0 (2024-10-03)
 
 ### Features
