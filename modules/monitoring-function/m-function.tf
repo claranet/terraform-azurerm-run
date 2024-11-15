@@ -1,7 +1,6 @@
 module "function" {
-  # source  = "claranet/function-app/azurerm"
-  # version = "~> 8.0.0"
-  source = "git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git?ref=refactor/AZ-1088-rework-module"
+  source  = "claranet/function-app/azurerm"
+  version = "~> 8.0.0"
 
   client_name         = var.client_name
   environment         = var.environment

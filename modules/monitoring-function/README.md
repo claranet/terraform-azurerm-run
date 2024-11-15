@@ -86,7 +86,7 @@ module "monitoring" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| function | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/function-app.git | refactor/AZ-1088-rework-module |
+| function | claranet/function-app/azurerm | ~> 8.0.0 |
 
 ## Resources
 

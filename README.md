@@ -144,7 +144,7 @@ module "run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 4.0 |
+| azurerm | ~> 4.9 |
 | null | ~> 3.0 |
 
 ## Modules
