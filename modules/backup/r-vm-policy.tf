@@ -1,9 +1,9 @@
-resource "azurerm_backup_policy_vm" "vm_backup_policy" {
+resource "azurerm_backup_policy_vm" "main" {
   count = var.backup_vm_enabled ? 1 : 0
 
   name                = local.vm_policy_name
   resource_group_name = var.resource_group_name
-  recovery_vault_name = azurerm_recovery_services_vault.vault[0].name
+  recovery_vault_name = azurerm_recovery_services_vault.main[0].name
 
   timezone    = var.vm_backup_policy_timezone
   policy_type = var.vm_backup_policy_type
@@ -50,6 +50,6 @@ resource "azurerm_backup_policy_vm" "vm_backup_policy" {
 }
 
 moved {
-  from = azurerm_backup_policy_vm.vm_backup_policy
-  to   = azurerm_backup_policy_vm.vm_backup_policy[0]
+  from = azurerm_backup_policy_vm.vm_backup_policy[0]
+  to   = azurerm_backup_policy_vm.main[0]
 }

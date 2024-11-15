@@ -65,3 +65,8 @@ output "storage_blob_backup_policy_id" {
   description = "Storage blob Backup policy ID."
   value       = one(module.backup[*].storage_blob_backup_policy_id)
 }
+
+output "module_backup" {
+  description = "Module backup outputs."
+  value       = one(module.backup[*])
+}

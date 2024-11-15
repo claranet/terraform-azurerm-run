@@ -85,19 +85,19 @@ variable "logs_storage_min_tls_version" {
   default     = "TLS1_2"
 }
 
-variable "logs_storage_account_enable_advanced_threat_protection" {
+variable "logs_storage_account_advanced_threat_protection_enabled" {
   description = "Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information."
   type        = bool
   default     = false
 }
 
-variable "logs_storage_account_enable_https_traffic_only" {
+variable "logs_storage_account_https_traffic_only_enabled" {
   description = "Enable/disable HTTPS traffic only"
   type        = bool
   default     = true
 }
 
-variable "logs_storage_account_enable_archived_logs_fileshare" {
+variable "logs_storage_account_archived_logs_fileshare_enabled" {
   description = "Enable/disable archived-logs file share creation"
   type        = bool
   default     = false
@@ -115,7 +115,7 @@ variable "logs_storage_account_archived_logs_fileshare_quota" {
   default     = null
 }
 
-variable "logs_storage_account_enable_archiving" {
+variable "logs_storage_account_archiving_enabled" {
   description = "Enable/disable blob archiving lifecycle"
   type        = bool
   default     = true
@@ -159,4 +159,33 @@ variable "logs_storage_account_identity_ids" {
   description = "List of User Assigned Identity IDs to assign to the Storage Account."
   type        = list(string)
   default     = null
+}
+
+variable "logs_storage_shared_access_key_enabled" {
+  description = "Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID)."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "logs_rbac_storage_contributor_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
+
+variable "logs_rbac_storage_blob_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Blob Data *` different roles to if Blob containers are created."
+  type = object({
+    blob_owners       = optional(list(string), [])
+    blob_contributors = optional(list(string), [])
+    blob_readers      = optional(list(string), [])
+  })
+  default = {
+    blob_owners       = []
+    blob_contributors = []
+    blob_readers      = []
+  }
+  nullable = false
 }

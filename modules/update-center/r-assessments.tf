@@ -1,4 +1,4 @@
-resource "azurerm_management_group_policy_assignment" "update_check_windows" {
+resource "azurerm_management_group_policy_assignment" "main_windows" {
   for_each             = var.auto_assessment_enabled ? local.mg_assignment_scopes : []
   name                 = "WindowsVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Windows VMs"
@@ -22,7 +22,12 @@ resource "azurerm_management_group_policy_assignment" "update_check_windows" {
   })
 }
 
-resource "azurerm_management_group_policy_assignment" "update_check_linux" {
+moved {
+  from = azurerm_management_group_policy_assignment.update_check_windows
+  to   = azurerm_management_group_policy_assignment.main_windows
+}
+
+resource "azurerm_management_group_policy_assignment" "main_linux" {
   for_each             = var.auto_assessment_enabled ? local.mg_assignment_scopes : []
   name                 = "LinuxVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Linux VMs"
@@ -46,7 +51,12 @@ resource "azurerm_management_group_policy_assignment" "update_check_linux" {
   })
 }
 
-resource "azurerm_subscription_policy_assignment" "update_check_windows" {
+moved {
+  from = azurerm_management_group_policy_assignment.update_check_linux
+  to   = azurerm_management_group_policy_assignment.main_linux
+}
+
+resource "azurerm_subscription_policy_assignment" "main_windows" {
   for_each             = var.auto_assessment_enabled ? local.subscriptions_assignment_scopes : []
   name                 = "WindowsVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Windows VMs"
@@ -69,7 +79,12 @@ resource "azurerm_subscription_policy_assignment" "update_check_windows" {
   })
 }
 
-resource "azurerm_subscription_policy_assignment" "update_check_linux" {
+moved {
+  from = azurerm_subscription_policy_assignment.update_check_windows
+  to   = azurerm_subscription_policy_assignment.main_windows
+}
+
+resource "azurerm_subscription_policy_assignment" "main_linux" {
   for_each             = var.auto_assessment_enabled ? local.subscriptions_assignment_scopes : []
   name                 = "LinuxVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Linux VMs"
@@ -93,7 +108,12 @@ resource "azurerm_subscription_policy_assignment" "update_check_linux" {
   })
 }
 
-resource "azurerm_resource_group_policy_assignment" "update_check_windows" {
+moved {
+  from = azurerm_subscription_policy_assignment.update_check_linux
+  to   = azurerm_subscription_policy_assignment.main_linux
+}
+
+resource "azurerm_resource_group_policy_assignment" "main_windows" {
   for_each             = var.auto_assessment_enabled ? local.resource_group_assignment_scopes : []
   name                 = "WindowsVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Windows VMs"
@@ -116,7 +136,12 @@ resource "azurerm_resource_group_policy_assignment" "update_check_windows" {
   })
 }
 
-resource "azurerm_resource_group_policy_assignment" "update_check_linux" {
+moved {
+  from = azurerm_resource_policy_assignment.main_windows
+  to   = azurerm_resource_group_policy_assignment.main_windows
+}
+
+resource "azurerm_resource_group_policy_assignment" "main_linux" {
   for_each             = var.auto_assessment_enabled ? local.resource_group_assignment_scopes : []
   name                 = "LinuxVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Linux VMs"
@@ -140,7 +165,12 @@ resource "azurerm_resource_group_policy_assignment" "update_check_linux" {
   })
 }
 
-resource "azurerm_resource_policy_assignment" "update_check_windows" {
+moved {
+  from = azurerm_resource_group_policy_assignment.update_check_linux
+  to   = azurerm_resource_group_policy_assignment.main_linux
+}
+
+resource "azurerm_resource_policy_assignment" "main_windows" {
   for_each             = var.auto_assessment_enabled ? local.virtual_machines_assignment_scopes : []
   name                 = "WindowsVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Windows VMs"
@@ -163,7 +193,12 @@ resource "azurerm_resource_policy_assignment" "update_check_windows" {
   })
 }
 
-resource "azurerm_resource_policy_assignment" "update_check_linux" {
+moved {
+  from = azurerm_resource_policy_assignment.update_check_windows
+  to   = azurerm_resource_policy_assignment.main_windows
+}
+
+resource "azurerm_resource_policy_assignment" "main_linux" {
   for_each             = var.auto_assessment_enabled ? local.virtual_machines_assignment_scopes : []
   name                 = "LinuxVMUpdatesChecks"
   display_name         = "Configure periodic checking for missing updates on Linux VMs"
@@ -185,4 +220,9 @@ resource "azurerm_resource_policy_assignment" "update_check_linux" {
   parameters = jsonencode({
     osType = { "value" = "Linux" }
   })
+}
+
+moved {
+  from = azurerm_resource_policy_assignment.update_check_linux
+  to   = azurerm_resource_policy_assignment.main_linux
 }

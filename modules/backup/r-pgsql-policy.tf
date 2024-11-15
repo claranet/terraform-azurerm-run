@@ -1,8 +1,8 @@
-resource "azurerm_data_protection_backup_policy_postgresql" "pgsql_policy" {
+resource "azurerm_data_protection_backup_policy_postgresql" "main" {
   count = var.backup_postgresql_enabled ? 1 : 0
 
   name                = local.pgqsl_policy_name
-  vault_name          = azurerm_data_protection_backup_vault.vault[0].name
+  vault_name          = azurerm_data_protection_backup_vault.main[0].name
   resource_group_name = var.resource_group_name
 
   backup_repeating_time_intervals = [
@@ -45,4 +45,9 @@ resource "azurerm_data_protection_backup_policy_postgresql" "pgsql_policy" {
       }
     }
   }
+}
+
+moved {
+  from = azurerm_data_protection_backup_policy_postgresql.pgsql_policy[0]
+  to   = azurerm_data_protection_backup_policy_postgresql.main[0]
 }

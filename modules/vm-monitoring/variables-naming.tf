@@ -11,12 +11,6 @@ variable "name_suffix" {
   default     = ""
 }
 
-variable "use_caf_naming" {
-  description = "Use the Azure CAF naming provider to generate default resource name."
-  type        = bool
-  default     = true
-}
-
 # Custom naming override
 variable "custom_name" {
   description = "Custom name, generated if not set"

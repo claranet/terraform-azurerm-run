@@ -1,9 +1,9 @@
-resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
+resource "azurerm_backup_policy_file_share" "main" {
   count = var.backup_file_share_enabled ? 1 : 0
 
   name                = local.file_share_policy_name
   resource_group_name = var.resource_group_name
-  recovery_vault_name = azurerm_recovery_services_vault.vault[0].name
+  recovery_vault_name = azurerm_recovery_services_vault.main[0].name
 
   timezone = var.file_share_backup_policy_timezone
 
@@ -17,7 +17,7 @@ resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
   }
 
   dynamic "retention_weekly" {
-    for_each = var.file_share_backup_weekly_retention != null ? ["_"] : []
+    for_each = var.file_share_backup_weekly_retention[*]
     content {
       count    = var.file_share_backup_weekly_retention.count
       weekdays = var.file_share_backup_weekly_retention.weekdays
@@ -25,7 +25,7 @@ resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
   }
 
   dynamic "retention_monthly" {
-    for_each = var.file_share_backup_monthly_retention != null ? ["_"] : []
+    for_each = var.file_share_backup_monthly_retention[*]
     content {
       count    = var.file_share_backup_monthly_retention.count
       weekdays = var.file_share_backup_monthly_retention.weekdays
@@ -34,7 +34,7 @@ resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
   }
 
   dynamic "retention_yearly" {
-    for_each = var.file_share_backup_yearly_retention != null ? ["_"] : []
+    for_each = var.file_share_backup_yearly_retention[*]
     content {
       count    = var.file_share_backup_yearly_retention.count
       weekdays = var.file_share_backup_yearly_retention.weekdays
@@ -45,6 +45,6 @@ resource "azurerm_backup_policy_file_share" "file_share_backup_policy" {
 }
 
 moved {
-  from = azurerm_backup_policy_file_share.file_share_backup_policy
-  to   = azurerm_backup_policy_file_share.file_share_backup_policy[0]
+  from = azurerm_backup_policy_file_share.file_share_backup_policy[0]
+  to   = azurerm_backup_policy_file_share.main[0]
 }

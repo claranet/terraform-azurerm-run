@@ -11,12 +11,11 @@ module "vm_monitoring" {
 
   resource_group_name = var.resource_group_name
 
-  use_caf_naming = var.use_caf_naming
-  name_prefix    = var.name_prefix
-  name_suffix    = var.name_suffix
-  custom_name    = var.dcr_custom_name
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
+  custom_name = var.dcr_custom_name
 
-  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.log_analytics_workspace_id)
+  log_analytics_workspace_id = coalesce(var.log_analytics_workspace_id, module.logs.id)
 
   syslog_facilities_names = var.data_collection_syslog_facilities_names
   syslog_levels           = var.data_collection_syslog_levels

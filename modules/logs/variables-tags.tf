@@ -10,13 +10,13 @@ variable "extra_tags" {
   default     = {}
 }
 
-variable "log_analytics_workspace_extra_tags" {
+variable "workspace_extra_tags" {
   description = "Extra tags to add to the Log Analytics Workspace"
   type        = map(string)
   default     = {}
 }
 
-variable "logs_storage_account_extra_tags" {
+variable "storage_account_extra_tags" {
   description = "Extra tags to add to the Storage Account"
   type        = map(string)
   default     = {}

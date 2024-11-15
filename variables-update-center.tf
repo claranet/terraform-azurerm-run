@@ -5,7 +5,7 @@ variable "update_center_enabled" {
 }
 
 variable "update_center_maintenance_configurations" {
-  description = "Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations."
+  description = "Update Management Center maintenance configurations."
   type = list(object({
     configuration_name = string
     start_date_time    = string

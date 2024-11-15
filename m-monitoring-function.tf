@@ -22,12 +22,11 @@ module "monitoring_function" {
   environment         = var.environment
   location            = var.location
   location_short      = var.location_short
-  resource_group_name = coalesce(var.keyvault_resource_group_name, var.resource_group_name)
+  resource_group_name = coalesce(var.key_vault_resource_group_name, var.resource_group_name)
   stack               = var.stack
 
-  use_caf_naming = var.use_caf_naming
-  name_prefix    = coalesce(var.name_prefix, "fame")
-  name_suffix    = var.name_suffix
+  name_prefix = coalesce(var.name_prefix, "fame")
+  name_suffix = var.name_suffix
 
   storage_account_custom_name      = var.monitoring_function_storage_account_custom_name
   function_app_custom_name         = var.monitoring_function_function_app_custom_name
@@ -42,16 +41,18 @@ module "monitoring_function" {
   splunk_token                 = var.monitoring_function_splunk_token
 
   logs_destinations_ids = [
-    module.logs.log_analytics_workspace_id,
-    module.logs.logs_storage_account_id,
+    module.logs.id,
+    module.logs.storage_account_id,
   ]
   logs_categories         = var.monitoring_function_logs_categories
   logs_metrics_categories = var.monitoring_function_logs_metrics_categories
 
-  storage_account_enable_advanced_threat_protection = var.monitoring_function_advanced_threat_protection_enabled
+  storage_account_advanced_threat_protection_enabled = var.monitoring_function_advanced_threat_protection_enabled
+  rbac_storage_contributor_role_principal_ids        = var.monitoring_rbac_storage_contributor_role_principal_ids
+  rbac_storage_table_role_principal_ids              = var.monitoring_rbac_storage_table_role_principal_ids
 
   application_insights_enabled                    = var.monitoring_function_application_insights_enabled
-  application_insights_log_analytics_workspace_id = module.logs.log_analytics_workspace_id
+  application_insights_log_analytics_workspace_id = module.logs.id
 
   default_tags_enabled = var.default_tags_enabled
 
@@ -63,8 +64,8 @@ module "monitoring_function" {
 resource "azurerm_role_assignment" "function_workspace" {
   count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
 
-  principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
-  scope        = module.logs.log_analytics_workspace_id
+  principal_id = module.monitoring_function[0].function_app_identity_principal_id
+  scope        = module.logs.id
 
   role_definition_name = "Log Analytics Reader"
 }
@@ -72,7 +73,7 @@ resource "azurerm_role_assignment" "function_workspace" {
 resource "azurerm_role_assignment" "function_subscription" {
   count = var.monitoring_function_enabled && var.monitoring_function_assign_roles ? 1 : 0
 
-  principal_id = module.monitoring_function[0].function_app_identity["principal_id"]
+  principal_id = module.monitoring_function[0].function_app_identity_principal_id
   scope        = format("/subscriptions/%s", data.azurerm_client_config.current.subscription_id)
 
   role_definition_name = "Reader"

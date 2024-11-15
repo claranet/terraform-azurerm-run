@@ -1,27 +1,27 @@
 ###############################
 # Key Vault outputs
 ###############################
-output "keyvault_resource_group_name" {
+output "key_vault_resource_group_name" {
   description = "Resource Group of the Key Vault."
-  value       = var.keyvault_resource_group_name
+  value       = var.key_vault_resource_group_name
 }
 
-output "keyvault_id" {
+output "key_vault_id" {
   description = "ID of the Key Vault."
-  value       = module.keyvault.key_vault_id
+  value       = module.key_vault.id
 }
 
-output "keyvault_name" {
+output "key_vault_name" {
   description = "Name of the Key Vault."
-  value       = module.keyvault.key_vault_name
+  value       = module.key_vault.name
 }
 
-output "keyvault_uri" {
+output "key_vault_uri" {
   description = "URI of the Key Vault."
-  value       = module.keyvault.key_vault_uri
+  value       = module.key_vault.uri
 }
 
-output "key_vault_hsm_uri" {
-  description = "The URI of the Key Vault Managed Hardware Security Module, used for performing operations on keys."
-  value       = module.keyvault.key_vault_hsm_uri
+output "module_key_vault" {
+  description = "Key Vault module outputs."
+  value       = module.key_vault
 }

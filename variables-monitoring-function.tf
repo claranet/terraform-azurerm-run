@@ -8,7 +8,7 @@ variable "monitoring_function_enabled" {
 }
 
 variable "monitoring_function_splunk_token" {
-  description = "Access Token to send metrics to Splunk Observability"
+  description = "Access Token to send metrics to Splunk Observability."
   type        = string
   default     = null
 }
@@ -26,19 +26,19 @@ variable "monitoring_function_logs_metrics_categories" {
 }
 
 variable "monitoring_function_zip_package_path" {
-  description = "Zip package path for monitoring function"
+  description = "Zip package path for monitoring function."
   type        = string
   default     = "https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
-  description = "Extra dimensions sent with metrics"
+  description = "Extra dimensions sent with metrics."
   type        = map(string)
   default     = {}
 }
 
 variable "monitoring_function_extra_application_settings" {
-  description = "Extra application settings to set on monitoring Function"
+  description = "Extra application settings to set on monitoring Function."
   type        = map(string)
   default     = {}
 }
@@ -68,13 +68,13 @@ variable "monitoring_function_function_app_custom_name" {
 }
 
 variable "monitoring_function_application_insights_custom_name" {
-  description = "FAME Application Insights custom name. Empty by default, using naming convention"
+  description = "FAME Application Insights custom name. Empty by default, using naming convention."
   type        = string
   default     = null
 }
 
 variable "monitoring_function_advanced_threat_protection_enabled" {
-  description = "FAME function app's storage account: Enable Advanced Threat Protection"
+  description = "FAME function app's storage account: Enable Advanced Threat Protection."
   type        = bool
   default     = false
 }
@@ -83,4 +83,21 @@ variable "monitoring_function_app_service_plan_name" {
   description = "FAME App Service Plan custom name. Empty by default, using naming convention."
   type        = string
   default     = null
+}
+
+variable "monitoring_rbac_storage_contributor_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to."
+  type        = list(string)
+  default     = []
+  nullable    = false
+}
+
+variable "monitoring_rbac_storage_table_role_principal_ids" {
+  description = "The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to."
+  type = object({
+    contributors = optional(list(string), [])
+    readers      = optional(list(string), [])
+  })
+  default  = {}
+  nullable = false
 }

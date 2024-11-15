@@ -17,9 +17,8 @@ module "backup" {
 
   resource_group_name = var.resource_group_name
 
-  use_caf_naming = var.use_caf_naming
-  name_prefix    = var.name_prefix
-  name_suffix    = var.name_suffix
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
 
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
@@ -84,5 +83,5 @@ module "backup" {
   logs_categories         = var.backup_logs_categories
   logs_metrics_categories = var.backup_logs_metrics_categories
 
-  custom_diagnostic_settings_name = var.backup_custom_diagnostic_settings_name
+  diagnostic_settings_custom_name = var.backup_diagnostic_settings_custom_name
 }

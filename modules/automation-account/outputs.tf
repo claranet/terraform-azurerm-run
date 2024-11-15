@@ -1,34 +1,49 @@
 ##################################
 # Azure Automation Account outputs
 ##################################
-output "automation_account_name" {
-  description = "Azure Automation Account name"
-  value       = azurerm_automation_account.automation_account.name
+output "name" {
+  description = "Azure Automation Account name."
+  value       = azurerm_automation_account.main.name
 }
 
-output "automation_account_id" {
-  description = "Azure Automation Account ID"
-  value       = azurerm_automation_account.automation_account.id
+output "id" {
+  description = "Azure Automation Account ID."
+  value       = azurerm_automation_account.main.id
 }
 
-output "automation_account_dsc_primary_access_key" {
-  description = "Azure Automation Account DSC primary access key"
-  value       = azurerm_automation_account.automation_account.dsc_primary_access_key
+output "dsc_primary_access_key" {
+  description = "Azure Automation Account DSC primary access key."
+  value       = azurerm_automation_account.main.dsc_primary_access_key
   sensitive   = true
 }
 
-output "automation_account_dsc_secondary_access_key" {
-  description = "Azure Automation Account DSC secondary access key"
-  value       = azurerm_automation_account.automation_account.dsc_secondary_access_key
+output "dsc_secondary_access_key" {
+  description = "Azure Automation Account DSC secondary access key."
+  value       = azurerm_automation_account.main.dsc_secondary_access_key
   sensitive   = true
 }
 
-output "automation_account_dsc_server_endpoint" {
-  description = "Azure Automation Account DSC server endpoint"
-  value       = azurerm_automation_account.automation_account.dsc_server_endpoint
+output "dsc_server_endpoint" {
+  description = "Azure Automation Account DSC server endpoint."
+  value       = azurerm_automation_account.main.dsc_server_endpoint
 }
 
-output "automation_account_identity" {
-  description = "Identity block with principal ID and tenant ID"
-  value       = azurerm_automation_account.automation_account.identity
+output "identity" {
+  description = "Identity block with principal ID and tenant ID."
+  value       = azurerm_automation_account.main.identity
+}
+
+output "resource" {
+  description = "Automation account resource object."
+  value       = azurerm_automation_account.main
+}
+
+output "module_diagnostics" {
+  description = "Diagnostic settings module output."
+  value       = module.diagnostics
+}
+
+output "resource_log_analytics_linked_service" {
+  description = "Log Analytics linked service resource object."
+  value       = azurerm_log_analytics_linked_service.main
 }

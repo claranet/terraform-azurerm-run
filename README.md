@@ -21,7 +21,6 @@ It includes some IaaS specifics:
       * A file share backup policy to assign on [Storage Account file shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction) (via the [backup_protected_file_share](https://www.terraform.io/docs/providers/azurerm/r/backup_protected_file_share.html) terraform resource)
       * A diagnostics settings to manage logging ([documentation](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events))
   * An Automation account to execute runbooks ([documentation](https://docs.microsoft.com/fr-fr/azure/automation/automation-intro)) ([example](examples/automation-account/modules.tf))
-  * Legacy Azure Update Management using Automation Account ([documentation](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)) ([example](examples/update-management/modules.tf))
   * A Data Collection Rule to gather metrics and logs from Virtual Machines ([documentation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/data-collection-rule-overview))
   * Azure Update Center using Update Management Center ([documentation](https://learn.microsoft.com/en-us/azure/update-center/overview)) ([example](examples/update-management-center/modules.tf))
 
@@ -117,23 +116,6 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-module "azure_region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure_region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
 module "run" {
   source  = "claranet/run/azurerm"
   version = "x.x.x"
@@ -144,7 +126,7 @@ module "run" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   monitoring_function_splunk_token = "xxxxxx"
   monitoring_function_metrics_extra_dimensions = {
@@ -162,7 +144,7 @@ module "run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.114 |
+| azurerm | ~> 4.9 |
 | null | ~> 3.0 |
 
 ## Modules
@@ -171,10 +153,9 @@ module "run" {
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| keyvault | claranet/keyvault/azurerm | ~> 7.7.0 |
+| key\_vault | claranet/keyvault/azurerm | ~> 8.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring-function | n/a |
-| update\_management | ./modules/update-management | n/a |
 | update\_management\_center | ./modules/update-center | n/a |
 | vm\_monitoring | ./modules/vm-monitoring | n/a |
 
@@ -191,18 +172,19 @@ module "run" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| automation\_account\_custom\_name | Automation account custom name. | `string` | `""` | no |
 | automation\_account\_enabled | Whether the Automation Account is enabled. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
 | automation\_account\_extra\_tags | Extra tags to add to Automation Account. | `map(string)` | `{}` | no |
 | automation\_account\_identity\_type | Automation Account identity type. Possible values include: `null`, `SystemAssigned` and `UserAssigned`. | <pre>object({<br/>    type         = string<br/>    identity_ids = list(string)<br/>  })</pre> | <pre>{<br/>  "identity_ids": [],<br/>  "type": "SystemAssigned"<br/>}</pre> | no |
 | automation\_account\_sku | Automation account Sku. | `string` | `"Basic"` | no |
-| automation\_custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| automation\_diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | automation\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| automation\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
+| automation\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | `[]` | no |
 | automation\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
-| backup\_custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| backup\_diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | backup\_file\_share\_enabled | Whether the File Share backup is enabled. | `bool` | `false` | no |
 | backup\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | `[]` | no |
+| backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | `[]` | no |
 | backup\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | backup\_managed\_disk\_enabled | Whether the Managed Disk backup is enabled. | `bool` | `false` | no |
 | backup\_postgresql\_enabled | Whether the PostgreSQL backup is enabled. | `bool` | `false` | no |
@@ -214,12 +196,10 @@ module "run" {
 | backup\_vault\_identity\_type | Azure Backup Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | backup\_vm\_enabled | Whether the Virtual Machines backup is enabled. | `bool` | `false` | no |
 | client\_name | Client name. | `string` | n/a | yes |
-| custom\_automation\_account\_name | Automation account custom name. | `string` | `""` | no |
 | data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br/>  "auth",<br/>  "authpriv",<br/>  "cron",<br/>  "daemon",<br/>  "mark",<br/>  "kern",<br/>  "local0",<br/>  "local1",<br/>  "local2",<br/>  "local3",<br/>  "local4",<br/>  "local5",<br/>  "local6",<br/>  "local7",<br/>  "lpr",<br/>  "mail",<br/>  "news",<br/>  "syslog",<br/>  "user",<br/>  "uucp"<br/>]</pre> | no |
 | data\_collection\_syslog\_levels | List of syslog levels to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br/>  "Error",<br/>  "Critical",<br/>  "Alert",<br/>  "Emergency"<br/>]</pre> | no |
 | dcr\_custom\_name | VM Monitoring - Data Collection rule custom name. | `string` | `""` | no |
 | default\_tags\_enabled | Whether the default tags are enabled. | `bool` | `true` | no |
-| deploy\_update\_management\_solution | Whether the Log Analytics Update solution is deployed. | `bool` | `true` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | file\_share\_backup\_daily\_policy\_retention | The number of daily file share backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
@@ -230,29 +210,22 @@ module "run" {
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | file\_share\_backup\_weekly\_retention | Map to configure the weekly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>  })</pre> | `null` | no |
 | file\_share\_backup\_yearly\_retention | Map to configure the yearly File Share backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>    weeks    = list(string),<br/>    months   = list(string),<br/>  })</pre> | `null` | no |
-| keyvault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
-| keyvault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
-| keyvault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
-| keyvault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | `false` | no |
-| keyvault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | `false` | no |
+| key\_vault\_admin\_objects\_ids | Ids of the objects that can do all operations on all keys, secrets and certificates | `list(string)` | `[]` | no |
+| key\_vault\_custom\_name | Name of the Key Vault, generated if not set. | `string` | `""` | no |
+| key\_vault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
+| key\_vault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | `false` | no |
+| key\_vault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | `false` | no |
+| key\_vault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| key\_vault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
+| key\_vault\_managed\_hardware\_security\_module\_enabled | Create a Key Vault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
+| key\_vault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br/>    bypass                     = optional(string, "None"),<br/>    default_action             = optional(string, "Deny"),<br/>    ip_rules                   = optional(list(string)),<br/>    virtual_network_subnet_ids = optional(list(string)),<br/>  })</pre> | `{}` | no |
+| key\_vault\_public\_network\_access\_enabled | Whether access to the Key Vault, from a public network is allowed. | `bool` | `false` | no |
+| key\_vault\_rbac\_authorization\_enabled | Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies. | `bool` | `false` | no |
+| key\_vault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
+| key\_vault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
+| key\_vault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
+| key\_vault\_soft\_delete\_retention\_days | The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. | `number` | `7` | no |
 | keyvault\_extra\_tags | Extra tags to add to the Key Vault | `map(string)` | `{}` | no |
-| keyvault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| keyvault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| keyvault\_managed\_hardware\_security\_module\_enabled | Create a KeyVault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
-| keyvault\_network\_acls | Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations. | <pre>object({<br/>    bypass                     = optional(string, "None"),<br/>    default_action             = optional(string, "Deny"),<br/>    ip_rules                   = optional(list(string)),<br/>    virtual_network_subnet_ids = optional(list(string)),<br/>  })</pre> | `{}` | no |
-| keyvault\_public\_network\_access\_enabled | Whether access to the Key Vault, from a public network is allowed. | `bool` | `false` | no |
-| keyvault\_rbac\_authorization\_enabled | Whether the Key Vault uses Role Based Access Control (RBAC) for authorization of data actions instead of access policies. | `bool` | `false` | no |
-| keyvault\_reader\_objects\_ids | Ids of the objects that can read all keys, secrets and certificates | `list(string)` | `[]` | no |
-| keyvault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
-| keyvault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
-| keyvault\_soft\_delete\_retention\_days | The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. | `number` | `7` | no |
-| linux\_update\_management\_config\_name | Custom configuration name for Linux Update management. | `string` | `"Standard Linux Update Schedule"` | no |
-| linux\_update\_management\_configuration | Linux specific update management configuration. Possible values for reboot\_setting are `IfRequired`, `RebootOnly`, `Never`, `Always`. More informations on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#linuxproperties). | `any` | <pre>{<br/>  "excluded_packages": [],<br/>  "included_packages": [],<br/>  "reboot_setting": "IfRequired",<br/>  "update_classifications": "Critical, Security"<br/>}</pre> | no |
-| linux\_update\_management\_duration | To set the maintenance window for Linux machines, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `null` | no |
-| linux\_update\_management\_schedule | Map of specific schedule parameters for update management of Linux machines. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object). | `list(any)` | `null` | no |
-| linux\_update\_management\_scope | Scope of the update management for Linux machines, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `null` | no |
-| linux\_update\_management\_tags\_filtering | Filter scope for Linux machines using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre>. | `map(any)` | `null` | no |
-| linux\_update\_management\_tags\_filtering\_operator | Filter Linux VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.). | `string` | `null` | no |
@@ -265,18 +238,20 @@ module "run" {
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
 | log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |
 | logs\_delete\_after\_days\_since\_modification\_greater\_than | Delete blob after x days without modification | `number` | `365` | no |
+| logs\_rbac\_storage\_blob\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Blob Data *` different roles to if Blob containers are created. | <pre>object({<br/>    blob_owners       = optional(list(string), [])<br/>    blob_contributors = optional(list(string), [])<br/>    blob_readers      = optional(list(string), [])<br/>  })</pre> | <pre>{<br/>  "blob_contributors": [],<br/>  "blob_owners": [],<br/>  "blob_readers": []<br/>}</pre> | no |
+| logs\_rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | logs\_storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
+| logs\_storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_archived\_logs\_fileshare\_enabled | Enable/disable archived-logs file share creation | `bool` | `false` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | `null` | no |
+| logs\_storage\_account\_archiving\_enabled | Enable/disable blob archiving lifecycle | `bool` | `true` | no |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | logs\_storage\_account\_customer\_managed\_key | Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information. | <pre>object({<br/>    key_vault_key_id          = optional(string)<br/>    managed_hsm_key_id        = optional(string)<br/>    user_assigned_identity_id = optional(string)<br/>  })</pre> | `null` | no |
-| logs\_storage\_account\_enable\_advanced\_threat\_protection | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archived\_logs\_fileshare | Enable/disable archived-logs file share creation | `bool` | `false` | no |
-| logs\_storage\_account\_enable\_archiving | Enable/disable blob archiving lifecycle | `bool` | `true` | no |
-| logs\_storage\_account\_enable\_https\_traffic\_only | Enable/disable HTTPS traffic only | `bool` | `true` | no |
 | logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is deployed. | `bool` | `true` | no |
 | logs\_storage\_account\_extra\_tags | Extra tags to add to the logs Storage Account | `map(string)` | `{}` | no |
+| logs\_storage\_account\_https\_traffic\_only\_enabled | Enable/disable HTTPS traffic only | `bool` | `true` | no |
 | logs\_storage\_account\_identity\_ids | List of User Assigned Identity IDs to assign to the Storage Account. | `list(string)` | `null` | no |
 | logs\_storage\_account\_identity\_type | The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`. | `string` | `"SystemAssigned"` | no |
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
@@ -284,6 +259,7 @@ module "run" {
 | logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |
 | logs\_storage\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
+| logs\_storage\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
 | logs\_tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |
 | logs\_tier\_to\_cool\_after\_days\_since\_modification\_greater\_than | Change blob tier to cool after x days without modification | `number` | `30` | no |
 | managed\_disk\_backup\_daily\_policy\_retention\_in\_days | The number of days to keep the first daily Managed Disk backup. | `number` | `null` | no |
@@ -292,21 +268,23 @@ module "run" {
 | managed\_disk\_backup\_policy\_retention\_in\_days | The number of days to keep the Managed Disk backup. | `number` | `30` | no |
 | managed\_disk\_backup\_policy\_time | The time of day to perform the Managed Disk backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | managed\_disk\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Managed Disk backup. | `number` | `null` | no |
-| monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection | `bool` | `false` | no |
+| monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection. | `bool` | `false` | no |
 | monitoring\_function\_app\_service\_plan\_name | FAME App Service Plan custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention | `string` | `null` | no |
+| monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
-| monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function | `map(string)` | `{}` | no |
+| monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function. | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
-| monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics | `map(string)` | `{}` | no |
-| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability | `string` | `null` | no |
+| monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
+| monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
+| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
+| monitoring\_rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
+| monitoring\_rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | postgresql\_backup\_daily\_policy\_retention\_in\_days | The number of days to keep the first daily Postgresql backup. | `number` | `null` | no |
@@ -329,19 +307,10 @@ module "run" {
 | storage\_blob\_backup\_policy\_retention\_in\_days | The number of days to keep the Storage blob backup. | `number` | `30` | no |
 | tenant\_id | Tenant ID. | `string` | `null` | no |
 | update\_center\_enabled | Whether the Update Management Center is enabled. | `bool` | `false` | no |
-| update\_center\_maintenance\_configurations | Update Management Center maintenance configurations. https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations. | <pre>list(object({<br/>    configuration_name = string<br/>    start_date_time    = string<br/>    duration           = optional(string, "02:00")<br/>    time_zone          = optional(string, "UTC")<br/>    recur_every        = string<br/>    reboot_setting     = optional(string, "IfRequired")<br/>    windows_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Definition",<br/>      "FeaturePack",<br/>      "Security",<br/>      "ServicePack",<br/>      "Tools",<br/>      "UpdateRollup",<br/>      "Updates",<br/>    ])<br/>    linux_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Security",<br/>      "Other",<br/>    ])<br/>    windows_kb_numbers_to_exclude  = optional(list(string), [])<br/>    windows_kb_numbers_to_include  = optional(list(string), [])<br/>    linux_package_names_to_exclude = optional(list(string), [])<br/>    linux_package_names_to_include = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| update\_center\_maintenance\_configurations | Update Management Center maintenance configurations. | <pre>list(object({<br/>    configuration_name = string<br/>    start_date_time    = string<br/>    duration           = optional(string, "02:00")<br/>    time_zone          = optional(string, "UTC")<br/>    recur_every        = string<br/>    reboot_setting     = optional(string, "IfRequired")<br/>    windows_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Definition",<br/>      "FeaturePack",<br/>      "Security",<br/>      "ServicePack",<br/>      "Tools",<br/>      "UpdateRollup",<br/>      "Updates",<br/>    ])<br/>    linux_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Security",<br/>      "Other",<br/>    ])<br/>    windows_kb_numbers_to_exclude  = optional(list(string), [])<br/>    windows_kb_numbers_to_include  = optional(list(string), [])<br/>    linux_package_names_to_exclude = optional(list(string), [])<br/>    linux_package_names_to_include = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
 | update\_center\_periodic\_assessment\_enabled | Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy. | `bool` | `true` | no |
 | update\_center\_periodic\_assessment\_exclusions | Exclude some resources from auto-assessment. | `list(string)` | `[]` | no |
 | update\_center\_periodic\_assessment\_scopes | Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines. | `list(string)` | `[]` | no |
-| update\_management\_duration | To set the maintenance window, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `"PT2H"` | no |
-| update\_management\_legacy\_enabled | Whether the legacy Update Management is enabled. This enable the Automation Account feature. | `bool` | `false` | no |
-| update\_management\_name\_prefix | Name prefix to apply on Update Management resources. | `string` | `null` | no |
-| update\_management\_os\_list | List of OS to cover. Possible values can be `Windows` or `Linux`. Define empty list to disable update management. | `list(string)` | `[]` | no |
-| update\_management\_schedule | List of Map with schedule parameters for update management. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object). | `list(any)` | `[]` | no |
-| update\_management\_scope | Scope of the update management, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `null` | no |
-| update\_management\_tags\_filtering | Filter scope using tags on VMs. Example :<pre>{ os_family = ["linux"] }</pre>. | `map(any)` | `{}` | no |
-| update\_management\_tags\_filtering\_operator | Filter VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `"Any"` | no |
-| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `*custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | vm\_backup\_daily\_policy\_retention | The number of daily VM backups to keep. Must be between 7 and 9999. | `number` | `30` | no |
 | vm\_backup\_monthly\_retention | Map to configure the monthly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>    weeks    = list(string),<br/>  })</pre> | `null` | no |
 | vm\_backup\_policy\_custom\_name | Azure Backup - VM backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
@@ -352,13 +321,6 @@ module "run" {
 | vm\_backup\_weekly\_retention | Map to configure the weekly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_weekly | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>  })</pre> | `null` | no |
 | vm\_backup\_yearly\_retention | Map to configure the yearly VM backup policy retention according to https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_yearly | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>    weeks    = list(string),<br/>    months   = list(string),<br/>  })</pre> | `null` | no |
 | vm\_monitoring\_enabled | Whether Data Collection Rules for VM monitoring are enabled. | `bool` | `false` | no |
-| windows\_update\_management\_configuration | Windows specific update management configuration. Possible values for reboot\_setting are `IfRequired`, `RebootOnly`, `Never`, `Always`. More informations on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#windowsproperties). | `any` | <pre>{<br/>  "excluded_kb_numbers": [],<br/>  "included_kb_numbers": [],<br/>  "reboot_setting": "IfRequired",<br/>  "update_classifications": "Critical, Security"<br/>}</pre> | no |
-| windows\_update\_management\_configuration\_name | Custom configuration name for Windows Update management. | `string` | `"Standard Windows Update Schedule"` | no |
-| windows\_update\_management\_duration | To set the maintenance window for Windows machines, the duration must be a minimum of 30 minutes and less than 6 hours. The last 20 minutes of the maintenance window is dedicated for machine restart and any remaining updates will not be started once this interval is reached. In-progress updates will finish being applied. This parameter needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601. Defaults to 2 hours (PT2H). | `string` | `null` | no |
-| windows\_update\_management\_schedule | Map of specific schedule parameters for update management of Windows machines. All parameters are available on the [documentation](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json#sucscheduleproperties-object). | `list(any)` | `null` | no |
-| windows\_update\_management\_scope | Scope of the update management for Windows machines, it can be a subscription ID, a resource group ID etc.. | `list(string)` | `null` | no |
-| windows\_update\_management\_tags\_filtering | Filter scope for Windows machines using tags on VMs. Example :<pre>{ os_family = ["windows"] }</pre>. | `map(any)` | `null` | no |
-| windows\_update\_management\_tags\_filtering\_operator | Filter Windows VMs by `Any` or `All` specified tags. Possible values are `All` or `Any`. | `string` | `null` | no |
 
 ## Outputs
 
@@ -368,7 +330,7 @@ module "run" {
 | automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC secondary access key. |
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC server endpoint. |
 | automation\_account\_id | Azure Automation Account ID. |
-| automation\_account\_identity | Identity block with principal ID and tenant ID |
+| automation\_account\_identity | Identity block with principal ID and tenant ID. |
 | automation\_account\_name | Azure Automation Account name. |
 | backup\_vault\_id | Azure Backup Vault ID. |
 | backup\_vault\_identity | Azure Backup Services Vault identity. |
@@ -378,11 +340,10 @@ module "run" {
 | data\_collection\_rule\_name | Name of the Azure Monitor Data Collection Rule. |
 | file\_share\_backup\_policy\_id | File share Backup policy ID. |
 | file\_share\_backup\_policy\_name | File share Backup policy name. |
-| key\_vault\_hsm\_uri | The URI of the Key Vault Managed Hardware Security Module, used for performing operations on keys. |
-| keyvault\_id | ID of the Key Vault. |
-| keyvault\_name | Name of the Key Vault. |
-| keyvault\_resource\_group\_name | Resource Group of the Key Vault. |
-| keyvault\_uri | URI of the Key Vault. |
+| key\_vault\_id | ID of the Key Vault. |
+| key\_vault\_name | Name of the Key Vault. |
+| key\_vault\_resource\_group\_name | Resource Group of the Key Vault. |
+| key\_vault\_uri | URI of the Key Vault. |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
 | log\_analytics\_workspace\_location | The Log Analytics Workspace location. |
@@ -399,25 +360,31 @@ module "run" {
 | logs\_storage\_account\_secondary\_connection\_string | Secondary connection string of the logs Storage Account. |
 | maintenance\_configurations | Update Center Maintenance Configurations information. |
 | managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID. |
-| monitoring\_function\_application\_insights\_app\_id | App ID of the associated Application Insights |
-| monitoring\_function\_application\_insights\_application\_type | Application Type of the associated Application Insights |
-| monitoring\_function\_application\_insights\_id | ID of the associated Application Insights |
-| monitoring\_function\_application\_insights\_instrumentation\_key | Instrumentation key of the associated Application Insights |
-| monitoring\_function\_application\_insights\_name | Name of the associated Application Insights |
-| monitoring\_function\_function\_app\_connection\_string | Connection string of the created Function App |
-| monitoring\_function\_function\_app\_id | ID of the created Function App |
-| monitoring\_function\_function\_app\_identity | Identity block output of the Function App |
-| monitoring\_function\_function\_app\_name | Name of the created Function App |
-| monitoring\_function\_function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App |
-| monitoring\_function\_service\_plan\_id | Id of the created Service Plan |
-| monitoring\_function\_service\_plan\_name | Name of the created Service Plan |
-| monitoring\_function\_storage\_account\_id | ID of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_account\_name | Name of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided |
-| monitoring\_function\_storage\_queries\_table\_name | Name of the queries table in the Storage Account, empty if connection string provided |
+| module\_automation | Module automation outputs. |
+| module\_backup | Module backup outputs. |
+| module\_key\_vault | Key Vault module outputs. |
+| module\_logs | Module logs outputs. |
+| module\_maintenance\_configurations | Module maintenance configurations outputs. |
+| module\_monitoring\_function | Monitoring function module outputs. |
+| monitoring\_function\_app\_identity\_principal\_id | Identity principal ID output of the Function App. |
+| monitoring\_function\_application\_insights\_app\_id | App ID of the associated Application Insights. |
+| monitoring\_function\_application\_insights\_application\_type | Application Type of the associated Application Insights. |
+| monitoring\_function\_application\_insights\_id | ID of the associated Application Insights. |
+| monitoring\_function\_application\_insights\_instrumentation\_key | Instrumentation key of the associated Application Insights. |
+| monitoring\_function\_application\_insights\_name | Name of the associated Application Insights. |
+| monitoring\_function\_function\_app\_connection\_string | Connection string of the created Function App. |
+| monitoring\_function\_function\_app\_id | ID of the created Function App. |
+| monitoring\_function\_function\_app\_name | Name of the created Function App. |
+| monitoring\_function\_function\_app\_outbound\_ip\_addresses | Outbound IP addresses of the created Function App. |
+| monitoring\_function\_service\_plan\_id | Id of the created Service Plan. |
+| monitoring\_function\_service\_plan\_name | Name of the created Service Plan. |
+| monitoring\_function\_storage\_account\_id | ID of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_account\_name | Name of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_account\_primary\_access\_key | Primary connection string of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_account\_primary\_connection\_string | Primary connection string of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_account\_secondary\_access\_key | Secondary connection string of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_account\_secondary\_connection\_string | Secondary connection string of the associated Storage Account, empty if connection string provided. |
+| monitoring\_function\_storage\_queries\_table\_name | Name of the queries table in the Storage Account, empty if connection string provided. |
 | postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID. |
 | recovery\_vault\_id | Azure Recovery Services Vault ID. |
 | recovery\_vault\_identity | Azure Recovery Services Vault identity. |
@@ -431,5 +398,4 @@ module "run" {
 
 - Microsoft Azure Monitor logs documentation: [docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/log-query-overview)
 - Microsoft Azure Key Vault documentation: [docs.microsoft.com/en-us/azure/key-vault/](https://docs.microsoft.com/en-us/azure/key-vault/)
-- Microsoft Update management documentation: [docs.microsoft.com/en-us/azure/automation/update-management/overview](https://docs.microsoft.com/en-us/azure/automation/update-management/overview)
-- Microsoft ARM template for Update management documentation: [docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations](https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations?tabs=json)
+- Microsoft Azure Update Manager: [learn.microsoft.com/en-us/azure/update-manager](https://learn.microsoft.com/en-us/azure/update-manager/overview?tabs=azure-vms)
