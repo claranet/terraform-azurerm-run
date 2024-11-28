@@ -137,7 +137,7 @@ resource "azurerm_resource_group_policy_assignment" "main_windows" {
 }
 
 moved {
-  from = azurerm_resource_policy_assignment.main_windows
+  from = azurerm_resource_group_policy_assignment.update_check_windows
   to   = azurerm_resource_group_policy_assignment.main_windows
 }
 
