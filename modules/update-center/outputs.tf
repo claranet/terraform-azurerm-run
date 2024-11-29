@@ -1,6 +1,6 @@
 output "ids" {
   description = "Maintenance Configuration resources IDs."
-  value       = azurerm_maintenance_configuration.main[*].id
+  value       = { for key, m in azurerm_maintenance_configuration.main : key => m.id }
 }
 
 output "resource" {
