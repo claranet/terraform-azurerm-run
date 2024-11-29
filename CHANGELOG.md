@@ -1,3 +1,16 @@
+## 8.0.1 (2024-11-29)
+
+### Bug Fixes
+
+* moved type missmatch when refactoring module 1c107f8
+* update center output 99b613f
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.8.6 49fd0d3
+* **deps:** update dependency trivy to v0.57.1 6427ae5
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.19.0 8a589e8
+
 ## 8.0.0 (2024-11-15)
 
 ### ⚠ BREAKING CHANGES
