@@ -43,7 +43,7 @@ module "key_vault" {
 
   default_tags_enabled = var.default_tags_enabled
 
-  extra_tags = merge(var.extra_tags, var.keyvault_extra_tags)
+  extra_tags = merge(var.extra_tags, var.key_vault_extra_tags)
 }
 
 moved {

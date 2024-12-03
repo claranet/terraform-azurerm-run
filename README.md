@@ -215,6 +215,7 @@ module "run" {
 | key\_vault\_enabled\_for\_deployment | Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault. | `bool` | `false` | no |
 | key\_vault\_enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. | `bool` | `false` | no |
 | key\_vault\_enabled\_for\_template\_deployment | Boolean flag to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault. | `bool` | `false` | no |
+| key\_vault\_extra\_tags | Extra tags to add to the Key Vault. | `map(string)` | `{}` | no |
 | key\_vault\_logs\_categories | Log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | key\_vault\_logs\_metrics\_categories | Metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | key\_vault\_managed\_hardware\_security\_module\_enabled | Create a Key Vault Managed HSM resource if enabled. Changing this forces a new resource to be created. | `bool` | `false` | no |
@@ -225,13 +226,12 @@ module "run" {
 | key\_vault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | key\_vault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
 | key\_vault\_soft\_delete\_retention\_days | The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. | `number` | `7` | no |
-| keyvault\_extra\_tags | Extra tags to add to the Key Vault | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.). | `string` | `null` | no |
 | log\_analytics\_workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | log\_analytics\_workspace\_daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited). | `number` | `-1` | no |
-| log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
+| log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace. | `map(string)` | `{}` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account. | `string` | `null` | no |
 | log\_analytics\_workspace\_link\_enabled | Enable Log Analytics Workspace that will be connected with the automation account. | `bool` | `true` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix | `string` | `""` | no |
@@ -250,7 +250,7 @@ module "run" {
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | logs\_storage\_account\_customer\_managed\_key | Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information. | <pre>object({<br/>    key_vault_key_id          = optional(string)<br/>    managed_hsm_key_id        = optional(string)<br/>    user_assigned_identity_id = optional(string)<br/>  })</pre> | `null` | no |
 | logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is deployed. | `bool` | `true` | no |
-| logs\_storage\_account\_extra\_tags | Extra tags to add to the logs Storage Account | `map(string)` | `{}` | no |
+| logs\_storage\_account\_extra\_tags | Extra tags to add to the logs Storage Account. | `map(string)` | `{}` | no |
 | logs\_storage\_account\_https\_traffic\_only\_enabled | Enable/disable HTTPS traffic only | `bool` | `true` | no |
 | logs\_storage\_account\_identity\_ids | List of User Assigned Identity IDs to assign to the Storage Account. | `list(string)` | `null` | no |
 | logs\_storage\_account\_identity\_type | The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`. | `string` | `"SystemAssigned"` | no |
@@ -275,7 +275,7 @@ module "run" {
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function. | `map(string)` | `{}` | no |
-| monitoring\_function\_extra\_tags | Monitoring function extra tags to add | `map(string)` | `{}` | no |
+| monitoring\_function\_extra\_tags | Extra tags to add to the monitoring function. | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_logs\_categories | Monitoring function log categories to send to destinations. All by default. | `list(string)` | `null` | no |
 | monitoring\_function\_logs\_metrics\_categories | Monitoring function metrics categories to send to destinations. All by default. | `list(string)` | `null` | no |
