@@ -38,11 +38,18 @@ locals {
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
-        | where Category == "TunnelDiagnosticLog"
-        | where TimeGenerated > ago(90d)
-        | extend status_int = case(status_s  == "Connected", 1, 0)
-        | summarize last_state_change=arg_max(TimeGenerated, metric_value=status_int) by remote_ip=remoteIP_s, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, timestamp=now()
-        | project-away last_state_change
+        | where OperationName == "IKELogEvent"
+        | where Message contains "Remote" and Message contains "[SEND]"
+        | parse Message with * "Remote " remote_ip ":" *
+        | summarize by remote_ip, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, timestamp=now()
+        | join kind=leftouter (
+          AzureDiagnostics
+          | where Category == "TunnelDiagnosticLog"
+          | where TimeGenerated > ago(90d)
+          | extend status_int = case(status_s == "Connected", 1, 0)
+          | summarize last_state_change=arg_max(TimeGenerated, metric_value=status_int) by remote_ip=remoteIP_s, azure_resource_group=ResourceGroup, subscription_id=SubscriptionId, azure_resource_name=Resource, timestamp=now()
+        ) on $left.remote_ip == $right.remote_ip
+        | project remote_ip, azure_resource_group, subscription_id, timestamp=now(),azure_resource_name, metric_value = case(isnull(last_state_change), 1, 1)
       EOQ
     }
   }
