@@ -30,7 +30,7 @@ module "function" {
   function_app_version = 4
   site_config = {
     application_stack = {
-      python_version = "3.12"
+      python_version = "3.11"
     }
   }
 

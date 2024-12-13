@@ -10,8 +10,8 @@ variable "extra_tags" {
   default     = {}
 }
 
-variable "keyvault_extra_tags" {
-  description = "Extra tags to add to the Key Vault"
+variable "key_vault_extra_tags" {
+  description = "Extra tags to add to the Key Vault."
   type        = map(string)
   default     = {}
 }
@@ -23,19 +23,19 @@ variable "automation_account_extra_tags" {
 }
 
 variable "log_analytics_workspace_extra_tags" {
-  description = "Extra tags to add to the Log Analytics Workspace"
+  description = "Extra tags to add to the Log Analytics Workspace."
   type        = map(string)
   default     = {}
 }
 
 variable "logs_storage_account_extra_tags" {
-  description = "Extra tags to add to the logs Storage Account"
+  description = "Extra tags to add to the logs Storage Account."
   type        = map(string)
   default     = {}
 }
 
 variable "monitoring_function_extra_tags" {
-  description = "Monitoring function extra tags to add"
+  description = "Extra tags to add to the monitoring function."
   type        = map(string)
   default     = {}
 }

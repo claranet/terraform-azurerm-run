@@ -178,14 +178,10 @@ variable "logs_rbac_storage_contributor_role_principal_ids" {
 variable "logs_rbac_storage_blob_role_principal_ids" {
   description = "The principal IDs of the users, groups, and service principals to assign the `Storage Blob Data *` different roles to if Blob containers are created."
   type = object({
-    blob_owners       = optional(list(string), [])
-    blob_contributors = optional(list(string), [])
-    blob_readers      = optional(list(string), [])
+    owners       = optional(list(string), [])
+    contributors = optional(list(string), [])
+    readers      = optional(list(string), [])
   })
-  default = {
-    blob_owners       = []
-    blob_contributors = []
-    blob_readers      = []
-  }
+  default  = {}
   nullable = false
 }
