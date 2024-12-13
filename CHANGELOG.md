@@ -1,3 +1,15 @@
+## 8.0.2 (2024-12-13)
+
+### Bug Fixes
+
+* **AZ-1088:** `logs` submodule role assignments ee5622e
+* **AZ-1088:** monitoring function python version and key vault variables d174349
+* improve fame vpn loganalytics query 47946b9
+
+### Miscellaneous Chores
+
+* **deps:** update tools e85064e
+
 ## 8.0.1 (2024-11-29)
 
 ### Bug Fixes
