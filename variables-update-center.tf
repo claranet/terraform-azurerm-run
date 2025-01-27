@@ -36,6 +36,12 @@ variable "update_center_maintenance_configurations" {
   default = []
 }
 
+variable "update_center_maintenance_configurations_name_prefix" {
+  description = "Prefix for the maintenance configuration names."
+  type        = string
+  default     = "mc-"
+}
+
 variable "update_center_periodic_assessment_enabled" {
   description = "Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy."
   type        = bool

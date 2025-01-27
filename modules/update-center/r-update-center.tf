@@ -1,7 +1,7 @@
 resource "azurerm_maintenance_configuration" "main" {
   for_each = { for config in var.maintenance_configurations : config.configuration_name => config }
 
-  name                = "mc-${each.key}"
+  name                = join("", compact([var.name_prefix, each.key]))
   resource_group_name = var.resource_group_name
   location            = var.location
 
