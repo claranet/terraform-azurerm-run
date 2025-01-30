@@ -160,6 +160,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_maintenance_assignment_dynamic_scope.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/maintenance_assignment_dynamic_scope) | resource |
 | [azurerm_maintenance_configuration.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/maintenance_configuration) | resource |
 | [azurerm_management_group_policy_assignment.main_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
 | [azurerm_management_group_policy_assignment.main_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
@@ -178,6 +179,7 @@ No modules.
 | auto\_assessment\_exclusions | Exclude some resources from auto-assessment. | `list(string)` | `[]` | no |
 | auto\_assessment\_scopes | Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines. | `list(string)` | `[]` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
+| dynamic\_scope\_assignment | Enable dynamic scope assignment for maintenance configurations. | <pre>object({<br/>    enabled     = optional(bool, false)<br/>    name_prefix = optional(string, "mcdc-")<br/>    filter = optional(object({<br/>      locations       = list(string)<br/>      os_types        = optional(list(string), ["Linux", "Windows"])<br/>      resource_groups = optional(list(string))<br/>      resource_types  = optional(list(string))<br/>      tag_filter      = optional(string, "Any")<br/>      tags = optional(list(object({<br/>        key    = string<br/>        values = list(string)<br/>      })), [])<br/>    }))<br/>  })</pre> | `{}` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |

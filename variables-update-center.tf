@@ -59,3 +59,24 @@ variable "update_center_periodic_assessment_exclusions" {
   type        = list(string)
   default     = []
 }
+
+variable "update_center_dynamic_scope_assignment" {
+  description = "Enable dynamic scope assignment for maintenance configurations."
+  type = object({
+    enabled     = optional(bool, false)
+    name_prefix = optional(string, "mcdc-")
+    filter = optional(object({
+      locations       = list(string)
+      os_types        = optional(list(string), ["Linux", "Windows"])
+      resource_groups = optional(list(string))
+      resource_types  = optional(list(string))
+      tag_filter      = optional(string, "Any")
+      tags = optional(list(object({
+        key    = string
+        values = list(string)
+      })), [])
+    }))
+  })
+  default  = {}
+  nullable = false
+}
