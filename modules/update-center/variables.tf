@@ -67,3 +67,9 @@ variable "auto_assessment_exclusions" {
   type        = list(string)
   default     = []
 }
+
+variable "name_prefix" {
+  description = "Prefix for the maintenance configuration names."
+  type        = string
+  default     = "mc-"
+}

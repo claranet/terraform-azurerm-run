@@ -13,6 +13,7 @@ module "update_management_center" {
   auto_assessment_exclusions = var.update_center_periodic_assessment_exclusions
 
   maintenance_configurations = var.update_center_maintenance_configurations
+  name_prefix                = var.update_center_maintenance_configurations_name_prefix
 
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags
