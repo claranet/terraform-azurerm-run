@@ -1,3 +1,22 @@
+## 8.1.0 (2025-01-31)
+
+### Features
+
+* allow overriding update center config name prefix 80be791
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.8.8 6ac6e19
+* **deps:** update dependency opentofu to v1.9.0 376e0e8
+* **deps:** update dependency pre-commit to v4.1.0 c05d439
+* **deps:** update dependency tflint to v0.55.0 4c77907
+* **deps:** update dependency trivy to v0.58.1 20baf54
+* **deps:** update dependency trivy to v0.58.2 490cc66
+* **deps:** update dependency trivy to v0.59.0 6b3cb81
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.20.0 dd33a95
+* **deps:** update terraform claranet/storage-account/azurerm to ~> 8.3.0 dab5cd3
+* update tflint config for v0.55.0 2776791
+
 ## 8.0.2 (2024-12-13)
 
 ### Bug Fixes
