@@ -20,5 +20,5 @@ resource "azurerm_log_analytics_workspace" "main" {
 
 moved {
   from = azurerm_log_analytics_workspace.log_workspace
-  to = azurerm_log_analytics_workspace.main
+  to   = azurerm_log_analytics_workspace.main
 }
