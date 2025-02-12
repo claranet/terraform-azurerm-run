@@ -67,6 +67,6 @@ module "storage" {
 }
 
 moved {
-  from = module.storage
-  to   = module.storage[0]
+  from = module.storage_logs
+  to   = module.storage
 }
