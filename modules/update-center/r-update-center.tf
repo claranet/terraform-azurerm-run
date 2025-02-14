@@ -38,3 +38,29 @@ moved {
   from = azurerm_maintenance_configuration.maintenance_configuration
   to   = azurerm_maintenance_configuration.main
 }
+
+resource "azurerm_maintenance_assignment_dynamic_scope" "main" {
+  for_each = var.dynamic_scope_assignment.enabled ? azurerm_maintenance_configuration.main : {}
+
+  name                         = join("", compact([var.dynamic_scope_assignment.name_prefix, each.key]))
+  maintenance_configuration_id = each.value.id
+
+  dynamic "filter" {
+    for_each = var.dynamic_scope_assignment.filter[*]
+    content {
+      locations       = filter.value.locations
+      os_types        = filter.value.os_types
+      resource_groups = filter.value.resource_groups
+      resource_types  = filter.value.resource_types
+      tag_filter      = filter.value.tag_filter
+
+      dynamic "tags" {
+        for_each = filter.value.tags
+        content {
+          tag    = tags.value.key
+          values = tags.value.value
+        }
+      }
+    }
+  }
+}

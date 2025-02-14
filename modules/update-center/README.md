@@ -160,6 +160,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_maintenance_assignment_dynamic_scope.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/maintenance_assignment_dynamic_scope) | resource |
 | [azurerm_maintenance_configuration.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/maintenance_configuration) | resource |
 | [azurerm_management_group_policy_assignment.main_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
 | [azurerm_management_group_policy_assignment.main_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_group_policy_assignment) | resource |
@@ -178,11 +179,12 @@ No modules.
 | auto\_assessment\_exclusions | Exclude some resources from auto-assessment. | `list(string)` | `[]` | no |
 | auto\_assessment\_scopes | Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines. | `list(string)` | `[]` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
+| dynamic\_scope\_assignment | Enable dynamic scope assignment for maintenance configurations. | <pre>object({<br/>    enabled     = optional(bool, false)<br/>    name_prefix = optional(string, "mcds-")<br/>    filter = optional(object({<br/>      locations       = list(string)<br/>      os_types        = optional(list(string), ["Linux", "Windows"])<br/>      resource_groups = optional(list(string))<br/>      resource_types  = optional(list(string))<br/>      tag_filter      = optional(string, "Any")<br/>      tags = optional(list(object({<br/>        key    = string<br/>        values = list(string)<br/>      })), [])<br/>    }))<br/>  })</pre> | `{}` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
 | maintenance\_configurations | Maintenance configurations following the [provider's documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations). | <pre>list(object({<br/>    configuration_name = string<br/>    start_date_time    = string<br/>    duration           = optional(string, "02:00")<br/>    time_zone          = optional(string, "UTC")<br/>    recur_every        = string<br/>    reboot_setting     = optional(string, "IfRequired")<br/>    windows_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Definition",<br/>      "FeaturePack",<br/>      "Security",<br/>      "ServicePack",<br/>      "Tools",<br/>      "UpdateRollup",<br/>      "Updates"<br/>    ])<br/>    linux_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Security",<br/>      "Other",<br/>    ])<br/>    windows_kb_numbers_to_exclude  = optional(list(string), [])<br/>    windows_kb_numbers_to_include  = optional(list(string), [])<br/>    linux_package_names_to_exclude = optional(list(string), [])<br/>    linux_package_names_to_include = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
-| name\_prefix | Prefix for the maintenance configuration names. | `string` | `"mc-"` | no |
+| name\_prefix | Prefix for the maintenance configurations names. | `string` | `"mc-"` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
 

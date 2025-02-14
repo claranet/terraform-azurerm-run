@@ -14,6 +14,7 @@ module "update_management_center" {
 
   maintenance_configurations = var.update_center_maintenance_configurations
   name_prefix                = var.update_center_maintenance_configurations_name_prefix
+  dynamic_scope_assignment   = var.update_center_dynamic_scope_assignment
 
   default_tags_enabled = var.default_tags_enabled
   extra_tags           = var.extra_tags

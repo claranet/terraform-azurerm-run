@@ -69,7 +69,28 @@ variable "auto_assessment_exclusions" {
 }
 
 variable "name_prefix" {
-  description = "Prefix for the maintenance configuration names."
+  description = "Prefix for the maintenance configurations names."
   type        = string
   default     = "mc-"
+}
+
+variable "dynamic_scope_assignment" {
+  description = "Enable dynamic scope assignment for maintenance configurations."
+  type = object({
+    enabled     = optional(bool, false)
+    name_prefix = optional(string, "mcds-")
+    filter = optional(object({
+      locations       = list(string)
+      os_types        = optional(list(string), ["Linux", "Windows"])
+      resource_groups = optional(list(string))
+      resource_types  = optional(list(string))
+      tag_filter      = optional(string, "Any")
+      tags = optional(list(object({
+        key    = string
+        values = list(string)
+      })), [])
+    }))
+  })
+  default  = {}
+  nullable = false
 }
