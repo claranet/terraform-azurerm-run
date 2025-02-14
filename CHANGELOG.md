@@ -1,3 +1,21 @@
+## 8.2.0 (2025-02-14)
+
+### Features
+
+* **GH-3:** add update-center maintenance config dynamic scope assignments 7f3130a
+
+### Bug Fixes
+
+* **AZ-1516:** moved blocks for storage and log analytics workspace 1fc74cf
+
+### Miscellaneous Chores
+
+* apply suggestions 1c3e5cf
+* **AZ-1516:** end of files newline 0d2f1b7
+* **deps:** update dependency tflint to v0.55.1 86ce174
+* **deps:** update dependency trivy to v0.59.1 8284156
+* update Github templates b02c162
+
 ## 8.1.0 (2025-01-31)
 
 ### Features
