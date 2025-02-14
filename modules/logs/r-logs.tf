@@ -17,3 +17,8 @@ resource "azurerm_log_analytics_workspace" "main" {
     var.workspace_extra_tags,
   )
 }
+
+moved {
+  from = azurerm_log_analytics_workspace.log_workspace
+  to   = azurerm_log_analytics_workspace.main
+}
