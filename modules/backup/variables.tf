@@ -95,9 +95,10 @@ variable "recovery_vault_soft_delete_enabled" {
 }
 
 variable "recovery_vault_immutability" {
-  description = "Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Disabled`."
+  description = "Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`."
   type        = string
-  default     = "Disabled"
+  default     = "Unlocked"
+  nullable    = false
 }
 
 variable "recovery_vault_identity_type" {
