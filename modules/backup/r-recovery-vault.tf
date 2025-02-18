@@ -10,6 +10,7 @@ resource "azurerm_recovery_services_vault" "main" {
   storage_mode_type            = var.recovery_vault_storage_mode_type
   cross_region_restore_enabled = var.recovery_vault_cross_region_restore_enabled
   soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
+  immutability                 = var.recovery_vault_immutability
 
   dynamic "identity" {
     for_each = var.recovery_vault_identity_type[*]
