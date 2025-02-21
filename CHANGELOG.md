@@ -1,3 +1,14 @@
+## 8.3.0 (2025-02-21)
+
+### Features
+
+* **AZ-1519:** add `immutability` variable 32646b0
+* **AZ-1519:** apply suggestions a02c287
+
+### Miscellaneous Chores
+
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.21.0 332f3bf
+
 ## 8.2.0 (2025-02-14)
 
 ### Features
