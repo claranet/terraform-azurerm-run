@@ -29,6 +29,7 @@ module "backup" {
   recovery_vault_storage_mode_type            = var.recovery_vault_storage_mode_type
   recovery_vault_cross_region_restore_enabled = var.recovery_vault_cross_region_restore_enabled
   recovery_vault_soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
+  recovery_vault_immutability                 = var.recovery_vault_immutability
   recovery_vault_extra_tags                   = var.recovery_vault_extra_tags
 
   backup_vault_custom_name            = var.backup_vault_custom_name

@@ -94,6 +94,13 @@ variable "recovery_vault_soft_delete_enabled" {
   default     = true
 }
 
+variable "recovery_vault_immutability" {
+  description = "Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`."
+  type        = string
+  default     = "Unlocked"
+  nullable    = false
+}
+
 variable "recovery_vault_identity_type" {
   description = "Azure Recovery Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`."
   type        = string
