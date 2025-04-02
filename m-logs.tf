@@ -19,9 +19,9 @@ module "logs" {
   storage_account_tier                               = var.logs_storage_account_tier
   storage_account_access_tier                        = var.logs_storage_account_access_tier
   storage_account_replication_type                   = var.logs_storage_account_replication_type
-  storage_account_min_tls_version                    = var.logs_storage_min_tls_version
+  storage_account_min_tls_version                    = var.logs_storage_account_min_tls_version
   storage_account_advanced_threat_protection_enabled = var.logs_storage_account_advanced_threat_protection_enabled
-  storage_account_infrastructure_encryption_enabled  = var.logs_storage_infrastructure_encryption_enabled
+  storage_account_infrastructure_encryption_enabled  = var.logs_storage_account_infrastructure_encryption_enabled
   storage_account_https_traffic_only_enabled         = var.logs_storage_account_https_traffic_only_enabled
   storage_account_archived_logs_fileshare_enabled    = var.logs_storage_account_archived_logs_fileshare_enabled
   storage_account_archived_logs_fileshare_name       = var.logs_storage_account_archived_logs_fileshare_name
@@ -31,7 +31,7 @@ module "logs" {
   storage_account_identity_ids                       = var.logs_storage_account_identity_ids
 
   # RBAC/access
-  storage_shared_access_key_enabled           = var.logs_storage_shared_access_key_enabled
+  storage_shared_access_key_enabled           = var.logs_storage_account_shared_access_key_enabled
   rbac_storage_contributor_role_principal_ids = var.logs_rbac_storage_contributor_role_principal_ids
   rbac_storage_blob_role_principal_ids        = var.logs_rbac_storage_blob_role_principal_ids
 
