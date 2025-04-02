@@ -258,6 +258,7 @@ module "run" {
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
 | logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |
+| logs\_storage\_infrastructure\_encryption\_enabled | Boolean flag which enables infrastructure encryption.  Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#infrastructure_encryption_enabled) for more information. | `bool` | `false` | no |
 | logs\_storage\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
 | logs\_storage\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
 | logs\_tier\_to\_archive\_after\_days\_since\_modification\_greater\_than | Change blob tier to Archive after x days without modification | `number` | `90` | no |

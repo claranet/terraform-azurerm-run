@@ -21,6 +21,7 @@ module "logs" {
   storage_account_replication_type                   = var.logs_storage_account_replication_type
   storage_account_min_tls_version                    = var.logs_storage_min_tls_version
   storage_account_advanced_threat_protection_enabled = var.logs_storage_account_advanced_threat_protection_enabled
+  storage_account_infrastructure_encryption_enabled  = var.logs_storage_infrastructure_encryption_enabled
   storage_account_https_traffic_only_enabled         = var.logs_storage_account_https_traffic_only_enabled
   storage_account_archived_logs_fileshare_enabled    = var.logs_storage_account_archived_logs_fileshare_enabled
   storage_account_archived_logs_fileshare_name       = var.logs_storage_account_archived_logs_fileshare_name
