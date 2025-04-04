@@ -140,3 +140,20 @@ variable "rbac_storage_blob_role_principal_ids" {
   default  = {}
   nullable = false
 }
+
+variable "storage_account_allowed_copy_scope" {
+  description = "Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`."
+  type        = string
+  default     = null
+  validation {
+    condition     = var.storage_account_allowed_copy_scope == null || try(contains(["AAD", "PrivateLink"], var.storage_account_allowed_copy_scope), false)
+    error_message = "Allowed values for storage_account_allowed_copy_scope are `AAD` or `PrivateLink`."
+  }
+}
+
+variable "storage_account_public_network_access_enabled" {
+  description = "Whether the public network access is enabled."
+  type        = bool
+  default     = true
+  nullable    = false
+}

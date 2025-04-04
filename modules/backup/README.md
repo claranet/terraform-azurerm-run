@@ -146,6 +146,8 @@ module "az_vm_backup" {
 | postgresql\_backup\_policy\_retention\_in\_days | The number of days to keep the Postgresql backup. | `number` | `30` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the Postgresql backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Postgresql backup. | `number` | `null` | no |
+| recovery\_vault\_alerts\_for\_all\_job\_failures\_enabled | Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to true. | `bool` | `true` | no |
+| recovery\_vault\_alerts\_for\_critical\_operation\_failures\_enabled | Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to true. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview). | `bool` | `true` | no |
 | recovery\_vault\_cross\_region\_restore\_enabled | Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`. | `bool` | `true` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to Recovery Vault. | `map(string)` | `{}` | no |

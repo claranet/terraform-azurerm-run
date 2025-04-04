@@ -19,6 +19,11 @@ resource "azurerm_recovery_services_vault" "main" {
     }
   }
 
+  monitoring {
+    alerts_for_all_job_failures_enabled            = var.recovery_vault_alerts_for_all_job_failures_enabled
+    alerts_for_critical_operation_failures_enabled = var.recovery_vault_alerts_for_critical_operation_failures_enabled
+  }
+
   tags = merge(local.default_tags, var.extra_tags, var.recovery_vault_extra_tags)
 }
 

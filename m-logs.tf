@@ -29,6 +29,8 @@ module "logs" {
   storage_account_customer_managed_key               = var.logs_storage_account_customer_managed_key
   storage_account_identity_type                      = var.logs_storage_account_identity_type
   storage_account_identity_ids                       = var.logs_storage_account_identity_ids
+  storage_account_allowed_copy_scope                 = var.logs_storage_account_allowed_copy_scope
+  storage_account_public_network_access_enabled      = var.logs_storage_account_public_network_access_enabled
 
   # RBAC/access
   storage_shared_access_key_enabled           = var.logs_storage_account_shared_access_key_enabled

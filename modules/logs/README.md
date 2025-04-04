@@ -103,6 +103,7 @@ module "logs" {
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
 | storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| storage\_account\_allowed\_copy\_scope | Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`. | `string` | `null` | no |
 | storage\_account\_archived\_logs\_fileshare\_enabled | Enable/disable archived-logs file share creation. | `bool` | `false` | no |
 | storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored. | `string` | `"archived-logs"` | no |
 | storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120. | `number` | `null` | no |
@@ -118,6 +119,7 @@ module "logs" {
 | storage\_account\_kind | Storage Account Kind. | `string` | `"StorageV2"` | no |
 | storage\_account\_min\_tls\_version | Storage Account minimal TLS version. | `string` | `"TLS1_2"` | no |
 | storage\_account\_name\_prefix | Storage Account name prefix. | `string` | `""` | no |
+| storage\_account\_public\_network\_access\_enabled | Whether the public network access is enabled. | `bool` | `true` | no |
 | storage\_account\_replication\_type | Storage Account Replication type. | `string` | `"LRS"` | no |
 | storage\_account\_tier | Storage Account tier. | `string` | `"Standard"` | no |
 | storage\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
