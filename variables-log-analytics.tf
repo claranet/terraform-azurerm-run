@@ -79,7 +79,7 @@ variable "logs_storage_account_replication_type" {
   default     = "LRS"
 }
 
-variable "logs_storage_min_tls_version" {
+variable "logs_storage_account_min_tls_version" {
   description = "Storage Account minimal TLS version"
   type        = string
   default     = "TLS1_2"
@@ -161,8 +161,15 @@ variable "logs_storage_account_identity_ids" {
   default     = null
 }
 
-variable "logs_storage_shared_access_key_enabled" {
+variable "logs_storage_account_shared_access_key_enabled" {
   description = "Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID)."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "logs_storage_account_infrastructure_encryption_enabled" {
+  description = "Boolean flag which enables infrastructure encryption.  Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#infrastructure_encryption_enabled) for more information."
   type        = bool
   default     = false
   nullable    = false

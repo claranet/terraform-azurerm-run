@@ -35,6 +35,7 @@ module "storage" {
   https_traffic_only_enabled         = var.storage_account_https_traffic_only_enabled
   public_nested_items_allowed        = false
   advanced_threat_protection_enabled = var.storage_account_advanced_threat_protection_enabled
+  infrastructure_encryption_enabled  = var.storage_account_infrastructure_encryption_enabled
 
   # Identity
   identity_type = var.storage_account_identity_type

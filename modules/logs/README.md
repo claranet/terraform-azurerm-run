@@ -114,6 +114,7 @@ module "logs" {
 | storage\_account\_https\_traffic\_only\_enabled | Enable/disable HTTPS traffic only. | `bool` | `true` | no |
 | storage\_account\_identity\_ids | List of User Assigned Identity IDs to assign to the Storage Account. | `list(string)` | `null` | no |
 | storage\_account\_identity\_type | The identity type of the storage account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`. | `string` | `"SystemAssigned"` | no |
+| storage\_account\_infrastructure\_encryption\_enabled | Boolean flag which enables infrastructure encryption.  Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#infrastructure_encryption_enabled) for more information. | `bool` | `false` | no |
 | storage\_account\_kind | Storage Account Kind. | `string` | `"StorageV2"` | no |
 | storage\_account\_min\_tls\_version | Storage Account minimal TLS version. | `string` | `"TLS1_2"` | no |
 | storage\_account\_name\_prefix | Storage Account name prefix. | `string` | `""` | no |

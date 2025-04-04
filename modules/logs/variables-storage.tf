@@ -116,6 +116,13 @@ variable "storage_shared_access_key_enabled" {
   nullable    = false
 }
 
+variable "storage_account_infrastructure_encryption_enabled" {
+  description = "Boolean flag which enables infrastructure encryption.  Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#infrastructure_encryption_enabled) for more information."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "rbac_storage_contributor_role_principal_ids" {
   description = "The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to."
   type        = list(string)
