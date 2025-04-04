@@ -36,6 +36,7 @@ module "storage" {
   public_nested_items_allowed        = false
   advanced_threat_protection_enabled = var.storage_account_advanced_threat_protection_enabled
   infrastructure_encryption_enabled  = var.storage_account_infrastructure_encryption_enabled
+  allowed_copy_scope                 = var.storage_account_allowed_copy_scope
 
   # Identity
   identity_type = var.storage_account_identity_type
@@ -53,7 +54,8 @@ module "storage" {
   }
 
   # Network rules - handle out of module to avoid Terraform cycle
-  network_rules_enabled = false
+  network_rules_enabled         = false
+  public_network_access_enabled = var.storage_account_public_network_access_enabled
 
   # Diagnostics/logs
   logs_destinations_ids = []

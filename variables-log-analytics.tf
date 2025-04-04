@@ -161,6 +161,23 @@ variable "logs_storage_account_identity_ids" {
   default     = null
 }
 
+variable "logs_storage_account_allowed_copy_scope" {
+  description = "Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`."
+  type        = string
+  default     = null
+  validation {
+    condition     = var.logs_storage_account_allowed_copy_scope == null || try(contains(["AAD", "PrivateLink"], var.logs_storage_account_allowed_copy_scope), false)
+    error_message = "Allowed values for logs_storage_account_allowed_copy_scope are `AAD` or `PrivateLink`."
+  }
+}
+
+variable "logs_storage_account_public_network_access_enabled" {
+  description = "Whether the public network access is enabled."
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
 variable "logs_storage_account_shared_access_key_enabled" {
   description = "Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID)."
   type        = bool

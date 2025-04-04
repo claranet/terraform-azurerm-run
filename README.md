@@ -243,6 +243,7 @@ module "run" {
 | logs\_resource\_group\_name | Resource Group the resources for log management will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | logs\_storage\_account\_access\_tier | Defines the access tier for `BlobStorage`, `FileStorage` and `StorageV2` accounts. Valid options are `Hot` and `Cool`, defaults to `Hot`. | `string` | `"Hot"` | no |
 | logs\_storage\_account\_advanced\_threat\_protection\_enabled | Enable/disable Advanced Threat Protection, see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal) for more information. | `bool` | `false` | no |
+| logs\_storage\_account\_allowed\_copy\_scope | Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values are `AAD` and `PrivateLink`. | `string` | `null` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_enabled | Enable/disable archived-logs file share creation | `bool` | `false` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120 | `number` | `null` | no |
@@ -258,6 +259,7 @@ module "run" {
 | logs\_storage\_account\_kind | Storage Account Kind | `string` | `"StorageV2"` | no |
 | logs\_storage\_account\_min\_tls\_version | Storage Account minimal TLS version | `string` | `"TLS1_2"` | no |
 | logs\_storage\_account\_name\_prefix | Storage Account name prefix | `string` | `""` | no |
+| logs\_storage\_account\_public\_network\_access\_enabled | Whether the public network access is enabled. | `bool` | `true` | no |
 | logs\_storage\_account\_replication\_type | Storage Account Replication type | `string` | `"LRS"` | no |
 | logs\_storage\_account\_shared\_access\_key\_enabled | Indicates whether the Storage Account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Entra ID). | `bool` | `false` | no |
 | logs\_storage\_account\_tier | Storage Account tier | `string` | `"Standard"` | no |
@@ -295,6 +297,8 @@ module "run" {
 | postgresql\_backup\_policy\_retention\_in\_days | The number of days to keep the Postgresql backup. | `number` | `30` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the Postgresql backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Postgresql backup. | `number` | `null` | no |
+| recovery\_vault\_alerts\_for\_all\_job\_failures\_enabled | Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to true. | `bool` | `true` | no |
+| recovery\_vault\_alerts\_for\_critical\_operation\_failures\_enabled | Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to true. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview). | `bool` | `true` | no |
 | recovery\_vault\_cross\_region\_restore\_enabled | Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`. | `bool` | `true` | no |
 | recovery\_vault\_custom\_name | Azure Recovery Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | recovery\_vault\_extra\_tags | Extra tags to add to Recovery Vault. | `map(string)` | `{}` | no |

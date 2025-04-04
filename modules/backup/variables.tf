@@ -107,6 +107,18 @@ variable "recovery_vault_identity_type" {
   default     = "SystemAssigned"
 }
 
+variable "recovery_vault_alerts_for_all_job_failures_enabled" {
+  description = "Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to true."
+  type        = bool
+  default     = true
+}
+
+variable "recovery_vault_alerts_for_critical_operation_failures_enabled" {
+  description = "Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to true. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview)."
+  type        = bool
+  default     = true
+}
+
 variable "vm_backup_policy_timezone" {
   description = "Specifies the timezone for VM backup schedules. Defaults to `UTC`."
   type        = string
