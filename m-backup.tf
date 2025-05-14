@@ -33,6 +33,7 @@ module "backup" {
   recovery_vault_alerts_for_all_job_failures_enabled            = var.recovery_vault_alerts_for_all_job_failures_enabled
   recovery_vault_alerts_for_critical_operation_failures_enabled = var.recovery_vault_alerts_for_critical_operation_failures_enabled
   recovery_vault_extra_tags                                     = var.recovery_vault_extra_tags
+  recovery_vault_public_network_access_enabled                  = var.recovery_vault_public_network_access_enabled
 
   backup_vault_custom_name            = var.backup_vault_custom_name
   backup_vault_datastore_type         = var.backup_vault_datastore_type

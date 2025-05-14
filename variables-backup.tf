@@ -85,6 +85,12 @@ variable "recovery_vault_alerts_for_critical_operation_failures_enabled" {
   default     = true
 }
 
+variable "recovery_vault_public_network_access_enabled" {
+  description = "Whether public network access is allowed for this Recovery Services Vault. Defaults to `true`."
+  type        = bool
+  default     = true
+}
+
 variable "vm_backup_policy_timezone" {
   description = "Specifies the timezone for VM backup schedules. Defaults to `UTC`."
   type        = string

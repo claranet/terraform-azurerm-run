@@ -12,6 +12,8 @@ resource "azurerm_recovery_services_vault" "main" {
   soft_delete_enabled          = var.recovery_vault_soft_delete_enabled
   immutability                 = var.recovery_vault_immutability
 
+  public_network_access_enabled = var.recovery_vault_public_network_access_enabled
+
   dynamic "identity" {
     for_each = var.recovery_vault_identity_type[*]
     content {
