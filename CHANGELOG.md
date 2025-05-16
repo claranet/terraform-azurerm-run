@@ -1,3 +1,18 @@
+## 8.5.0 (2025-05-16)
+
+### Features
+
+* **AZ-1554:** 🛡️ add public network access configuration for Recovery Vault 44e320a
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.9.1 11bd29a
+* **deps:** update dependency terraform-docs to v0.20.0 ff33824
+* **deps:** update dependency tflint to v0.57.0 c483e21
+* **deps:** update dependency trivy to v0.61.1 bacea90
+* **deps:** update dependency trivy to v0.62.0 b1e2b52
+* **deps:** update dependency trivy to v0.62.1 191b61b
+
 ## 8.4.0 (2025-04-04)
 
 ### Features
