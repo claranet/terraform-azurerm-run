@@ -153,7 +153,7 @@ module "run" {
 |------|--------|---------|
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| key\_vault | claranet/keyvault/azurerm | ~> 8.0.0 |
+| key\_vault | claranet/keyvault/azurerm | ~> 8.1.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring-function | n/a |
 | update\_management\_center | ./modules/update-center | n/a |
