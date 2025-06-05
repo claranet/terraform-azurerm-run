@@ -7,4 +7,15 @@ locals {
     local.log_queries_updates,
     local.log_queries_vpn,
   )
+
+  app_settings = merge(
+    {
+      LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid,
+      SUBSCRIPTION_ID              = data.azurerm_client_config.current.subscription_id,
+      SFX_EXTRA_DIMENSIONS         = local.extra_dimensions,
+    },
+    var.extra_application_settings,
+    var.splunk_token != null ? { SFX_TOKEN = var.splunk_token } : {},
+    var.datadog_api_key != null ? { DD_API_KEY = var.datadog_api_key } : {},
+  )
 }

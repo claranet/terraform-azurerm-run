@@ -104,6 +104,7 @@ module "monitoring" {
 | application\_insights\_enabled | Whether Application Insights should be deployed. | `bool` | `true` | no |
 | application\_insights\_log\_analytics\_workspace\_id | ID of the Log Analytics Workspace to be used with Application Insights. | `string` | n/a | yes |
 | client\_name | Client name. | `string` | n/a | yes |
+| datadog\_api\_key | API Key to send metrics to Datadog. | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Environment name. | `string` | n/a | yes |
@@ -123,11 +124,11 @@ module "monitoring" {
 | rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | service\_plan\_custom\_name | FAME Service Plan custom name | `string` | `null` | no |
-| splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | n/a | yes |
+| splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | `null` | no |
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_advanced\_threat\_protection\_enabled | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/BzSpi/fame/releases/download/v2.0.0-beta6/fame.zip"` | no |
 
 ## Outputs
 

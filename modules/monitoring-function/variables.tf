@@ -39,12 +39,19 @@ variable "log_analytics_workspace_guid" {
 variable "splunk_token" {
   description = "Access Token to send metrics to Splunk Observability."
   type        = string
+  default     = null
+}
+
+variable "datadog_api_key" {
+  description = "API Key to send metrics to Datadog."
+  type        = string
+  default     = null
 }
 
 variable "zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"
+  default     = "https://github.com/BzSpi/fame/releases/download/v2.0.0-beta6/fame.zip"
 }
 
 variable "metrics_extra_dimensions" {

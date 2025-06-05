@@ -18,19 +18,14 @@ module "function" {
   service_plan_custom_name         = var.service_plan_custom_name
 
   application_settings_drift_ignore = false
-  application_settings = merge({
-    SFX_TOKEN                    = var.splunk_token
-    LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid
-    SUBSCRIPTION_ID              = data.azurerm_client_config.current.subscription_id
-    SFX_EXTRA_DIMENSIONS         = local.extra_dimensions
-  }, var.extra_application_settings)
+  application_settings              = local.app_settings
 
   os_type              = "Linux"
   sku_name             = "Y1"
   function_app_version = 4
   site_config = {
     application_stack = {
-      python_version = "3.11"
+      python_version = "3.12"
     }
   }
 
