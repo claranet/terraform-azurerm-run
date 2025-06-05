@@ -12,7 +12,7 @@ locals {
     {
       LOG_ANALYTICS_WORKSPACE_GUID = var.log_analytics_workspace_guid,
       SUBSCRIPTION_ID              = data.azurerm_client_config.current.subscription_id,
-      SFX_EXTRA_DIMENSIONS         = local.extra_dimensions,
+      METRICS_EXTRA_DIMENSIONS     = local.extra_dimensions,
     },
     var.extra_application_settings,
     var.splunk_token != null ? { SFX_TOKEN = var.splunk_token } : {},

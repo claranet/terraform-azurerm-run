@@ -2,7 +2,6 @@ locals {
   log_queries_appgw = {
     application_gateway_instances = {
       MetricName = "fame.azure.application_gateway.instances"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics

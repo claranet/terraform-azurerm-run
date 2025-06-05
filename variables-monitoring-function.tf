@@ -34,7 +34,7 @@ variable "monitoring_function_logs_metrics_categories" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/BzSpi/fame/releases/download/v2.0.0-beta6/fame.zip"
+  default     = "https://github.com/BzSpi/fame/releases/download/v2.0.0-beta8/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {

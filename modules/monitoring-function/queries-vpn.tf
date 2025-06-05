@@ -2,7 +2,6 @@ locals {
   log_queries_vpn = {
     vpn_successful_ike_diags = {
       MetricName = "fame.azure.virtual_network_gateway.ike_event_success"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
@@ -22,7 +21,6 @@ locals {
 
     vpn_tunnel_total_flow_count = {
       MetricName = "fame.azure.virtual_network_gateway.total_flow_count"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureMetrics
@@ -34,7 +32,6 @@ locals {
 
     vpn_tunnel_status = {
       MetricName = "fame.azure.virtual_network_gateway.tunnel_status"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AzureDiagnostics
