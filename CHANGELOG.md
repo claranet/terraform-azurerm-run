@@ -1,3 +1,18 @@
+## 8.5.1 (2025-06-16)
+
+### Bug Fixes
+
+* **automation-account:** 🛠️ update azurecaf provider source to claranet 75719c4
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/keyvault/azurerm to ~> 8.1.0 12fd834
+* **deps:** update dependency tflint to v0.58.0 0409e8d
+* **deps:** update dependency trivy to v0.63.0 852b674
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.2.1 e9b8b8e
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.2.0 17e348b
+* **deps:** update terraform claranet/storage-account/azurerm to ~> 8.6.0 c8f8807
+
 ## 8.5.0 (2025-05-16)
 
 ### Features
