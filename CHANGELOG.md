@@ -1,3 +1,17 @@
+## 8.6.0 (2025-06-27)
+
+### Features
+
+* fame 2.0 with datadog support 51eff79
+* **fame:** bump app package 8682531
+* remove monitoring dynamic metric type for simplification bb0a74b
+
+### Miscellaneous Chores
+
+* **⚙️:** ✏️ update template identifier for MR review b9540de
+* **deps:** update dependency opentofu to v1.10.0 4b38402
+* **deps:** update dependency opentofu to v1.10.1 1cad198
+
 ## 8.5.1 (2025-06-16)
 
 ### Bug Fixes
