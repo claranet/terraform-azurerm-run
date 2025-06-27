@@ -13,6 +13,12 @@ variable "monitoring_function_splunk_token" {
   default     = null
 }
 
+variable "monitoring_function_datadog_api_key" {
+  description = "API Key to send metrics to Datadog."
+  type        = string
+  default     = null
+}
+
 variable "monitoring_function_logs_categories" {
   description = "Monitoring function log categories to send to destinations. All by default."
   type        = list(string)
@@ -28,7 +34,7 @@ variable "monitoring_function_logs_metrics_categories" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v1.2.1/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v2.0.0/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {

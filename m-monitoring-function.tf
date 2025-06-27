@@ -2,13 +2,14 @@ resource "null_resource" "fake_function_condition" {
   count = var.monitoring_function_enabled ? 1 : 0
 
   triggers = {
-    splunk_token = var.monitoring_function_splunk_token
+    splunk_token    = var.monitoring_function_splunk_token
+    datadog_api_key = var.monitoring_function_datadog_api_key
   }
 
   lifecycle {
     precondition {
-      condition     = var.monitoring_function_splunk_token != null
-      error_message = "Variable monitoring_function_splunk_token must be set when variable monitoring_function_enabled is set to true."
+      condition     = var.monitoring_function_splunk_token != null || var.monitoring_function_datadog_api_key != null
+      error_message = "Variable monitoring_function_datadog_api_key or monitoring_function_splunk_token must be set when variable monitoring_function_enabled is set to true."
     }
   }
 }
@@ -39,6 +40,7 @@ module "monitoring_function" {
 
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
   splunk_token                 = var.monitoring_function_splunk_token
+  datadog_api_key              = var.monitoring_function_datadog_api_key
 
   logs_destinations_ids = [
     module.logs.id,

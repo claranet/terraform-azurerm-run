@@ -2,7 +2,6 @@ locals {
   log_queries_backup = {
     file_shares_backup = {
       MetricName = "fame.azure.backup.file_share"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AddonAzureBackupJobs
@@ -26,7 +25,6 @@ locals {
 
     virtual_machines_backup = {
       MetricName = "fame.azure.backup.vm"
-      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         AddonAzureBackupJobs
