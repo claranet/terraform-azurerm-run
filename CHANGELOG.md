@@ -1,3 +1,15 @@
+## 8.7.0 (2025-07-11)
+
+### Features
+
+* **fame:** enhance application gateway access logs query 154e7d3
+
+### Miscellaneous Chores
+
+* 🗑️ remove old commitlint configuration files 0f9d7e5
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.3.0 3eeee38
+* **deps:** update tools 4b720c0
+
 ## 8.6.0 (2025-06-27)
 
 ### Features
