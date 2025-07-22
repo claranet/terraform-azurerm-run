@@ -340,7 +340,7 @@ variable "postgresql_backup_yearly_policy_retention_in_years" {
   type        = number
   default     = null
   validation {
-    condition     = var.postgresql_backup_yearly_policy_retention_in_years < 11 || var.postgresql_backup_yearly_policy_retention_in_years == null
+    condition     = var.postgresql_backup_yearly_policy_retention_in_years == null ? true : var.postgresql_backup_yearly_policy_retention_in_years < 11
     error_message = "The maximum number of years to keep the first yearly Postgresql backup is 10."
   }
 }
