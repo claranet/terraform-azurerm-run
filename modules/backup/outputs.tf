@@ -73,12 +73,12 @@ output "resource_file_share_backup_policy" {
 
 output "postgresql_backup_policy_id" {
   description = "PostgreSQL Backup policy ID."
-  value       = one(azurerm_data_protection_backup_policy_postgresql.main[*].id)
+  value       = one(azurerm_data_protection_backup_policy_postgresql_flexible_server.main[*].id)
 }
 
 output "resource_postgresql_backup_policy" {
   description = "PostgreSQL Backup policy resource."
-  value       = one(azurerm_data_protection_backup_policy_postgresql.main[*])
+  value       = one(azurerm_data_protection_backup_policy_postgresql_flexible_server.main[*])
 }
 
 output "managed_disk_backup_policy_id" {

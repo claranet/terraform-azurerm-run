@@ -294,9 +294,9 @@ module "run" {
 | postgresql\_backup\_monthly\_policy\_retention\_in\_months | The number of months to keep the first monthly PostgreSQL backup. | `number` | `null` | no |
 | postgresql\_backup\_policy\_custom\_name | Azure Backup - PostgreSQL backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | postgresql\_backup\_policy\_interval\_in\_hours | The PostgreSQL backup interval in hours. | `number` | `24` | no |
-| postgresql\_backup\_policy\_retention\_in\_days | The number of days to keep the PostgreSQL backup. | `number` | `30` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the PostgreSQL backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly PostgreSQL backup. | `number` | `null` | no |
+| postgresql\_backup\_yearly\_policy\_retention\_in\_years | The number of years to keep the first yearly Postgresql backup. | `number` | `null` | no |
 | recovery\_vault\_alerts\_for\_all\_job\_failures\_enabled | Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to true. | `bool` | `true` | no |
 | recovery\_vault\_alerts\_for\_critical\_operation\_failures\_enabled | Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to true. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview). | `bool` | `true` | no |
 | recovery\_vault\_cross\_region\_restore\_enabled | Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`. | `bool` | `true` | no |
