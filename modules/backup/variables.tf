@@ -321,12 +321,26 @@ variable "postgresql_backup_weekly_policy_retention_in_weeks" {
   type        = number
   default     = 12
   nullable    = false
+  validation {
+    condition = alltrue([
+      var.postgresql_backup_weekly_policy_retention_in_weeks > 0,
+      var.postgresql_backup_weekly_policy_retention_in_weeks < 522
+    ])
+    error_message = "The number of weeks to keep the first weekly Postgresql backup must be between 1 and 521."
+  }
 }
 
 variable "postgresql_backup_monthly_policy_retention_in_months" {
   description = "The number of months to keep the first monthly Postgresql backup."
   type        = number
   default     = null
+  validation {
+    condition = var.postgresql_backup_monthly_policy_retention_in_months == null ? true : alltrue([
+      var.postgresql_backup_monthly_policy_retention_in_months > 0,
+      var.postgresql_backup_monthly_policy_retention_in_months < 121
+    ])
+    error_message = "The number of months to keep the first monthly Postgresql backup must be between 1 and 120."
+  }
 }
 
 
