@@ -11,22 +11,7 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "mai
   default_retention_rule {
     life_cycle {
       data_store_type = "VaultStore"
-      duration        = "P${var.postgresql_backup_daily_policy_retention_in_days}D"
-    }
-  }
-
-  dynamic "retention_rule" {
-    for_each = var.postgresql_backup_weekly_policy_retention_in_weeks != null ? ["_"] : []
-    content {
-      name = "Weekly"
-      life_cycle {
-        data_store_type = "VaultStore"
-        duration        = "P${var.postgresql_backup_weekly_policy_retention_in_weeks}W"
-      }
-      priority = 20
-      criteria {
-        absolute_criteria = "FirstOfWeek"
-      }
+      duration        = "P${var.postgresql_backup_weekly_policy_retention_in_weeks}W"
     }
   }
 

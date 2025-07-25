@@ -316,16 +316,10 @@ variable "postgresql_backup_policy_interval_in_hours" {
   default     = 24
 }
 
-variable "postgresql_backup_daily_policy_retention_in_days" {
-  description = "The number of days to keep the first daily Postgresql backup."
-  type        = number
-  default     = null
-}
-
 variable "postgresql_backup_weekly_policy_retention_in_weeks" {
   description = "The number of weeks to keep the first weekly Postgresql backup."
   type        = number
-  default     = null
+  default     = 12
 }
 
 variable "postgresql_backup_monthly_policy_retention_in_months" {
