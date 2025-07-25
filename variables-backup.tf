@@ -286,6 +286,7 @@ variable "postgresql_backup_weekly_policy_retention_in_weeks" {
   description = "The number of weeks to keep the first weekly PostgreSQL backup."
   type        = number
   default     = 12
+  nullable    = false
 }
 
 variable "postgresql_backup_monthly_policy_retention_in_months" {
