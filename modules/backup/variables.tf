@@ -310,10 +310,11 @@ variable "postgresql_backup_policy_time" {
   default     = "04:00"
 }
 
-variable "postgresql_backup_policy_interval_in_hours" {
-  description = "The Postgresql backup interval in hours."
+# PostgreSQL Flexible Server policy supports only weekly backups.
+variable "postgresql_backup_policy_interval_in_weeks" {
+  description = "The Postgresql backup interval in weeks."
   type        = string
-  default     = 24
+  default     = 1
 }
 
 variable "postgresql_backup_weekly_policy_retention_in_weeks" {

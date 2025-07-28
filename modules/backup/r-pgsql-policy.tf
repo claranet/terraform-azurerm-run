@@ -5,7 +5,7 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "mai
   vault_id = azurerm_data_protection_backup_vault.main[0].id
 
   backup_repeating_time_intervals = [
-    "R/2023-01-01T${var.postgresql_backup_policy_time}:00+00:00/PT${var.postgresql_backup_policy_interval_in_hours}H"
+    "R/2023-01-01T${var.postgresql_backup_policy_time}:00+00:00/PT${var.postgresql_backup_policy_interval_in_weeks}W"
   ]
 
   default_retention_rule {

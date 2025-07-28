@@ -141,7 +141,7 @@ module "az_vm_backup" {
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | postgresql\_backup\_monthly\_policy\_retention\_in\_months | The number of months to keep the first monthly Postgresql backup. | `number` | `null` | no |
 | postgresql\_backup\_policy\_custom\_name | Azure Backup - PostgreSQL backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| postgresql\_backup\_policy\_interval\_in\_hours | The Postgresql backup interval in hours. | `string` | `24` | no |
+| postgresql\_backup\_policy\_interval\_in\_weeks | The Postgresql backup interval in weeks. | `string` | `1` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the Postgresql backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Postgresql backup. | `number` | `12` | no |
 | postgresql\_backup\_yearly\_policy\_retention\_in\_years | The number of years to keep the first yearly Postgresql backup. | `number` | `null` | no |
