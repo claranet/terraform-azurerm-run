@@ -19,6 +19,21 @@ Note:
 The Storage Account associated to the FAME Function app has now network rules created and enabled by default to follow hardening guidelines.
 You might need to authorize IPs or change the network rules parameters by using `storage_account_network_rules_enabled` or `storage_account_authorized_ips`.
 
+## Function plan type
+
+The `function_type` variable selects the hosting plan:
+
+  * `Dynamic` (default): Consumption plan (`Y1`).
+  * `Flex`: [Flex Consumption plan](https://learn.microsoft.com/en-us/azure/azure-functions/flex-consumption-plan)
+    (`FC1`), which brings virtual network integration, instance memory sizing and always-ready instances.
+
+In both cases the FAME package referenced by `zip_package_path` is deployed by the `function-app` module. On the
+Flex Consumption plan, Azure
+[deprecates `WEBSITE_RUN_FROM_PACKAGE`](https://learn.microsoft.com/en-us/azure/azure-functions/functions-app-settings#flex-consumption-plan-deprecations)
+and serves the app from its own deployment container, so a remote package such as the default FAME release is
+published with the `onedeploy` extension and fetched by Azure itself. That call is made with the Azure CLI, which
+must therefore be installed and authenticated where OpenTofu runs.
+
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
 
@@ -87,7 +102,7 @@ module "monitoring" {
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| function | claranet/function-app/azurerm | ~> 9.0.0 |
+| function | claranet/function-app/azurerm | ~> 9.1 |
 
 ## Resources
 
@@ -112,6 +127,7 @@ module "monitoring" {
 | extra\_application\_settings | Extra application settings to set on monitoring function. | `map(string)` | `{}` | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | function\_app\_custom\_name | FAME Function App custom name | `string` | `null` | no |
+| function\_type | Type/SKU of the function plan to deploy. It can be `Dynamic` (Consumption `Y1`) or `Flex` (Flex Consumption `FC1`). | `string` | `"Dynamic"` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_workspace\_guid | GUID of the Log Analytics Workspace on which evaluate the queries. | `string` | n/a | yes |

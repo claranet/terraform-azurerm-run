@@ -158,3 +158,14 @@ variable "application_insights_log_analytics_workspace_id" {
   description = "ID of the Log Analytics Workspace to be used with Application Insights."
   type        = string
 }
+
+variable "function_type" {
+  description = "Type/SKU of the function plan to deploy. It can be `Dynamic` (Consumption `Y1`) or `Flex` (Flex Consumption `FC1`)."
+  type        = string
+  default     = "Dynamic"
+  nullable    = false
+  validation {
+    condition     = contains(["dynamic", "flex"], lower(var.function_type))
+    error_message = "`var.function_type` must be either `Dynamic` or `Flex`."
+  }
+}

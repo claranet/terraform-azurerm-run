@@ -53,6 +53,8 @@ module "monitoring_function" {
   metrics_extra_dimensions   = var.monitoring_function_metrics_extra_dimensions
   extra_application_settings = var.monitoring_function_extra_application_settings
 
+  function_type = var.monitoring_function_type
+
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
   splunk_token                 = var.monitoring_function_splunk_token
   datadog_api_key              = var.monitoring_function_datadog_api_key
