@@ -82,7 +82,6 @@ terraform state mv module.run_iaas.module.update_management 'module.run.module.u
 terraform state mv 'module.run_iaas.module.update_management_center["enabled"]' 'module.run.module.update_management_center["enabled"]'
 terraform state mv module.run_iaas.module.vm_monitoring 'module.run.module.vm_monitoring[0]'
 terraform state mv 'module.run_common.azurerm_role_assignment.function_workspace[0]' 'module.run.azurerm_role_assignment.function_workspace[0]'
-terraform apply -target='module.run.null_resource.fake_function_condition[0]'
 ```
 
 <!-- BEGIN_TF_DOCS -->
@@ -145,7 +144,7 @@ module "run" {
 | Name | Version |
 |------|---------|
 | azurerm | ~> 4.9 |
-| null | ~> 3.0 |
+| terraform | n/a |
 
 ## Modules
 
@@ -165,7 +164,7 @@ module "run" {
 |------|------|
 | [azurerm_role_assignment.function_subscription](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.function_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
-| [null_resource.fake_function_condition](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [terraform_data.fake_function_condition](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
 
 ## Inputs

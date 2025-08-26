@@ -9,10 +9,5 @@ terraform {
       source  = "claranet/azurecaf"
       version = "~> 1.2.28"
     }
-    # tflint-ignore: terraform_unused_required_providers
-    null = {
-      source  = "hashicorp/null"
-      version = "~> 3.0"
-    }
   }
 }
