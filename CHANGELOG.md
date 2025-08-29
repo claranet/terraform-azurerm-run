@@ -1,3 +1,21 @@
+## 8.8.0 (2025-08-29)
+
+### Features
+
+* **AZ-1606:** ✨ apply suggestion c331e9c
+* **AZ-1606:** 🐛 fix monitoring-function condition 558470c
+
+### Miscellaneous Chores
+
+* **deps:** 🔗 bump AzureRM provider version to v4.31+ dca5b76
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to ~> 8.1.0 2b0dc22
+* **deps:** update dependency opentofu to v1.10.3 10d2d47
+* **deps:** update dependency tflint to v0.58.1 a0388c9
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v6 28ca84d
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.4.0 7fa0853
+* **deps:** update tools 6f5ef14
+* **deps:** update tools e660c59
+
 ## 8.7.0 (2025-07-11)
 
 ### Features
