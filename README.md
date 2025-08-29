@@ -143,7 +143,7 @@ module "run" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 4.9 |
+| azurerm | ~> 4.35 |
 | terraform | n/a |
 
 ## Modules
