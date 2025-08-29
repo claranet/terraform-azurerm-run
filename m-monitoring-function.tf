@@ -1,23 +1,29 @@
-resource "null_resource" "fake_function_condition" {
+resource "terraform_data" "fake_function_condition" {
   count = var.monitoring_function_enabled ? 1 : 0
 
-  triggers = {
-    splunk_token    = var.monitoring_function_splunk_token
-    datadog_api_key = var.monitoring_function_datadog_api_key
-  }
-
   lifecycle {
+    ignore_changes = [
+      triggers_replace, # Property inherited from the move of `null_resource` to `terraform_data` to avoid resource recreation
+    ]
     precondition {
-      condition     = var.monitoring_function_splunk_token != null || var.monitoring_function_datadog_api_key != null
-      error_message = "Variable monitoring_function_datadog_api_key or monitoring_function_splunk_token must be set when variable monitoring_function_enabled is set to true."
+      condition = length(compact([
+        var.monitoring_function_splunk_token,
+        var.monitoring_function_datadog_api_key,
+      ])) == 1
+      error_message = "One of `var.monitoring_function_datadog_api_key` or `var.monitoring_function_splunk_token` must be set when variable `var.monitoring_function_enabled` is set to `true`."
     }
   }
+}
+
+moved {
+  from = null_resource.fake_function_condition[0]
+  to   = terraform_data.fake_function_condition[0]
 }
 
 module "monitoring_function" {
   source = "./modules/monitoring-function"
 
-  count = var.monitoring_function_enabled ? 1 : 0
+  count = length(terraform_data.fake_function_condition)
 
   client_name         = var.client_name
   environment         = var.environment
@@ -59,8 +65,6 @@ module "monitoring_function" {
   default_tags_enabled = var.default_tags_enabled
 
   extra_tags = var.monitoring_function_extra_tags
-
-  depends_on = [null_resource.fake_function_condition]
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
