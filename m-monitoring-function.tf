@@ -3,7 +3,7 @@ resource "terraform_data" "fake_function_condition" {
 
   lifecycle {
     ignore_changes = [
-      triggers_replace,
+      triggers_replace, # Property inherited from the move of `null_resource` to `terraform_data` to avoid resource recreation
     ]
     precondition {
       condition = length(compact([
