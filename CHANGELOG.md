@@ -1,3 +1,17 @@
+## 8.8.1 (2025-08-29)
+
+### Bug Fixes
+
+* **fame:** bump zip package path to version 2.0.3 b58cce6
+
+### Continuous Integration
+
+* 👷 bump AzureRM provider 3577e14
+
+### Miscellaneous Chores
+
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.5.0 f5c412d
+
 ## 8.8.0 (2025-08-29)
 
 ### Features
