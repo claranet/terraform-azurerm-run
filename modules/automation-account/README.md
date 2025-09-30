@@ -60,7 +60,7 @@ module "automation_account" {
 
 | Name | Version |
 |------|---------|
-| azurecaf | ~> 1.2, >= 1.2.22 |
+| azurecaf | >= 1.2.28 |
 | azurerm | ~> 4.0 |
 
 ## Modules
