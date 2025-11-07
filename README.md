@@ -285,7 +285,7 @@ module "run" {
 | monitoring\_function\_metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.0.5/fame.zip"` | no |
+| monitoring\_function\_zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"` | no |
 | monitoring\_rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | monitoring\_rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
