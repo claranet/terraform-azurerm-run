@@ -1,3 +1,18 @@
+## 8.8.3 (2025-11-07)
+
+### Bug Fixes
+
+* **fame:** update zip package path to version 2.0.5 df1252e
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.10.7 f4aea81
+* **deps:** update dependency trivy to v0.67.0 dff8dc2
+* **deps:** update dependency trivy to v0.67.1 012e4e5
+* **deps:** update dependency trivy to v0.67.2 096463a
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.2.2 a09e598
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.7.0 e80251c
+
 ## 8.8.2 (2025-09-30)
 
 ### Code Refactoring
