@@ -1,7 +1,7 @@
 resource "azurerm_maintenance_configuration" "main" {
   for_each = { for config in var.maintenance_configurations : config.configuration_name => config }
 
-  name                = join("", compact([var.name_prefix, each.key]))
+  name                = coalesce(each.value.custom_resource_name, data.azurecaf_name.mc[each.key].result)
   resource_group_name = var.resource_group_name
   location            = var.location
 
@@ -42,7 +42,7 @@ moved {
 resource "azurerm_maintenance_assignment_dynamic_scope" "main" {
   for_each = var.dynamic_scope_assignment.enabled ? azurerm_maintenance_configuration.main : {}
 
-  name                         = join("", compact([var.dynamic_scope_assignment.name_prefix, each.key]))
+  name                         = try(var.dynamic_scope_assignment.custom_resource_names[each.key], data.azurecaf_name.mcds[each.key].result)
   maintenance_configuration_id = each.value.id
 
   dynamic "filter" {

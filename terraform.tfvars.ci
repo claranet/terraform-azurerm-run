@@ -10,7 +10,6 @@ extra_tags = {
   foo = "bar"
 }
 monitoring_function_splunk_token = "abcdefghijkl"
-azure_tenant_id                  = "aaaaaa-aaaaaaa-aaaaaaa"
 automation_account_enabled       = true
 backup_vm_enabled                = true
 backup_file_share_enabled        = true

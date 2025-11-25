@@ -150,6 +150,7 @@ resource "tls_private_key" "ssh_key" {
 
 | Name | Version |
 |------|---------|
+| azurecaf | >= 1.2.28 |
 | azurerm | ~> 4.0 |
 
 ## Modules
@@ -170,6 +171,8 @@ No modules.
 | [azurerm_resource_policy_assignment.main_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_policy_assignment) | resource |
 | [azurerm_subscription_policy_assignment.main_linux](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription_policy_assignment) | resource |
 | [azurerm_subscription_policy_assignment.main_windows](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subscription_policy_assignment) | resource |
+| [azurecaf_name.mc](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
+| [azurecaf_name.mcds](https://registry.terraform.io/providers/claranet/azurecaf/latest/docs/data-sources/name) | data source |
 
 ## Inputs
 
@@ -178,13 +181,16 @@ No modules.
 | auto\_assessment\_enabled | Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy. | `bool` | `true` | no |
 | auto\_assessment\_exclusions | Exclude some resources from auto-assessment. | `list(string)` | `[]` | no |
 | auto\_assessment\_scopes | Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines. | `list(string)` | `[]` | no |
+| client\_name | Client name. | `string` | n/a | yes |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
-| dynamic\_scope\_assignment | Enable dynamic scope assignment for maintenance configurations. | <pre>object({<br/>    enabled     = optional(bool, false)<br/>    name_prefix = optional(string, "mcds-")<br/>    filter = optional(object({<br/>      locations       = list(string)<br/>      os_types        = optional(list(string), ["Linux", "Windows"])<br/>      resource_groups = optional(list(string))<br/>      resource_types  = optional(list(string))<br/>      tag_filter      = optional(string, "Any")<br/>      tags = optional(list(object({<br/>        key    = string<br/>        values = list(string)<br/>      })), [])<br/>    }))<br/>  })</pre> | `{}` | no |
+| dynamic\_scope\_assignment | Enable dynamic scope assignment for maintenance configurations. | <pre>object({<br/>    enabled               = optional(bool, false)<br/>    custom_resource_names = optional(map(string))<br/>    filter = optional(object({<br/>      locations       = list(string)<br/>      os_types        = optional(list(string), ["Linux", "Windows"])<br/>      resource_groups = optional(list(string))<br/>      resource_types  = optional(list(string))<br/>      tag_filter      = optional(string, "Any")<br/>      tags = optional(list(object({<br/>        key    = string<br/>        values = list(string)<br/>      })), [])<br/>    }))<br/>  })</pre> | `{}` | no |
 | environment | Environment name. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add | `map(string)` | `null` | no |
 | location | Azure location. | `string` | n/a | yes |
-| maintenance\_configurations | Maintenance configurations following the [provider's documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations). | <pre>list(object({<br/>    configuration_name = string<br/>    start_date_time    = string<br/>    duration           = optional(string, "02:00")<br/>    time_zone          = optional(string, "UTC")<br/>    recur_every        = string<br/>    reboot_setting     = optional(string, "IfRequired")<br/>    windows_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Definition",<br/>      "FeaturePack",<br/>      "Security",<br/>      "ServicePack",<br/>      "Tools",<br/>      "UpdateRollup",<br/>      "Updates"<br/>    ])<br/>    linux_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Security",<br/>      "Other",<br/>    ])<br/>    windows_kb_numbers_to_exclude  = optional(list(string), [])<br/>    windows_kb_numbers_to_include  = optional(list(string), [])<br/>    linux_package_names_to_exclude = optional(list(string), [])<br/>    linux_package_names_to_include = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
-| name\_prefix | Prefix for the maintenance configurations names. | `string` | `"mc-"` | no |
+| location\_short | Short string for Azure location. | `string` | n/a | yes |
+| maintenance\_configurations | Maintenance configurations following the [provider's documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations). | <pre>list(object({<br/>    configuration_name   = string<br/>    custom_resource_name = optional(string)<br/>    start_date_time      = string<br/>    duration             = optional(string, "02:00")<br/>    time_zone            = optional(string, "UTC")<br/>    recur_every          = string<br/>    reboot_setting       = optional(string, "IfRequired")<br/>    windows_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Definition",<br/>      "FeaturePack",<br/>      "Security",<br/>      "ServicePack",<br/>      "Tools",<br/>      "UpdateRollup",<br/>      "Updates",<br/>    ])<br/>    linux_classifications_to_include = optional(list(string), [<br/>      "Critical",<br/>      "Security",<br/>      "Other",<br/>    ])<br/>    windows_kb_numbers_to_exclude  = optional(list(string), [])<br/>    windows_kb_numbers_to_include  = optional(list(string), [])<br/>    linux_package_names_to_exclude = optional(list(string), [])<br/>    linux_package_names_to_include = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
 
