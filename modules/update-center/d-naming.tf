@@ -3,7 +3,7 @@ data "azurecaf_name" "mc" {
 
   name          = each.key
   resource_type = "azurerm_resource_group"
-  prefixes      = [local.name_prefix, "mc"]
+  prefixes      = compact([local.name_prefix, "mc"])
   suffixes      = compact([var.client_name, var.location_short, var.environment, local.name_suffix])
   use_slug      = false
   clean_input   = true
@@ -15,7 +15,7 @@ data "azurecaf_name" "mcds" {
 
   name          = each.key
   resource_type = "azurerm_resource_group"
-  prefixes      = [local.name_prefix, "mcds"]
+  prefixes      = compact([local.name_prefix, "mcds"])
   suffixes      = compact([var.client_name, var.location_short, var.environment, local.name_suffix])
   use_slug      = false
   clean_input   = true
