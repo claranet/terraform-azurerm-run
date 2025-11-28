@@ -128,7 +128,7 @@ module "monitoring" {
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_advanced\_threat\_protection\_enabled | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.0.5/fame.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"` | no |
 
 ## Outputs
 

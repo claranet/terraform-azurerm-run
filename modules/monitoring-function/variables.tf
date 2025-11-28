@@ -51,7 +51,7 @@ variable "datadog_api_key" {
 variable "zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v2.0.5/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"
 }
 
 variable "metrics_extra_dimensions" {
