@@ -1,3 +1,13 @@
+## 8.10.0 (2025-11-28)
+
+### Features
+
+* **update-center:** ✨ add CAF naming 5fe694c
+
+### Documentation
+
+* 📚️ bump Update Center example 7e38328
+
 ## 8.9.0 (2025-11-28)
 
 ### Features
