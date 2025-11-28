@@ -1,10 +1,4 @@
-variable "update_center_enabled" {
-  description = "Whether the Update Management Center is enabled."
-  type        = bool
-  default     = false
-}
-
-variable "update_center_maintenance_configurations" {
+variable "maintenance_configurations" {
   description = "Maintenance configurations following the [provider's documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-configurations)."
   type = list(object({
     configuration_name   = string
@@ -37,25 +31,25 @@ variable "update_center_maintenance_configurations" {
   default = []
 }
 
-variable "update_center_periodic_assessment_enabled" {
+variable "auto_assessment_enabled" {
   description = "Enable auto-assessment (every 24 hours) for OS updates on native Azure virtual machines by assigning Azure Policy."
   type        = bool
   default     = true
 }
 
-variable "update_center_periodic_assessment_scopes" {
+variable "auto_assessment_scopes" {
   description = "Scope to assign the Azure Policy for auto-assessment. Can be Management Groups, Subscriptions, Resource Groups or Virtual Machines."
   type        = list(string)
   default     = []
 }
 
-variable "update_center_periodic_assessment_exclusions" {
+variable "auto_assessment_exclusions" {
   description = "Exclude some resources from auto-assessment."
   type        = list(string)
   default     = []
 }
 
-variable "update_center_dynamic_scope_assignment" {
+variable "dynamic_scope_assignment" {
   description = "Enable dynamic scope assignment for maintenance configurations."
   type = object({
     enabled               = optional(bool, false)
