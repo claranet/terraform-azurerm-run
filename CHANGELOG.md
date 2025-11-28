@@ -1,3 +1,18 @@
+## 8.9.0 (2025-11-28)
+
+### Features
+
+* **fame:** add heartbeat metric log query 735ad93
+* **fame:** add heartbeat metric log query 4b41256
+
+### Miscellaneous Chores
+
+* **deps:** update dependency pre-commit to v4.4.0 07f16f8
+* **deps:** update dependency pre-commit to v4.5.0 7f7aa95
+* **deps:** update dependency tflint to v0.60.0 de40c5c
+* **deps:** update pre-commit hook crate-ci/committed to v1.1.8 0a7d4fa
+* **deps:** update terraform claranet/function-app/azurerm to ~> 8.8.0 4bdc7a8
+
 ## 8.8.3 (2025-11-07)
 
 ### Bug Fixes
