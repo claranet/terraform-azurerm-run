@@ -64,7 +64,7 @@ module "monitoring_function" {
 
   default_tags_enabled = var.default_tags_enabled
 
-  extra_tags = var.monitoring_function_extra_tags
+  extra_tags = merge(var.extra_tags, var.monitoring_function_extra_tags)
 }
 
 resource "azurerm_role_assignment" "function_workspace" {
