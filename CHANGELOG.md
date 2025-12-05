@@ -1,3 +1,13 @@
+## 8.10.2 (2025-12-05)
+
+### Bug Fixes
+
+* 🔧 merge extra tags for monitoring function 8c824a5
+
+### Miscellaneous Chores
+
+* **deps:** update dependency trivy to v0.68.1 737e116
+
 ## 8.10.1 (2025-11-28)
 
 ### Bug Fixes
