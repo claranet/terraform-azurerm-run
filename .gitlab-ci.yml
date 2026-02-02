@@ -1,7 +1,7 @@
 ---
 variables:
   TF_MIN_VERSION: "1.10"
-  AZURERM_PROVIDER_MIN_VERSION: "4.35"
+  AZURERM_PROVIDER_MIN_VERSION: "4.42"
 
 include:
   - project: "claranet/projects/cloud/azure/terraform/ci"
