@@ -1,3 +1,21 @@
+## 8.10.3 (2026-02-02)
+
+### Bug Fixes
+
+* **deps:** bump AzureRM provider version (needed by latest KeyVault module) d52c609
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.11.2 628698c
+* **deps:** update dependency opentofu to v1.11.3 7b842a3
+* **deps:** update dependency opentofu to v1.11.4 4c03731
+* **deps:** update dependency pre-commit to v4.5.1 207734c
+* **deps:** update dependency trivy to v0.68.2 29684be
+* **deps:** update dependency trivy to v0.69.0 b90adf0
+* **deps:** update pre-commit hook crate-ci/committed to v1.1.10 5a7aa7d
+* **deps:** update pre-commit hook crate-ci/committed to v1.1.9 0a44ebc
+* **deps:** update tools d20cb00
+
 ## 8.10.2 (2025-12-05)
 
 ### Bug Fixes
