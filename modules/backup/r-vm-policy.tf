@@ -47,6 +47,10 @@ resource "azurerm_backup_policy_vm" "main" {
       months   = var.vm_backup_yearly_retention.months
     }
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 moved {
