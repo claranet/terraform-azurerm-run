@@ -44,5 +44,22 @@ locals {
         | project timestamp=TimeGenerated, subscription_id, recovery_vault_name, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     }
+
+    postgresql_backup = {
+      MetricName = "fame.azure.backup.postgresql"
+      QueryType  = "log_analytics"
+      Query      = <<EOQ
+        AzureMetrics
+        | where ResourceProvider == "MICROSOFT.DBFORPOSTGRESQL"
+        | where MetricName == "backup_storage_used"
+        | extend id_parts = split(ResourceId, '/')
+        | extend subscription_id = tostring(id_parts[2])
+        | extend azure_resource_group_name = tostring(id_parts[4])
+        | extend azure_resource_name = Resource
+        | summarize LastBackupTime = max(TimeGenerated) by subscription_id, azure_resource_group_name, azure_resource_name
+        | extend metric_value = iff(LastBackupTime >= ago(1h), 1, 0)
+        | project timestamp=LastBackupTime, subscription_id, azure_resource_group_name, azure_resource_name, metric_value
+      EOQ
+    }
   }
 }

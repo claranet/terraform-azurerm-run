@@ -5,7 +5,6 @@ plugin "azurerm" {
 }
 
 config {
-  call_module_type = "local"
   force = false
   disabled_by_default = false
   plugin_dir = "~/.tflint.d/plugins"
