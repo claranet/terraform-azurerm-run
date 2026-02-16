@@ -42,6 +42,10 @@ resource "azurerm_backup_policy_file_share" "main" {
       months   = var.file_share_backup_yearly_retention.months
     }
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 moved {
