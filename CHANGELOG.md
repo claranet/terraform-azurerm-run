@@ -1,3 +1,22 @@
+## 8.11.0 (2026-02-16)
+
+### Features
+
+* **AZ-1639:** add psql backup kql to fame 4a65077
+* **AZ-1639:** add tflint lifecyle requirements ad46005
+* **AZ-1639:** revert tflint changes c2927e6
+
+### Code Refactoring
+
+* **gitlab MR template:** ♻️ update default reviewers group with Azure Factory 🔧 d9912dc
+
+### Miscellaneous Chores
+
+* **deps:** merge remote-tracking branch 'origin/renovate/tools' 673fd62
+* **deps:** update dependency opentofu to v1.11.5 7cd52a1
+* **deps:** update dependency tflint to v0.61.0 4331412
+* **deps:** update dependency trivy to v0.69.1 ef62d5a
+
 ## 8.10.3 (2026-02-02)
 
 ### Bug Fixes
