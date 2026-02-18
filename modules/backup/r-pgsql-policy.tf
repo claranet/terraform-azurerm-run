@@ -32,7 +32,7 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "mai
   }
 
   dynamic "retention_rule" {
-    for_each = var.postgresql_backup_yearly_policy_retention_in_years != null ? ["_"] : []
+    for_each = var.postgresql_backup_yearly_policy_retention_in_years[*]
     content {
       name = "Yearly"
       life_cycle {
