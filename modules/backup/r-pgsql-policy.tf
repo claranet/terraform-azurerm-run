@@ -8,6 +8,8 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "mai
     "R/2023-01-01T${var.postgresql_backup_policy_time}:00+00:00/P${var.postgresql_backup_policy_interval_in_weeks}W"
   ]
 
+  time_zone = var.postgresql_backup_policy_timezone
+
   default_retention_rule {
     life_cycle {
       data_store_type = "VaultStore"

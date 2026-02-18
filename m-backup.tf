@@ -64,6 +64,7 @@ module "backup" {
 
   backup_postgresql_enabled                            = var.backup_postgresql_enabled
   postgresql_backup_policy_custom_name                 = var.postgresql_backup_policy_custom_name
+  postgresql_backup_policy_timezone                    = var.postgresql_backup_policy_timezone
   postgresql_backup_policy_time                        = var.postgresql_backup_policy_time
   postgresql_backup_policy_interval_in_weeks           = var.postgresql_backup_policy_interval_in_weeks
   postgresql_backup_weekly_policy_retention_in_weeks   = var.postgresql_backup_weekly_policy_retention_in_weeks

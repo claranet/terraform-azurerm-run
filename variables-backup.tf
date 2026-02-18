@@ -276,6 +276,12 @@ variable "postgresql_backup_policy_time" {
   default     = "04:00"
 }
 
+variable "postgresql_backup_policy_timezone" {
+  description = "Specifies the timezone for PostgreSQL backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
+}
+
 variable "postgresql_backup_policy_interval_in_weeks" {
   description = "The Postgresql backup interval in weeks."
   type        = string
