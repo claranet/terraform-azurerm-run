@@ -143,6 +143,7 @@ module "az_vm_backup" {
 | postgresql\_backup\_policy\_custom\_name | Azure Backup - PostgreSQL backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | postgresql\_backup\_policy\_interval\_in\_weeks | The Postgresql backup interval in weeks. | `string` | `1` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the Postgresql backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
+| postgresql\_backup\_policy\_timezone | Specifies the timezone for PostgreSQL backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly Postgresql backup. | `number` | `12` | no |
 | postgresql\_backup\_yearly\_policy\_retention\_in\_years | The number of years to keep the first yearly Postgresql backup. | `number` | `null` | no |
 | recovery\_vault\_alerts\_for\_all\_job\_failures\_enabled | Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to true. | `bool` | `true` | no |
