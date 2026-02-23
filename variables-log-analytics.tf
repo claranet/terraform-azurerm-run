@@ -8,7 +8,7 @@ variable "logs_resource_group_name" {
 }
 
 variable "log_analytics_workspace_name_prefix" {
-  description = "Log Analytics name prefix"
+  description = "Log Analytics name prefix."
   type        = string
   default     = ""
 }
@@ -44,7 +44,7 @@ variable "logs_storage_account_enabled" {
 }
 
 variable "logs_storage_account_name_prefix" {
-  description = "Storage Account name prefix"
+  description = "Storage Account name prefix."
   type        = string
   default     = ""
 }
@@ -56,13 +56,13 @@ variable "logs_storage_account_custom_name" {
 }
 
 variable "logs_storage_account_kind" {
-  description = "Storage Account Kind"
+  description = "Storage Account Kind."
   type        = string
   default     = "StorageV2"
 }
 
 variable "logs_storage_account_tier" {
-  description = "Storage Account tier"
+  description = "Storage Account tier."
   type        = string
   default     = "Standard"
 }
@@ -74,13 +74,13 @@ variable "logs_storage_account_access_tier" {
 }
 
 variable "logs_storage_account_replication_type" {
-  description = "Storage Account Replication type"
+  description = "Storage Account Replication type."
   type        = string
   default     = "LRS"
 }
 
 variable "logs_storage_account_min_tls_version" {
-  description = "Storage Account minimal TLS version"
+  description = "Storage Account minimal TLS version."
   type        = string
   default     = "TLS1_2"
 }
@@ -92,49 +92,49 @@ variable "logs_storage_account_advanced_threat_protection_enabled" {
 }
 
 variable "logs_storage_account_https_traffic_only_enabled" {
-  description = "Enable/disable HTTPS traffic only"
+  description = "Enable/disable HTTPS traffic only."
   type        = bool
   default     = true
 }
 
 variable "logs_storage_account_archived_logs_fileshare_enabled" {
-  description = "Enable/disable archived-logs file share creation"
+  description = "Enable/disable archived-logs file share creation."
   type        = bool
   default     = false
 }
 
 variable "logs_storage_account_archived_logs_fileshare_name" {
-  description = "Name of the file share in which externalized logs are stored"
+  description = "Name of the file share in which externalized logs are stored."
   type        = string
   default     = "archived-logs"
 }
 
 variable "logs_storage_account_archived_logs_fileshare_quota" {
-  description = "The maximum size in GB of the archived-logs file share, default is 5120"
+  description = "The maximum size in GB of the archived-logs file share, default is 5120."
   type        = number
   default     = null
 }
 
 variable "logs_storage_account_archiving_enabled" {
-  description = "Enable/disable blob archiving lifecycle"
+  description = "Enable/disable blob archiving lifecycle."
   type        = bool
   default     = true
 }
 
 variable "logs_tier_to_cool_after_days_since_modification_greater_than" {
-  description = "Change blob tier to cool after x days without modification"
+  description = "Change blob tier to cool after x days without modification."
   type        = number
   default     = 30
 }
 
 variable "logs_tier_to_archive_after_days_since_modification_greater_than" {
-  description = "Change blob tier to Archive after x days without modification"
+  description = "Change blob tier to Archive after x days without modification."
   type        = number
   default     = 90
 }
 
 variable "logs_delete_after_days_since_modification_greater_than" {
-  description = "Delete blob after x days without modification"
+  description = "Delete blob after x days without modification."
   type        = number
   default     = 365
 }

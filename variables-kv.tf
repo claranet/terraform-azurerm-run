@@ -38,19 +38,19 @@ variable "key_vault_enabled_for_template_deployment" {
 }
 
 variable "key_vault_admin_objects_ids" {
-  description = "Ids of the objects that can do all operations on all keys, secrets and certificates"
+  description = "IDs of the objects that can do all operations on all keys, secrets and certificates."
   type        = list(string)
   default     = []
 }
 
 variable "key_vault_reader_objects_ids" {
-  description = "Ids of the objects that can read all keys, secrets and certificates"
+  description = "IDs of the objects that can read all keys, secrets and certificates."
   type        = list(string)
   default     = []
 }
 
 variable "key_vault_network_acls" {
-  description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass for more informations."
+  description = "Object with attributes: `bypass`, `default_action`, `ip_rules`, `virtual_network_subnet_ids`. See [Key Vault documentation](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html#bypass) for more information."
   type = object({
     bypass                     = optional(string, "None"),
     default_action             = optional(string, "Deny"),
