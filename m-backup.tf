@@ -64,12 +64,12 @@ module "backup" {
 
   backup_postgresql_enabled                            = var.backup_postgresql_enabled
   postgresql_backup_policy_custom_name                 = var.postgresql_backup_policy_custom_name
+  postgresql_backup_policy_timezone                    = var.postgresql_backup_policy_timezone
   postgresql_backup_policy_time                        = var.postgresql_backup_policy_time
-  postgresql_backup_policy_interval_in_hours           = var.postgresql_backup_policy_interval_in_hours
-  postgresql_backup_policy_retention_in_days           = var.postgresql_backup_policy_retention_in_days
-  postgresql_backup_daily_policy_retention_in_days     = var.postgresql_backup_daily_policy_retention_in_days
+  postgresql_backup_policy_interval_in_weeks           = var.postgresql_backup_policy_interval_in_weeks
   postgresql_backup_weekly_policy_retention_in_weeks   = var.postgresql_backup_weekly_policy_retention_in_weeks
   postgresql_backup_monthly_policy_retention_in_months = var.postgresql_backup_monthly_policy_retention_in_months
+  postgresql_backup_yearly_policy_retention_in_years   = var.postgresql_backup_yearly_policy_retention_in_years
 
   backup_managed_disk_enabled                          = var.backup_managed_disk_enabled
   managed_disk_backup_policy_custom_name               = var.managed_disk_backup_policy_custom_name

@@ -276,34 +276,53 @@ variable "postgresql_backup_policy_time" {
   default     = "04:00"
 }
 
-variable "postgresql_backup_policy_interval_in_hours" {
-  description = "The PostgreSQL backup interval in hours."
-  type        = number
-  default     = 24
+variable "postgresql_backup_policy_timezone" {
+  description = "Specifies the timezone for PostgreSQL backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
 }
 
-variable "postgresql_backup_policy_retention_in_days" {
-  description = "The number of days to keep the PostgreSQL backup."
-  type        = number
-  default     = 30
-}
-
-variable "postgresql_backup_daily_policy_retention_in_days" {
-  description = "The number of days to keep the first daily PostgreSQL backup."
-  type        = number
-  default     = null
+variable "postgresql_backup_policy_interval_in_weeks" {
+  description = "The Postgresql backup interval in weeks."
+  type        = string
+  default     = 1
 }
 
 variable "postgresql_backup_weekly_policy_retention_in_weeks" {
   description = "The number of weeks to keep the first weekly PostgreSQL backup."
   type        = number
-  default     = null
+  default     = 12
+  nullable    = false
+  validation {
+    condition = alltrue([
+      var.postgresql_backup_weekly_policy_retention_in_weeks > 0,
+      var.postgresql_backup_weekly_policy_retention_in_weeks < 522
+    ])
+    error_message = "The number of weeks to keep the first weekly Postgresql backup must be between 1 and 521."
+  }
 }
 
 variable "postgresql_backup_monthly_policy_retention_in_months" {
   description = "The number of months to keep the first monthly PostgreSQL backup."
   type        = number
   default     = null
+  validation {
+    condition = var.postgresql_backup_monthly_policy_retention_in_months == null ? true : alltrue([
+      var.postgresql_backup_monthly_policy_retention_in_months > 0,
+      var.postgresql_backup_monthly_policy_retention_in_months < 121
+    ])
+    error_message = "The number of months to keep the first monthly Postgresql backup must be between 1 and 120."
+  }
+}
+
+variable "postgresql_backup_yearly_policy_retention_in_years" {
+  description = "The number of years to keep the first yearly Postgresql backup."
+  type        = number
+  default     = null
+  validation {
+    condition     = var.postgresql_backup_yearly_policy_retention_in_years == null ? true : var.postgresql_backup_yearly_policy_retention_in_years < 11
+    error_message = "The maximum number of years to keep the first yearly Postgresql backup is 10."
+  }
 }
 
 ###############################
