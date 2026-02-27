@@ -7,10 +7,6 @@ resource "azurerm_backup_policy_file_share" "main" {
 
   timezone = var.file_share_backup_policy_timezone
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   backup {
     frequency = var.file_share_backup_policy_frequency
     time      = var.file_share_backup_policy_time

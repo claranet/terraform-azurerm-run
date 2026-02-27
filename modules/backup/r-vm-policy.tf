@@ -8,10 +8,6 @@ resource "azurerm_backup_policy_vm" "main" {
   timezone    = var.vm_backup_policy_timezone
   policy_type = var.vm_backup_policy_type
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   backup {
     frequency = var.vm_backup_policy_frequency
     time      = var.vm_backup_policy_time
