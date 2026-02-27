@@ -1,3 +1,36 @@
+## 8.12.0 (2026-02-27)
+
+### Features
+
+* **AZ-1590:** 🔄 update PostgreSQL backup policy to support flexible server 93a790b
+
+### Bug Fixes
+
+* **AZ-1590:** 🔧 add timezone option 74717c2
+* **AZ-1590:** 🔧 add validation for PostgreSQL backup retention variables 0538b7c
+* **AZ-1590:** 🔧 correct backup policy interval format 114fbd5
+* **AZ-1590:** 🔧 fix lint 2 9223dce
+* **AZ-1590:** 🔧 fix lint file policy f69bf28
+* **AZ-1590:** 🔧 set `nullable` to [secure] for PostgreSQL weekly backup retention variable ac4b48a
+* **AZ-1590:** 🔧 update backup policy validation for yearly retention years 4d58e68
+* **AZ-1590:** 🔧 update backup policy validation to allow null retention years f1d900e
+* **AZ-1590:** 🔧 update doc 9a2ab23
+* **AZ-1590:** 🔧 update PostgreSQL backup interval to weeks 5c7bff7
+* **AZ-1590:** 🔧 update PostgreSQL backup policy retention settings b0611fa
+* **AZ-1590:** 🔧 update PostgreSQL weekly backup policy retention to 12 weeks 84f8f8f
+* **AZ-1590:** 🔧 update retention 1cc6591
+* prevent destroy duplicate bloc 1bda7f7
+
+### Code Refactoring
+
+* **module:** ♻️ apply best practices from AGENTS.md guidelines 963d53d
+
+### Miscellaneous Chores
+
+* 🔧 apply suggestions f90ce24
+* **deps:** 🔗 bump tflint rules version ea6f298
+* **deps:** update pre-commit hook crate-ci/committed to v1.1.11 3541e9c
+
 ## 8.11.0 (2026-02-16)
 
 ### Features
