@@ -15,3 +15,8 @@ output "data_collection_rule" {
   description = "Azure Monitor Data Collection Rule object."
   value       = one(module.vm_monitoring[*].resource)
 }
+
+output "module_vm_monitoring" {
+  description = "Module VM monitoring outputs."
+  value       = one(module.vm_monitoring[*])
+}
