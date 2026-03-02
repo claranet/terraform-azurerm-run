@@ -1,3 +1,13 @@
+## 8.12.1 (2026-03-02)
+
+### Bug Fixes
+
+* 🔗 bump KeyVault module f9f2bca
+
+### Miscellaneous Chores
+
+* **deps:** update dependency trivy to v0.69.2 9998438
+
 ## 8.12.0 (2026-02-27)
 
 ### Features
