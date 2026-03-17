@@ -42,9 +42,18 @@ The OBC backend requires the following environment variables in the Azure Functi
 | FAME version | `2.2.0-beta-0.1` | Current OBC beta on feat/obc branch |
 | Variable structure | Individual variables | Consistent with existing splunk_token/datadog_api_key pattern |
 | Validation | Exactly 1 backend + OBC cross-validation | Strict validation, early error detection at `plan` |
-| Sensitive marking | Yes on credentials | AWS credentials require sensitive=true |
+| Sensitive marking | On AWS credentials only (not endpoint) | `obc_endpoint` is a URL, not a secret; marking it sensitive would redact all `app_settings` in plan output |
 
 ## Files to Modify
+
+| File | Change type |
+|---|---|
+| `modules/monitoring-function/variables.tf` | Add 7 OBC variables |
+| `modules/monitoring-function/locals.tf` | Update `app_settings` |
+| `modules/monitoring-function/README.md` | Document new variables (via terraform-docs) |
+| `variables-monitoring-function.tf` (root) | Add 7 OBC variables + update zip_package_path default |
+| `m-monitoring-function.tf` (root) | Update preconditions + module call |
+| `README.md` (root) | Document new variables (via terraform-docs) |
 
 ### 1. `modules/monitoring-function/variables.tf`
 
@@ -55,7 +64,6 @@ variable "obc_endpoint" {
   description = "ObsByClara/Prometheus Remote Write endpoint URL."
   type        = string
   default     = null
-  sensitive   = true
 }
 
 variable "obc_region" {
@@ -112,19 +120,20 @@ app_settings = merge(
   var.extra_application_settings,
   var.splunk_token != null ? { SFX_TOKEN = var.splunk_token } : {},
   var.datadog_api_key != null ? { DD_API_KEY = var.datadog_api_key } : {},
-  var.obc_endpoint != null ? {
-    OBC_ENDPOINT          = var.obc_endpoint
-    OBC_REGION            = var.obc_region
-    OBC_SERVICE           = var.obc_service
-    AWS_ACCESS_KEY_ID     = var.obc_aws_access_key_id
-    AWS_SECRET_ACCESS_KEY = var.obc_aws_secret_access_key
-  } : {},
+  var.obc_endpoint != null ? { OBC_ENDPOINT = var.obc_endpoint } : {},
+  var.obc_region != null ? { OBC_REGION = var.obc_region } : {},
+  var.obc_endpoint != null ? { OBC_SERVICE = var.obc_service } : {},
+  var.obc_aws_access_key_id != null ? { AWS_ACCESS_KEY_ID = var.obc_aws_access_key_id } : {},
+  var.obc_aws_secret_access_key != null ? { AWS_SECRET_ACCESS_KEY = var.obc_aws_secret_access_key } : {},
   var.obc_aws_session_token != null ? { AWS_SESSION_TOKEN = var.obc_aws_session_token } : {},
   var.obc_max_retries != null ? { OBC_MAX_RETRIES = tostring(var.obc_max_retries) } : {},
 )
 ```
 
-**Note:** `OBC_SERVICE` is always included when OBC is active (it has a non-null default). `AWS_SESSION_TOKEN` and `OBC_MAX_RETRIES` are independent optionals.
+**Notes:**
+- Each variable is guarded individually by a null check, consistent with the existing pattern for `AWS_SESSION_TOKEN` and `OBC_MAX_RETRIES`. This avoids injecting `null` values into `app_settings` if credentials are omitted.
+- `OBC_SERVICE` uses `obc_endpoint != null` as its gate (rather than `obc_service != null`) because `obc_service` has a non-null default `"aps"` and would otherwise always be injected. **Important:** `obc_service` must never be added to the `compact()` list in the precondition for this same reason — it would always be truthy and break the backend count logic.
+- The inner module (`modules/monitoring-function/`) intentionally has no self-defense precondition. It is always consumed via the root-level wrapper (`m-monitoring-function.tf`) which owns the validation. This is acceptable for an embedded module not published independently.
 
 ### 3. `variables-monitoring-function.tf` (root)
 
