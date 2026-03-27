@@ -48,6 +48,51 @@ variable "datadog_api_key" {
   default     = null
 }
 
+variable "obc_endpoint" {
+  description = "ObsByClara/Prometheus Remote Write endpoint URL."
+  type        = string
+  default     = null
+}
+
+variable "obc_region" {
+  description = "AWS region for SigV4 signing when using ObsByClara backend."
+  type        = string
+  default     = null
+}
+
+variable "obc_service" {
+  description = "AWS service name for SigV4 signing. Typically `aps` for AWS Managed Prometheus."
+  type        = string
+  default     = "aps"
+}
+
+variable "obc_aws_access_key_id" {
+  description = "AWS access key ID for ObsByClara authentication."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "obc_aws_secret_access_key" {
+  description = "AWS secret access key for ObsByClara authentication."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "obc_aws_session_token" {
+  description = "AWS session token for ObsByClara authentication with temporary credentials."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "obc_max_retries" {
+  description = "Maximum retry attempts for ObsByClara failed requests."
+  type        = number
+  default     = null
+}
+
 variable "zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
