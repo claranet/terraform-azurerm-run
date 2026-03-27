@@ -96,7 +96,7 @@ variable "obc_max_retries" {
 variable "zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v2.2.0-beta-0.1/fame.zip"
 }
 
 variable "metrics_extra_dimensions" {
