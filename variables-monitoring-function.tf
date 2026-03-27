@@ -19,6 +19,51 @@ variable "monitoring_function_datadog_api_key" {
   default     = null
 }
 
+variable "monitoring_function_obc_endpoint" {
+  description = "ObsByClara/Prometheus Remote Write endpoint URL."
+  type        = string
+  default     = null
+}
+
+variable "monitoring_function_obc_region" {
+  description = "AWS region for SigV4 signing when using ObsByClara backend."
+  type        = string
+  default     = null
+}
+
+variable "monitoring_function_obc_service" {
+  description = "AWS service name for SigV4 signing. Typically `aps` for AWS Managed Prometheus."
+  type        = string
+  default     = "aps"
+}
+
+variable "monitoring_function_obc_aws_access_key_id" {
+  description = "AWS access key ID for ObsByClara authentication."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "monitoring_function_obc_aws_secret_access_key" {
+  description = "AWS secret access key for ObsByClara authentication."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "monitoring_function_obc_aws_session_token" {
+  description = "AWS session token for ObsByClara authentication with temporary credentials."
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "monitoring_function_obc_max_retries" {
+  description = "Maximum retry attempts for ObsByClara failed requests."
+  type        = number
+  default     = null
+}
+
 variable "monitoring_function_logs_categories" {
   description = "Monitoring function log categories to send to destinations. All by default."
   type        = list(string)
@@ -34,7 +79,7 @@ variable "monitoring_function_logs_metrics_categories" {
 variable "monitoring_function_zip_package_path" {
   description = "Zip package path for monitoring function."
   type        = string
-  default     = "https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"
+  default     = "https://github.com/claranet/fame/releases/download/v2.2.0-beta-0.1/fame.zip"
 }
 
 variable "monitoring_function_metrics_extra_dimensions" {
