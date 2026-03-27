@@ -9,8 +9,17 @@ resource "terraform_data" "fake_function_condition" {
       condition = length(compact([
         var.monitoring_function_splunk_token,
         var.monitoring_function_datadog_api_key,
+        var.monitoring_function_obc_endpoint,
       ])) == 1
-      error_message = "One of `var.monitoring_function_datadog_api_key` or `var.monitoring_function_splunk_token` must be set when variable `var.monitoring_function_enabled` is set to `true`."
+      error_message = "Exactly one of `var.monitoring_function_datadog_api_key`, `var.monitoring_function_splunk_token`, or `var.monitoring_function_obc_endpoint` must be set when `var.monitoring_function_enabled` is set to `true`."
+    }
+    precondition {
+      condition = var.monitoring_function_obc_endpoint == null || (
+        var.monitoring_function_obc_region != null &&
+        var.monitoring_function_obc_aws_access_key_id != null &&
+        var.monitoring_function_obc_aws_secret_access_key != null
+      )
+      error_message = "When `var.monitoring_function_obc_endpoint` is set, `obc_region`, `obc_aws_access_key_id`, and `obc_aws_secret_access_key` must also be set."
     }
   }
 }
@@ -47,6 +56,14 @@ module "monitoring_function" {
   log_analytics_workspace_guid = module.logs.log_analytics_workspace_guid
   splunk_token                 = var.monitoring_function_splunk_token
   datadog_api_key              = var.monitoring_function_datadog_api_key
+
+  obc_endpoint              = var.monitoring_function_obc_endpoint
+  obc_region                = var.monitoring_function_obc_region
+  obc_service               = var.monitoring_function_obc_service
+  obc_aws_access_key_id     = var.monitoring_function_obc_aws_access_key_id
+  obc_aws_secret_access_key = var.monitoring_function_obc_aws_secret_access_key
+  obc_aws_session_token     = var.monitoring_function_obc_aws_session_token
+  obc_max_retries           = var.monitoring_function_obc_max_retries
 
   logs_destinations_ids = [
     module.logs.id,
