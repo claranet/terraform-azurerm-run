@@ -142,14 +142,14 @@ module "run" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | azurerm | ~> 4.42 |
 | terraform | n/a |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
 | key\_vault | claranet/keyvault/azurerm | ~> 8.2.0 |
@@ -161,7 +161,7 @@ module "run" {
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_role_assignment.function_subscription](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.function_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [terraform_data.fake_function_condition](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
@@ -170,7 +170,7 @@ module "run" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | automation\_account\_custom\_name | Automation account custom name. | `string` | `""` | no |
 | automation\_account\_enabled | Whether the Automation Account is enabled. Enabled if legacy Update Management is enabled. | `bool` | `false` | no |
 | automation\_account\_extra\_tags | Extra tags to add to Automation Account. | `map(string)` | `{}` | no |
@@ -333,7 +333,7 @@ module "run" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | automation\_account\_dsc\_primary\_access\_key | Azure Automation Account DSC primary access key. |
 | automation\_account\_dsc\_secondary\_access\_key | Azure Automation Account DSC secondary access key. |
 | automation\_account\_dsc\_server\_endpoint | Azure Automation Account DSC server endpoint. |
