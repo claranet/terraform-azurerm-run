@@ -6,6 +6,7 @@ output "ids" {
 output "resource" {
   description = "Maintenance Configurations resource object."
   value       = azurerm_maintenance_configuration.main
+  sensitive   = true
 }
 
 output "resource_management_group_policy_assignment" {

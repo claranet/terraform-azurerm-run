@@ -80,6 +80,7 @@ output "storage_account_archived_logs_fileshare_name" {
 output "resource" {
   description = "Log Analytics Workspace resource object."
   value       = azurerm_log_analytics_workspace.main
+  sensitive   = true
 }
 
 output "module_storage_logs" {
