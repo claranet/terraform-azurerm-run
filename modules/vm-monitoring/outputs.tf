@@ -11,4 +11,5 @@ output "name" {
 output "resource" {
   description = "Azure Monitor Data Collection Rule resource object."
   value       = azurerm_monitor_data_collection_rule.main
+  sensitive   = true
 }

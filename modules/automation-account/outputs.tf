@@ -36,6 +36,7 @@ output "identity" {
 output "resource" {
   description = "Automation account resource object."
   value       = azurerm_automation_account.main
+  sensitive   = true
 }
 
 output "module_diagnostics" {
@@ -46,4 +47,5 @@ output "module_diagnostics" {
 output "resource_log_analytics_linked_service" {
   description = "Log Analytics linked service resource object."
   value       = azurerm_log_analytics_linked_service.main
+  sensitive   = true
 }

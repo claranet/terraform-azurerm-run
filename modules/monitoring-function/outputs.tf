@@ -107,9 +107,11 @@ output "module_function" {
 output "resource" {
   description = "Storage table resource object."
   value       = azurerm_storage_table.main
+  sensitive   = true
 }
 
 output "resource_query" {
   description = "Storage table query resource object."
   value       = azurerm_storage_table_entity.main
+  sensitive   = true
 }
