@@ -100,3 +100,13 @@ output "resource_storage_blob_backup_policy" {
   description = "Storage blob Backup policy resource."
   value       = one(azurerm_data_protection_backup_policy_blob_storage.main[*])
 }
+
+output "kubernetes_backup_policy_id" {
+  description = "AKS Backup policy ID."
+  value       = length(azurerm_data_protection_backup_policy_kubernetes_cluster.main) > 0 ? azurerm_data_protection_backup_policy_kubernetes_cluster.main[0].id : null
+}
+
+output "kubernetes_backup_policy_resource" {
+  description = "AKS policy resource."
+  value       = length(azurerm_data_protection_backup_policy_kubernetes_cluster.main) > 0 ? azurerm_data_protection_backup_policy_kubernetes_cluster.main[0] : null
+}

@@ -66,6 +66,57 @@ variable "backup_managed_disk_enabled" {
   default     = true
 }
 
+variable "backup_kubernetes_enabled" {
+  description = "Whether the AKS backup is enabled."
+  type        = bool
+  default     = true
+}
+
+variable "kubernetes_backup_policy_custom_name" {
+  description = "Optional custom name for the Kubernetes backup policy."
+  type        = string
+  default     = ""
+}
+
+variable "kubernetes_backup_policy_timezone" {
+  description = "Specifies the timezone for AKS backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
+}
+
+variable "kubernetes_backup_policy_retention_duration" {
+  type    = string
+  default = "P7D"
+}
+
+variable "kubernetes_backup_policy_time" {
+  description = "The time of day to perform the AKS backup in 24hour format."
+  type        = string
+  default     = "04:00"
+}
+
+variable "kubernetes_backup_policy_interval_in_hours" {
+  description = "The AKS backup interval in hours."
+  type        = string
+  default     = 24
+}
+
+variable "kubernetes_backup_policy_retention_rules" {
+  description = "List of additional retention rules for the Kubernetes backup policy."
+  type = list(object({
+    name     = string
+    priority = number
+    life_cycles = list(object({
+      duration        = string
+      data_store_type = string
+    }))
+    criteria = object({
+      absolute_criteria = optional(string)
+    })
+  }))
+  default = []
+}
+
 ###############################
 # Azure Recovery Vault variables
 ###############################
