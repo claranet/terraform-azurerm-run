@@ -85,6 +85,7 @@ variable "kubernetes_backup_policy_timezone" {
 }
 
 variable "kubernetes_backup_policy_retention_duration" {
+  description = "Retention duration for the Kubernetes backup policy."
   type    = string
   default = "P7D"
 }
