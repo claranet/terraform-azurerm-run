@@ -1,5 +1,5 @@
 resource "azurerm_data_protection_backup_vault" "main" {
-  count = var.backup_postgresql_enabled || var.backup_managed_disk_enabled || var.backup_storage_blob_enabled ? 1 : 0
+  count = var.backup_postgresql_enabled || var.backup_managed_disk_enabled || var.backup_storage_blob_enabled || var.backup_kubernetes_enabled ? 1 : 0
 
   name                = local.backup_vault_name
   resource_group_name = var.resource_group_name
