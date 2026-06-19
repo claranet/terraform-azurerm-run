@@ -61,6 +61,12 @@ variable "storage_blob_backup_policy_custom_name" {
   default     = ""
 }
 
+variable "kubernetes_backup_policy_custom_name" {
+  description = "Azure Backup - AKS backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}
+
 # VM Monitoring
 variable "dcr_custom_name" {
   description = "VM Monitoring - Data Collection rule custom name."

@@ -103,10 +103,10 @@ output "resource_storage_blob_backup_policy" {
 
 output "kubernetes_backup_policy_id" {
   description = "AKS Backup policy ID."
-  value       = length(azurerm_data_protection_backup_policy_kubernetes_cluster.main) > 0 ? azurerm_data_protection_backup_policy_kubernetes_cluster.main[0].id : null
+  value       = one(azurerm_data_protection_backup_policy_kubernetes_cluster.main[*].id)
 }
 
-output "kubernetes_backup_policy_resource" {
-  description = "AKS policy resource."
-  value       = length(azurerm_data_protection_backup_policy_kubernetes_cluster.main) > 0 ? azurerm_data_protection_backup_policy_kubernetes_cluster.main[0] : null
+output "resource_kubernetes_backup_policy" {
+  description = "AKS Backup policy resource."
+  value       = one(azurerm_data_protection_backup_policy_kubernetes_cluster.main[*])
 }
