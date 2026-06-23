@@ -70,9 +70,14 @@ locals {
       Query      = <<EOQ
         AzureDiagnostics
         | where ResultDescription contains "MYSQL backup script finished"
-        | extend metric_value = iff(coalesce(ResultType, column_ifexists("ResultType", "")) == "In Progress", 1, 0)
         | where TimeGenerated > ago(1d)
-        | project timestamp = datetime_diff('second', TimeGenerated, datetime(1970-01-01)), subscription_id = coalesce(SubscriptionId, column_ifexists("SubscriptionId", "")), azure_resource_group_name = coalesce(ResourceGroup, column_ifexists("ResourceGroup", "")), azure_resource_name = coalesce(Resource, column_ifexists("Resource", "")), metric_value
+        | extend id_parts = split(ResourceId, '/')
+        | extend subscription_id = tostring(id_parts[2])
+        | extend azure_resource_group_name = tostring(id_parts[4])
+        | extend azure_resource_name = Resource
+        | summarize arg_max(TimeGenerated, ResultType) by subscription_id, azure_resource_group_name, azure_resource_name
+        | extend metric_value = iff(ResultType == "In Progress", 1, 0)
+        | project timestamp=TimeGenerated, subscription_id, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     }
   }
