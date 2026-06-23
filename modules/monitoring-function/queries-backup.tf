@@ -72,6 +72,7 @@ locals {
         | where ResultDescription contains "MYSQL backup script finished"
         | extend metric_value = iff(coalesce(ResultType, column_ifexists("ResultType", "")) == "In Progress", 1, 0)
         | where TimeGenerated > ago(1d)
+        | project timestamp=TimeGenerated, subscription_id = coalesce(SubscriptionId, column_ifexists("SubscriptionId", "")), azure_resource_group_name = coalesce(ResourceGroup, column_ifexists("ResourceGroup", "")), azure_resource_name = coalesce(Resource, column_ifexists("Resource", "")), metric_value
       EOQ
     }
   }
