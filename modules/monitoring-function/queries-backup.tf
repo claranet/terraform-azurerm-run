@@ -63,5 +63,16 @@ locals {
         | project timestamp=LastBackupTime, subscription_id, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     }
+
+    mysql_backup = {
+      MetricName = "fame.azure.backup.mysql"
+      QueryType  = "log_analytics"
+      Query      = <<EOQ
+        AzureDiagnostics
+        | where ResultDescription contains "MYSQL backup script finished"
+        | extend metric_value = iff(coalesce(ResultType, column_ifexists("ResultType", "")) == "In Progress", 1, 0)
+        | where TimeGenerated > ago(1d)
+      EOQ
+    }
   }
 }
