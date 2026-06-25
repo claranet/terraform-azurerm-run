@@ -89,7 +89,7 @@ variable "recovery_vault_storage_mode_type" {
 }
 
 variable "recovery_vault_cross_region_restore_enabled" {
-  description = "Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`."
+  description = "Is cross region restore enabled for this Vault? Can only be `true`, when `recovery_vault_storage_mode_type` is `GeoRedundant`."
   type        = bool
   default     = true
 }
@@ -259,10 +259,35 @@ variable "backup_vault_datastore_type" {
   default     = "VaultStore"
 }
 
-variable "backup_vault_geo_redundancy_enabled" {
-  description = "Whether the geo redundancy is enabled no the Backup Vault."
+variable "backup_vault_redundancy" {
+  description = "Redundancy setting of the Backup Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`."
+  type        = string
+  default     = "GeoRedundant"
+  nullable    = false
+}
+
+variable "backup_vault_cross_region_restore_enabled" {
+  description = "Is cross region restore enabled for this Vault? Can only be `true`, when `backup_vault_redundancy` is `GeoRedundant`. Once enabled, it cannot be disabled."
   type        = bool
   default     = true
+  nullable    = false
+}
+
+variable "backup_vault_immutability" {
+  description = "Immutability setting of the Backup Vault. Possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`."
+  type        = string
+  default     = "Unlocked"
+  nullable    = false
+}
+
+variable "backup_vault_soft_delete" {
+  description = "Soft delete setting of the Backup Vault. Possible values for the state are `AlwaysOn`, `Off` and `On`. Defaults to `On`. Once the soft delete is set to `AlwaysOn`, the setting cannot be changed. Retention period till 14 days are free of cost."
+  type = object({
+    state             = optional(string, "On")
+    retention_in_days = optional(number, 14)
+  })
+  default  = {}
+  nullable = false
 }
 
 variable "backup_vault_identity_type" {
@@ -283,7 +308,7 @@ variable "managed_disk_backup_policy_time" {
 
 variable "managed_disk_backup_policy_interval_in_hours" {
   description = "The Managed Disk backup interval in hours."
-  type        = string
+  type        = number
   default     = 24
 }
 
@@ -325,7 +350,7 @@ variable "postgresql_backup_policy_timezone" {
 # PostgreSQL Flexible Server policy supports only weekly backups.
 variable "postgresql_backup_policy_interval_in_weeks" {
   description = "The Postgresql backup interval in weeks."
-  type        = string
+  type        = number
   default     = 1
 }
 
@@ -356,7 +381,6 @@ variable "postgresql_backup_monthly_policy_retention_in_months" {
   }
 }
 
-
 variable "postgresql_backup_yearly_policy_retention_in_years" {
   description = "The number of years to keep the first yearly Postgresql backup."
   type        = number
@@ -371,10 +395,52 @@ variable "postgresql_backup_yearly_policy_retention_in_years" {
 # Storage blob backup
 ###############################
 
-variable "storage_blob_backup_policy_retention_in_days" {
-  description = "The number of days to keep the Storage blob backup."
+variable "storage_blob_backup_policy_time" {
+  description = "The time of day to perform the Storage blob backup in 24 hours format."
+  type        = string
+  default     = "04:00"
+}
+
+variable "storage_blob_backup_policy_timezone" {
+  description = "Specifies the timezone for Storage blob backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
+}
+
+variable "storage_blob_backup_policy_interval_in_days" {
+  description = "The interval in days for the Storage blob backup."
+  type        = number
+  default     = 1
+}
+
+variable "storage_blob_backup_policy_vault_retention_in_days" {
+  description = "The number of days to keep the Storage blob backup in the vault."
   type        = number
   default     = 30
+}
+
+variable "storage_blob_backup_policy_operational_retention_in_days" {
+  description = "The number of days to keep the Storage blob backup in the operational store."
+  type        = number
+  default     = 30
+}
+
+variable "storage_blob_backup_policy_retention_rules" {
+  description = "List of retention rules for the Storage blob backup policy. Duration must be in ISO 8601 format (e.g. `P1D` for 1 day, `P1W` for 1 week, `P1M` for 1 month, `P1Y` for 1 year)."
+  type = list(object({
+    name     = string
+    priority = number
+    duration = string
+    criteria = object({
+      absolute_criteria      = optional(string)
+      days_of_month          = optional(list(string))
+      days_of_week           = optional(list(string))
+      months_of_year         = optional(list(string))
+      scheduled_backup_times = optional(list(string))
+      weeks_of_month         = optional(list(string))
+    })
+  }))
+  default = []
 }
 
 ###############################

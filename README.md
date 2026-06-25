@@ -189,11 +189,14 @@ module "run" {
 | backup\_managed\_disk\_enabled | Whether the Managed Disk backup is enabled. | `bool` | `false` | no |
 | backup\_postgresql\_enabled | Whether the PostgreSQL backup is enabled. | `bool` | `false` | no |
 | backup\_storage\_blob\_enabled | Whether the Storage blob backup is enabled. | `bool` | `false` | no |
+| backup\_vault\_cross\_region\_restore\_enabled | Is cross region restore enabled for this Vault? Can only be `true`, when `backup_vault_redundancy` is `GeoRedundant`. Once enabled, it cannot be disabled. | `bool` | `true` | no |
 | backup\_vault\_custom\_name | Azure Backup Vault custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | backup\_vault\_datastore\_type | Type of data store used for the Backup Vault. | `string` | `"VaultStore"` | no |
 | backup\_vault\_extra\_tags | Extra tags to add to Backup Vault. | `map(string)` | `{}` | no |
-| backup\_vault\_geo\_redundancy\_enabled | Whether the geo redundancy is enabled on the Backup Vault. | `bool` | `true` | no |
 | backup\_vault\_identity\_type | Azure Backup Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
+| backup\_vault\_immutability | Immutability setting of the Backup Vault. Possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`. | `string` | `"Unlocked"` | no |
+| backup\_vault\_redundancy | Redundancy setting of the Backup Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
+| backup\_vault\_soft\_delete | Soft delete setting of the Backup Vault. Possible values for the state are `AlwaysOn`, `Off` and `On`. Defaults to `On`. Once the soft delete is set to `AlwaysOn`, the setting cannot be changed. Retention period till 14 days are free of cost. | <pre>object({<br/>    state             = optional(string, "On")<br/>    retention_in_days = optional(number, 14)<br/>  })</pre> | `{}` | no |
 | backup\_vm\_enabled | Whether the Virtual Machines backup is enabled. | `bool` | `false` | no |
 | client\_name | Client name. | `string` | n/a | yes |
 | data\_collection\_syslog\_facilities\_names | List of syslog to retrieve in Data Collection Rule. | `list(string)` | <pre>[<br/>  "auth",<br/>  "authpriv",<br/>  "cron",<br/>  "daemon",<br/>  "mark",<br/>  "kern",<br/>  "local0",<br/>  "local1",<br/>  "local2",<br/>  "local3",<br/>  "local4",<br/>  "local5",<br/>  "local6",<br/>  "local7",<br/>  "lpr",<br/>  "mail",<br/>  "news",<br/>  "syslog",<br/>  "user",<br/>  "uucp"<br/>]</pre> | no |
@@ -299,7 +302,7 @@ module "run" {
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | postgresql\_backup\_monthly\_policy\_retention\_in\_months | The number of months to keep the first monthly PostgreSQL backup. | `number` | `null` | no |
 | postgresql\_backup\_policy\_custom\_name | Azure Backup - PostgreSQL backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| postgresql\_backup\_policy\_interval\_in\_weeks | The Postgresql backup interval in weeks. | `string` | `1` | no |
+| postgresql\_backup\_policy\_interval\_in\_weeks | The Postgresql backup interval in weeks. | `number` | `1` | no |
 | postgresql\_backup\_policy\_time | The time of day to perform the PostgreSQL backup in 24 hours format (eg 04:00). | `string` | `"04:00"` | no |
 | postgresql\_backup\_policy\_timezone | Specifies the timezone for PostgreSQL backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | postgresql\_backup\_weekly\_policy\_retention\_in\_weeks | The number of weeks to keep the first weekly PostgreSQL backup. | `number` | `12` | no |
@@ -318,7 +321,12 @@ module "run" {
 | resource\_group\_name | Resource Group the resources will belong to. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_blob\_backup\_policy\_custom\_name | Azure Backup - Storage blob backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
-| storage\_blob\_backup\_policy\_retention\_in\_days | The number of days to keep the Storage blob backup. | `number` | `30` | no |
+| storage\_blob\_backup\_policy\_interval\_in\_days | The interval in days for the Storage blob backup. | `number` | `1` | no |
+| storage\_blob\_backup\_policy\_operational\_retention\_in\_days | The number of days to keep the Storage blob backup in the operational store. | `number` | `30` | no |
+| storage\_blob\_backup\_policy\_retention\_rules | List of retention rules for the Storage blob backup policy. Duration must be in ISO 8601 format (e.g. `P1D` for 1 day, `P1W` for 1 week, `P1M` for 1 month, `P1Y` for 1 year). | <pre>list(object({<br/>    name     = string<br/>    priority = number<br/>    duration = string<br/>    criteria = object({<br/>      absolute_criteria      = optional(string)<br/>      days_of_month          = optional(list(string))<br/>      days_of_week           = optional(list(string))<br/>      months_of_year         = optional(list(string))<br/>      scheduled_backup_times = optional(list(string))<br/>      weeks_of_month         = optional(list(string))<br/>    })<br/>  }))</pre> | `[]` | no |
+| storage\_blob\_backup\_policy\_time | The time of day to perform the Storage blob backup in 24 hours format. | `string` | `"04:00"` | no |
+| storage\_blob\_backup\_policy\_timezone | Specifies the timezone for Storage blob backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
+| storage\_blob\_backup\_policy\_vault\_retention\_in\_days | The number of days to keep the Storage blob backup in the vault. | `number` | `30` | no |
 | tenant\_id | Tenant ID. | `string` | `null` | no |
 | update\_center\_dynamic\_scope\_assignment | Enable dynamic scope assignment for maintenance configurations. | <pre>object({<br/>    enabled               = optional(bool, false)<br/>    custom_resource_names = optional(map(string))<br/>    filter = optional(object({<br/>      locations       = list(string)<br/>      os_types        = optional(list(string), ["Linux", "Windows"])<br/>      resource_groups = optional(list(string))<br/>      resource_types  = optional(list(string))<br/>      tag_filter      = optional(string, "Any")<br/>      tags = optional(list(object({<br/>        key    = string<br/>        values = list(string)<br/>      })), [])<br/>    }))<br/>  })</pre> | `{}` | no |
 | update\_center\_enabled | Whether the Update Management Center is enabled. | `bool` | `false` | no |
