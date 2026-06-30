@@ -10,4 +10,5 @@ locals {
   pgqsl_policy_name      = coalesce(var.postgresql_backup_policy_custom_name, "${data.azurecaf_name.backup_vault.result}-pgsql-backup-policy")
   blob_policy_name       = coalesce(var.storage_blob_backup_policy_custom_name, "${data.azurecaf_name.backup_vault.result}-blob-backup-policy")
   disk_policy_name       = coalesce(var.managed_disk_backup_policy_custom_name, "${data.azurecaf_name.backup_vault.result}-disk-backup-policy")
+  kubernetes_policy_name = coalesce(var.kubernetes_backup_policy_custom_name, "${data.azurecaf_name.backup_vault.result}-kubernetes-backup-policy")
 }
