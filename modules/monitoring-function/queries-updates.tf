@@ -2,6 +2,7 @@ locals {
   log_queries_updates = {
     update_center_success = {
       MetricName = "fame.azure.update_center.updates_status"
+      MetricType = "gauge"
       QueryType  = "resource_graph"
       Query      = <<EOQ
         patchinstallationresources
@@ -21,6 +22,7 @@ locals {
 
     update_center_missing_updates = {
       MetricName = "fame.azure.update_center.missing_updates"
+      MetricType = "gauge"
       QueryType  = "resource_graph"
       Query      = <<EOQ
         patchassessmentresources
@@ -43,6 +45,7 @@ locals {
 
     automation_updates_status = {
       MetricName = "fame.azure.automation_update.updates_status"
+      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         UpdateRunProgress
@@ -62,6 +65,7 @@ EOQ
 
     automation_updates_missing_updates = {
       MetricName = "fame.azure.automation_update.missing_updates"
+      MetricType = "gauge"
       QueryType  = "log_analytics"
       Query      = <<EOQ
         Heartbeat
