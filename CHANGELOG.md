@@ -1,3 +1,18 @@
+## 8.13.0 (2026-07-02)
+
+### Features
+
+* **monitoring-function:** add MetricType gauge to all queries 5d23a5a
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.12.1 f52579c
+* **deps:** update dependency opentofu to v1.12.2 9020cae
+* **deps:** update dependency opentofu to v1.12.3 93c59e7
+* **deps:** update dependency tflint to v0.63.1 682be75
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.4.1 912aa7b
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.4.2 e48198f
+
 ## 8.12.3 (2026-06-02)
 
 ### Bug Fixes
