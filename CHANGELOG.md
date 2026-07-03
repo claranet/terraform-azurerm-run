@@ -1,3 +1,19 @@
+## 8.14.0 (2026-07-03)
+
+### Features
+
+* add support for AKS backup in module dd62081
+* **GH-6:** ✨ add aks backup policy support 90c0407
+
+### Bug Fixes
+
+* Fix formatting of kubernetes_backup_policy variable a3e3093
+
+### Miscellaneous Chores
+
+* Add description to kubernetes_backup_policy_retention_duration fb41344
+* Reorganize Kubernetes backup policy variables bd7455a
+
 ## 8.13.0 (2026-07-02)
 
 ### Features
