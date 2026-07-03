@@ -32,6 +32,12 @@ variable "backup_managed_disk_enabled" {
   default     = false
 }
 
+variable "backup_kubernetes_enabled" {
+  description = "Whether the AKS backup is enabled."
+  type        = bool
+  default     = false
+}
+
 ###############################
 # Azure Recovery Vault variables
 ###############################
@@ -265,7 +271,6 @@ variable "managed_disk_backup_weekly_policy_retention_in_weeks" {
   default     = null
 }
 
-
 ###############################
 # PostgreSQL backup
 ###############################
@@ -333,6 +338,51 @@ variable "storage_blob_backup_policy_retention_in_days" {
   description = "The number of days to keep the Storage blob backup."
   type        = number
   default     = 30
+}
+
+###############################
+# AKS backup
+###############################
+
+variable "kubernetes_backup_policy_time" {
+  description = "The time of day to perform the AKS backup in 24 hours format."
+  type        = string
+  default     = "04:00"
+}
+
+variable "kubernetes_backup_policy_interval_in_hours" {
+  description = "The AKS backup interval in hours."
+  type        = number
+  default     = 24
+}
+
+variable "kubernetes_backup_policy_timezone" {
+  description = "Specifies the timezone for AKS backup schedules. Defaults to `UTC`."
+  type        = string
+  default     = "UTC"
+}
+
+variable "kubernetes_backup_policy_retention_in_days" {
+  description = "The number of days to keep the AKS backup."
+  type        = number
+  default     = 30
+}
+
+variable "kubernetes_backup_policy_retention_rules" {
+  description = "List of additional retention rules for the AKS backup policy. Duration must be in ISO 8601 format (e.g. `P1D` for 1 day, `P1W` for 1 week, `P1M` for 1 month, `P1Y` for 1 year)."
+  type = list(object({
+    name     = string
+    priority = number
+    duration = string
+    criteria = object({
+      absolute_criteria      = optional(string)
+      days_of_week           = optional(list(string))
+      months_of_year         = optional(list(string))
+      scheduled_backup_times = optional(list(string))
+      weeks_of_month         = optional(list(string))
+    })
+  }))
+  default = []
 }
 
 ###############################

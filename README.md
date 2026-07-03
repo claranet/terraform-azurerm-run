@@ -182,6 +182,7 @@ module "run" {
 | automation\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | backup\_diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | backup\_file\_share\_enabled | Whether the File Share backup is enabled. | `bool` | `false` | no |
+| backup\_kubernetes\_enabled | Whether the AKS backup is enabled. | `bool` | `false` | no |
 | backup\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | `[]` | no |
 | backup\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
@@ -225,6 +226,12 @@ module "run" {
 | key\_vault\_resource\_group\_name | Resource Group the Key Vault will belong to. Will use `resource_group_name` if not set. | `string` | `""` | no |
 | key\_vault\_sku | The Name of the SKU used for this Key Vault. Possible values are "standard" and "premium". | `string` | `"standard"` | no |
 | key\_vault\_soft\_delete\_retention\_days | The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. | `number` | `7` | no |
+| kubernetes\_backup\_policy\_custom\_name | Azure Backup - AKS backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| kubernetes\_backup\_policy\_interval\_in\_hours | The AKS backup interval in hours. | `number` | `24` | no |
+| kubernetes\_backup\_policy\_retention\_in\_days | The number of days to keep the AKS backup. | `number` | `30` | no |
+| kubernetes\_backup\_policy\_retention\_rules | List of additional retention rules for the AKS backup policy. Duration must be in ISO 8601 format (e.g. `P1D` for 1 day, `P1W` for 1 week, `P1M` for 1 month, `P1Y` for 1 year). | <pre>list(object({<br/>    name     = string<br/>    priority = number<br/>    duration = string<br/>    criteria = object({<br/>      absolute_criteria      = optional(string)<br/>      days_of_week           = optional(list(string))<br/>      months_of_year         = optional(list(string))<br/>      scheduled_backup_times = optional(list(string))<br/>      weeks_of_month         = optional(list(string))<br/>    })<br/>  }))</pre> | `[]` | no |
+| kubernetes\_backup\_policy\_time | The time of day to perform the AKS backup in 24 hours format. | `string` | `"04:00"` | no |
+| kubernetes\_backup\_policy\_timezone | Specifies the timezone for AKS backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | log\_analytics\_resource\_group\_name | Log Analytics Workspace resource group name (if different from `resource_group_name` variable.). | `string` | `null` | no |
@@ -352,6 +359,7 @@ module "run" {
 | key\_vault\_name | Name of the Key Vault. |
 | key\_vault\_resource\_group\_name | Resource Group of the Key Vault. |
 | key\_vault\_uri | URI of the Key Vault. |
+| kubernetes\_backup\_policy\_id | AKS Backup policy ID. |
 | log\_analytics\_workspace\_guid | The Log Analytics Workspace GUID. |
 | log\_analytics\_workspace\_id | The Log Analytics Workspace ID. |
 | log\_analytics\_workspace\_location | The Log Analytics Workspace location. |

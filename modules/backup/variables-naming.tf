@@ -53,3 +53,9 @@ variable "storage_blob_backup_policy_custom_name" {
   type        = string
   default     = ""
 }
+
+variable "kubernetes_backup_policy_custom_name" {
+  description = "Azure Backup - AKS backup policy custom name. Empty by default, using naming convention."
+  type        = string
+  default     = ""
+}

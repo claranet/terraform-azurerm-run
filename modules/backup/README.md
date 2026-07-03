@@ -93,6 +93,7 @@ module "az_vm_backup" {
 | [azurerm_backup_policy_vm.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm) | resource |
 | [azurerm_data_protection_backup_policy_blob_storage.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_protection_backup_policy_blob_storage) | resource |
 | [azurerm_data_protection_backup_policy_disk.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_protection_backup_policy_disk) | resource |
+| [azurerm_data_protection_backup_policy_kubernetes_cluster.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_protection_backup_policy_kubernetes_cluster) | resource |
 | [azurerm_data_protection_backup_policy_postgresql_flexible_server.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_protection_backup_policy_postgresql_flexible_server) | resource |
 | [azurerm_data_protection_backup_vault.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_protection_backup_vault) | resource |
 | [azurerm_recovery_services_vault.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/recovery_services_vault) | resource |
@@ -104,6 +105,7 @@ module "az_vm_backup" {
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
 | backup\_file\_share\_enabled | Whether the File Share backup is enabled. | `bool` | `true` | no |
+| backup\_kubernetes\_enabled | Whether the AKS backup is enabled. | `bool` | `true` | no |
 | backup\_managed\_disk\_enabled | Whether the Managed Disk backup is enabled. | `bool` | `true` | no |
 | backup\_postgresql\_enabled | Whether the PostgreSQL backup is enabled. | `bool` | `true` | no |
 | backup\_storage\_blob\_enabled | Whether the Storage blob backup is enabled. | `bool` | `true` | no |
@@ -126,6 +128,12 @@ module "az_vm_backup" {
 | file\_share\_backup\_policy\_timezone | Specifies the timezone for file share backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | file\_share\_backup\_weekly\_retention | Map to configure the weekly File Share backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_weekly). | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>  })</pre> | `null` | no |
 | file\_share\_backup\_yearly\_retention | Map to configure the yearly File Share backup policy retention according to the [provider's documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_file_share#retention_yearly) | <pre>object({<br/>    count    = number,<br/>    weekdays = list(string),<br/>    weeks    = list(string),<br/>    months   = list(string),<br/>  })</pre> | `null` | no |
+| kubernetes\_backup\_policy\_custom\_name | Azure Backup - AKS backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
+| kubernetes\_backup\_policy\_interval\_in\_hours | The AKS backup interval in hours. | `number` | `24` | no |
+| kubernetes\_backup\_policy\_retention\_in\_days | The number of days to keep the AKS backup. | `number` | `30` | no |
+| kubernetes\_backup\_policy\_retention\_rules | List of additional retention rules for the AKS backup policy. Duration must be in ISO 8601 format (e.g. `P1D` for 1 day, `P1W` for 1 week, `P1M` for 1 month, `P1Y` for 1 year). | <pre>list(object({<br/>    name     = string<br/>    priority = number<br/>    duration = string<br/>    criteria = object({<br/>      absolute_criteria      = optional(string)<br/>      days_of_week           = optional(list(string))<br/>      months_of_year         = optional(list(string))<br/>      scheduled_backup_times = optional(list(string))<br/>      weeks_of_month         = optional(list(string))<br/>    })<br/>  }))</pre> | `[]` | no |
+| kubernetes\_backup\_policy\_time | The time of day to perform the AKS backup in 24 hours format. | `string` | `"04:00"` | no |
+| kubernetes\_backup\_policy\_timezone | Specifies the timezone for AKS backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
@@ -180,6 +188,7 @@ module "az_vm_backup" {
 | backup\_vault\_name | Azure Backup Vault name. |
 | file\_share\_backup\_policy\_id | File share Backup policy ID. |
 | file\_share\_backup\_policy\_name | File share Backup policy name. |
+| kubernetes\_backup\_policy\_id | AKS Backup policy ID. |
 | managed\_disk\_backup\_policy\_id | Managed disk Backup policy ID. |
 | postgresql\_backup\_policy\_id | PostgreSQL Backup policy ID. |
 | recovery\_vault\_id | Azure Recovery Services Vault ID. |
@@ -187,6 +196,7 @@ module "az_vm_backup" {
 | recovery\_vault\_name | Azure Recovery Services Vault name. |
 | resource\_backup\_vault | Resource backup vault. |
 | resource\_file\_share\_backup\_policy | File share Backup policy resource. |
+| resource\_kubernetes\_backup\_policy | AKS Backup policy resource. |
 | resource\_managed\_disk\_backup\_policy | Managed disk Backup policy resource. |
 | resource\_postgresql\_backup\_policy | PostgreSQL Backup policy resource. |
 | resource\_recovery\_vault | Resource recovery vault. |

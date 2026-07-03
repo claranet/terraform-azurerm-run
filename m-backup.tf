@@ -6,7 +6,8 @@ module "backup" {
     || var.backup_vm_enabled
     || var.backup_postgresql_enabled
     || var.backup_managed_disk_enabled
-    || var.backup_storage_blob_enabled ? 1 : 0
+    || var.backup_storage_blob_enabled
+    || var.backup_kubernetes_enabled ? 1 : 0
   )
 
   client_name    = var.client_name
@@ -82,6 +83,14 @@ module "backup" {
   backup_storage_blob_enabled                  = var.backup_storage_blob_enabled
   storage_blob_backup_policy_custom_name       = var.storage_blob_backup_policy_custom_name
   storage_blob_backup_policy_retention_in_days = var.storage_blob_backup_policy_retention_in_days
+
+  backup_kubernetes_enabled                  = var.backup_kubernetes_enabled
+  kubernetes_backup_policy_custom_name       = var.kubernetes_backup_policy_custom_name
+  kubernetes_backup_policy_time              = var.kubernetes_backup_policy_time
+  kubernetes_backup_policy_interval_in_hours = var.kubernetes_backup_policy_interval_in_hours
+  kubernetes_backup_policy_timezone          = var.kubernetes_backup_policy_timezone
+  kubernetes_backup_policy_retention_in_days = var.kubernetes_backup_policy_retention_in_days
+  kubernetes_backup_policy_retention_rules   = var.kubernetes_backup_policy_retention_rules
 
   logs_destinations_ids   = coalescelist(var.backup_logs_destinations_ids, local.logs_destinations_ids)
   logs_categories         = var.backup_logs_categories

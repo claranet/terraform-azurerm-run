@@ -66,6 +66,11 @@ output "storage_blob_backup_policy_id" {
   value       = one(module.backup[*].storage_blob_backup_policy_id)
 }
 
+output "kubernetes_backup_policy_id" {
+  description = "AKS Backup policy ID."
+  value       = one(module.backup[*].kubernetes_backup_policy_id)
+}
+
 output "module_backup" {
   description = "Module backup outputs."
   value       = one(module.backup[*])
