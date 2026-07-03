@@ -1,3 +1,9 @@
+## 8.15.0 (2026-07-03)
+
+### Features
+
+* ✨ enhance backup vault and blob policy configuration f76bbee
+
 ## 8.14.0 (2026-07-03)
 
 ### Features
