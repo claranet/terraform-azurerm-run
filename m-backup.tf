@@ -36,11 +36,14 @@ module "backup" {
   recovery_vault_extra_tags                                     = var.recovery_vault_extra_tags
   recovery_vault_public_network_access_enabled                  = var.recovery_vault_public_network_access_enabled
 
-  backup_vault_custom_name            = var.backup_vault_custom_name
-  backup_vault_datastore_type         = var.backup_vault_datastore_type
-  backup_vault_geo_redundancy_enabled = var.backup_vault_geo_redundancy_enabled
-  backup_vault_identity_type          = var.backup_vault_identity_type
-  backup_vault_extra_tags             = var.backup_vault_extra_tags
+  backup_vault_custom_name                  = var.backup_vault_custom_name
+  backup_vault_datastore_type               = var.backup_vault_datastore_type
+  backup_vault_redundancy                   = var.backup_vault_redundancy
+  backup_vault_cross_region_restore_enabled = var.backup_vault_cross_region_restore_enabled
+  backup_vault_immutability                 = var.backup_vault_immutability
+  backup_vault_soft_delete                  = var.backup_vault_soft_delete
+  backup_vault_identity_type                = var.backup_vault_identity_type
+  backup_vault_extra_tags                   = var.backup_vault_extra_tags
 
   backup_vm_enabled                = var.backup_vm_enabled
   vm_backup_policy_custom_name     = var.vm_backup_policy_custom_name
@@ -80,9 +83,14 @@ module "backup" {
   managed_disk_backup_daily_policy_retention_in_days   = var.managed_disk_backup_daily_policy_retention_in_days
   managed_disk_backup_weekly_policy_retention_in_weeks = var.managed_disk_backup_weekly_policy_retention_in_weeks
 
-  backup_storage_blob_enabled                  = var.backup_storage_blob_enabled
-  storage_blob_backup_policy_custom_name       = var.storage_blob_backup_policy_custom_name
-  storage_blob_backup_policy_retention_in_days = var.storage_blob_backup_policy_retention_in_days
+  backup_storage_blob_enabled                              = var.backup_storage_blob_enabled
+  storage_blob_backup_policy_custom_name                   = var.storage_blob_backup_policy_custom_name
+  storage_blob_backup_policy_time                          = var.storage_blob_backup_policy_time
+  storage_blob_backup_policy_timezone                      = var.storage_blob_backup_policy_timezone
+  storage_blob_backup_policy_interval_in_days              = var.storage_blob_backup_policy_interval_in_days
+  storage_blob_backup_policy_vault_retention_in_days       = var.storage_blob_backup_policy_vault_retention_in_days
+  storage_blob_backup_policy_operational_retention_in_days = var.storage_blob_backup_policy_operational_retention_in_days
+  storage_blob_backup_policy_retention_rules               = var.storage_blob_backup_policy_retention_rules
 
   backup_kubernetes_enabled                  = var.backup_kubernetes_enabled
   kubernetes_backup_policy_custom_name       = var.kubernetes_backup_policy_custom_name

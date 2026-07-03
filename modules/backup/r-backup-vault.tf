@@ -1,11 +1,19 @@
 resource "azurerm_data_protection_backup_vault" "main" {
   count = var.backup_postgresql_enabled || var.backup_managed_disk_enabled || var.backup_storage_blob_enabled || var.backup_kubernetes_enabled ? 1 : 0
 
-  name                = local.backup_vault_name
+  name     = local.backup_vault_name
+  location = var.location
+
   resource_group_name = var.resource_group_name
-  location            = var.location
-  datastore_type      = var.backup_vault_datastore_type
-  redundancy          = var.backup_vault_geo_redundancy_enabled ? "GeoRedundant" : "LocallyRedundant"
+
+  datastore_type = var.backup_vault_datastore_type
+
+  redundancy                   = var.backup_vault_redundancy
+  cross_region_restore_enabled = var.backup_vault_cross_region_restore_enabled
+
+  immutability               = var.backup_vault_immutability
+  soft_delete                = var.backup_vault_soft_delete.state
+  retention_duration_in_days = var.backup_vault_soft_delete.retention_in_days
 
   dynamic "identity" {
     for_each = var.backup_vault_identity_type[*]
