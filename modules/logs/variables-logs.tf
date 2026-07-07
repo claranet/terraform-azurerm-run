@@ -18,3 +18,9 @@ variable "workspace_daily_quota_gb" {
   type        = number
   default     = -1
 }
+
+variable "workspace_local_authentication_disabled" {
+  description = "Specifies if the Log Analytics Workspace should enforce authentication using Azure AD. Defaults to false."
+  type        = bool
+  default     = false
+}

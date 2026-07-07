@@ -37,12 +37,13 @@ module "logs" {
   rbac_storage_contributor_role_principal_ids = var.logs_rbac_storage_contributor_role_principal_ids
   rbac_storage_blob_role_principal_ids        = var.logs_rbac_storage_blob_role_principal_ids
 
-  workspace_name_prefix       = var.log_analytics_workspace_name_prefix
-  workspace_custom_name       = var.log_analytics_workspace_custom_name
-  workspace_extra_tags        = var.log_analytics_workspace_extra_tags
-  workspace_retention_in_days = var.log_analytics_workspace_retention_in_days
-  workspace_daily_quota_gb    = var.log_analytics_workspace_daily_quota_gb
-  workspace_sku               = var.log_analytics_workspace_sku
+  workspace_name_prefix                   = var.log_analytics_workspace_name_prefix
+  workspace_custom_name                   = var.log_analytics_workspace_custom_name
+  workspace_extra_tags                    = var.log_analytics_workspace_extra_tags
+  workspace_retention_in_days             = var.log_analytics_workspace_retention_in_days
+  workspace_daily_quota_gb                = var.log_analytics_workspace_daily_quota_gb
+  workspace_sku                           = var.log_analytics_workspace_sku
+  workspace_local_authentication_disabled = var.log_analytics_workspace_local_authentication_disabled
 
   storage_account_archiving_enabled                          = var.logs_storage_account_archiving_enabled
   tier_to_cool_after_days_since_modification_greater_than    = var.logs_tier_to_cool_after_days_since_modification_greater_than

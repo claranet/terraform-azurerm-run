@@ -243,6 +243,7 @@ module "run" {
 | log\_analytics\_workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace. | `map(string)` | `{}` | no |
 | log\_analytics\_workspace\_id | Log Analytics Workspace ID where the logs are sent and linked to Automation account. | `string` | `null` | no |
 | log\_analytics\_workspace\_link\_enabled | Enable Log Analytics Workspace that will be connected with the automation account. | `bool` | `true` | no |
+| log\_analytics\_workspace\_local\_authentication\_disabled | Specifies if the Log Analytics Workspace should enforce authentication using Azure AD. Defaults to false. | `bool` | `false` | no |
 | log\_analytics\_workspace\_name\_prefix | Log Analytics name prefix. | `string` | `""` | no |
 | log\_analytics\_workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
 | log\_analytics\_workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |

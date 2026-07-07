@@ -128,6 +128,7 @@ module "logs" {
 | workspace\_custom\_name | Azure Log Analytics Workspace custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | workspace\_daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited). | `number` | `-1` | no |
 | workspace\_extra\_tags | Extra tags to add to the Log Analytics Workspace | `map(string)` | `{}` | no |
+| workspace\_local\_authentication\_disabled | Specifies if the Log Analytics Workspace should enforce authentication using Azure AD. Defaults to false. | `bool` | `false` | no |
 | workspace\_name\_prefix | Log Analytics name prefix. | `string` | `""` | no |
 | workspace\_retention\_in\_days | The workspace data retention in days. Possible values range between 30 and 730. | `number` | `30` | no |
 | workspace\_sku | Specifies the SKU of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, and PerGB2018 (new Sku as of 2018-04-03). | `string` | `"PerGB2018"` | no |

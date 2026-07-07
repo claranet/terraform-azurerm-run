@@ -11,6 +11,8 @@ resource "azurerm_log_analytics_workspace" "main" {
   retention_in_days = var.workspace_retention_in_days
   daily_quota_gb    = var.workspace_daily_quota_gb
 
+  local_authentication_disabled = var.workspace_local_authentication_disabled
+
   tags = merge(
     local.default_tags,
     var.extra_tags,
