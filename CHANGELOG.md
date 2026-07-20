@@ -1,3 +1,17 @@
+## 8.16.0 (2026-07-20)
+
+### Features
+
+* **logs:** ✨ add `workspace_local_authentication_disabled` variable 0fd7fd7
+
+### Bug Fixes
+
+* **tflint:** 🐛 bump Azure rules version, fix signature bug 870c4c7
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.12.4 96f547e
+
 ## 8.15.0 (2026-07-03)
 
 ### Features
