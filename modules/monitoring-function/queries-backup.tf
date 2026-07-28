@@ -76,7 +76,7 @@ locals {
         | extend azure_resource_name = Resource
         | summarize ResultBackup = max(TimeGenerated) by subscription_id, azure_resource_group_name, azure_resource_name
         | extend metric_value = iff(ResultBackup >= ago(1d), 1, 0)
-        | project timestamp=ResultBackup, subscription_id, azure_resource_group_name, azure_resource_name, metric_value
+        | project timestamp=now(), subscription_id, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     }
   }
