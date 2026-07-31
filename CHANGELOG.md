@@ -1,3 +1,42 @@
+## 8.17.0 (2026-07-31)
+
+### Features
+
+* add OBC preconditions and module pass-throughs f12d640
+* add OBC root-level variables and bump FAME version to 2.2.0-beta-0.1 bb2839d
+* **monitoring-function:** add MySQL backup query to log analytics 82f71f5
+* **monitoring-function:** add OBC/Prometheus variables to inner module 009679f
+* **monitoring-function:** add projection for MySQL backup query results 14be72b
+* **monitoring-function:** inject OBC env vars into app_settings 6a1d411
+* **monitoring-function:** update MySQL backup query to include timestamp calculation 4bdc777
+* **mysql-backup:** update request 1e6c53e
+* **outputs:** mark resource outputs as sensitive 7e2cb00
+* **queries-backup:** update mysql query) de14212
+* update FAME version in Github URL 3133e68
+* update FAME version to 2.2.1 in monitoring function zip package path 415713d
+
+### Bug Fixes
+
+* **log-queries:** update vpn and update_center queries 2c4258c
+* **monitoring-function:** bump inner module zip_package_path default to v2.2.0-beta-0.1 41717f3
+* **tf-docs:** update readme a2a95f7
+
+### Documentation
+
+* add OBC/Prometheus integration design spec 886ff17
+* **monitoring-function:** update inner module README with OBC variables and v2.2.0-beta-0.1 9ee4b66
+* regenerate README with OBC variables via terraform-docs 18b5b3f
+* update OBC design spec after review f8cc862
+
+### Code Refactoring
+
+* **queries-backup:** update MySQL query cbfecdd
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.12.5 93f34f8
+* **deps:** update dependency tflint to v0.64.0 15b65de
+
 ## 8.16.0 (2026-07-20)
 
 ### Features
