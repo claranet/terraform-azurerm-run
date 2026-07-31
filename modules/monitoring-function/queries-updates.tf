@@ -9,7 +9,7 @@ locals {
         | where type == 'microsoft.compute/virtualmachines/patchinstallationresults'
         | extend azure_resource_name = tostring(split(id, '/')[8])
         | extend last_updated=todatetime(properties.lastModifiedDateTime)
-        | where last_updated > ago(1d)
+        | where last_updated > ago(30d)
         | summarize last_updated = arg_max(last_updated, status=tolower(properties.status))
             by
             subscription_id=subscriptionId,
@@ -34,7 +34,7 @@ locals {
         | extend ts=todatetime(properties.lastModifiedDateTime)
         | mv-expand bagexpansion=array patchs=properties.availablePatchCountByClassification
         | project
-            timestamp=ts,
+            timestamp=now(),
             metric_value=patchs[1],
             classification=patchs[0],
             subscription_id,

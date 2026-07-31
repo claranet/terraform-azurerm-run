@@ -120,6 +120,13 @@ module "monitoring" {
 | metrics\_extra\_dimensions | Extra dimensions sent with metrics. | `map(string)` | `{}` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `"fame"` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| obc\_aws\_access\_key\_id | AWS access key ID for ObsByClara authentication. | `string` | `null` | no |
+| obc\_aws\_secret\_access\_key | AWS secret access key for ObsByClara authentication. | `string` | `null` | no |
+| obc\_aws\_session\_token | AWS session token for ObsByClara authentication with temporary credentials. | `string` | `null` | no |
+| obc\_endpoint | ObsByClara/Prometheus Remote Write endpoint URL. | `string` | `null` | no |
+| obc\_max\_retries | Maximum retry attempts for ObsByClara failed requests. | `number` | `null` | no |
+| obc\_region | AWS region for SigV4 signing when using ObsByClara backend. | `string` | `null` | no |
+| obc\_service | AWS service name for SigV4 signing. Typically `aps` for AWS Managed Prometheus. | `string` | `"aps"` | no |
 | rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
@@ -128,7 +135,7 @@ module "monitoring" {
 | stack | Stack name. | `string` | n/a | yes |
 | storage\_account\_advanced\_threat\_protection\_enabled | FAME advanded thread protection (aka ATP) on Function App's storage account. | `bool` | `false` | no |
 | storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
-| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.1.0/fame.zip"` | no |
+| zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.2.1/fame.zip"` | no |
 
 ## Outputs
 

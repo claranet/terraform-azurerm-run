@@ -22,5 +22,12 @@ locals {
     var.extra_application_settings,
     var.splunk_token != null ? { SFX_TOKEN = var.splunk_token } : {},
     var.datadog_api_key != null ? { DD_API_KEY = var.datadog_api_key } : {},
+    var.obc_endpoint != null ? { OBC_ENDPOINT = var.obc_endpoint } : {},
+    var.obc_region != null ? { OBC_REGION = var.obc_region } : {},
+    var.obc_endpoint != null ? { OBC_SERVICE = var.obc_service } : {},
+    var.obc_aws_access_key_id != null ? { AWS_ACCESS_KEY_ID = var.obc_aws_access_key_id } : {},
+    var.obc_aws_secret_access_key != null ? { AWS_SECRET_ACCESS_KEY = var.obc_aws_secret_access_key } : {},
+    var.obc_aws_session_token != null ? { AWS_SESSION_TOKEN = var.obc_aws_session_token } : {},
+    var.obc_max_retries != null ? { OBC_MAX_RETRIES = tostring(var.obc_max_retries) } : {},
   )
 }

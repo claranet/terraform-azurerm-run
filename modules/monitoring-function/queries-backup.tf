@@ -63,5 +63,21 @@ locals {
         | project timestamp=LastBackupTime, subscription_id, azure_resource_group_name, azure_resource_name, metric_value
       EOQ
     }
+
+    mysql_backup = {
+      MetricName = "fame.azure.backup.mysql"
+      QueryType  = "log_analytics"
+      Query      = <<EOQ
+        AzureDiagnostics
+        | where ResultDescription contains "MYSQL backup script finished"
+        | extend id_parts = split(ResourceId, '/')
+        | extend subscription_id = tostring(id_parts[2])
+        | extend azure_resource_group_name = tostring(id_parts[4])
+        | extend azure_resource_name = Resource
+        | summarize ResultBackup = max(TimeGenerated) by subscription_id, azure_resource_group_name, azure_resource_name
+        | extend metric_value = iff(ResultBackup >= ago(1d), 1, 0)
+        | project timestamp=now(), subscription_id, azure_resource_group_name, azure_resource_name, metric_value
+      EOQ
+    }
   }
 }
