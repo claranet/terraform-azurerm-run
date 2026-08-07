@@ -24,7 +24,7 @@ module "backup_vault_diagnostics" {
   source  = "claranet/diagnostic-settings/azurerm"
   version = "~> 9.0"
 
-  count = var.backup_postgresql_enabled || var.backup_managed_disk_enabled || var.backup_storage_blob_enabled || var.backup_kubernetes_enabled ? 1 : 0
+  count = anytrue([var.backup_postgresql_enabled, var.backup_managed_disk_enabled, var.backup_storage_blob_enabled, var.backup_kubernetes_enabled]) ? 1 : 0
 
   resource_id = azurerm_data_protection_backup_vault.main[0].id
 
