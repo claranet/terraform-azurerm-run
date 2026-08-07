@@ -12,13 +12,25 @@ EOD
 
 variable "logs_categories" {
   type        = list(string)
-  description = "Log categories to send to destinations."
+  description = "Log categories to send to destinations for the Recovery Services Vault."
   default     = null
 }
 
 variable "logs_metrics_categories" {
   type        = list(string)
-  description = "Metrics categories to send to destinations."
+  description = "Metrics categories to send to destinations for the Recovery Services Vault."
+  default     = null
+}
+
+variable "backup_vault_logs_categories" {
+  type        = list(string)
+  description = "Log categories to send to destinations for the Backup Vault."
+  default     = null
+}
+
+variable "backup_vault_logs_metrics_categories" {
+  type        = list(string)
+  description = "Metrics categories to send to destinations for the Backup Vault."
   default     = null
 }
 

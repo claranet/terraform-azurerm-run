@@ -184,9 +184,9 @@ module "run" {
 | backup\_diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | backup\_file\_share\_enabled | Whether the File Share backup is enabled. | `bool` | `false` | no |
 | backup\_kubernetes\_enabled | Whether the AKS backup is enabled. | `bool` | `false` | no |
-| backup\_logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
+| backup\_logs\_categories | Log categories to send to destinations for the Recovery Services Vault. | `list(string)` | `null` | no |
 | backup\_logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | `[]` | no |
-| backup\_logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| backup\_logs\_metrics\_categories | Metrics categories to send to destinations for the Recovery Services Vault. | `list(string)` | `null` | no |
 | backup\_managed\_disk\_enabled | Whether the Managed Disk backup is enabled. | `bool` | `false` | no |
 | backup\_postgresql\_enabled | Whether the PostgreSQL backup is enabled. | `bool` | `false` | no |
 | backup\_storage\_blob\_enabled | Whether the Storage blob backup is enabled. | `bool` | `false` | no |
@@ -196,6 +196,8 @@ module "run" {
 | backup\_vault\_extra\_tags | Extra tags to add to Backup Vault. | `map(string)` | `{}` | no |
 | backup\_vault\_identity\_type | Azure Backup Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | backup\_vault\_immutability | Immutability setting of the Backup Vault. Possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`. | `string` | `"Unlocked"` | no |
+| backup\_vault\_logs\_categories | Log categories to send to destinations for the Backup Vault. | `list(string)` | `null` | no |
+| backup\_vault\_logs\_metrics\_categories | Metrics categories to send to destinations for the Backup Vault. | `list(string)` | `null` | no |
 | backup\_vault\_redundancy | Redundancy setting of the Backup Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | backup\_vault\_soft\_delete | Soft delete setting of the Backup Vault. Possible values for the state are `AlwaysOn`, `Off` and `On`. Defaults to `On`. Once the soft delete is set to `AlwaysOn`, the setting cannot be changed. Retention period till 14 days are free of cost. | <pre>object({<br/>    state             = optional(string, "On")<br/>    retention_in_days = optional(number, 14)<br/>  })</pre> | `{}` | no |
 | backup\_vm\_enabled | Whether the Virtual Machines backup is enabled. | `bool` | `false` | no |

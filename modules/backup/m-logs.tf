@@ -19,3 +19,20 @@ moved {
   from = module.diagnostics
   to   = module.diagnostics[0]
 }
+
+module "backup_vault_diagnostics" {
+  source  = "claranet/diagnostic-settings/azurerm"
+  version = "~> 9.0"
+
+  count = var.backup_postgresql_enabled || var.backup_managed_disk_enabled || var.backup_storage_blob_enabled || var.backup_kubernetes_enabled ? 1 : 0
+
+  resource_id = azurerm_data_protection_backup_vault.main[0].id
+
+  logs_destinations_ids = var.logs_destinations_ids
+  log_categories        = var.backup_vault_logs_categories
+  metric_categories     = var.backup_vault_logs_metrics_categories
+
+  custom_name = var.diagnostic_settings_custom_name
+  name_prefix = var.name_prefix
+  name_suffix = var.name_suffix
+}

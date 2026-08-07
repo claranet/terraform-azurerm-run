@@ -103,5 +103,8 @@ module "backup" {
   logs_categories         = var.backup_logs_categories
   logs_metrics_categories = var.backup_logs_metrics_categories
 
+  backup_vault_logs_categories         = var.backup_vault_logs_categories
+  backup_vault_logs_metrics_categories = var.backup_vault_logs_metrics_categories
+
   diagnostic_settings_custom_name = var.backup_diagnostic_settings_custom_name
 }

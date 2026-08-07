@@ -84,6 +84,7 @@ module "az_vm_backup" {
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
+| backup\_vault\_diagnostics | claranet/diagnostic-settings/azurerm | ~> 9.0 |
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 9.0 |
 
 ## Resources
@@ -116,6 +117,8 @@ module "az_vm_backup" {
 | backup\_vault\_extra\_tags | Extra tags to add to Backup Vault. | `map(string)` | `{}` | no |
 | backup\_vault\_identity\_type | Azure Backup Vault identity type. Possible values include: `null`, `SystemAssigned`. Default to `SystemAssigned`. | `string` | `"SystemAssigned"` | no |
 | backup\_vault\_immutability | Immutability setting of the Backup Vault. Possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`. | `string` | `"Unlocked"` | no |
+| backup\_vault\_logs\_categories | Log categories to send to destinations for the Backup Vault. | `list(string)` | `null` | no |
+| backup\_vault\_logs\_metrics\_categories | Metrics categories to send to destinations for the Backup Vault. | `list(string)` | `null` | no |
 | backup\_vault\_redundancy | Redundancy setting of the Backup Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | backup\_vault\_soft\_delete | Soft delete setting of the Backup Vault. Possible values for the state are `AlwaysOn`, `Off` and `On`. Defaults to `On`. Once the soft delete is set to `AlwaysOn`, the setting cannot be changed. Retention period till 14 days are free of cost. | <pre>object({<br/>    state             = optional(string, "On")<br/>    retention_in_days = optional(number, 14)<br/>  })</pre> | `{}` | no |
 | backup\_vm\_enabled | Whether the Virtual Machines backup is enabled. | `bool` | `true` | no |
@@ -140,9 +143,9 @@ module "az_vm_backup" {
 | kubernetes\_backup\_policy\_timezone | Specifies the timezone for AKS backup schedules. Defaults to `UTC`. | `string` | `"UTC"` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
-| logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
+| logs\_categories | Log categories to send to destinations for the Recovery Services Vault. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | n/a | yes |
-| logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| logs\_metrics\_categories | Metrics categories to send to destinations for the Recovery Services Vault. | `list(string)` | `null` | no |
 | managed\_disk\_backup\_daily\_policy\_retention\_in\_days | The number of days to keep the first daily Managed Disk backup. | `number` | `null` | no |
 | managed\_disk\_backup\_policy\_custom\_name | Azure Backup - Managed disk backup policy custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | managed\_disk\_backup\_policy\_interval\_in\_hours | The Managed Disk backup interval in hours. | `number` | `24` | no |
