@@ -80,7 +80,7 @@ module "monitoring" {
 
 | Name | Version |
 | ---- | ------- |
-| azurerm | ~> 4.0 |
+| azurerm | ~> 4.77 |
 
 ## Modules
 
