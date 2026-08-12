@@ -100,6 +100,19 @@ variable "monitoring_function_assign_roles" {
   default     = true
 }
 
+variable "monitoring_function_queries_enabled" {
+  description = "Object of booleans to enable/disable each type of log query in the monitoring function. All queries are enabled by default."
+  type = object({
+    heartbeat = optional(bool, true)
+    appgw     = optional(bool, true)
+    backup    = optional(bool, true)
+    updates   = optional(bool, true)
+    vpn       = optional(bool, true)
+  })
+  default  = {}
+  nullable = false
+}
+
 variable "monitoring_function_application_insights_enabled" {
   description = "Whether FAME Application Insights is deployed."
   type        = bool

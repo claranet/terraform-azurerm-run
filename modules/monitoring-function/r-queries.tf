@@ -1,6 +1,6 @@
 resource "azurerm_storage_table" "main" {
-  name                 = "LogQueries"
-  storage_account_name = module.function.storage_account_name
+  name               = "LogQueries"
+  storage_account_id = module.function.storage_account_id
 
   lifecycle {
     prevent_destroy = true
