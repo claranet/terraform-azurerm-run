@@ -1,3 +1,13 @@
+## 8.17.1 (2026-08-14)
+
+### Code Refactoring
+
+* **FAME:** ♻️ add an optional variable to enable/disable FAME queries e25f387
+
+### Miscellaneous Chores
+
+* **deps:** 🔗 bump AzureRM to v4.77+ a973a8a, closes #32235
+
 ## 8.17.0 (2026-07-31)
 
 ### Features
