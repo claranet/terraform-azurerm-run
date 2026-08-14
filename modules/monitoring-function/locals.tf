@@ -6,11 +6,11 @@ locals {
   extra_dimensions = join(",", [for k, v in merge(local.default_tags, local.fame_dimensions, var.metrics_extra_dimensions) : format("%s=%s", k, v)])
 
   log_queries = merge(
-    local.log_queries_heartbeat,
-    local.log_queries_appgw,
-    local.log_queries_backup,
-    local.log_queries_updates,
-    local.log_queries_vpn,
+    var.queries_enabled.heartbeat ? local.log_queries_heartbeat : {},
+    var.queries_enabled.appgw ? local.log_queries_appgw : {},
+    var.queries_enabled.backup ? local.log_queries_backup : {},
+    var.queries_enabled.updates ? local.log_queries_updates : {},
+    var.queries_enabled.vpn ? local.log_queries_vpn : {},
   )
 
   app_settings = merge(
