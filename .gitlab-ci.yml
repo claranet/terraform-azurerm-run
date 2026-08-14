@@ -7,3 +7,9 @@ include:
   - project: "claranet/projects/cloud/azure/terraform/ci"
     ref: master
     file: "/pipeline.yml"
+
+examples:
+  script:
+    - exit 0
+  rules:
+    - when: never
