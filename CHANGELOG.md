@@ -1,3 +1,17 @@
+## 8.17.2 (2026-08-14)
+
+### Documentation
+
+* **ci:** 📚️ 👷 temp skip documentation 4eab133
+
+### Continuous Integration
+
+* 👷 temporary drop examples stage b85575a
+
+### Miscellaneous Chores
+
+* **v9:** 🐛 synchronize common files and docs 9378aa1
+
 ## 8.17.1 (2026-08-14)
 
 ### Code Refactoring
