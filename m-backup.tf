@@ -29,7 +29,6 @@ module "backup" {
   recovery_vault_identity_type                                  = var.recovery_vault_identity_type
   recovery_vault_storage_mode_type                              = var.recovery_vault_storage_mode_type
   recovery_vault_cross_region_restore_enabled                   = var.recovery_vault_cross_region_restore_enabled
-  recovery_vault_soft_delete_enabled                            = var.recovery_vault_soft_delete_enabled
   recovery_vault_immutability                                   = var.recovery_vault_immutability
   recovery_vault_alerts_for_all_job_failures_enabled            = var.recovery_vault_alerts_for_all_job_failures_enabled
   recovery_vault_alerts_for_critical_operation_failures_enabled = var.recovery_vault_alerts_for_critical_operation_failures_enabled
