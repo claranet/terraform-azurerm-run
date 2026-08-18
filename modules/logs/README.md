@@ -67,14 +67,14 @@ module "logs" {
 
 | Name | Version |
 | ---- | ------- |
-| azurecaf | >= 1.2.28 |
-| azurerm | >= 4.9 |
+| azurecaf | ~> 1.3.0 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| storage | claranet/storage-account/azurerm | ~> 8.6.0 |
+| storage | claranet/storage-account/azurerm | ~> 9.0 |
 
 ## Resources
 

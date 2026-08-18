@@ -81,13 +81,17 @@ module "monitoring" {
 
 | Name | Version |
 | ---- | ------- |
-| azurerm | >= 4.77 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
+<<<<<<< HEAD
 | function | claranet/function-app/azurerm | ~> 8.10.0 |
+=======
+| function | claranet/function-app/azurerm | ~> 9.0 |
+>>>>>>> df55835 (chore(SREAA-368): synchronize committed.toml and AGENTS.md from the ci template)
 
 ## Resources
 
