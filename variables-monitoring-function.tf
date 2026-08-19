@@ -4,7 +4,8 @@
 variable "monitoring_function_enabled" {
   description = "Whether additional Monitoring Function is enabled."
   type        = bool
-  default     = true
+  default     = false
+  nullable    = false
 }
 
 variable "monitoring_function_splunk_token" {

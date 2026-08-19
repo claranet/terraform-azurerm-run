@@ -2,6 +2,7 @@ variable "update_center_enabled" {
   description = "Whether the Update Management Center is enabled."
   type        = bool
   default     = false
+  nullable    = false
 }
 
 variable "update_center_maintenance_configurations" {

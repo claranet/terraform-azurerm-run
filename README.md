@@ -288,7 +288,7 @@ module "run" {
 | monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_datadog\_api\_key | API Key to send metrics to Datadog. | `string` | `null` | no |
-| monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
+| monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `false` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function. | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Extra tags to add to the monitoring function. | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |

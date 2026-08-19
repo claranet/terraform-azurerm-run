@@ -6,6 +6,7 @@ variable "backup_vm_enabled" {
   description = "Whether the Virtual Machines backup is enabled."
   type        = bool
   default     = false
+  nullable    = false
 }
 
 variable "backup_file_share_enabled" {

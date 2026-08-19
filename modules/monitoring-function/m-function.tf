@@ -1,10 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-<<<<<<< HEAD
-  version = "~> 8.10.0"
-=======
   version = "~> 9.0"
->>>>>>> abba755 (feat(SREAA-368): upgrade module to v9 (OpenTofu >= 1.12, AzureRM ~> 5.0))
 
   client_name         = var.client_name
   environment         = var.environment
