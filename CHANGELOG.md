@@ -1,3 +1,36 @@
+## 9.0.0 (2026-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* **SREAA-368:** the minimum OpenTofu version is raised to `1.12` and the AzureRM provider is constrained to `~> 5.0`, so
+consumers must upgrade both before using this release. The `recovery_vault_soft_delete_enabled` variable is removed from the root
+module and from `modules/backup`: AzureRM 5.0 dropped `soft_delete_enabled` from `azurerm_recovery_services_vault` with no
+replacement, so soft delete is no longer configurable through this module and configurations setting it must remove it. Two
+provider-level behaviour changes shipped with AzureRM 5.0 also apply: `resource_provider_registrations` now defaults to `none`
+instead of `legacy`, so no resource provider is registered automatically anymore, and the `enhanced_validation` block moved inside
+`features` with location and resource provider validation now disabled by default, which defers those errors from plan time to
+apply time. The `keyvault`, `storage-account`, `function-app` and `diagnostic-settings` submodules move to `~> 9.0`, which require
+AzureRM `~> 5.0` as well.
+
+### Features
+
+* **SREAA-368:** upgrade module to v9 (OpenTofu >= 1.12, AzureRM ~> 5.0) 048e459
+
+### Documentation
+
+* **SREAA-368:** 🐛 remove leftover merge conflict markers in monitoring-function README 1bf895e
+
+### Code Refactoring
+
+* disable by default `monitoring-function` (FAME) in v9 757442a
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/function-app/azurerm to ~> 8.10.0 a02c4d8
+* **deps:** update dependency claranet/function-app/azurerm to ~> 8.9.0 22fa241
+* **SREAA-368:** 📌 pin claranet submodules to patch-only versions 53f2b15
+* **SREAA-368:** synchronize committed.toml and AGENTS.md from the ci template 73920a4
+
 ## 8.17.2 (2026-08-14)
 
 ### Documentation
