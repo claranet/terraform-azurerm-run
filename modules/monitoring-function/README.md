@@ -81,13 +81,13 @@ module "monitoring" {
 
 | Name | Version |
 | ---- | ------- |
-| azurerm | >= 4.77 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| function | claranet/function-app/azurerm | ~> 8.10.0 |
+| function | claranet/function-app/azurerm | ~> 9.0.0 |
 
 ## Resources
 

@@ -77,14 +77,14 @@ module "az_vm_backup" {
 
 | Name | Version |
 | ---- | ------- |
-| azurecaf | >= 1.2.28 |
-| azurerm | >= 4.0 |
+| azurecaf | ~> 1.3.0 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.2.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 9.0 |
 
 ## Resources
 
@@ -167,7 +167,6 @@ module "az_vm_backup" {
 | recovery\_vault\_immutability | Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`. | `string` | `"Unlocked"` | no |
 | recovery\_vault\_public\_network\_access\_enabled | Whether public network access is allowed for this Recovery Services Vault. Defaults to `true`. | `bool` | `true` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
-| recovery\_vault\_soft\_delete\_enabled | Is soft delete enable for this Vault? Defaults to `true`. | `bool` | `true` | no |
 | recovery\_vault\_storage\_mode\_type | The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |

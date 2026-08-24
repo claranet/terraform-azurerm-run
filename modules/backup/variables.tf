@@ -94,12 +94,6 @@ variable "recovery_vault_cross_region_restore_enabled" {
   default     = true
 }
 
-variable "recovery_vault_soft_delete_enabled" {
-  description = "Is soft delete enable for this Vault? Defaults to `true`."
-  type        = bool
-  default     = true
-}
-
 variable "recovery_vault_immutability" {
   description = "Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`."
   type        = string

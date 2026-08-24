@@ -6,6 +6,7 @@ variable "backup_vm_enabled" {
   description = "Whether the Virtual Machines backup is enabled."
   type        = bool
   default     = false
+  nullable    = false
 }
 
 variable "backup_file_share_enabled" {
@@ -56,12 +57,6 @@ variable "recovery_vault_storage_mode_type" {
 
 variable "recovery_vault_cross_region_restore_enabled" {
   description = "Is cross region restore enabled for this Vault? Can only be `true`, when `storage_mode_type` is `GeoRedundant`."
-  type        = bool
-  default     = true
-}
-
-variable "recovery_vault_soft_delete_enabled" {
-  description = "Is soft delete enable for this Vault? Defaults to `true`."
   type        = bool
   default     = true
 }

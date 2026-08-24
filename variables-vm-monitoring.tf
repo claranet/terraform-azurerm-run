@@ -5,6 +5,7 @@ variable "vm_monitoring_enabled" {
   description = "Whether Data Collection Rules for VM monitoring are enabled."
   type        = bool
   default     = false
+  nullable    = false
 }
 
 variable "data_collection_syslog_facilities_names" {

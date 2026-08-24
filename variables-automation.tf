@@ -6,6 +6,7 @@ variable "automation_account_enabled" {
   description = "Whether the Automation Account is enabled. Enabled if legacy Update Management is enabled."
   type        = bool
   default     = false
+  nullable    = false
 }
 
 variable "automation_account_sku" {

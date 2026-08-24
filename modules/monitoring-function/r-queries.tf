@@ -10,7 +10,9 @@ resource "azurerm_storage_table" "main" {
 resource "azurerm_storage_table_entity" "main" {
   for_each = local.log_queries
 
-  storage_table_id = azurerm_storage_table.main.id
+  # AzureRM 5.0 requires a Resource Manager ID here, the Data Plane URL format that `id`
+  # carries for a Storage Table is no longer accepted.
+  storage_table_id = azurerm_storage_table.main.resource_manager_id
 
   partition_key = "LogQuery"
   row_key       = each.key

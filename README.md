@@ -144,7 +144,7 @@ module "run" {
 
 | Name | Version |
 | ---- | ------- |
-| azurerm | >= 4.77 |
+| azurerm | ~> 5.0 |
 | terraform | n/a |
 
 ## Modules
@@ -153,7 +153,7 @@ module "run" {
 | ---- | ------ | ------- |
 | automation\_account | ./modules/automation-account | n/a |
 | backup | ./modules/backup | n/a |
-| key\_vault | claranet/keyvault/azurerm | ~> 8.2.0 |
+| key\_vault | claranet/keyvault/azurerm | ~> 9.0.0 |
 | logs | ./modules/logs | n/a |
 | monitoring\_function | ./modules/monitoring-function | n/a |
 | update\_management\_center | ./modules/update-center | n/a |
@@ -288,7 +288,7 @@ module "run" {
 | monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_datadog\_api\_key | API Key to send metrics to Datadog. | `string` | `null` | no |
-| monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `true` | no |
+| monitoring\_function\_enabled | Whether additional Monitoring Function is enabled. | `bool` | `false` | no |
 | monitoring\_function\_extra\_application\_settings | Extra application settings to set on monitoring Function. | `map(string)` | `{}` | no |
 | monitoring\_function\_extra\_tags | Extra tags to add to the monitoring function. | `map(string)` | `{}` | no |
 | monitoring\_function\_function\_app\_custom\_name | FAME Function App custom name. Empty by default, using naming convention. | `string` | `null` | no |
@@ -326,7 +326,6 @@ module "run" {
 | recovery\_vault\_immutability | Immutability setting of the Vault, possible values are `Locked`, `Unlocked` and `Disabled`. Defaults to `Unlocked`. | `string` | `"Unlocked"` | no |
 | recovery\_vault\_public\_network\_access\_enabled | Whether public network access is allowed for this Recovery Services Vault. Defaults to `true`. | `bool` | `true` | no |
 | recovery\_vault\_sku | Azure Recovery Vault SKU. Possible values include: `Standard`, `RS0`. Default to `Standard`. | `string` | `"Standard"` | no |
-| recovery\_vault\_soft\_delete\_enabled | Is soft delete enable for this Vault? Defaults to `true`. | `bool` | `true` | no |
 | recovery\_vault\_storage\_mode\_type | The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`. | `string` | `"GeoRedundant"` | no |
 | resource\_group\_name | Resource Group the resources will belong to. | `string` | n/a | yes |
 | stack | Stack name. | `string` | n/a | yes |
