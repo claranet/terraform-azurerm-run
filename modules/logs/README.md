@@ -74,7 +74,7 @@ module "logs" {
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| storage | claranet/storage-account/azurerm | ~> 9.0 |
+| storage | claranet/storage-account/azurerm | ~> 9.0.0 |
 
 ## Resources
 

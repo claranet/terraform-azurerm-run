@@ -87,7 +87,7 @@ module "monitoring" {
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| function | claranet/function-app/azurerm | ~> 9.0 |
+| function | claranet/function-app/azurerm | ~> 9.0.0 |
 
 ## Resources
 
