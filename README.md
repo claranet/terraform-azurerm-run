@@ -259,6 +259,7 @@ module "run" {
 | logs\_storage\_account\_archived\_logs\_fileshare\_name | Name of the file share in which externalized logs are stored. | `string` | `"archived-logs"` | no |
 | logs\_storage\_account\_archived\_logs\_fileshare\_quota | The maximum size in GB of the archived-logs file share, default is 5120. | `number` | `null` | no |
 | logs\_storage\_account\_archiving\_enabled | Enable/disable blob archiving lifecycle. | `bool` | `true` | no |
+| logs\_storage\_account\_cross\_tenant\_replication\_enabled | Whether to allow cross tenant replication. | `bool` | `false` | no |
 | logs\_storage\_account\_custom\_name | Storage Account for logs custom name. Empty by default, using naming convention. | `string` | `""` | no |
 | logs\_storage\_account\_customer\_managed\_key | Customer Managed Key. Please refer to the [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#customer_managed_key) for more information. | <pre>object({<br/>    key_vault_key_id          = optional(string)<br/>    managed_hsm_key_id        = optional(string)<br/>    user_assigned_identity_id = optional(string)<br/>  })</pre> | `null` | no |
 | logs\_storage\_account\_enabled | Whether the dedicated Storage Account for logs is deployed. | `bool` | `true` | no |
