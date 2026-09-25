@@ -137,11 +137,12 @@ variable "rbac_storage_table_role_principal_ids" {
 variable "queries_enabled" {
   description = "Object of booleans to enable/disable each type of log query. All queries are enabled by default."
   type = object({
-    heartbeat = optional(bool, true)
-    appgw     = optional(bool, true)
-    backup    = optional(bool, true)
-    updates   = optional(bool, true)
-    vpn       = optional(bool, true)
+    heartbeat  = optional(bool, true)
+    appgw      = optional(bool, true)
+    backup     = optional(bool, true)
+    updates    = optional(bool, true)
+    vpn        = optional(bool, true)
+    automation = optional(bool, true)
   })
   default  = {}
   nullable = false

@@ -305,7 +305,7 @@ module "run" {
 | monitoring\_function\_obc\_max\_retries | Maximum retry attempts for ObsByClara failed requests. | `number` | `null` | no |
 | monitoring\_function\_obc\_region | AWS region for SigV4 signing when using ObsByClara backend. | `string` | `null` | no |
 | monitoring\_function\_obc\_service | AWS service name for SigV4 signing. Typically `aps` for AWS Managed Prometheus. | `string` | `"aps"` | no |
-| monitoring\_function\_queries\_enabled | Object of booleans to enable/disable each type of log query in the monitoring function. All queries are enabled by default. | <pre>object({<br/>    heartbeat = optional(bool, true)<br/>    appgw     = optional(bool, true)<br/>    backup    = optional(bool, true)<br/>    updates   = optional(bool, true)<br/>    vpn       = optional(bool, true)<br/>  })</pre> | `{}` | no |
+| monitoring\_function\_queries\_enabled | Object of booleans to enable/disable each type of log query in the monitoring function. All queries are enabled by default. | <pre>object({<br/>    heartbeat  = optional(bool, true)<br/>    appgw      = optional(bool, true)<br/>    backup     = optional(bool, true)<br/>    updates    = optional(bool, true)<br/>    vpn        = optional(bool, true)<br/>    automation = optional(bool, true)<br/>  })</pre> | `{}` | no |
 | monitoring\_function\_splunk\_token | Access Token to send metrics to Splunk Observability. | `string` | `null` | no |
 | monitoring\_function\_storage\_account\_custom\_name | FAME Storage Account custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_zip\_package\_path | Zip package path for monitoring function. | `string` | `"https://github.com/claranet/fame/releases/download/v2.2.1/fame.zip"` | no |
