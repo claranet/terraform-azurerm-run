@@ -55,6 +55,12 @@ variable "logs_storage_account_name_prefix" {
   default     = ""
 }
 
+variable "logs_storage_account_cross_tenant_replication_enabled" {
+  description = "Whether to allow cross tenant replication."
+  type        = bool
+  default     = false
+}
+
 variable "logs_storage_account_custom_name" {
   description = "Storage Account for logs custom name. Empty by default, using naming convention."
   type        = string

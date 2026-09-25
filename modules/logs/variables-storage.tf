@@ -26,6 +26,12 @@ variable "storage_account_access_tier" {
   default     = "Hot"
 }
 
+variable "storage_account_cross_tenant_replication_enabled" {
+  description = "Whether to allow cross tenant replication."
+  type        = string
+  default     = false
+}
+
 variable "storage_account_replication_type" {
   description = "Storage Account Replication type."
   type        = string

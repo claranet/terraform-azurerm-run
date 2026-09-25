@@ -30,6 +30,9 @@ module "storage" {
   # Storage access tier
   access_tier = var.storage_account_access_tier
 
+  # Storage replication
+  cross_tenant_replication_enabled = var.storage_account_cross_tenant_replication_enabled
+
   # Storage account options / security
   min_tls_version                    = var.storage_account_min_tls_version
   https_traffic_only_enabled         = var.storage_account_https_traffic_only_enabled
