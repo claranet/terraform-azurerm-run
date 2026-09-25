@@ -1,3 +1,20 @@
+## 9.2.0 (2026-09-25)
+
+### Features
+
+* **AZ-1690:** add backup vault diagnostic settings and update descriptions fcc9347
+* **AZ-1691:** add queries for automation 497d145
+* **AZ-1691:** fix tf_docs 9c5dc41
+
+### Bug Fixes
+
+* **AZ-1690:** simplify count condition using anytrue function cf6320d
+
+### Miscellaneous Chores
+
+* merge remote-tracking branch 'origin/AZ-1690/add_bkvault_diag_settings' 06fdcf4
+* merge remote-tracking branch 'origin/AZ-1691/add_fame_queries_for_automation' 010e6af
+
 ## 9.1.0 (2026-09-25)
 
 ### Features
