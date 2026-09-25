@@ -1,3 +1,17 @@
+## 9.1.0 (2026-09-25)
+
+### Features
+
+* **AZ-1706:** ✨ add storage account cross tenant replication option d7f3153
+
+### Documentation
+
+* **AZ-1706:** 📝 document cross tenant replication input in logs README 277c65d
+
+### Miscellaneous Chores
+
+* **deps:** ⬆️ update tools 🔗 f851c93
+
 ## 9.0.1 (2026-08-25)
 
 ### Revert
