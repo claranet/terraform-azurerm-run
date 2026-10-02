@@ -1,3 +1,10 @@
+## 9.3.0 (2026-10-02)
+
+### Features
+
+* **FAME:** ✨ allow Flex consumption function b22b5fe
+* **monitoring-function:** add RSV replicated items health metric 7083279
+
 ## 9.2.0 (2026-09-25)
 
 ### Features
