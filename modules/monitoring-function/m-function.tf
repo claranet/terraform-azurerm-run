@@ -1,6 +1,6 @@
 module "function" {
   source  = "claranet/function-app/azurerm"
-  version = "~> 9.0.0"
+  version = "~> 9.1"
 
   client_name         = var.client_name
   environment         = var.environment
@@ -21,11 +21,17 @@ module "function" {
   application_settings              = local.app_settings
 
   os_type              = "Linux"
-  sku_name             = "Y1"
+  sku_name             = local.is_flex ? "FC1" : "Y1"
   function_app_version = 4
+
+  # The Flex Consumption plan declares its stack through `runtime_*`, the
+  # Consumption one through `site_config.application_stack`. Only the resource
+  # matching the selected SKU reads its own pair, so both are always set.
+  runtime_name    = "python"
+  runtime_version = local.python_version
   site_config = {
     application_stack = {
-      python_version = "3.12"
+      python_version = local.python_version
     }
   }
 

@@ -167,3 +167,14 @@ variable "monitoring_rbac_storage_table_role_principal_ids" {
   default  = {}
   nullable = false
 }
+
+variable "monitoring_function_type" {
+  description = "Type/SKU of the FAME function plan to deploy. It can be `Dynamic` (Consumption `Y1`) or `Flex` (Flex Consumption `FC1`)."
+  type        = string
+  default     = "Dynamic"
+  nullable    = false
+  validation {
+    condition     = contains(["dynamic", "flex"], lower(var.monitoring_function_type))
+    error_message = "`var.monitoring_function_type` must be either `Dynamic` or `Flex`."
+  }
+}

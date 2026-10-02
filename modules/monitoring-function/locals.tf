@@ -1,4 +1,7 @@
 locals {
+  is_flex        = lower(var.function_type) == "flex"
+  python_version = "3.12"
+
   fame_dimensions = {
     fame_function_app_resource_group  = var.resource_group_name,
     fame_function_app_subscription_id = data.azurerm_client_config.current.subscription_id,
