@@ -13,6 +13,7 @@ Built-in metrics sent:
   * `fame.azure.update_center.missing_updates`: number of updates missing on Virtual Machines managed by Update Center
   * `fame.azure.automation_update.updates_status`: number of updates performed with legacy Update Management along with their statuses
   * `fame.azure.automation_update.missing_updates`: number of updates missing on Virtual Machines managed by legacy Update Management
+  * `fame.azure.recoveryservices_vaults.replicated_items_health`: health status (1=Normal, 0=otherwise) of Azure Site Recovery replicated items, along with their protection state and replication health
 
 Note:
 
@@ -144,7 +145,7 @@ module "monitoring" {
 | obc\_max\_retries | Maximum retry attempts for ObsByClara failed requests. | `number` | `null` | no |
 | obc\_region | AWS region for SigV4 signing when using ObsByClara backend. | `string` | `null` | no |
 | obc\_service | AWS service name for SigV4 signing. Typically `aps` for AWS Managed Prometheus. | `string` | `"aps"` | no |
-| queries\_enabled | Object of booleans to enable/disable each type of log query. All queries are enabled by default. | <pre>object({<br/>    heartbeat  = optional(bool, true)<br/>    appgw      = optional(bool, true)<br/>    backup     = optional(bool, true)<br/>    updates    = optional(bool, true)<br/>    vpn        = optional(bool, true)<br/>    automation = optional(bool, true)<br/>  })</pre> | `{}` | no |
+| queries\_enabled | Object of booleans to enable/disable each type of log query. All queries are enabled by default. | <pre>object({<br/>    heartbeat     = optional(bool, true)<br/>    appgw         = optional(bool, true)<br/>    backup        = optional(bool, true)<br/>    updates       = optional(bool, true)<br/>    vpn           = optional(bool, true)<br/>    automation    = optional(bool, true)<br/>    site_recovery = optional(bool, true)<br/>  })</pre> | `{}` | no |
 | rbac\_storage\_contributor\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Account Contributor` role to. | `list(string)` | `[]` | no |
 | rbac\_storage\_table\_role\_principal\_ids | The principal IDs of the users, groups, and service principals to assign the `Storage Table Data *` role to. | <pre>object({<br/>    contributors = optional(list(string), [])<br/>    readers      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | resource\_group\_name | Resource group to which the resources will belong. | `string` | n/a | yes |

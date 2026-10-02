@@ -15,6 +15,7 @@ locals {
     var.queries_enabled.updates ? local.log_queries_updates : {},
     var.queries_enabled.vpn ? local.log_queries_vpn : {},
     var.queries_enabled.automation ? local.log_queries_automation : {},
+    var.queries_enabled.site_recovery ? local.log_queries_site_recovery : {},
   )
 
   app_settings = merge(
