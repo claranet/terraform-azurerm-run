@@ -140,6 +140,18 @@ variable "monitoring_function_application_insights_custom_name" {
   default     = null
 }
 
+variable "monitoring_function_application_insights_daily_data_cap" {
+  description = "Daily data volume cap (in GB) for the FAME Application Insights."
+  type        = number
+  default     = null
+}
+
+variable "monitoring_function_application_insights_daily_data_cap_notifications_disabled" {
+  description = "Whether the FAME Application Insights daily data cap notifications are disabled."
+  type        = bool
+  default     = true
+}
+
 variable "monitoring_function_advanced_threat_protection_enabled" {
   description = "FAME function app's storage account: Enable Advanced Threat Protection."
   type        = bool

@@ -46,8 +46,10 @@ module "function" {
   logs_metrics_categories         = var.logs_metrics_categories
   diagnostic_settings_custom_name = var.diagnostic_settings_custom_name
 
-  application_insights_enabled                    = var.application_insights_enabled
-  application_insights_log_analytics_workspace_id = var.application_insights_log_analytics_workspace_id
+  application_insights_enabled                               = var.application_insights_enabled
+  application_insights_log_analytics_workspace_id            = var.application_insights_log_analytics_workspace_id
+  application_insights_daily_data_cap                        = var.application_insights_daily_data_cap
+  application_insights_daily_data_cap_notifications_disabled = var.application_insights_daily_data_cap_notifications_disabled
 
   storage_account_advanced_threat_protection_enabled = var.storage_account_advanced_threat_protection_enabled
 

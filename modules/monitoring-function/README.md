@@ -118,6 +118,8 @@ module "monitoring" {
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
 | application\_insights\_custom\_name | FAME Application Insights custom name deployed with function app | `string` | `null` | no |
+| application\_insights\_daily\_data\_cap | Daily data volume cap (in GB) for Application Insights. | `number` | `null` | no |
+| application\_insights\_daily\_data\_cap\_notifications\_disabled | Whether Application Insights daily data cap notifications are disabled. | `bool` | `true` | no |
 | application\_insights\_enabled | Whether Application Insights should be deployed. | `bool` | `true` | no |
 | application\_insights\_log\_analytics\_workspace\_id | ID of the Log Analytics Workspace to be used with Application Insights. | `string` | n/a | yes |
 | client\_name | Client name. | `string` | n/a | yes |
