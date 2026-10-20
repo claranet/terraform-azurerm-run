@@ -20,6 +20,25 @@ locals {
       EOQ
     }
 
+    update_center_failed_updates = {
+      MetricName = "fame.azure.update_center.failed_updates"
+      MetricType = "gauge"
+      QueryType  = "resource_graph"
+      Query      = <<EOQ
+        patchinstallationresources
+        | where type == 'microsoft.compute/virtualmachines/patchinstallationresults'
+        | extend azure_resource_name = tostring(split(id, '/')[8])
+        | extend last_updated = todatetime(properties.lastModifiedDateTime)
+        | where last_updated > ago(30d)
+        | summarize arg_max(last_updated, status = tolower(tostring(properties.status)))
+            by subscription_id = subscriptionId,
+               azure_resource_name,
+               azure_resource_group_name = resourceGroup
+        | extend metric_value = iff(status == 'failed', 1, 0),
+                 timestamp = now()
+      EOQ
+    }
+
     update_center_missing_updates = {
       MetricName = "fame.azure.update_center.missing_updates"
       MetricType = "gauge"
