@@ -48,8 +48,3 @@ resource "azurerm_data_protection_backup_policy_postgresql_flexible_server" "mai
     }
   }
 }
-
-moved {
-  from = azurerm_data_protection_backup_policy_postgresql.pgsql_policy[0]
-  to   = azurerm_data_protection_backup_policy_postgresql.main[0]
-}
