@@ -132,13 +132,17 @@ variable "vm_backup_weekly_retention" {
 }
 
 variable "vm_backup_monthly_retention" {
-  description = "Map to configure the monthly VM backup policy retention according to [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly)."
+  description = "Map to configure the monthly VM backup policy retention according to [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/backup_policy_vm#retention_monthly). Defaults to keeping the backup of the first Sunday of the month for 3 months. Set to `null` to disable the monthly retention. When `vm_backup_policy_frequency` is `Weekly`, `weekdays` must be among the scheduled backup weekdays (taken from `vm_backup_weekly_retention`), so either include `Sunday` there or override or disable this retention."
   type = object({
     count    = number,
     weekdays = list(string),
     weeks    = list(string),
   })
-  default = null
+  default = {
+    count    = 3
+    weekdays = ["Sunday"]
+    weeks    = ["First"]
+  }
 }
 
 variable "vm_backup_yearly_retention" {
