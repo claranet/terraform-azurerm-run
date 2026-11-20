@@ -1,3 +1,15 @@
+## 9.5.0 (2026-11-20)
+
+### Features
+
+* **backup:** keep first Sunday monthly VM backup 3 months by default 282adc6
+* **monitoring-function:** add update_center_failed_updates query 0cff9f1
+
+### Bug Fixes
+
+* **backup:** handle null retentions with weekly VM backup frequency 06b973d
+* **backup:** remove dead moved block for the legacy PostgreSQL policy 55738ce
+
 ## 9.4.0 (2026-11-20)
 
 ### Features
