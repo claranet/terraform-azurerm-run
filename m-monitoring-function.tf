@@ -78,9 +78,11 @@ module "monitoring_function" {
   rbac_storage_contributor_role_principal_ids        = var.monitoring_rbac_storage_contributor_role_principal_ids
   rbac_storage_table_role_principal_ids              = var.monitoring_rbac_storage_table_role_principal_ids
 
-  application_insights_enabled                    = var.monitoring_function_application_insights_enabled
-  application_insights_log_analytics_workspace_id = module.logs.id
-  queries_enabled                                 = var.monitoring_function_queries_enabled
+  application_insights_enabled                               = var.monitoring_function_application_insights_enabled
+  application_insights_log_analytics_workspace_id            = module.logs.id
+  application_insights_daily_data_cap                        = var.monitoring_function_application_insights_daily_data_cap
+  application_insights_daily_data_cap_notifications_disabled = var.monitoring_function_application_insights_daily_data_cap_notifications_disabled
+  queries_enabled                                            = var.monitoring_function_queries_enabled
 
   default_tags_enabled = var.default_tags_enabled
 

@@ -288,6 +288,8 @@ module "run" {
 | monitoring\_function\_advanced\_threat\_protection\_enabled | FAME function app's storage account: Enable Advanced Threat Protection. | `bool` | `false` | no |
 | monitoring\_function\_app\_service\_plan\_name | FAME App Service Plan custom name. Empty by default, using naming convention. | `string` | `null` | no |
 | monitoring\_function\_application\_insights\_custom\_name | FAME Application Insights custom name. Empty by default, using naming convention. | `string` | `null` | no |
+| monitoring\_function\_application\_insights\_daily\_data\_cap | Daily data volume cap (in GB) for the FAME Application Insights. | `number` | `null` | no |
+| monitoring\_function\_application\_insights\_daily\_data\_cap\_notifications\_disabled | Whether the FAME Application Insights daily data cap notifications are disabled. | `bool` | `true` | no |
 | monitoring\_function\_application\_insights\_enabled | Whether FAME Application Insights is deployed. | `bool` | `true` | no |
 | monitoring\_function\_assign\_roles | True to assign roles for the monitoring Function on the Log Analytics Workspace (Log Analytics Reader) and the Subscription (Reader). | `bool` | `true` | no |
 | monitoring\_function\_datadog\_api\_key | API Key to send metrics to Datadog. | `string` | `null` | no |

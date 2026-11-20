@@ -160,6 +160,18 @@ variable "application_insights_log_analytics_workspace_id" {
   type        = string
 }
 
+variable "application_insights_daily_data_cap" {
+  description = "Daily data volume cap (in GB) for Application Insights."
+  type        = number
+  default     = null
+}
+
+variable "application_insights_daily_data_cap_notifications_disabled" {
+  description = "Whether Application Insights daily data cap notifications are disabled."
+  type        = bool
+  default     = true
+}
+
 variable "function_type" {
   description = "Type/SKU of the function plan to deploy. It can be `Dynamic` (Consumption `Y1`) or `Flex` (Flex Consumption `FC1`)."
   type        = string
