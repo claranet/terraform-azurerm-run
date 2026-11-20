@@ -1,3 +1,24 @@
+## 9.4.0 (2026-11-20)
+
+### Features
+
+* **AZ-1697:** ✨ expose FAME Application Insights daily cap 77e5a8f
+
+### Continuous Integration
+
+* **release:** drop semantic-release-slack-bot, the receiver posts releases fd30b90
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.13.0 b23eb18
+* **deps:** update dependency opentofu to v1.13.1 9d59ce0
+* **deps:** update dependency opentofu to v1.13.2 ed385c4
+* **deps:** update dependency opentofu to v1.13.9 7e84d2c
+* **deps:** update dependency terraform-docs to v0.25.1 570cd44
+* **deps:** update dependency tflint to v0.65.0 078fa73
+* **deps:** update dependency tflint to v0.66.0 6a54ec7
+* **deps:** update pre-commit hook crate-ci/committed to v1.1.12 a7031ca
+
 ## 9.3.0 (2026-10-02)
 
 ### Features
