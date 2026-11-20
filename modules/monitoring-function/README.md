@@ -10,6 +10,7 @@ Built-in metrics sent:
   * `fame.azure.virtual_network_gateway.total_flow_count`: number of packets transiting through the VPN Gateway
   * `fame.azure.virtual_network_gateway.tunnel_status`: IPSEC Tunnels status on VPN Gateway
   * `fame.azure.update_center.updates_status`: number of updates performed with Update Center along with their statuses
+  * `fame.azure.update_center.failed_updates`: number of failed updates performed with Update Center
   * `fame.azure.update_center.missing_updates`: number of updates missing on Virtual Machines managed by Update Center
   * `fame.azure.automation_update.updates_status`: number of updates performed with legacy Update Management along with their statuses
   * `fame.azure.automation_update.missing_updates`: number of updates missing on Virtual Machines managed by legacy Update Management
